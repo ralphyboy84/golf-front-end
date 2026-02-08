@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { createTrip, validateTripCards } from "./helpers/createTripHelpers";
 
 test("Check you can navigate to index screen", async ({ page }) => {
   await page.goto("http://localhost:5173/");
@@ -85,62 +86,28 @@ test("Validate no course category selected", async ({ page }) => {
 test("Validate a trip is built", async ({ page }) => {
   await page.goto("http://localhost:5173/");
 
-  // Expect a title "to contain" a substring.
-  await page.click("#dropDownButton");
-  await page.click("#buildATrip");
-  await page.click("#startTripBuilder");
-  await page.fill("#startDate", "2026-04-09");
-  await page.click("#nextStepBtn");
-  await page.selectOption("#whereStayingSelect", "Leven");
-  await page.click("#linksNoLinks");
-  await page.selectOption("#courseTypeSelect", "Links Courses");
-  await page.click("#courseCategoryButton");
-  await page.selectOption(
-    "#courseCategorySelect",
+  await createTrip(
+    page,
+    "2026-04-09",
+    "Leven",
+    "Links Courses",
     "B - not the Open Championship courses but still good",
+    "20000",
   );
-  await page.click("#lastQuestionButton");
-  await page.fill("#milageRange", "20000");
-  await page.click("#buildMyTripButton");
-  await page.waitForSelector("#course0");
-  await expect(page.locator("#course0").locator(".card-body")).toBeVisible();
-  await expect(
-    page.locator("#course0").locator(".card-body").locator("h5"),
-  ).toHaveText(/Lundin Links - Day 1/);
-  await page.click("#nextDayButton0");
-  await page.waitForSelector("#course1");
-  await expect(page.locator("#course1").locator(".card-body")).toBeVisible();
-  await expect(
-    page.locator("#course1").locator(".card-body").locator("h5"),
-  ).toHaveText(/Leven - Day 2/);
-  await page.click("#nextDayButton1");
-  await page.waitForSelector("#course2");
-  await expect(page.locator("#course2").locator(".card-body")).toBeVisible();
-  await expect(
-    page.locator("#course2").locator(".card-body").locator("h5"),
-  ).toHaveText(/Elie - Day 3/);
+  await validateTripCards(page);
 });
 
 test("Check for too many courses returned", async ({ page }) => {
   await page.goto("http://localhost:5173/");
 
-  // Expect a title "to contain" a substring.
-  await page.click("#dropDownButton");
-  await page.click("#buildATrip");
-  await page.click("#startTripBuilder");
-  await page.fill("#startDate", "2026-04-09");
-  await page.click("#nextStepBtn");
-  await page.selectOption("#whereStayingSelect", "Leven");
-  await page.click("#linksNoLinks");
-  await page.selectOption("#courseTypeSelect", "Links Courses");
-  await page.click("#courseCategoryButton");
-  await page.selectOption(
-    "#courseCategorySelect",
+  await createTrip(
+    page,
+    "2026-04-09",
+    "Leven",
+    "Links Courses",
     "B - not the Open Championship courses but still good",
+    "40000",
   );
-  await page.click("#lastQuestionButton");
-  await page.fill("#milageRange", "40000");
-  await page.click("#buildMyTripButton");
   await page.waitForSelector("#tooManyOptionsCard");
   await expect(
     page.locator("#tooManyOptionsCard").locator(".card-body"),
@@ -326,23 +293,14 @@ test("Check for too many courses returned", async ({ page }) => {
 test("Check trip rebuilt ok", async ({ page }) => {
   await page.goto("http://localhost:5173/");
 
-  // Expect a title "to contain" a substring.
-  await page.click("#dropDownButton");
-  await page.click("#buildATrip");
-  await page.click("#startTripBuilder");
-  await page.fill("#startDate", "2026-04-09");
-  await page.click("#nextStepBtn");
-  await page.selectOption("#whereStayingSelect", "Leven");
-  await page.click("#linksNoLinks");
-  await page.selectOption("#courseTypeSelect", "Links Courses");
-  await page.click("#courseCategoryButton");
-  await page.selectOption(
-    "#courseCategorySelect",
+  await createTrip(
+    page,
+    "2026-04-09",
+    "Leven",
+    "Links Courses",
     "B - not the Open Championship courses but still good",
+    "40000",
   );
-  await page.click("#lastQuestionButton");
-  await page.fill("#milageRange", "40000");
-  await page.click("#buildMyTripButton");
   await page.waitForSelector("#tooManyOptionsCard");
   await expect(
     page.locator("#tooManyOptionsCard").locator(".card-body"),
@@ -359,21 +317,5 @@ test("Check trip rebuilt ok", async ({ page }) => {
   await page.check("#lundingc_checkbox");
   await page.check("#elie_checkbox");
   await page.click("#rebuildMyTripButton");
-  await page.waitForSelector("#course0");
-  await expect(page.locator("#course0").locator(".card-body")).toBeVisible();
-  await expect(
-    page.locator("#course0").locator(".card-body").locator("h5"),
-  ).toHaveText(/Lundin Links - Day 1/);
-  await page.click("#nextDayButton0");
-  await page.waitForSelector("#course1");
-  await expect(page.locator("#course1").locator(".card-body")).toBeVisible();
-  await expect(
-    page.locator("#course1").locator(".card-body").locator("h5"),
-  ).toHaveText(/Leven - Day 2/);
-  await page.click("#nextDayButton1");
-  await page.waitForSelector("#course2");
-  await expect(page.locator("#course2").locator(".card-body")).toBeVisible();
-  await expect(
-    page.locator("#course2").locator(".card-body").locator("h5"),
-  ).toHaveText(/Elie - Day 3/);
+  await validateTripCards(page);
 });
