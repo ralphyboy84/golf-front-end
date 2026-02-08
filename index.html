@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/src/styles.css" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen bg-base-200">
+    <!-- ✅ NAVBAR (Top) -->
+    <div class="navbar bg-base-100 shadow-sm">
+      <!-- Left -->
+      <div class="navbar-start">
+        <div id="dropDownButton" class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <!-- Burger Icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </div>
+
+          <!-- Dropdown Menu -->
+          <ul
+            tabindex="-1"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <a id="buildATrip" href="/trip" data-navigo>Build a Trip</a>
+            </li>
+            <li><a href="/cv" data-navigo>Portfolio</a></li>
+            <li><a>About</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Center -->
+      <div class="navbar-center">
+        <a class="btn btn-ghost text-xl">Ralph Wardlaw</a>
+      </div>
+
+      <!-- Right -->
+      <div class="navbar-end"></div>
+    </div>
+
+    <input id="previousTripResults" class="hidden" value="" />
+    <input id="coursesToUse" class="hidden" value="" />
+    <input id="date" class="hidden" value="" />
+    <input id="lat" class="hidden" value="" />
+    <input id="lon" class="hidden" value="" />
+    <input id="courseCategory" class="hidden" value="" />
+    <input id="courseType" class="hidden" value="" />
+    <input id="miles" class="hidden" value="" />
+
+    <!-- MAIN PAGE CONTENT -->
+    <main class="p-6">
+      <h1 id="pageHeader" class="text-3xl font-bold mb-4">Page Content</h1>
+      <div class="flex justify-center">
+        <div id="app" class="max-w-4xl mx-auto justify-center"></div>
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
