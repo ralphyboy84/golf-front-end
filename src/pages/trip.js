@@ -8,13 +8,13 @@ export async function commonHeaderInfo() {
   // const anchor = document.querySelector('a[href="/trip"]');
 
   //  liTag.classList.add("menu-open");
-  header.innerHTML = "Trip Planner";
+  //header.innerHTML = "Trip Planner";
   //  firstUl.style.display = "block";
   //  anchor.classList.add("active");
 }
 
 export async function tripPage() {
-  // commonHeaderInfo();
+  await commonHeaderInfo();
   const app = document.getElementById("app");
 
   const content = `
@@ -24,7 +24,7 @@ export async function tripPage() {
   </div>
   `;
   app.innerHTML = buildCard(
-    "DJI_0298-Enhanced-NR",
+    "carnoustie",
     "Welcome to your ultimate Scottish Golf Trip Planner!",
     content,
     "gettingStarted",
@@ -46,14 +46,46 @@ export async function setDate() {
   </div>
   ${alertMsg}
   <div class="card-actions justify-center">
-     <a href='/whereStaying' data-navigo class="btn btn-primary" id="nextStepBtn">To The Next Step!</a>
+     <a href='/tripLength' data-navigo class="btn btn-primary" id="nextStepBtn">To The Next Step!</a>
   </div>
   `;
-  app.innerHTML = buildCard(
-    "DJI_0624-Enhanced-NR",
-    "Lets Get Some Dates Sorted",
-    content,
-  );
+  app.innerHTML = buildCard("crudenbay", "Lets Get Some Dates Sorted", content);
+}
+
+export async function tripLength() {
+  await commonHeaderInfo();
+  const app = document.getElementById("app");
+
+  const content = `
+  <p class="mb-4">And how long you want the trip to last?</p>
+    <div class="flex justify-center m-6">
+      <div class="w-full max-w-xs">
+        <input id="tripLengthInDays" type="range" min="1" max="7" value="1" class="range range-primary" step="1" />
+        <div class="flex justify-between px-2.5 mt-2 text-xs">
+          <span>|</span>
+          <span>|</span>
+          <span>|</span>
+          <span>|</span>
+          <span>|</span>
+          <span>|</span>
+          <span>|</span>
+        </div>
+        <div class="flex justify-between px-2.5 mt-2 text-xs">
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+          <span>6</span>
+          <span>7</span>
+        </div>
+      </div>
+    </div>
+  <div class="card-actions justify-center">
+     <a href='/whereStaying' data-navigo class="btn btn-primary" id="tripLengthButton">To The Next Step!</a>
+  </div>
+  `;
+  app.innerHTML = buildCard("banchory", "Trip Length", content);
 }
 
 export async function whereStaying() {
@@ -74,14 +106,10 @@ export async function whereStaying() {
     </div>
     ${alertMsg}
     <div class="card-actions justify-center">
-      <a href='/linksOrNoLinks' data-navigo class="btn btn-primary" id="linksNoLinks">To The Next Step!</a>
+      <a href='/linksOrNoLinks' data-navigo class="btn btn-primary" id="linksNoLinks">Onto The Next Question</a>
     </div>
     `;
-    app.innerHTML = buildCard(
-      "DJI_20241129091552_0257_D",
-      "Where You Staying?",
-      content,
-    );
+    app.innerHTML = buildCard("panmure", "Where You Staying?", content);
 
     const select = document.getElementById("whereStayingSelect");
 
@@ -126,11 +154,7 @@ export async function linksOrNoLinks() {
       <a href='/courseCategory' data-navigo class="btn btn-primary" id="courseCategoryButton">Not Much Longer Now</a>
     </div>
     `;
-  app.innerHTML = buildCard(
-    "DJI_20241111154713_0008_D",
-    "Links Or No Links?",
-    content,
-  );
+  app.innerHTML = buildCard("nairn", "Links Or No Links?", content);
 }
 
 export async function courseCategory() {
@@ -157,11 +181,7 @@ export async function courseCategory() {
       <a href='/lastQuestion' data-navigo class="btn btn-primary" id="lastQuestionButton">Onto The Last Question</a>
     </div>
     `;
-  app.innerHTML = buildCard(
-    "DJI_20251012165320_0454_D",
-    "Course Category",
-    content,
-  );
+  app.innerHTML = buildCard("scotscraig", "Course Category", content);
 }
 
 export async function lastQuestion() {
@@ -195,9 +215,5 @@ export async function lastQuestion() {
       <a href='/tripBuilder' data-navigo class="btn btn-primary" id="buildMyTripButton">Ok - Build My Trip!</a>
     </div>
     `;
-  app.innerHTML = buildCard(
-    "DJI_20240521203337_0293_D",
-    "How Far To Travel?",
-    content,
-  );
+  app.innerHTML = buildCard("northberwick", "How Far To Travel?", content);
 }

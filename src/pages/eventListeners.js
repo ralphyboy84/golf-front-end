@@ -51,6 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       document.getElementById("date").value = encodeURIComponent(dateValue);
+      router.navigate("/tripLength");
+    }
+
+    if (event.target.closest("#tripLengthButton")) {
+      event.preventDefault();
+      const tripLengthInDays =
+        document.getElementById("tripLengthInDays").value;
+      document.getElementById("tripLength").value =
+        encodeURIComponent(tripLengthInDays);
       router.navigate("/whereStaying");
     }
 

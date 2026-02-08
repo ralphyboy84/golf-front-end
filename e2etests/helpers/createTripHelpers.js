@@ -7,12 +7,15 @@ export async function createTrip(
   courseType,
   courseCategory,
   milage,
+  tripLength,
 ) {
   await page.click("#dropDownButton");
   await page.click("#buildATrip");
   await page.click("#startTripBuilder");
   await page.fill("#startDate", date);
   await page.click("#nextStepBtn");
+  await page.fill("#tripLengthInDays", tripLength);
+  await page.click("#tripLengthButton");
   await page.selectOption("#whereStayingSelect", whereStaying);
   await page.click("#linksNoLinks");
   await page.selectOption("#courseTypeSelect", courseType);

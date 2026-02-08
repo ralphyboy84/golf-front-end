@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/src/styles.css" rel="stylesheet" />
-    <title>Ralphs Website</title>
+    <title>Scottish Golf Tee Booker</title>
   </head>
   <body class="min-h-screen bg-base-200">
     <!-- ✅ NAVBAR (Top) -->
@@ -38,16 +38,15 @@
             <li>
               <a id="buildATrip" href="/trip" data-navigo>Build a Trip</a>
             </li>
-            <li><a href="/cv" data-navigo>Portfolio</a></li>
-            <li><a>About</a></li>
-            <li><a>About 2</a></li>
+            <li><a href="/openSearcher" data-navigo>Open Searches</a></li>
+            <li><a href="/dayAvailability" data-navigo>Day Availability</a></li>
           </ul>
         </div>
       </div>
 
       <!-- Center -->
       <div class="navbar-center">
-        <a class="btn btn-ghost text-xl">Ralph Wardlaw</a>
+        <a class="btn btn-ghost text-xl">Scottish Golf Tee Booker</a>
       </div>
 
       <!-- Right -->
@@ -57,6 +56,7 @@
     <input id="previousTripResults" class="hidden" value="" />
     <input id="coursesToUse" class="hidden" value="" />
     <input id="date" class="hidden" value="" />
+    <input id="tripLength" class="hidden" value="" />
     <input id="lat" class="hidden" value="" />
     <input id="lon" class="hidden" value="" />
     <input id="courseCategory" class="hidden" value="" />
@@ -65,7 +65,6 @@
 
     <!-- MAIN PAGE CONTENT -->
     <main class="p-6">
-      <h1 id="pageHeader" class="text-3xl font-bold mb-4">Page Content</h1>
       <div class="flex justify-center">
         <div id="app" class="max-w-4xl mx-auto justify-center"></div>
       </div>

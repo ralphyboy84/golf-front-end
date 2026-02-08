@@ -7,24 +7,26 @@ import {
   linksOrNoLinks,
   courseCategory,
   lastQuestion,
+  tripLength,
 } from "./pages/trip.js";
 
-import { cvPage } from "./pages/cv.js";
+import { buildFullTripSummary } from "./pages/buildFullTripSummary.js";
 import { buildTrip } from "./pages/tripBuilder.js";
 import { reBuildTrip } from "./pages/reBuildTrip.js";
 
 export const router = new Navigo("/");
 
 router
-  .on("/cv", cvPage)
   .on("/trip", tripPage)
   .on("/tripDate", setDate)
+  .on("/tripLength", tripLength)
   .on("/whereStaying", whereStaying)
   .on("/linksOrNoLinks", linksOrNoLinks)
   .on("/courseCategory", courseCategory)
   .on("/lastQuestion", lastQuestion)
   .on("/tripBuilder", buildTrip)
   .on("/reBuildTrip", reBuildTrip)
+  .on("/fullSummaryButton", buildFullTripSummary)
   .notFound(() => {
     document.getElementById("app").innerHTML = "<h1>404</h1>";
   });

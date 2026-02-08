@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
 import { createTrip, validateTripCards } from "./helpers/createTripHelpers";
+import { expectedRows } from "./helpers/createTripHelpers";
 
 test("Check you can navigate to index screen", async ({ page }) => {
   await page.goto("http://localhost:5173/");
 
   // Expect a title "to contain" a substring.
-  await expect(page.locator("#pageHeader")).toHaveText(/Page Content/);
   await page.click("#dropDownButton");
   await expect(page.locator("#buildATrip")).toBeVisible();
   await page.click("#buildATrip");
@@ -38,6 +38,7 @@ test("Validate no where staying selected", async ({ page }) => {
   await page.click("#startTripBuilder");
   await page.fill("#startDate", "2026-04-09");
   await page.click("#nextStepBtn");
+  await page.click("#tripLengthButton");
   await page.click("#linksNoLinks");
   await expect(page.locator("#whereStayingAlert")).toBeVisible();
   await expect(page.locator("#whereStayingAlert").locator("span")).toHaveText(
@@ -54,6 +55,7 @@ test("Validate no links or no links selected", async ({ page }) => {
   await page.click("#startTripBuilder");
   await page.fill("#startDate", "2026-04-09");
   await page.click("#nextStepBtn");
+  await page.click("#tripLengthButton");
   await page.selectOption("#whereStayingSelect", "Leven");
   await page.click("#linksNoLinks");
   await page.click("#courseCategoryButton");
@@ -72,6 +74,7 @@ test("Validate no course category selected", async ({ page }) => {
   await page.click("#startTripBuilder");
   await page.fill("#startDate", "2026-04-09");
   await page.click("#nextStepBtn");
+  await page.click("#tripLengthButton");
   await page.selectOption("#whereStayingSelect", "Leven");
   await page.click("#linksNoLinks");
   await page.selectOption("#courseTypeSelect", "Links Courses");
@@ -93,6 +96,7 @@ test("Validate a trip is built", async ({ page }) => {
     "Links Courses",
     "B - not the Open Championship courses but still good",
     "20000",
+    "3",
   );
   await validateTripCards(page);
 });
@@ -107,6 +111,7 @@ test("Check for too many courses returned", async ({ page }) => {
     "Links Courses",
     "B - not the Open Championship courses but still good",
     "40000",
+    "3",
   );
   await page.waitForSelector("#tooManyOptionsCard");
   await expect(
@@ -122,153 +127,9 @@ test("Check for too many courses returned", async ({ page }) => {
   );
   await expect(page.locator("table")).toBeVisible();
 
-  const expectedRows = [
-    {
-      id: "levenlinks",
-      course: "Leven",
-      day1: {
-        availability: "Yes",
-        firsTeeTime: "10:30",
-        price: "£TBC",
-      },
-      day2: {
-        availability: "Yes",
-        firsTeeTime: "09:36",
-        price: "£85.00",
-      },
-      day3: {
-        availability: "Yes",
-        firsTeeTime: "12:09",
-        price: "£90.00",
-      },
-    },
-    {
-      id: "lundingc",
-      course: "Lundin Links",
-      day1: {
-        availability: "Yes",
-        firsTeeTime: "09:32",
-        price: "£100.0",
-      },
-      day2: {
-        availability: "No",
-      },
-      day3: {
-        availability: "Yes",
-        firsTeeTime: "09:40",
-        price: "£100.00",
-      },
-    },
-    {
-      id: "elie",
-      course: "Elie",
-      day1: {
-        availability: "No",
-      },
-      day2: {
-        availability: "No",
-      },
-      day3: {
-        availability: "Yes",
-        firsTeeTime: "12:09",
-        price: "£90.00",
-      },
-    },
-    {
-      id: "gullane",
-      course: "Gullane - 1",
-      day1: {
-        availability: "Yes",
-        firsTeeTime: "12:09",
-        price: "£90.00",
-      },
-      day2: {
-        availability: "Yes",
-        firsTeeTime: "11:28",
-        price: "£175.00",
-      },
-      day3: {
-        availability: "No",
-      },
-    },
-    {
-      id: "kilspinde",
-      course: "Kilspindie",
-      day1: {
-        availability: "Yes",
-        firsTeeTime: "12:00",
-        price: "£120.00",
-      },
-      day2: {
-        availability: "Yes",
-        firsTeeTime: "12:08",
-        price: "£120.00",
-      },
-      day3: {
-        availability: "No",
-      },
-    },
-    {
-      id: "monifieth",
-      course: "Monifieth - Medal",
-      day1: {
-        availability: "Yes",
-        firsTeeTime: "10:02",
-        price: "£80.00",
-      },
-      day2: {
-        availability: "Yes",
-        firsTeeTime: "10:02",
-        price: "£80.00",
-      },
-      day3: {
-        availability: "Yes",
-        firsTeeTime: "13:35",
-        price: "£80.00",
-      },
-    },
-    {
-      id: "panmure",
-      course: "Panmure",
-      day1: {
-        availability: "Yes",
-        firsTeeTime: "10:30",
-        price: "£80.00",
-      },
-      day2: {
-        availability: "Yes",
-        firsTeeTime: "10:10",
-        price: "£110.00",
-      },
-      day3: {
-        availability: "Yes",
-        firsTeeTime: "20",
-        price: "£110.00",
-      },
-    },
-    {
-      id: "carnoustieburnside",
-      course: "Carnoustie - Burnside",
-      day1: {
-        availability: "Yes",
-        firsTeeTime: "10",
-        price: "£110.00",
-      },
-      day2: {
-        availability: "Yes",
-        firsTeeTime: "10:00",
-        price: "£TBC",
-      },
-      day3: {
-        availability: "Yes",
-        firsTeeTime: "15:00",
-        price: "TBC",
-      },
-    },
-  ];
-
   const rows = page.locator("table tbody tr");
 
+  // expected rows below is imported from createTripFixtures
   for (let i = 0; i < (await rows.count()); i++) {
     const row = rows.nth(i);
     const courseName = await row.locator("td").first().textContent();
@@ -300,6 +161,7 @@ test("Check trip rebuilt ok", async ({ page }) => {
     "Links Courses",
     "B - not the Open Championship courses but still good",
     "40000",
+    "3",
   );
   await page.waitForSelector("#tooManyOptionsCard");
   await expect(

@@ -70,6 +70,10 @@ export function buildTripBuilderOutput(
     content += `<a class="btn btn-primary nextDayButton" id="nextDayButton${dayNumber}" data-nextDay=${dayNumber * 1 + 1} data-totalDays=${maxDays}>Next Day</a>`;
   }
 
+  if (dayNumber == maxDays - 1) {
+    content += `<a href="/fullSummaryButton" data-navigo class="btn btn-primary" id="fullSummaryButton">Full Trip Summary</a>`;
+  }
+
   content += `</div>`;
 
   return buildCard(
@@ -118,7 +122,7 @@ export async function getAllCourseAvailability(courses, numberOfDays, app) {
 }
 
 export async function getTripInformation(courses) {
-  const numberOfDays = getNumberOfDays();
+  const numberOfDays = document.getElementById("tripLength").value;
 
   if (Object.keys(courses).length < numberOfDays) {
     app.innerHTML =
@@ -337,10 +341,6 @@ function findDatesWhereNoAvailability(allDates, usedDates) {
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function getNumberOfDays() {
-  return 3;
 }
 
 function getStartDate() {
