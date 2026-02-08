@@ -15,7 +15,7 @@ export function reBuildTrip() {
   abstractedFunction(results, 3, app);
 }
 
-function filterCourses(data, allowedKeys) {
+export function filterCourses(data, allowedKeys) {
   const result = {};
 
   // Loop through allowed keys and copy them if they exist in data
