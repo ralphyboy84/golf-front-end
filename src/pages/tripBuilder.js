@@ -213,7 +213,7 @@ export function abstractedFunction(results, numberOfDays, app) {
   }
 }
 
-function addDays(date, days) {
+export function addDays(date, days) {
   var result = new Date(date).getTime() + 86400000 * days;
   const tomorrow = new Date(result);
   let month = tomorrow.getMonth() + 1;
@@ -231,8 +231,7 @@ function addDays(date, days) {
   return tomorrow.getFullYear() + "-" + month + "-" + day;
 }
 
-// src/myFunction.js
-function sortAvailabilityByCount(availabilityObject) {
+export function sortAvailabilityByCount(availabilityObject) {
   const availabilityCounts = Object.entries(availabilityObject).map(
     ([courseKey, teeTimes]) => {
       // Use a Set to store unique dates with teeTimesAvailable === "Yes"
@@ -260,7 +259,7 @@ function sortAvailabilityByCount(availabilityObject) {
   return availabilityCounts;
 }
 
-function getUniqueDates(golfData) {
+export function getUniqueDates(golfData) {
   const allDates = Object.values(golfData)
     .flat() // combine all arrays
     .map((tt) => tt.date); // extract the date
@@ -332,7 +331,7 @@ function doTheHardBit(availabilityObject) {
   }
 }
 
-function findDatesWhereNoAvailability(allDates, usedDates) {
+export function findDatesWhereNoAvailability(allDates, usedDates) {
   const usedDatesOnly = usedDates.map((d) => d.date);
 
   // Filter the first array to only include dates NOT in the second array
