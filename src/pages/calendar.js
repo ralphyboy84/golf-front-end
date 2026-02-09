@@ -13,10 +13,10 @@ export async function openSearcher() {
   const data = await getRegions();
 
   document.getElementById("app").innerHTML = `
-  <details class="collapse bg-base-100 border-base-300 border">
+  <details id="openFilters" class="collapse bg-base-100 border-base-300 border">
     <summary class="collapse-title font-semibold">Show Filters</summary>
     <div class="collapse-content text-md">
-      <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
+      <div id="innerFilterDiv" class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
         Keyword Search: 
         <label class="input">
           <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

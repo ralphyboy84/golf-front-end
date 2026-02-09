@@ -30,3 +30,19 @@ test("Check february content", async ({ page }) => {
     /Vale of Leven - Calcutta Cup Texas Scramble/,
   );
 });
+
+test("Check filter on keyword", async ({ page }) => {
+  // Expect a title "to contain" a substring.
+  await page.click("#dropDownButton");
+  await expect(page.locator("#buildATrip")).toBeVisible();
+  await page.click("#openSearcher");
+  await expect(page.locator("#calendar")).toBeVisible();
+  await page.click("#openFilters");
+  await expect(
+    page.locator("#openFilters").locator("#innerFilterDiv"),
+  ).toBeVisible();
+  await page.fill("#keywordSearch", "ladies");
+  await expect(page.locator('[data-date="2026-02-14"]')).toHaveText(
+    /Duff House Royal - Ladies Banffshire Plus/,
+  );
+});
