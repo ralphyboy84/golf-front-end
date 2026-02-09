@@ -217,3 +217,16 @@ export async function lastQuestion() {
     `;
   app.innerHTML = buildCard("northberwick", "How Far To Travel?", content);
 }
+
+function getSteps() {
+  return `
+  <ul class="steps">
+    <li class="step step-primary">Dates</li>
+    <li class="step">Length</li>
+    <li class="step">Staying</li>
+    <li class="step">Types</li>
+    <li class="step">Categories</li>
+    <li class="step">Distance</li>
+  </ul>
+  `;
+}

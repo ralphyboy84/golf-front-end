@@ -82,6 +82,80 @@ export async function openSearcher() {
   <div id='calendar' class='mt-4'></div>
   `;
 
+  populateSelectOptionsForRegionFilter(data);
+  initialiseCalendar();
+}
+
+export function filterByKeyWord() {
+  if (
+    !document.getElementById("keywordSearch").value &&
+    !document.getElementById("top100Filter").value &&
+    !document.getElementById("regionFilter").value &&
+    !document.getElementById("useYourLocationForOpenFiltering").checked
+  ) {
+    alert("You have not entered anything to filter on....");
+    return;
+  }
+
+  const keyword = document.getElementById("keywordSearch").value;
+  const top100 = document.getElementById("top100Filter").value;
+  const regions = document.getElementById("regionFilter").value;
+
+  let distance = "";
+  let latlon = "";
+
+  if (document.getElementById("useYourLocationForOpenFiltering").checked) {
+    distance = document.getElementById("openRange").value;
+    latlon = document.getElementById("userLocationInfo").value;
+  }
+
+  const params = new URLSearchParams({
+    keyword,
+    top100,
+    regions,
+    distance,
+    latlon,
+  });
+
+  eventsFetched = false;
+  endpoint = `${getAllOpensEndPoint}?${params.toString()}`;
+  calendar.refetchEvents();
+}
+
+export function clearFilters() {
+  document.getElementById("keywordSearch").value = "";
+  document.getElementById("top100Filter").value = "";
+  document.getElementById("regionFilter").value = "";
+  document.getElementById("useYourLocationForOpenFiltering").checked = "";
+  document.getElementById("showHowManyMilesDiv").classList.add("hidden");
+}
+
+export function capitalizeFirstChar(str) {
+  if (!str) return ""; // handle empty string
+
+  if (str == "eastlothian") {
+    str = "East Lothian";
+  }
+
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function useYourLocationSwitch() {
+  if (document.getElementById("useYourLocationForOpenFiltering").checked) {
+    document.getElementById("showHowManyMilesDiv").classList.remove("hidden");
+
+    navigator.geolocation.getCurrentPosition(function (location) {
+      if (document.getElementById("userLocationInfo")) {
+        document.getElementById("userLocationInfo").value =
+          location.coords.latitude + "," + location.coords.longitude;
+      }
+    });
+  } else {
+    document.getElementById("showHowManyMilesDiv").classList.add("hidden");
+  }
+}
+
+export function populateSelectOptionsForRegionFilter(data) {
   const select = document.getElementById("regionFilter");
 
   for (let key in data) {
@@ -91,7 +165,9 @@ export async function openSearcher() {
     option.textContent = capitalizeFirstChar(data[key]); // display name
     select.appendChild(option);
   }
+}
 
+function initialiseCalendar() {
   var calendarEl = document.getElementById("calendar");
 
   let initialView = "dayGridMonth";
@@ -161,73 +237,4 @@ export async function openSearcher() {
     },
   });
   calendar.render();
-}
-
-export function filterByKeyWord() {
-  if (
-    !document.getElementById("keywordSearch").value &&
-    !document.getElementById("top100Filter").value &&
-    !document.getElementById("regionFilter").value &&
-    !document.getElementById("useYourLocationForOpenFiltering").checked
-  ) {
-    alert("You have not entered anything to filter on....");
-    return;
-  }
-
-  const keyword = document.getElementById("keywordSearch").value;
-  const top100 = document.getElementById("top100Filter").value;
-  const regions = document.getElementById("regionFilter").value;
-
-  let distance = "";
-  let latlon = "";
-
-  if (document.getElementById("useYourLocationForOpenFiltering").checked) {
-    distance = document.getElementById("openRange").value;
-    latlon = document.getElementById("userLocationInfo").value;
-  }
-
-  const params = new URLSearchParams({
-    keyword,
-    top100,
-    regions,
-    distance,
-    latlon,
-  });
-
-  eventsFetched = false;
-  endpoint = `${getAllOpensEndPoint}?${params.toString()}`;
-  calendar.refetchEvents();
-}
-
-export function clearFilters() {
-  document.getElementById("keywordSearch").value = "";
-  document.getElementById("top100Filter").value = "";
-  document.getElementById("regionFilter").value = "";
-  document.getElementById("useYourLocationForOpenFiltering").checked = "";
-  document.getElementById("showHowManyMilesDiv").classList.add("hidden");
-}
-
-function capitalizeFirstChar(str) {
-  if (!str) return ""; // handle empty string
-
-  if (str == "eastlothian") {
-    str = "East Lothian";
-  }
-
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-export function useYourLocationSwitch() {
-  if (document.getElementById("useYourLocationForOpenFiltering").checked) {
-    document.getElementById("showHowManyMilesDiv").classList.remove("hidden");
-
-    navigator.geolocation.getCurrentPosition(function (location) {
-      if (document.getElementById("userLocationInfo")) {
-        document.getElementById("userLocationInfo").value =
-          location.coords.latitude + "," + location.coords.longitude;
-      }
-    });
-  } else {
-    document.getElementById("showHowManyMilesDiv").classList.add("hidden");
-  }
 }
