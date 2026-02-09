@@ -1,4 +1,5 @@
 import { router } from "../router";
+import { filterByKeyWord } from "../pages/calendar";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -142,6 +143,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       document.getElementById("coursesToUse").value = checkedValues;
       router.navigate("/reBuildTrip");
+    }
+
+    if (event.target.closest("#keyWordFilter")) {
+      event.preventDefault();
+
+      filterByKeyWord();
     }
   });
 });

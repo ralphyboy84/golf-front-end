@@ -23,3 +23,9 @@ export function getCourseAvailabilityForDate(club, date, courseId) {
 }
 
 export const getAllOpensEndPoint = "http://localhost/api/getAllOpens.php";
+
+export async function getRegions() {
+  return await fetch(`http://localhost/api/getRegions.php`).then((res) =>
+    res.json(),
+  );
+}
