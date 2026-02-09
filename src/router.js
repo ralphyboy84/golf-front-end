@@ -13,6 +13,7 @@ import {
 import { buildFullTripSummary } from "./pages/buildFullTripSummary.js";
 import { buildTrip } from "./pages/tripBuilder.js";
 import { reBuildTrip } from "./pages/reBuildTrip.js";
+import { openSearcher } from "./pages/calendar.js";
 
 export const router = new Navigo("/");
 
@@ -27,6 +28,7 @@ router
   .on("/tripBuilder", buildTrip)
   .on("/reBuildTrip", reBuildTrip)
   .on("/fullSummaryButton", buildFullTripSummary)
+  .on("/openSearcher", openSearcher)
   .notFound(() => {
     document.getElementById("app").innerHTML = "<h1>404</h1>";
   });

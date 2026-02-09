@@ -21,3 +21,5 @@ export function getCourseAvailabilityForDate(club, date, courseId) {
     `http://localhost/api/getCourseAvailabilityForDate.php?club=${club}&date=${date}&courseId=${courseId}`,
   ).then((res) => res.json());
 }
+
+export const getAllOpensEndPoint = "http://localhost/api/getAllOpens.php";

@@ -1,14 +1,16 @@
 <!doctype html>
-<html>
+<html data-theme="corporate">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/src/styles.css" rel="stylesheet" />
     <title>Scottish Golf Tee Booker</title>
   </head>
-  <body class="min-h-screen bg-base-200">
+  <body class="min-h-screen bg-base-100 p-4">
     <!-- ✅ NAVBAR (Top) -->
-    <div class="navbar bg-base-100 shadow-sm">
+    <div
+      class="navbar bg-base-200 shadow-sm mx-auto max-w-7xl rounded-xl border border-base-300"
+    >
       <!-- Left -->
       <div class="navbar-start">
         <div id="dropDownButton" class="dropdown">
@@ -33,13 +35,23 @@
           <!-- Dropdown Menu -->
           <ul
             tabindex="-1"
-            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow border border-base-300"
           >
             <li>
-              <a id="buildATrip" href="/trip" data-navigo>Build a Trip</a>
+              <a id="buildATrip" href="/trip" data-navigo class="text-base"
+                >Build a Trip</a
+              >
             </li>
-            <li><a href="/openSearcher" data-navigo>Open Searches</a></li>
-            <li><a href="/dayAvailability" data-navigo>Day Availability</a></li>
+            <li>
+              <a href="/openSearcher" data-navigo class="text-base"
+                >Open Searches</a
+              >
+            </li>
+            <li>
+              <a href="/dayAvailability" data-navigo class="text-base"
+                >Day Availability</a
+              >
+            </li>
           </ul>
         </div>
       </div>
