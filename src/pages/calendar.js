@@ -16,7 +16,7 @@ export async function openSearcher() {
   <details class="collapse bg-base-100 border-base-300 border">
     <summary class="collapse-title font-semibold">Show Filters</summary>
     <div class="collapse-content text-md">
-      <div class="flex gap-3 flex-wrap items-center p-2">
+      <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
         Keyword Search: 
         <label class="input">
           <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -34,7 +34,7 @@ export async function openSearcher() {
           <input type="search" id="keywordSearch" required placeholder="Enter a phrase like ladies, gents, mixed etc." />
         </label>
       </div>
-      <div class="flex gap-3 flex-wrap items-center p-2">
+      <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
         Top 100 Course: 
         <select id='top100Filter' class="select">
           <option value='' selected>Select...</option>
@@ -42,15 +42,43 @@ export async function openSearcher() {
           <option value='No'>No</option>
         </select>
       </div>
-      <div class="flex gap-3 flex-wrap items-center p-2">
+      <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
         Region: 
         <select id='regionFilter' class="select">
           <option value='' selected>Select...</option>
         </select>
       </div>
-      <a data-navigo class="btn btn-primary" id="keyWordFilter">Filter</a>
+      <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
+        Use Your Location: 
+        <input id="useYourLocationForOpenFiltering" type="checkbox" class="toggle toggle-primary" />
+      </div>
+      <div id="showHowManyMilesDiv" class="flex gap-3 flex-wrap items-center p-2 hidden grid grid-cols-2">
+        How Many Miles From You: 
+        <div class="w-full max-w-xs">
+          <input id="openRange" type="range" min="20000" max="100000" value="0" class="range range-primary" step="20000" />
+          <div class="flex justify-between px-2.5 mt-2 text-xs">
+            <span>|</span>
+            <span>|</span>
+            <span>|</span>
+            <span>|</span>
+            <span>|</span>
+          </div>
+          <div class="flex justify-between px-2.5 mt-2 text-xs">
+            <span>20</span>
+            <span>40</span>
+            <span>60</span>
+            <span>80</span>
+            <span>100</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex text-center justify-center gap-3 mt-3">
+        <a data-navigo class="btn btn-primary" id="clearFilters">Clear Filters</a>
+        <a data-navigo class="btn btn-primary" id="keyWordFilter">Apply Filters</a>
+      </div>
     </div>
   </details>
+  <input id="userLocationInfo" class="hidden" value="" />
   <div id='calendar' class='mt-4'></div>
   `;
 
@@ -139,7 +167,8 @@ export function filterByKeyWord() {
   if (
     !document.getElementById("keywordSearch").value &&
     !document.getElementById("top100Filter").value &&
-    document.getElementById("regionFilter").value
+    !document.getElementById("regionFilter").value &&
+    !document.getElementById("useYourLocationForOpenFiltering").checked
   ) {
     alert("You have not entered anything to filter on....");
     return;
@@ -149,15 +178,33 @@ export function filterByKeyWord() {
   const top100 = document.getElementById("top100Filter").value;
   const regions = document.getElementById("regionFilter").value;
 
+  let distance = "";
+  let latlon = "";
+
+  if (document.getElementById("useYourLocationForOpenFiltering").checked) {
+    distance = document.getElementById("openRange").value;
+    latlon = document.getElementById("userLocationInfo").value;
+  }
+
   const params = new URLSearchParams({
     keyword,
     top100,
     regions,
+    distance,
+    latlon,
   });
 
   eventsFetched = false;
   endpoint = `${getAllOpensEndPoint}?${params.toString()}`;
   calendar.refetchEvents();
+}
+
+export function clearFilters() {
+  document.getElementById("keywordSearch").value = "";
+  document.getElementById("top100Filter").value = "";
+  document.getElementById("regionFilter").value = "";
+  document.getElementById("useYourLocationForOpenFiltering").checked = "";
+  document.getElementById("showHowManyMilesDiv").classList.add("hidden");
 }
 
 function capitalizeFirstChar(str) {
@@ -168,4 +215,19 @@ function capitalizeFirstChar(str) {
   }
 
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function useYourLocationSwitch() {
+  if (document.getElementById("useYourLocationForOpenFiltering").checked) {
+    document.getElementById("showHowManyMilesDiv").classList.remove("hidden");
+
+    navigator.geolocation.getCurrentPosition(function (location) {
+      if (document.getElementById("userLocationInfo")) {
+        document.getElementById("userLocationInfo").value =
+          location.coords.latitude + "," + location.coords.longitude;
+      }
+    });
+  } else {
+    document.getElementById("showHowManyMilesDiv").classList.add("hidden");
+  }
 }

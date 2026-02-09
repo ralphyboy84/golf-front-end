@@ -1,5 +1,9 @@
 import { router } from "../router";
-import { filterByKeyWord } from "../pages/calendar";
+import {
+  filterByKeyWord,
+  clearFilters,
+  useYourLocationSwitch,
+} from "../pages/calendar";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -149,6 +153,16 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
 
       filterByKeyWord();
+    }
+
+    if (event.target.closest("#clearFilters")) {
+      event.preventDefault();
+
+      clearFilters();
+    }
+
+    if (event.target.closest("#useYourLocationForOpenFiltering")) {
+      useYourLocationSwitch();
     }
   });
 });
