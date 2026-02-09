@@ -40,6 +40,7 @@ export async function setDate() {
   );
 
   const content = `
+  ${getSteps()}
   <p class="mb-4">Can you start by telling me when you would like the trip to start?</p>
   <div class="p-3 col-4 d-flex justify-content-center text-center">
     <input type="date" class="input max-w-sm bg-gray-50 text-gray-900" placeholder="YYYY-MM-DD" id="startDate" value="" />

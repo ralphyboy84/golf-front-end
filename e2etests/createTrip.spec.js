@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { createTrip, validateTripCards } from "./helpers/createTripHelpers";
-import { expectedRows } from "./helpers/createTripHelpers";
+import { expectedRows } from "./fixtures/createTripFixtures";
 
 test("Check you can navigate to index screen", async ({ page }) => {
   await page.goto("http://localhost:5173/");
