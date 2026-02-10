@@ -40,7 +40,7 @@ export async function setDate() {
   );
 
   const content = `
-  ${getSteps()}
+  ${getSteps(0)}
   <p class="mb-4">Can you start by telling me when you would like the trip to start?</p>
   <div class="p-3 col-4 d-flex justify-content-center text-center">
     <input type="date" class="input max-w-sm bg-gray-50 text-gray-900" placeholder="YYYY-MM-DD" id="startDate" value="" />
@@ -58,6 +58,7 @@ export async function tripLength() {
   const app = document.getElementById("app");
 
   const content = `
+  ${getSteps(1)}
   <p class="mb-4">And how long you want the trip to last?</p>
     <div class="flex justify-center m-6">
       <div class="w-full max-w-xs">
@@ -101,6 +102,7 @@ export async function whereStaying() {
     const data = await getFullCourseList();
 
     const content = `
+    ${getSteps(2)}
     <p class="mb-4">What course will you be staying closest to?</p>
     <div class="p-3 col-4 d-flex justify-content-center text-center">
       <select id='whereStayingSelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select"><option value=''>Select....</option></select> 
@@ -141,6 +143,7 @@ export async function linksOrNoLinks() {
   );
 
   const content = `
+  ${getSteps(3)}
     <p class="mb-4">Now I would like to know what type of courses you are interested in playing. A true Scottish links like a Royal Troon or Royal Dornoch? Or are you more interested in inland courses like a Gleneagles or Blairgowrie?</p>
     <div class="p-3 col-4 d-flex justify-content-center text-center">
       <select id='courseTypeSelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select">
@@ -168,6 +171,7 @@ export async function courseCategory() {
   );
 
   const content = `
+  ${getSteps(4)}
     <p class="mb-4">OK second last question. I'd love to know the "Category" of course you would like to play. Is it just the A rated courses? The Open Champinship venues like Carnoustie and Turnberry? Or what about the B categories like a Nairn? They might not host Open Championships but they are still top, top courses. Don't forget about C category courses as well. These are courses that are generally ranked between 50 and 100 in the course rankings. They offer great savings on some of the A&B category courses. You also have the D category courses. These are the hiddenn gems, the courses off the beaten track that don't tend to be visited much by tourists. Great value for money and very friendly members!</p>
     <div class="p-3 col-4 d-flex justify-content-center text-center">
       <select id='courseCategorySelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select" multiple="multiple">
@@ -190,6 +194,7 @@ export async function lastQuestion() {
   const app = document.getElementById("app");
 
   const content = `
+  ${getSteps(5)}
     <p class="mb-4">And finally - how many miles are you prepared to travel?</p>
     <div class="flex justify-center m-6">
       <div class="w-full max-w-xs">
@@ -219,15 +224,30 @@ export async function lastQuestion() {
   app.innerHTML = buildCard("northberwick", "How Far To Travel?", content);
 }
 
-function getSteps() {
-  return `
-  <ul class="steps">
-    <li class="step step-primary">Dates</li>
-    <li class="step">Length</li>
-    <li class="step">Staying</li>
-    <li class="step">Types</li>
-    <li class="step">Categories</li>
-    <li class="step">Distance</li>
-  </ul>
-  `;
+function getSteps(defaultValue) {
+  const elements = [
+    "Dates",
+    "Length",
+    "Staying",
+    "Types",
+    "Categories",
+    "Distance",
+  ];
+
+  let html = "";
+  let count = 0;
+  let active = "";
+
+  for (let x in elements) {
+    active = "";
+
+    if (count <= defaultValue) {
+      active = "step-primary";
+    }
+
+    html += `<li class="step ${active}">${elements[x]}</li>`;
+    count++;
+  }
+
+  return `<ul class="steps">${html}</ul>`;
 }

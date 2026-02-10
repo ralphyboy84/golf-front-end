@@ -4,6 +4,7 @@ import {
   clearFilters,
   useYourLocationSwitch,
 } from "../pages/calendar";
+import { buildFullTripSummary } from "../pages/buildFullTripSummary.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -163,6 +164,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (event.target.closest("#useYourLocationForOpenFiltering")) {
       useYourLocationSwitch();
+    }
+
+    if (event.target.closest("#fullSummaryButton")) {
+      event.preventDefault();
+      buildFullTripSummary();
     }
   });
 });

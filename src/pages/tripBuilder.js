@@ -6,6 +6,7 @@ import {
   getListOfPotentialCourses,
   getCourseAvailabilityForDate,
 } from "../pages/api";
+import { router } from "../router";
 
 export async function buildTrip() {
   commonHeaderInfo();
@@ -86,6 +87,11 @@ export function buildTripBuilderOutput(
 }
 
 export async function getAllCourseAvailability(courses, numberOfDays, app) {
+  if (!numberOfDays) {
+    router.navigate("/");
+    return;
+  }
+
   const totalApiCalls = Object.keys(courses).length * numberOfDays;
   const startDate = getStartDate();
   const results = {};
@@ -153,6 +159,11 @@ export function abstractedFunction(results, numberOfDays, app) {
     }
   }
 
+  if (!results) {
+    router.navigate("/");
+    return;
+  }
+
   const length = Object.keys(results).length;
 
   if (Object.keys(results).length == numberOfDays) {
@@ -179,6 +190,7 @@ export function abstractedFunction(results, numberOfDays, app) {
       );
     }
 
+    document.getElementById("tripResults").value = JSON.stringify(newResults);
     const diaryDiv = document.createElement("div");
     diaryDiv.innerHTML = `
     <div class="flex justify-center">
