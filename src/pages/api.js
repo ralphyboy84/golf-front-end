@@ -29,3 +29,9 @@ export async function getRegions() {
     (res) => res.json(),
   );
 }
+
+export async function getCourses(region) {
+  return await fetch(
+    `${import.meta.env.VITE_API_URL}api/getCourses.php?region=${region}`,
+  ).then((res) => res.json());
+}

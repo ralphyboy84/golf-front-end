@@ -59,7 +59,7 @@ export async function tripLength() {
 
   const content = `
   ${getSteps(1)}
-  <p class="mb-4">And how long you want the trip to last?</p>
+  <p class="mb-4">And how many days do you want the trip to last?</p>
     <div class="flex justify-center m-6">
       <div class="w-full max-w-xs">
         <input id="tripLengthInDays" type="range" min="1" max="7" value="1" class="range range-primary" step="1" />

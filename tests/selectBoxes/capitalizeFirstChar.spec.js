@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { capitalizeFirstChar } from "../../src/pages/calendar";
+import { capitalizeFirstChar } from "../../src/pages/selectBoxes";
 
 describe("capitalizeFirstChar", () => {
   it("capitalizes the first character of a normal string", () => {

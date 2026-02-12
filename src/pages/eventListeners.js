@@ -5,6 +5,10 @@ import {
   useYourLocationSwitch,
 } from "../pages/calendar";
 import { buildFullTripSummary } from "../pages/buildFullTripSummary.js";
+import {
+  updateCourseList,
+  searchForAvailability,
+} from "../pages/dayAvailability.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -169,6 +173,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target.closest("#fullSummaryButton")) {
       event.preventDefault();
       buildFullTripSummary();
+    }
+
+    if (event.target.closest("#filterRegions")) {
+      event.preventDefault();
+      updateCourseList();
+    }
+
+    if (event.target.closest("#searchForAvailability")) {
+      event.preventDefault();
+      searchForAvailability();
     }
   });
 });

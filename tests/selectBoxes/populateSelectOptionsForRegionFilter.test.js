@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   populateSelectOptionsForRegionFilter,
   capitalizeFirstChar,
-} from "../../src/pages/calendar";
+} from "../../src/pages/selectBoxes";
 
 describe("populateSelectOptionsForRegionFilter", () => {
   beforeEach(() => {

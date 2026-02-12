@@ -15,6 +15,7 @@ import { buildTrip } from "./pages/tripBuilder.js";
 import { reBuildTrip } from "./pages/reBuildTrip.js";
 import { openSearcher } from "./pages/calendar.js";
 import { loadHome } from "./pages/home.js";
+import { dayAvailability } from "./pages/dayAvailability.js";
 
 export const router = new Navigo("/");
 
@@ -30,6 +31,7 @@ router
   .on("/reBuildTrip", reBuildTrip)
   .on("/fullSummaryButton", buildFullTripSummary)
   .on("/openSearcher", openSearcher)
+  .on("/dayAvailability", dayAvailability)
   .on("/", loadHome)
   .notFound(() => {
     document.getElementById("app").innerHTML = "<h1>404</h1>";
