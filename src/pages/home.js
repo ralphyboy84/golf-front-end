@@ -1,4 +1,5 @@
 import { buildCard } from "../pages/components";
+import { abstractedFunction } from "../pages/tripBuilder";
 
 export function loadHome() {
   const app = document.getElementById("app");

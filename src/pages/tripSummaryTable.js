@@ -11,12 +11,15 @@ export function buildTripSummaryTable(results) {
   div.classList.add("border");
   div.classList.add("border-base-content/5");
   div.classList.add("bg-base-100");
-  div.classList.add("w-full");
+  // div.classList.add("w-full");
+  div.classList.add("xs:max-w-xs");
+  div.classList.add("md:max-w-2xl");
+  div.classList.add("lg:max-w-4xl");
 
   let table = document.createElement("table");
   let tbody = document.createElement("tbody");
   table.classList.add("table");
-  table.classList.add("min-w-[600px]");
+  table.classList.add("min-w-max");
 
   for (let x in results) {
     if (!headerAdded) {
@@ -78,10 +81,5 @@ export function buildTripSummaryTable(results) {
   table.appendChild(tbody);
   div.appendChild(table);
 
-  let div2 = document.createElement("div");
-  div2.classList.add("flex");
-  div2.classList.add("justify-center");
-  div2.classList.add("mb-6");
-  div2.appendChild(div);
-  return div2;
+  return div;
 }

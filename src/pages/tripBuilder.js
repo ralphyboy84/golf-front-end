@@ -206,15 +206,12 @@ export function abstractedFunction(results, numberOfDays, app) {
     </div>
     `;
 
-    app.innerHTML +=
-      `<div class="flex justify-center mb-6">` +
-      buildCard(
-        "boatofgarten",
-        "Too Many Options",
-        content,
-        "tooManyOptionsCard",
-      ) +
-      `</div>`;
+    app.innerHTML += buildCard(
+      "boatofgarten",
+      "Too Many Options",
+      content,
+      "tooManyOptionsCard",
+    );
 
     let table = buildTripSummaryTable(results);
     // Append table to div
