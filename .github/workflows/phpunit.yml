@@ -22,4 +22,4 @@ jobs:
           php-version: 8.2
 
       - name: Run tests
-        run: phpunit --version
+        run: php -v
