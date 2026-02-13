@@ -1,0 +1,55 @@
+arbroath use something called sweet spot
+
+brs opens not loading from calendar
+
+barassie uses golf genius for opens
+
+look at mearns castle as they have prices differently
+
+Need a better error message for courses that don't allow online booking but do allow opens
+
+Need to checking bookingOpen flag on intelligent golf opens
+
+look at this open https://howdidido-whs.clubv1.com/hdidbooking/open?token=II48002E14O714IOI0&cid=3664174&rnd=1
+
+bathgate looks like it uses clubv1 for opens - check from 01/02
+
+none of the dotgolf opens work
+
+
+irvine does not use howdidido hub
+Gatehouse competitions not available yet
+
+
+moray new also has opens on it
+
+
+dotgolf appears to have a competitions for this day section on the tee booker
+
+UPDATE clubs
+SET location = ST_SRID(POINT(lon, lat), 4326)
+WHERE lat <> 0
+  AND lon <> 0;
+
+Need to look at Carnoustie where all tee times are taken but still some slots free
+
+            {
+                "id": 3305175,
+                "slot_date_time": "2026-04-10T15:00:00",
+                "slot_mark": {
+                    "id": 1,
+                    "name": "Free"
+                },
+                "bookings": [
+                    {
+                        "players": 2
+                    }
+                ]
+            },
+
+dot golf open url;
+https://fraserburghgolfclub.org/Teebooking/SearchSlots.aspx?ClubId=2262&CourseId=2060&Date=2026-05-02&CompetitionId=64617
+
+
+34484
+2026-07-05
