@@ -13,7 +13,7 @@ jobs:
           chmod +x phpunit-10.phar
 
       - name: Make PHPUnit executable
-        run: chmod +x tools/phpunit.phar
+        run: pwd && ls
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
