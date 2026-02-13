@@ -11,3 +11,4 @@ dist
 .DS_Store
 src/images
 public
+tests_php/.phpunit.result.cache
