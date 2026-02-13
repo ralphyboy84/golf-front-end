@@ -13,7 +13,8 @@ jobs:
       - name: Download PHPUnit
         run: |
           wget https://phar.phpunit.de/phpunit-10.phar
-          chmod +x phpunit-10.phar
+          chmod +x phpunit-10.phar 
+          phpunit --version
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
