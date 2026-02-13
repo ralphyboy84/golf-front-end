@@ -117,9 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (event.target.closest("#lastQuestionButton")) {
       event.preventDefault();
-      const courseCategory = document.getElementById(
-        "courseCategorySelect",
-      ).value;
+      const courseCategory = getMultiSelectValues(
+        document.getElementById("courseCategorySelect"),
+      );
 
       if (!courseCategory) {
         document
@@ -131,8 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      document.getElementById("courseCategory").value =
-        encodeURIComponent(courseCategory);
+      document.getElementById("courseCategory").value = courseCategory;
       router.navigate("/lastQuestion");
     }
 
@@ -186,3 +185,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+function getMultiSelectValues(selectBox) {
+  var result = [];
+  var options = selectBox && selectBox.options;
+  var opt;
+
+  for (var i = 0, iLen = options.length; i < iLen; i++) {
+    opt = options[i];
+
+    if (opt.selected) {
+      result.push(opt.value);
+    }
+  }
+
+  return result;
+}

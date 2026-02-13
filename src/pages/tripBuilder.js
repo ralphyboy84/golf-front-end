@@ -8,6 +8,31 @@ import {
 } from "../pages/api";
 import { router } from "../router";
 
+function getMultiSelectValues(selectBox) {
+  var result = [];
+  var options = select && select.options;
+  var opt;
+
+  for (var i = 0, iLen = options.length; i < iLen; i++) {
+    opt = options[i];
+
+    if (
+      opt.selected
+      // &&
+      // (opt.getAttribute("data-onlineBooking") == "Yes" ||
+      //   opt.getAttribute("data-openBooking") == "Yes")
+    ) {
+      result.push({
+        course: opt.value,
+        courseName: opt.text,
+        courseId: opt.getAttribute("data-courseId") || 1,
+      });
+    }
+  }
+
+  return result;
+}
+
 export async function buildTrip() {
   commonHeaderInfo();
   const app = document.getElementById("app");
