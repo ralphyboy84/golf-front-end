@@ -21,4 +21,4 @@ jobs:
           php-version: 8.2
 
       - name: Run tests
-        run: find phpunit-10.phar && cd /home/runner/work/golf-front-end/golf-front-end/tests_php && phpunit .
+        run: find phpunit-10.phar && cd /home/runner/work/golf-front-end/golf-front-end/tests_php && phpunit-10.phar .
