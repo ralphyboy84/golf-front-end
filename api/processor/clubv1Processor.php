@@ -28,6 +28,7 @@ class ClubV1Processor extends Processor
 
             $teeTimes = 0;
             $firstTeeSet = "";
+            $greenFees = [];
 
             if (isset($tmp["div"]) && is_array($tmp["div"])) {
                 foreach ($tmp["div"] as $xx) {

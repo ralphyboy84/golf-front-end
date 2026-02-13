@@ -142,7 +142,7 @@ class clubv1_processTeeTimeForDayTest extends TestCase
         $service->method("_format_date")->willReturn("2026-01-24");
 
         // Both green fees are the same
-        $service->method("_format_green_fees")->willReturn(50);
+        $service->method("_format_green_fees") ->willReturnOnConsecutiveCalls(50, 50, 50);
 
         $result = $service->processTeeTimeForDay($html, $date, "MyClub");
 

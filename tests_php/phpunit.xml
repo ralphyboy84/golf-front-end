@@ -5,11 +5,11 @@
     <coverage processUncoveredFiles="true">
         <include>
             <!-- Folder containing your source code -->
-            <directory>../processor</directory>
+            <directory>../api/processor</directory>
         </include>
         <report>
             <text outputFile="php://stdout"/>
-            <html outputDirectory="../coverage"/>
+            <html outputDirectory="../../coverage"/>
         </report>
     </coverage>
 </phpunit>
