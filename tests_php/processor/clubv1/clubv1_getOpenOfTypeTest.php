@@ -1,6 +1,6 @@
 <?php
 
-require_once "processor/clubv1Processor.php";
+require_once "api/processor/clubv1Processor.php";
 
 use PHPUnit\Framework\TestCase;
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once "processor/Processor.php";
+require_once "api/processor/Processor.php";
 
 use PHPUnit\Framework\TestCase;
 

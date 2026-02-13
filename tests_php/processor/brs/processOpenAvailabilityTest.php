@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once "processor/brsProcessor.php";
+require_once "api/processor/brsProcessor.php";
 
 class processOpenAvailabilityTest extends TestCase
 {

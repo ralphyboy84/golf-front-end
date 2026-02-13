@@ -7,5 +7,5 @@ services:
       dockerfile: Dockerfile
     image: my-php-app:latest
     volumes:
-      - /Users/ralph/Documents/golf:/var/www/html
+      - /Users/ralph/Documents/demo/golf-front-end:/var/www/html
     command: tail -f /dev/null

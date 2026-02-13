@@ -1,6 +1,6 @@
 <?php
 
-require_once "processor/carnoustieProcessor.php";
+require_once "api/processor/carnoustieProcessor.php";
 
 use PHPUnit\Framework\TestCase;
 
