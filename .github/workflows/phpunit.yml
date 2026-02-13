@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Download PHPUnit
         run: |
           wget https://phar.phpunit.de/phpunit-10.phar
