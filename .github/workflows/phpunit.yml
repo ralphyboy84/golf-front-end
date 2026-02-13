@@ -1,0 +1,24 @@
+name: PHPUnit
+
+on: [push]
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download PHPUnit
+        run: |
+          wget https://phar.phpunit.de/phpunit-10.phar
+          chmod +x phpunit-10.phar
+
+      - name: Make PHPUnit executable
+        run: chmod +x tools/phpunit.phar
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+
+      - name: Run tests
+        run: php phpunit-10.phar --configuration phpunit.xml
