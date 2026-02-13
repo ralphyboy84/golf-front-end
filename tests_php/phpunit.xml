@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="bootstrap.php"
+         colors="true"
+         >
+    <coverage processUncoveredFiles="true">
+        <include>
+            <!-- Folder containing your source code -->
+            <directory>../processor</directory>
+        </include>
+        <report>
+            <text outputFile="php://stdout"/>
+            <html outputDirectory="../coverage"/>
+        </report>
+    </coverage>
+</phpunit>
