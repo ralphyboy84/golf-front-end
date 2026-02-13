@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("courseCategorySelect"),
       );
 
-      if (!courseCategory) {
+      if (!courseCategory.length) {
         document
           .getElementById("courseCategorySelect")
           .classList.add("input-error");

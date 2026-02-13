@@ -102,8 +102,17 @@ export function buildTripBuilderOutput(
 
   content += `</div>`;
 
+  let imageToUse = "";
+
+  if (courseInfo.image == "Yes") {
+    imageToUse = courseInfo.id;
+  }
+
+  console.log(imageToUse);
+  console.log(courseInfo);
+
   return buildCard(
-    courseInfo.id,
+    imageToUse,
     `${courseInfo.course} - Day ${dayNumber * 1 + 1}`,
     content,
     id,
@@ -162,6 +171,7 @@ export async function getTripInformation(courses) {
   }
 
   const results = await getAllCourseAvailability(courses, numberOfDays, app);
+  console.log(results);
   document.getElementById("previousTripResults").value =
     JSON.stringify(results);
   abstractedFunction(results, numberOfDays, app);
@@ -332,6 +342,7 @@ function doTheHardBit(availabilityObject) {
         price: firstAvailable.cheapestPrice,
         timesAvailable: firstAvailable.timesAvailable,
         firstTime: firstAvailable.firstTime,
+        image: firstAvailable.image,
       });
 
       // Mark this date as used
