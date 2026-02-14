@@ -81,7 +81,7 @@ jobs:
           npm run build
           mkdir deploy
           cp -r dist/assets deploy
-          cp index.html deploy
+          cp dist/index.html deploy
           cp -r api deploy
 
       - name: Deploy via FTP
