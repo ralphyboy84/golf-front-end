@@ -67,4 +67,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: [phpunit, vite, playwright]
     steps:
-      - run: echo "Deploy now"
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_SERVER_NAME }}
+          username: ${{ secrets.FTP_USER_NAME }}
+          password: ${{ secrets.FTP_USER_PASSWORD }}
