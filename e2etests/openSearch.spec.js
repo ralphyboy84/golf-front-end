@@ -1,9 +1,13 @@
 import { test, expect } from "@playwright/test";
+import {
+  interceptGetAllOpensAPICall,
+  interceptGetRegionsAPICall,
+} from "./helpers/openSearch";
 
 test.beforeEach(async ({ page }) => {
   await page.clock.install();
   await page.clock.setSystemTime(new Date("2026-02-01"));
-  await page.goto("http://localhost:5173/");
+  await page.goto("/");
 });
 
 test("Check you can navigate to the open searcher screen", async ({ page }) => {
@@ -11,6 +15,8 @@ test("Check you can navigate to the open searcher screen", async ({ page }) => {
   await page.click("#dropDownButton");
   await expect(page.locator("#buildATrip")).toBeVisible();
   await page.click("#openSearcher");
+  await interceptGetAllOpensAPICall(page);
+  await interceptGetRegionsAPICall(page);
   await expect(page.locator("#calendar")).toBeVisible();
   await expect(page.locator("#calendar")).toHaveText(/February 2026/);
 });
@@ -20,6 +26,8 @@ test("Check february content", async ({ page }) => {
   await page.click("#dropDownButton");
   await expect(page.locator("#buildATrip")).toBeVisible();
   await page.click("#openSearcher");
+  await interceptGetAllOpensAPICall(page);
+  await interceptGetRegionsAPICall(page);
   await expect(page.locator("#calendar")).toBeVisible();
   await expect(page.locator("#calendar")).toHaveText(/February 2026/);
 
@@ -36,6 +44,8 @@ test("Check filter on keyword", async ({ page }) => {
   await page.click("#dropDownButton");
   await expect(page.locator("#buildATrip")).toBeVisible();
   await page.click("#openSearcher");
+  await interceptGetAllOpensAPICall(page);
+  await interceptGetRegionsAPICall(page);
   await expect(page.locator("#calendar")).toBeVisible();
   await page.click("#openFilters");
   await expect(

@@ -1,0 +1,15 @@
+export const regions = [
+  "aberdeen",
+  "angus",
+  "ayrshire",
+  "borders",
+  "central",
+  "eastlothian",
+  "edinburgh",
+  "fife",
+  "glasgow",
+  "highlands",
+  "islands",
+  "perthshire",
+  "south",
+];

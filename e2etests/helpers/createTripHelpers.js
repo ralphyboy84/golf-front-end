@@ -1,4 +1,6 @@
 import { expect } from "@playwright/test";
+import { courses } from "./getCourses";
+import { tripCourses } from "./getCoursesForTrip";
 
 export async function createTrip(
   page,
@@ -16,6 +18,7 @@ export async function createTrip(
   await page.click("#nextStepBtn");
   await page.fill("#tripLengthInDays", tripLength);
   await page.click("#tripLengthButton");
+  await interceptGetCourseAPICall(page);
   await page.selectOption("#whereStayingSelect", whereStaying);
   await page.click("#linksNoLinks");
   await page.selectOption("#courseTypeSelect", courseType);
@@ -44,4 +47,27 @@ export async function validateTripCards(page) {
   await expect(
     page.locator("#course2").locator(".card-body").locator("h5"),
   ).toHaveText(/Elie - Day 3/);
+}
+
+export async function interceptGetCourseAPICall(page) {
+  await page.route("**/api/getCourses.php", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(courses),
+    });
+  });
+}
+
+export async function interceptGetCoursesForTripAPICall(page) {
+  await page.route(
+    "**/api/getCourses.php?lat=56.197846&lon=-2.988865&courseTypeOption=links&courseQualityOption=b&travelDistanceOption=20000&onlineBooking=Yes",
+    async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify(tripCourses),
+      });
+    },
+  );
 }
