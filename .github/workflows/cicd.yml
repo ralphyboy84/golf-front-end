@@ -76,7 +76,12 @@ jobs:
           cache: npm
 
       - name: Run build
-        run: npm ci && npm run build
+        run: |
+          npm ci 
+          npm run build
+          mkdir deploy
+          cp dist deploy
+          cp api deploy
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
@@ -84,5 +89,5 @@ jobs:
           server: ${{ secrets.FTP_SERVER_NAME }}
           username: ${{ secrets.FTP_USER_NAME }}
           password: ${{ secrets.FTP_USER_PASSWORD }}
-          local-dir: dist/
+          local-dir: deploy/
           server-dir: public_html/
