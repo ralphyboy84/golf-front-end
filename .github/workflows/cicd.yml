@@ -3,7 +3,7 @@ name: Deploy
 on: [push]
 
 jobs:
-  test:
+  playwright:
     runs-on: ubuntu-latest
 
     steps:
@@ -49,7 +49,7 @@ jobs:
           pwd
           php phpunit-10.phar tests_php
 
-  test:
+  vite:
     runs-on: ubuntu-latest
 
     steps:
