@@ -80,8 +80,8 @@ jobs:
           npm ci 
           npm run build
           mkdir deploy
-          cp dist deploy
-          cp api deploy
+          cp -r dist deploy
+          cp -r api deploy
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
