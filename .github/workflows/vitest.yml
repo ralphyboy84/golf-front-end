@@ -1,4 +1,4 @@
-name: Vitest Demo
+name: Vitest Tests
 
 on: [push]
 
