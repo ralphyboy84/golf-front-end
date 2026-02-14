@@ -1,7 +1,7 @@
 <?php
 
-require_once "../call/turnberyCall.php";
-require_once "../processor/turnberryProcessor.php";
+require_once "call/turnberyCall.php";
+require_once "processor/turnberryProcessor.php";
 
 $turnberyCall = new turnberyCall();
 $turnberryProcessor = new turnberryProcessor();

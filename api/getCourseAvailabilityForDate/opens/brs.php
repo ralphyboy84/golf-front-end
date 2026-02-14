@@ -1,7 +1,7 @@
 <?php
 
-require_once "../call/brsCall.php";
-require_once "../processor/brsProcessor.php";
+require_once "call/brsCall.php";
+require_once "processor/brsProcessor.php";
 
 $BRSCall = new BRSCall();
 $BRSProcessor = new BRSProcessor();

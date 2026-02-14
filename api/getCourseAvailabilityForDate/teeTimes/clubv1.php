@@ -1,7 +1,7 @@
 <?php
 
-require_once "../call/clubV1Call.php";
-require_once "../processor/clubv1Processor.php";
+require_once "call/clubV1Call.php";
+require_once "processor/clubv1Processor.php";
 
 $ClubV1Call = new ClubV1Call();
 $ClubV1Processor = new ClubV1Processor();

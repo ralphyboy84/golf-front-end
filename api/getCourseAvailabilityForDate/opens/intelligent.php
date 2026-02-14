@@ -1,7 +1,7 @@
 <?php
 
-require_once "../call/intelligentCall.php";
-require_once "../processor/intelligentProcessor.php";
+require_once "call/intelligentCall.php";
+require_once "processor/intelligentProcessor.php";
 
 $IntelligentCall = new IntelligentCall();
 $IntelligentProcessor = new IntelligentProcessor();

@@ -1,7 +1,7 @@
 <?php
 
-require_once "../call/trumpAberdeenCall.php";
-require_once "../processor/trumpAberdeenProcessor.php";
+require_once "call/trumpAberdeenCall.php";
+require_once "processor/trumpAberdeenProcessor.php";
 
 $trumpAberdeenCall = new trumpAberdeenCall();
 $trumpAberdeenProcessor = new trumpAberdeenProcessor();

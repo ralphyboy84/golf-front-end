@@ -1,7 +1,7 @@
 <?php
 
-require_once "../call/carnoustieCall.php";
-require_once "../processor/carnoustieProcessor.php";
+require_once "call/carnoustieCall.php";
+require_once "processor/carnoustieProcessor.php";
 
 $CarnoustieCall = new CarnoustieCall();
 $CarnoustieProcessor = new CarnoustieProcessor();

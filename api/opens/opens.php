@@ -166,8 +166,7 @@ class Opens
         opens.name as 'compName'
         $selectSql
         FROM opens, clubs
-        WHERE opens.date >= NOW()
-        AND opens.clubid = clubs.id
+        WHERE opens.clubid = clubs.id
         $regionSql 
         $top100Sql
         $coursesSql

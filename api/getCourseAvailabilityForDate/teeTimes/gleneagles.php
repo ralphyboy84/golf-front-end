@@ -1,7 +1,7 @@
 <?php
 
-require_once "../call/gleneaglesCall.php";
-require_once "../processor/gleneaglesProcessor.php";
+require_once "call/gleneaglesCall.php";
+require_once "processor/gleneaglesProcessor.php";
 
 $gleneaglesCall = new gleneaglesCall();
 $gleneaglesProcessor = new gleneaglesProcessor();

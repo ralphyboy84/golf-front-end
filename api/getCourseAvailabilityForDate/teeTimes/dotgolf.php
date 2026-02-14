@@ -1,7 +1,7 @@
 <?php
 
-require_once "../call/dotGolfCall.php";
-require_once "../processor/dotGolfProcessor.php";
+require_once "call/dotGolfCall.php";
+require_once "processor/dotGolfProcessor.php";
 
 $DotGolfCall = new DotGolfCall();
 $DotGolfProcessor = new DotGolfProcessor();
