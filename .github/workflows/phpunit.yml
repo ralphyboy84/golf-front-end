@@ -21,10 +21,10 @@ jobs:
           pwd
           wget https://phar.phpunit.de/phpunit-10.phar
           chmod +x phpunit-10.phar 
-          phpunit --version
+          php phpunit-10.phar --version
 
       - name: Run tests
         run: |
           ls
           pwd
-          phpunit --version
+          php phpunit-10.phar --version
