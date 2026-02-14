@@ -12,3 +12,4 @@ dist
 src/images
 public
 tests_php/.phpunit.result.cache
+api/call/cookies.txt

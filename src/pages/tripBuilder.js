@@ -153,6 +153,7 @@ export async function getAllCourseAvailability(courses, numberOfDays, app) {
     results[x] = await Promise.all(fetchPromises);
 
     percentage = (otherCount / totalApiCalls) * 100;
+
     await sleep(250);
 
     app.innerHTML = getLoadingDiv(percentage);

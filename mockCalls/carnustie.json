@@ -1,0 +1,160 @@
+{
+  "data": {
+    "id": 1,
+    "name": "The Championship Course",
+    "course_completion_time": 4.5,
+    "closing_date": "2026-10-31T00:00:00.000000Z",
+    "diaries": [
+      {
+        "id": 3315925,
+        "slot_date_time": "2026-09-21T09:00:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315926,
+        "slot_date_time": "2026-09-21T09:10:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315927,
+        "slot_date_time": "2026-09-21T09:20:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315931,
+        "slot_date_time": "2026-09-21T10:00:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315932,
+        "slot_date_time": "2026-09-21T10:10:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315933,
+        "slot_date_time": "2026-09-21T10:20:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315934,
+        "slot_date_time": "2026-09-21T10:30:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315935,
+        "slot_date_time": "2026-09-21T10:40:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315936,
+        "slot_date_time": "2026-09-21T10:50:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 2 }]
+      },
+      {
+        "id": 3315937,
+        "slot_date_time": "2026-09-21T11:00:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315938,
+        "slot_date_time": "2026-09-21T11:10:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315939,
+        "slot_date_time": "2026-09-21T11:20:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315940,
+        "slot_date_time": "2026-09-21T11:30:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": []
+      },
+      {
+        "id": 3315941,
+        "slot_date_time": "2026-09-21T11:40:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": []
+      },
+      {
+        "id": 3315942,
+        "slot_date_time": "2026-09-21T11:50:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": []
+      },
+      {
+        "id": 3315943,
+        "slot_date_time": "2026-09-21T12:00:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": []
+      },
+      {
+        "id": 3315944,
+        "slot_date_time": "2026-09-21T12:10:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315945,
+        "slot_date_time": "2026-09-21T12:20:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315954,
+        "slot_date_time": "2026-09-21T13:30:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315955,
+        "slot_date_time": "2026-09-21T13:40:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315956,
+        "slot_date_time": "2026-09-21T13:50:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315957,
+        "slot_date_time": "2026-09-21T14:00:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 4 }]
+      },
+      {
+        "id": 3315958,
+        "slot_date_time": "2026-09-21T14:10:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": []
+      },
+      {
+        "id": 3315959,
+        "slot_date_time": "2026-09-21T14:20:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": [{ "players": 2 }]
+      },
+      {
+        "id": 3315960,
+        "slot_date_time": "2026-09-21T14:30:00",
+        "slot_mark": { "id": 1, "name": "Free" },
+        "bookings": []
+      }
+    ]
+  }
+}
