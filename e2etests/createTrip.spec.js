@@ -52,13 +52,13 @@ test("Validate no where staying selected", async ({ page }) => {
 
 test("Validate no links or no links selected", async ({ page }) => {
   // Expect a title "to contain" a substring.
+  await interceptGetCourseAPICall(page);
   await page.click("#dropDownButton");
   await page.click("#buildATrip");
   await page.click("#startTripBuilder");
   await page.fill("#startDate", "2026-04-09");
   await page.click("#nextStepBtn");
   await page.click("#tripLengthButton");
-  await interceptGetCourseAPICall(page);
   await page.selectOption("#whereStayingSelect", "Leven");
   await page.click("#linksNoLinks");
   await page.click("#courseCategoryButton");
@@ -70,13 +70,13 @@ test("Validate no links or no links selected", async ({ page }) => {
 
 test("Validate no course category selected", async ({ page }) => {
   // Expect a title "to contain" a substring.
+  await interceptGetCourseAPICall(page);
   await page.click("#dropDownButton");
   await page.click("#buildATrip");
   await page.click("#startTripBuilder");
   await page.fill("#startDate", "2026-04-09");
   await page.click("#nextStepBtn");
   await page.click("#tripLengthButton");
-  await interceptGetCourseAPICall(page);
   await page.selectOption("#whereStayingSelect", "Leven");
   await page.click("#linksNoLinks");
   await page.selectOption("#courseTypeSelect", "Links Courses");
