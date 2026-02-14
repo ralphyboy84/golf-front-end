@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
-import { courses } from "./getCourses";
-import { tripCourses } from "./getCoursesForTrip";
+import { courses } from "../fixtures/getCourses";
+import { tripCourses } from "../fixtures/getCoursesForTrip";
 
 export async function createTrip(
   page,

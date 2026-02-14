@@ -1,0 +1,10 @@
+export const levenlinks20260410 = {
+  date: "10\/04\/2026",
+  teeTimesAvailable: "Yes",
+  timesAvailable: 48,
+  firstTime: "09:36",
+  cheapestPrice: "85.00",
+  bookingUrl: "https:\/\/visitors.brsgolf.com\/levenlinks?date=2026-04-10",
+  courseName: "Leven",
+  image: "Yes",
+};

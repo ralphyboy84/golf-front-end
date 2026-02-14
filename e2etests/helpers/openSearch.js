@@ -1,4 +1,4 @@
-import { opens } from "./opens";
+import { opens } from "../fixtures/opens";
 
 export async function interceptGetAllOpensAPICall(page) {
   await page.route("**/api/getAllOpens.php", async (route) => {
