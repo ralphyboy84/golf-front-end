@@ -1,6 +1,9 @@
 import { expect } from "@playwright/test";
 import { courses } from "../fixtures/getCourses";
-import { tripCourses } from "../fixtures/getCoursesForTrip";
+import {
+  tripCoursesBasic,
+  tripCoursesTooMany,
+} from "../fixtures/getCoursesForTrip";
 
 export async function createTrip(
   page,
@@ -63,10 +66,21 @@ export async function interceptGetCoursesForTripAPICall(page) {
   await page.route(
     "**/api/getCourses.php?lat=56.197846&lon=-2.988865&courseTypeOption=links&courseQualityOption=b&travelDistanceOption=20000&onlineBooking=Yes",
     async (route) => {
+      const url = new URL(route.request().url());
+      const travelDistanceOption = url.searchParams.get("travelDistanceOption");
+
+      let body;
+
+      if (travelDistanceOption == 20000) {
+        body = tripCoursesBasic;
+      } else if (travelDistanceOption == 40000) {
+        body = tripCoursesTooMany;
+      }
+
       await route.fulfill({
         status: 200,
         contentType: "application/json",
-        body: JSON.stringify(tripCourses),
+        body: JSON.stringify(body),
       });
     },
   );

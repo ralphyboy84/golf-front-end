@@ -1,0 +1,7 @@
+export const kilspindie20260411 = {
+  date: "11\/04\/2026",
+  teeTimesAvailable: "No",
+  bookingUrl:
+    "https:\/\/www.kilspindiegolfclub.co.uk\/visitorbooking\/?date=2026-04-11",
+  courseName: "Kilspindie",
+};

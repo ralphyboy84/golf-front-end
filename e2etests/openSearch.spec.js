@@ -12,22 +12,22 @@ test.beforeEach(async ({ page }) => {
 
 test("Check you can navigate to the open searcher screen", async ({ page }) => {
   // Expect a title "to contain" a substring.
+  await interceptGetAllOpensAPICall(page);
+  await interceptGetRegionsAPICall(page);
   await page.click("#dropDownButton");
   await expect(page.locator("#buildATrip")).toBeVisible();
   await page.click("#openSearcher");
-  await interceptGetAllOpensAPICall(page);
-  await interceptGetRegionsAPICall(page);
   await expect(page.locator("#calendar")).toBeVisible();
   await expect(page.locator("#calendar")).toHaveText(/February 2026/);
 });
 
 test("Check february content", async ({ page }) => {
   // Expect a title "to contain" a substring.
+  await interceptGetAllOpensAPICall(page);
+  await interceptGetRegionsAPICall(page);
   await page.click("#dropDownButton");
   await expect(page.locator("#buildATrip")).toBeVisible();
   await page.click("#openSearcher");
-  await interceptGetAllOpensAPICall(page);
-  await interceptGetRegionsAPICall(page);
   await expect(page.locator("#calendar")).toBeVisible();
   await expect(page.locator("#calendar")).toHaveText(/February 2026/);
 
@@ -41,11 +41,11 @@ test("Check february content", async ({ page }) => {
 
 test("Check filter on keyword", async ({ page }) => {
   // Expect a title "to contain" a substring.
+  await interceptGetAllOpensAPICall(page);
+  await interceptGetRegionsAPICall(page);
   await page.click("#dropDownButton");
   await expect(page.locator("#buildATrip")).toBeVisible();
   await page.click("#openSearcher");
-  await interceptGetAllOpensAPICall(page);
-  await interceptGetRegionsAPICall(page);
   await expect(page.locator("#calendar")).toBeVisible();
   await page.click("#openFilters");
   await expect(
