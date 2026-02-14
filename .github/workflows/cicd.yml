@@ -68,7 +68,7 @@ jobs:
     needs: [phpunit, vite, playwright]
     steps:
       - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ${{ secrets.FTP_SERVER_NAME }}
           username: ${{ secrets.FTP_USER_NAME }}
