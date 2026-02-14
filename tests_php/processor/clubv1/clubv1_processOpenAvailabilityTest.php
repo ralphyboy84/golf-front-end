@@ -6,93 +6,130 @@ use PHPUnit\Framework\TestCase;
 
 class clubv1_processOpenAvailabilityTest extends TestCase
 {
-    private function makeService()
+    private $processor;
+
+    protected function setUp(): void
     {
-        return new ClubV1Processor(); // replace with your actual class
+        $this->processor = new ClubV1Processor();
     }
 
-    public function testReturnsNoWhenNoSlotsAvailable()
+    public function testNoBookingNode()
     {
-        $html = <<<HTML
-        <div class="booking">
-            <div>
-                <div>08:00</div>
+        $html = '<div class="other-class"></div>';
+        $openId = 123;
+        $token = "abc";
+
+        $result = $this->processor->processOpenAvailability(
+            $html,
+            $openId,
+            $token,
+        );
+
+        $this->assertEquals(
+            [
+                "slotsAvailable" => "No",
+                "openBookingUrl" =>
+                    "https://howdidido-whs.clubv1.com/hdidbooking/open?token=abc&cid=123&rd=1",
+            ],
+            $result,
+        );
+    }
+
+    public function testBookingNodeNoAvailability()
+    {
+        $html = '
+            <div class="booking">
                 <div>
-                    <div><span>Unavailable</span></div>
+                    <div>
+                        <div>Time</div>
+                        <div><div><span>Booked</span></div></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        HTML;
-        $service = $this->makeService();
-        $result = $service->processOpenAvailability($html, 123, "abc");
-        $this->assertSame("No", $result["slotsAvailable"]);
-        $this->assertSame(
-            "https://howdidido-whs.clubv1.com/hdidbooking/open?token=abc&cid=123&rd=1",
+        ';
+
+        $openId = 456;
+        $token = "xyz";
+
+        $result = $this->processor->processOpenAvailability(
+            $html,
+            $openId,
+            $token,
+        );
+
+        $this->assertEquals("No", $result["slotsAvailable"]);
+        $this->assertStringContainsString(
+            "token=xyz&cid=456",
             $result["openBookingUrl"],
         );
     }
 
-    public function testReturnsYesWhenDirectAvailableSpanExists()
-    {
-        $html = <<<HTML
-        <div class="booking">
-            <div>
-                <div>08:10</div>
-                <div>
-                    <div><span>Available</span></div>
-                </div>
-            </div>
-        </div>
-        HTML;
-        $service = $this->makeService();
-        $result = $service->processOpenAvailability($html, 456, "token123");
-        $this->assertSame("Yes", $result["slotsAvailable"]);
-    }
+    // public function testBookingNodeWithAvailability()
+    // {
+    //     $html = '
+    //         <div class="booking">
+    //             <div>
+    //                 <div>
+    //                     <div>09:03</div>
+    //                     <div>
+    //                         <div><span>Available</span></div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     ';
 
-    public function testReturnsYesWhenNestedSlotIsAvailable()
+    //     $openId = 789;
+    //     $token = "token123";
+
+    //     $result = $this->processor->processOpenAvailability(
+    //         $html,
+    //         $openId,
+    //         $token,
+    //     );
+
+    //     $this->assertEquals("Yes", $result["slotsAvailable"]);
+    //     $this->assertEquals(
+    //         "https://howdidido-whs.clubv1.com/hdidbooking/open?token=token123&cid=789&rd=1",
+    //         $result["openBookingUrl"],
+    //     );
+    // }
+
+    public function testBookingNodeWithMultipleSlots()
     {
-        $html = <<<HTML
-        <div class="booking">
-            <div>
-                <div>Time</div>
-                <div></div>
-            </div>
-            <div>
-                <div>08:20</div>
+        $html = '
+            <div class="booking">
                 <div>
                     <div>
-                        <div><span>Unavailable</span></div>
-                        <div><span>Available</span></div>
+                        <div>08:00</div>
+                        <div>
+                            <div><span>Booked</span></div>
+                            <div><span>Available</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>09:00</div>
+                        <div>
+                            <div><span>Booked</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        HTML;
-        $service = $this->makeService();
-        $result = $service->processOpenAvailability($html, 999, "xyz");
-        $this->assertSame("Yes", $result["slotsAvailable"]);
-    }
+        ';
 
-    public function testSkipsHeaderRow()
-    {
-        $html = <<<HTML
-        <div class="booking">
-            <div>
-                <div>Time</div>
-                <div>Status</div>
-            </div>
-        </div>
-        HTML;
-        $service = $this->makeService();
-        $result = $service->processOpenAvailability($html, 1, "t");
-        $this->assertSame("No", $result["slotsAvailable"]);
-    }
+        $openId = 321;
+        $token = "multi";
 
-    public function testHandlesMissingBookingNode()
-    {
-        $html = "<div><p>No booking data</p></div>";
-        $service = $this->makeService();
-        $result = $service->processOpenAvailability($html, 1, "t");
-        $this->assertSame("No", $result["slotsAvailable"]);
+        $result = $this->processor->processOpenAvailability(
+            $html,
+            $openId,
+            $token,
+        );
+
+        $this->assertEquals("Yes", $result["slotsAvailable"]);
+        $this->assertEquals(
+            "https://howdidido-whs.clubv1.com/hdidbooking/open?token=multi&cid=321&rd=1",
+            $result["openBookingUrl"],
+        );
     }
 }

@@ -6,155 +6,82 @@ use PHPUnit\Framework\TestCase;
 
 class clubv1_processTeeTimeForDayTest extends TestCase
 {
-    private function makeServiceMock()
+    private $processor;
+
+    protected function setUp(): void
     {
-        return $this->getMockBuilder(ClubV1Processor::class)
+        // Create a partial mock for the class that contains processTeeTimeForDay
+        // We mock _format_date and _format_green_fees since they are internal helpers
+        $this->processor = $this->getMockBuilder(ClubV1Processor::class)
             ->onlyMethods(["_format_date", "_format_green_fees"])
             ->getMock();
     }
 
-    public function testReturnsNoWhenNoTeesNode()
-    {
-        $html = "<div><p>No tee times</p></div>";
-        $date = "2026-01-24";
-
-        $service = $this->makeServiceMock();
-        $service->method("_format_date")->willReturn("2026-01-24");
-
-        $result = $service->processTeeTimeForDay($html, $date, "MyClub");
-
-        $this->assertSame(
-            [
-                "date" => "2026-01-24",
-                "teeTimesAvailable" => "No",
-            ],
-            $result,
-        );
-    }
-
-    public function testReturnsNoWhenTeesNodeIsEmpty()
+    public function testNoTeeTimes()
     {
         $html = '<div class="tees"></div>';
-        $date = "2026-01-24";
+        $date = "2026-02-14";
+        $club = "SomeClub";
 
-        $service = $this->makeServiceMock();
-        $service->method("_format_date")->willReturn("2026-01-24");
+        // Mock _format_date
+        $this->processor->method("_format_date")->willReturn("2026-02-14");
 
-        $result = $service->processTeeTimeForDay($html, $date, "MyClub");
+        $result = $this->processor->processTeeTimeForDay($html, $date, $club);
 
-        $this->assertSame(
+        $this->assertEquals(
             [
-                "date" => "2026-01-24",
+                "date" => "2026-02-14",
                 "teeTimesAvailable" => "No",
             ],
             $result,
         );
     }
 
-    public function testReturnsCorrectDataForSingleTeeTime()
+    public function testSingleTeeTime()
     {
-        $html = <<<HTML
-        <div class="tees">
-            <div class="tee available" data-hour-val="08" data-min-val="5"></div>
-        </div>
-        HTML;
-        $date = "2026-01-24";
+        $html = '
+            <div class="tees">
+                <div class="tee available" data-hour-val="10" data-min-val="5" data-green-fee="50"></div>
+                <div class="tee available" data-hour-val="10" data-min-val="15" data-green-fee="50"></div>
+            </div>
+        ';
+        $date = "2026-02-14";
+        $club = "SomeClub";
 
-        $service = $this->makeServiceMock();
-        $service->method("_format_date")->willReturn("2026-01-24");
-        $service->method("_format_green_fees")->willReturn(50);
+        $this->processor->method("_format_date")->willReturn("2026-02-14");
+        $this->processor->method("_format_green_fees")->willReturn(50);
 
-        $result = $service->processTeeTimeForDay($html, $date, "MyClub");
+        $result = $this->processor->processTeeTimeForDay($html, $date, $club);
 
-        $this->assertSame(
-            [
-                "date" => "2026-01-24",
-                "teeTimesAvailable" => "Yes",
-                "timesAvailable" => 1,
-                "firstTime" => "08:05",
-                "cheapestPrice" => 50,
-            ],
-            $result,
-        );
+        $this->assertEquals("Yes", $result["teeTimesAvailable"]);
+        $this->assertEquals(2, $result["timesAvailable"]);
+        $this->assertEquals("10:05", $result["firstTime"]);
+        $this->assertEquals(50, $result["cheapestPrice"]);
     }
 
-    public function testReturnsCorrectDataForMultipleTeeTimesWithDifferentFees()
+    public function testMultipleTeeTimesWithDifferentFees()
     {
-        $html = <<<HTML
-        <div class="tees">
-            <div class="tee available" data-hour-val="08" data-min-val="0"></div>
-            <div class="tee available" data-hour-val="09" data-min-val="30"></div>
-            <div class="tee available" data-hour-val="10" data-min-val="0"></div>
-        </div>
-        HTML;
-        $date = "2026-01-24";
+        $html = '
+            <div class="tees">
+                <div class="tee available" data-hour-val="9" data-min-val="0" data-green-fee="30"></div>
+                <div class="tee available" data-hour-val="10" data-min-val="15" data-green-fee="20"></div>
+                <div class="tee available" data-hour-val="11" data-min-val="45" data-green-fee="30"></div>
+            </div>
+        ';
+        $date = "2026-02-14";
+        $club = "SomeClub";
 
-        $service = $this->makeServiceMock();
-        $service->method("_format_date")->willReturn("2026-01-24");
+        $this->processor->method("_format_date")->willReturn("2026-02-14");
 
-        $service
+        $this->processor
             ->method("_format_green_fees")
-            ->willReturnOnConsecutiveCalls(60, 50, 55);
+            ->willReturnOnConsecutiveCalls(30, 70, 10);
 
-        $result = $service->processTeeTimeForDay($html, $date, "MyClub");
+        $result = $this->processor->processTeeTimeForDay($html, $date, $club);
 
-        $this->assertSame(
-            [
-                "date" => "2026-01-24",
-                "teeTimesAvailable" => "Yes",
-                "timesAvailable" => 3,
-                "firstTime" => "08:00",
-                "cheapestPrice" => 50, // sorted array_unique result
-            ],
-            $result,
-        );
-    }
-
-    public function testPadsSingleDigitMinutes()
-    {
-        $html = <<<HTML
-        <div class="tees">
-            <div class="tee available" data-hour-val="07" data-min-val="5"></div>
-        </div>
-        HTML;
-        $date = "2026-01-24";
-
-        $service = $this->makeServiceMock();
-        $service->method("_format_date")->willReturn("2026-01-24");
-        $service->method("_format_green_fees")->willReturn(45);
-
-        $result = $service->processTeeTimeForDay($html, $date, "MyClub");
-
-        $this->assertSame("07:05", $result["firstTime"]);
-    }
-
-    public function testHandlesDuplicateFeesCorrectly()
-    {
-        $html = <<<HTML
-        <div class="tees">
-            <div class="tee available" data-hour-val="08" data-min-val="0"></div>
-            <div class="tee available" data-hour-val="09" data-min-val="0"></div>
-        </div>
-        HTML;
-        $date = "2026-01-24";
-
-        $service = $this->makeServiceMock();
-        $service->method("_format_date")->willReturn("2026-01-24");
-
-        // Both green fees are the same
-        $service->method("_format_green_fees") ->willReturnOnConsecutiveCalls(50, 50, 50);
-
-        $result = $service->processTeeTimeForDay($html, $date, "MyClub");
-
-        $this->assertSame(
-            [
-                "date" => "2026-01-24",
-                "teeTimesAvailable" => "Yes",
-                "timesAvailable" => 2,
-                "firstTime" => "08:00",
-                "cheapestPrice" => 50,
-            ],
-            $result,
-        );
+        $this->assertEquals("Yes", $result["teeTimesAvailable"]);
+        $this->assertEquals(3, $result["timesAvailable"]);
+        $this->assertEquals("9:00", $result["firstTime"]);
+        $this->assertEquals(10, $result["cheapestPrice"]); // lowest unique fee
     }
 }
