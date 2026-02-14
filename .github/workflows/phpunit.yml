@@ -12,6 +12,8 @@ jobs:
 
       - name: Download PHPUnit
         run: |
+          ls 
+          pwd
           wget https://phar.phpunit.de/phpunit-10.phar
           chmod +x phpunit-10.phar 
           phpunit --version
