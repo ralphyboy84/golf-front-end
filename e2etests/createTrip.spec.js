@@ -106,6 +106,7 @@ test("Validate a trip is built", async ({ page }) => {
 
 test("Check for too many courses returned", async ({ page }) => {
   await interceptGetCoursesForTripAPICall(page);
+  await interceptGetCourseAvailabilityForDateAPICall(page);
   await createTrip(
     page,
     "2026-04-09",
@@ -154,6 +155,8 @@ test("Check for too many courses returned", async ({ page }) => {
 });
 
 test("Check trip rebuilt ok", async ({ page }) => {
+  await interceptGetCoursesForTripAPICall(page);
+  await interceptGetCourseAvailabilityForDateAPICall(page);
   await createTrip(
     page,
     "2026-04-09",

@@ -10,6 +10,9 @@ import { elie20260411 } from "../fixtures/courseAvailability/elie/20260411";
 import { dumbarnie20260409 } from "../fixtures/courseAvailability/Dumbarnie/20260409";
 import { dumbarnie20260410 } from "../fixtures/courseAvailability/Dumbarnie/20260410";
 import { dumbarnie20260411 } from "../fixtures/courseAvailability/Dumbarnie/20260411";
+import { kilspindie20260409 } from "../fixtures/courseAvailability/kilspindie/20260409";
+import { kilspindie20260410 } from "../fixtures/courseAvailability/kilspindie/20260410";
+import { kilspindie20260411 } from "../fixtures/courseAvailability/kilspindie/20260411";
 
 export async function interceptGetCourseAvailabilityForDateAPICall(page) {
   await page.route(
@@ -45,6 +48,12 @@ export async function interceptGetCourseAvailabilityForDateAPICall(page) {
         body = dumbarnie20260410;
       } else if (club == "Dumbarnie" && date == "2026-04-11") {
         body = dumbarnie20260411;
+      } else if (club == "kilspindie" && date == "2026-04-09") {
+        body = kilspindie20260409;
+      } else if (club == "kilspindie" && date == "2026-04-10") {
+        body = kilspindie20260410;
+      } else if (club == "kilspindie" && date == "2026-04-11") {
+        body = kilspindie20260411;
       }
 
       await route.fulfill({
