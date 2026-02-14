@@ -129,6 +129,10 @@ export function clearFilters() {
   document.getElementById("regionFilter").value = "";
   document.getElementById("useYourLocationForOpenFiltering").checked = "";
   document.getElementById("showHowManyMilesDiv").classList.add("hidden");
+
+  eventsFetched = false;
+  endpoint = `${getAllOpensEndPoint}`;
+  calendar.refetchEvents();
 }
 
 export function useYourLocationSwitch() {
