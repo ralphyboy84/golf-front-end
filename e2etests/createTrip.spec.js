@@ -36,13 +36,13 @@ test("Validate no date entered", async ({ page }) => {
 
 test("Validate no where staying selected", async ({ page }) => {
   // Expect a title "to contain" a substring.
+  await interceptGetCourseAPICall(page);
   await page.click("#dropDownButton");
   await page.click("#buildATrip");
   await page.click("#startTripBuilder");
   await page.fill("#startDate", "2026-04-09");
   await page.click("#nextStepBtn");
   await page.click("#tripLengthButton");
-  await interceptGetCourseAPICall(page);
   await page.click("#linksNoLinks");
   await expect(page.locator("#whereStayingAlert")).toBeVisible();
   await expect(page.locator("#whereStayingAlert").locator("span")).toHaveText(
@@ -89,6 +89,7 @@ test("Validate no course category selected", async ({ page }) => {
 });
 
 test("Validate a trip is built", async ({ page }) => {
+  await interceptGetCoursesForTripAPICall(page);
   await createTrip(
     page,
     "2026-04-09",
@@ -98,11 +99,11 @@ test("Validate a trip is built", async ({ page }) => {
     "20000",
     "3",
   );
-  await interceptGetCoursesForTripAPICall(page);
   await validateTripCards(page);
 });
 
 test("Check for too many courses returned", async ({ page }) => {
+  await interceptGetCoursesForTripAPICall(page);
   await createTrip(
     page,
     "2026-04-09",
@@ -112,7 +113,6 @@ test("Check for too many courses returned", async ({ page }) => {
     "40000",
     "3",
   );
-  await interceptGetCoursesForTripAPICall(page);
   await page.waitForSelector("#tooManyOptionsCard");
   await expect(
     page.locator("#tooManyOptionsCard").locator(".card-body"),

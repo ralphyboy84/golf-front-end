@@ -11,6 +11,7 @@ export async function createTrip(
   milage,
   tripLength,
 ) {
+  await interceptGetCourseAPICall(page);
   await page.click("#dropDownButton");
   await page.click("#buildATrip");
   await page.click("#startTripBuilder");
@@ -18,7 +19,6 @@ export async function createTrip(
   await page.click("#nextStepBtn");
   await page.fill("#tripLengthInDays", tripLength);
   await page.click("#tripLengthButton");
-  await interceptGetCourseAPICall(page);
   await page.selectOption("#whereStayingSelect", whereStaying);
   await page.click("#linksNoLinks");
   await page.selectOption("#courseTypeSelect", courseType);
