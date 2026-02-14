@@ -8,7 +8,7 @@ import { elie20260409 } from "../fixtures/courseAvailability/elie/20260409";
 import { elie20260410 } from "../fixtures/courseAvailability/elie/20260410";
 import { elie20260411 } from "../fixtures/courseAvailability/elie/20260411";
 
-export async function interceptGetCoursesForTripAPICall(page) {
+export async function interceptGetCourseAvailabilityForDateAPICall(page) {
   await page.route(
     "**/api/getCourseAvailabilityForDate.php*",
     async (route) => {
@@ -41,7 +41,7 @@ export async function interceptGetCoursesForTripAPICall(page) {
       await route.fulfill({
         status: 200,
         contentType: "application/json",
-        body: JSON.stringify(tripCourses),
+        body: JSON.stringify(body),
       });
     },
   );

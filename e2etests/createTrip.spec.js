@@ -6,6 +6,7 @@ import {
   interceptGetCoursesForTripAPICall,
 } from "./helpers/createTripHelpers";
 import { expectedRows } from "./fixtures/createTripFixtures";
+import { interceptGetCourseAvailabilityForDateAPICall } from "./helpers/getCourseAvailabilityForDate";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
@@ -90,6 +91,7 @@ test("Validate no course category selected", async ({ page }) => {
 
 test("Validate a trip is built", async ({ page }) => {
   await interceptGetCoursesForTripAPICall(page);
+  await interceptGetCourseAvailabilityForDateAPICall(page);
   await createTrip(
     page,
     "2026-04-09",
