@@ -27,5 +27,4 @@ jobs:
         run: |
           ls
           pwd
-          cd tests_php
-          php phpunit-10.phar .
+          php phpunit-10.phar tests_php
