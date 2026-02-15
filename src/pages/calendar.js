@@ -4,6 +4,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import { getAllOpensEndPoint, getRegions } from "../pages/api";
 import { populateSelectOptionsForRegionFilter } from "../pages/selectBoxes";
+import { getFullCourseList } from "../pages/api";
 
 let eventsFetched = false;
 let endpoint = getAllOpensEndPoint;
@@ -12,6 +13,7 @@ let eventsCache = []; // will store events after first fetch
 
 export async function openSearcher() {
   const data = await getRegions();
+  const courses = await getFullCourseList();
 
   document.getElementById("app").innerHTML = `
   <details id="openFilters" class="collapse bg-base-100 border-base-300 border">
@@ -42,6 +44,12 @@ export async function openSearcher() {
           <option value='Yes'>Yes</option>
           <option value='No'>No</option>
         </select>
+      </div>
+      <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">    
+        Course:
+        <select id='courseListSelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select">
+          <option value=''>Select....</option>
+        </select> 
       </div>
       <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
         Region: 
@@ -85,6 +93,21 @@ export async function openSearcher() {
 
   populateSelectOptionsForRegionFilter(data);
   initialiseCalendar();
+
+  const select = document.getElementById("courseListSelect");
+
+  Object.entries(courses).forEach(([key, club]) => {
+    const option = document.createElement("option");
+
+    option.value = key; // you can use key or club.courseId etc
+    option.textContent = club.name; // what the user sees
+
+    // Optional: store extra info as data attributes
+    option.dataset.lat = club.location.lat;
+    option.dataset.lon = club.location.lon;
+
+    select.appendChild(option);
+  });
 }
 
 export function filterByKeyWord() {
@@ -92,6 +115,7 @@ export function filterByKeyWord() {
     !document.getElementById("keywordSearch").value &&
     !document.getElementById("top100Filter").value &&
     !document.getElementById("regionFilter").value &&
+    !document.getElementById("courseListSelect").value &&
     !document.getElementById("useYourLocationForOpenFiltering").checked
   ) {
     alert("You have not entered anything to filter on....");
@@ -101,6 +125,7 @@ export function filterByKeyWord() {
   const keyword = document.getElementById("keywordSearch").value;
   const top100 = document.getElementById("top100Filter").value;
   const regions = document.getElementById("regionFilter").value;
+  const courses = document.getElementById("courseListSelect").value;
 
   let distance = "";
   let latlon = "";
@@ -116,23 +141,19 @@ export function filterByKeyWord() {
     regions,
     distance,
     latlon,
+    courses,
   });
 
-  eventsFetched = false;
-  endpoint = `${getAllOpensEndPoint}?${params.toString()}`;
-  calendar.refetchEvents();
+  refreshCalendar(`${getAllOpensEndPoint}?${params.toString()}`);
 }
 
 export function clearFilters() {
   document.getElementById("keywordSearch").value = "";
   document.getElementById("top100Filter").value = "";
   document.getElementById("regionFilter").value = "";
+  document.getElementById("courseListSelect").value = "";
   document.getElementById("useYourLocationForOpenFiltering").checked = "";
   document.getElementById("showHowManyMilesDiv").classList.add("hidden");
-
-  eventsFetched = false;
-  endpoint = `${getAllOpensEndPoint}`;
-  calendar.refetchEvents();
 }
 
 export function useYourLocationSwitch() {
@@ -152,7 +173,6 @@ export function useYourLocationSwitch() {
 
 function initialiseCalendar() {
   var calendarEl = document.getElementById("calendar");
-
   let initialView = "dayGridMonth";
 
   if (window.innerWidth < 600) {
@@ -220,4 +240,10 @@ function initialiseCalendar() {
     },
   });
   calendar.render();
+}
+
+export function refreshCalendar(endPointToUse) {
+  eventsFetched = false;
+  endpoint = endPointToUse;
+  calendar.refetchEvents();
 }

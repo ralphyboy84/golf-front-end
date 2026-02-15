@@ -106,8 +106,10 @@ class Opens
             unset($tmp);
         }
 
-        if ($top100) {
+        if ($top100 && $top100 == "Yes") {
             $top100Sql = " AND clubs.top100 = 1 ";
+        } elseif ($top100 && $top100 == "No") {
+            $top100Sql = " AND clubs.top100 = 0";
         }
 
         if ($distance && $latlon) {

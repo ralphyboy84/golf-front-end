@@ -12,7 +12,12 @@ describe("clearFilters", () => {
         <option value="No">No</option>
       </select>
       <select id="regionFilter">
+        <option value="" selected>Select...</option>
         <option value="north" selected>North</option>
+      </select>
+      <select id="courseListSelect">
+        <option value="" selected>Select...</option>
+        <option value="carnoustie" selected>Carnoustie</option>
       </select>
       <input type="checkbox" id="useYourLocationForOpenFiltering" checked />
       <div id="showHowManyMilesDiv"></div>
@@ -21,10 +26,10 @@ describe("clearFilters", () => {
 
   it("should clear all input and select values", () => {
     clearFilters();
-
     expect(document.getElementById("keywordSearch").value).toBe("");
     expect(document.getElementById("top100Filter").value).toBe("");
     expect(document.getElementById("regionFilter").value).toBe("");
+    expect(document.getElementById("courseListSelect").value).toBe("");
   });
 
   it("should uncheck the checkbox", () => {

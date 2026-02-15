@@ -3,17 +3,18 @@ import {
   interceptGetAllOpensAPICall,
   interceptGetRegionsAPICall,
 } from "./helpers/openSearch";
+import { interceptGetCoursesAPICall } from "./helpers/getCoursesHelper";
 
 test.beforeEach(async ({ page }) => {
   await page.clock.install();
   await page.clock.setSystemTime(new Date("2026-02-01"));
   await page.goto("/");
+  await interceptGetAllOpensAPICall(page);
+  await interceptGetRegionsAPICall(page);
+  await interceptGetCoursesAPICall(page);
 });
 
 test("Check you can navigate to the open searcher screen", async ({ page }) => {
-  // Expect a title "to contain" a substring.
-  await interceptGetAllOpensAPICall(page);
-  await interceptGetRegionsAPICall(page);
   await page.click("#dropDownButton");
   await expect(page.locator("#buildATrip")).toBeVisible();
   await page.click("#openSearcher");
@@ -22,9 +23,6 @@ test("Check you can navigate to the open searcher screen", async ({ page }) => {
 });
 
 test("Check february content", async ({ page }) => {
-  // Expect a title "to contain" a substring.
-  await interceptGetAllOpensAPICall(page);
-  await interceptGetRegionsAPICall(page);
   await page.click("#dropDownButton");
   await expect(page.locator("#buildATrip")).toBeVisible();
   await page.click("#openSearcher");
@@ -40,9 +38,6 @@ test("Check february content", async ({ page }) => {
 });
 
 test("Check filter on keyword", async ({ page }) => {
-  // Expect a title "to contain" a substring.
-  await interceptGetAllOpensAPICall(page);
-  await interceptGetRegionsAPICall(page);
   await page.click("#dropDownButton");
   await expect(page.locator("#buildATrip")).toBeVisible();
   await page.click("#openSearcher");

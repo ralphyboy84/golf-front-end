@@ -1,9 +1,5 @@
 import { expect } from "@playwright/test";
-import { courses } from "../fixtures/getCourses";
-import {
-  tripCoursesBasic,
-  tripCoursesTooMany,
-} from "../fixtures/getCoursesForTrip";
+import { interceptGetCoursesAPICall } from "./getCoursesHelper";
 
 export async function createTrip(
   page,
@@ -14,7 +10,7 @@ export async function createTrip(
   milage,
   tripLength,
 ) {
-  await interceptGetCourseAPICall(page);
+  await interceptGetCoursesAPICall(page);
   await page.click("#dropDownButton");
   await page.click("#buildATrip");
   await page.click("#startTripBuilder");
@@ -50,35 +46,4 @@ export async function validateTripCards(page) {
   await expect(
     page.locator("#course2").locator(".card-body").locator("h5"),
   ).toHaveText(/Elie - Day 3/);
-}
-
-export async function interceptGetCourseAPICall(page) {
-  await page.route("**/api/getCourses.php", async (route) => {
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify(courses),
-    });
-  });
-}
-
-export async function interceptGetCoursesForTripAPICall(page) {
-  await page.route("**/api/getCourses.php*", async (route) => {
-    const url = new URL(route.request().url());
-    const travelDistanceOption = url.searchParams.get("travelDistanceOption");
-
-    let body;
-
-    if (travelDistanceOption == 20000) {
-      body = tripCoursesBasic;
-    } else if (travelDistanceOption == 40000) {
-      body = tripCoursesTooMany;
-    }
-
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify(body),
-    });
-  });
 }

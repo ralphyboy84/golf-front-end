@@ -3,12 +3,14 @@ import {
   filterByKeyWord,
   clearFilters,
   useYourLocationSwitch,
+  refreshCalendar,
 } from "../pages/calendar";
 import { buildFullTripSummary } from "../pages/buildFullTripSummary.js";
 import {
   updateCourseList,
   searchForAvailability,
 } from "../pages/dayAvailability.js";
+import { getAllOpensEndPoint } from "../pages/api";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -160,9 +162,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (event.target.closest("#clearFilters")) {
+      launchClearFiltersFunctions();
       event.preventDefault();
-
-      clearFilters();
     }
 
     if (event.target.closest("#useYourLocationForOpenFiltering")) {
@@ -200,4 +201,9 @@ function getMultiSelectValues(selectBox) {
   }
 
   return result;
+}
+
+async function launchClearFiltersFunctions() {
+  await clearFilters();
+  refreshCalendar(getAllOpensEndPoint);
 }

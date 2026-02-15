@@ -1,12 +1,8 @@
 import { test, expect } from "@playwright/test";
-import {
-  createTrip,
-  validateTripCards,
-  interceptGetCourseAPICall,
-  interceptGetCoursesForTripAPICall,
-} from "./helpers/createTripHelpers";
+import { createTrip, validateTripCards } from "./helpers/createTripHelpers";
 import { expectedRows } from "./fixtures/createTripFixtures";
 import { interceptGetCourseAvailabilityForDateAPICall } from "./helpers/getCourseAvailabilityForDate";
+import { interceptGetCoursesAPICall } from "./helpers/getCoursesHelper";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
@@ -37,7 +33,7 @@ test("Validate no date entered", async ({ page }) => {
 
 test("Validate no where staying selected", async ({ page }) => {
   // Expect a title "to contain" a substring.
-  await interceptGetCourseAPICall(page);
+  await interceptGetCoursesAPICall(page);
   await page.click("#dropDownButton");
   await page.click("#buildATrip");
   await page.click("#startTripBuilder");
@@ -53,7 +49,7 @@ test("Validate no where staying selected", async ({ page }) => {
 
 test("Validate no links or no links selected", async ({ page }) => {
   // Expect a title "to contain" a substring.
-  await interceptGetCourseAPICall(page);
+  await interceptGetCoursesAPICall(page);
   await page.click("#dropDownButton");
   await page.click("#buildATrip");
   await page.click("#startTripBuilder");
@@ -71,7 +67,7 @@ test("Validate no links or no links selected", async ({ page }) => {
 
 test("Validate no course category selected", async ({ page }) => {
   // Expect a title "to contain" a substring.
-  await interceptGetCourseAPICall(page);
+  await interceptGetCoursesAPICall(page);
   await page.click("#dropDownButton");
   await page.click("#buildATrip");
   await page.click("#startTripBuilder");
@@ -90,7 +86,7 @@ test("Validate no course category selected", async ({ page }) => {
 });
 
 test("Validate a trip is built", async ({ page }) => {
-  await interceptGetCoursesForTripAPICall(page);
+  await interceptGetCoursesAPICall(page);
   await interceptGetCourseAvailabilityForDateAPICall(page);
   await createTrip(
     page,
@@ -105,7 +101,7 @@ test("Validate a trip is built", async ({ page }) => {
 });
 
 test("Check for too many courses returned", async ({ page }) => {
-  await interceptGetCoursesForTripAPICall(page);
+  await interceptGetCoursesAPICall(page);
   await interceptGetCourseAvailabilityForDateAPICall(page);
   await createTrip(
     page,
@@ -155,7 +151,7 @@ test("Check for too many courses returned", async ({ page }) => {
 });
 
 test("Check trip rebuilt ok", async ({ page }) => {
-  await interceptGetCoursesForTripAPICall(page);
+  await interceptGetCoursesAPICall(page);
   await interceptGetCourseAvailabilityForDateAPICall(page);
   await createTrip(
     page,
