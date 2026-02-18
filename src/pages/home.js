@@ -12,7 +12,7 @@ export function loadHome() {
   <div class="flex gap-2">
     <div class="badge badge-primary h-auto text-center">528 Courses Loaded in the app</div>
     <div class="badge badge-accent h-auto text-center">354 Courses With Online Booking</div>
-    <div class="badge badge-info h-auto text-center">262 Courses With Open Competition Booking</div>
+    <div id='openSearcherBadge' class="badge badge-info h-auto text-center">262 Courses With Open Competition Booking</div>
   </div>
   `;
   app.innerHTML = buildCard(

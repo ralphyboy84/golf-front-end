@@ -11,6 +11,7 @@ import {
   searchForAvailability,
 } from "../pages/dayAvailability.js";
 import { getAllOpensEndPoint } from "../pages/api";
+import { openSearcher } from "../pages/calendar.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -178,6 +179,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target.closest("#searchForAvailability")) {
       event.preventDefault();
       searchForAvailability();
+    }
+
+    if (event.target.closest("#openSearcherBadge")) {
+      event.preventDefault();
+      openSearcher();
     }
   });
 
