@@ -185,6 +185,14 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       openSearcher();
     }
+
+    if (event.target.closest(".bookTripButton")) {
+      const button = event.target.closest(".bookTripButton");
+
+      if (button) {
+        window.open(button.dataset.bookingurl, "_blank");
+      }
+    }
   });
 
   document.body.addEventListener("change", function (event) {
@@ -213,4 +221,11 @@ function getMultiSelectValues(selectBox) {
 async function launchClearFiltersFunctions() {
   await clearFilters();
   refreshCalendar(getAllOpensEndPoint);
+}
+
+function bookTripButton(element) {
+  console.log(element);
+  const el = element.target; // the element the listener is attached to
+  console.log(el.dataset); // all data attributes
+  console.log(el.dataset.id);
 }

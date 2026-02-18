@@ -21,7 +21,7 @@ export function buildFullTripSummary() {
     if (count > 0) {
       hrStart = "<hr />";
     }
-
+    console.log(previousResults[x]);
     timeline += `
     <li>
       ${hrStart}
@@ -45,7 +45,7 @@ export function buildFullTripSummary() {
         <div>£${previousResults[x].price}</div>
         <div>From: ${previousResults[x].firstTime}</div>
         <div class="text-right">
-          <a class="btn btn-primary">Book</a>
+          <a class="btn btn-primary bookTripButton" data-bookingurl=${previousResults[x].bookingUrl}>Book</a>
         </div>
       </div>
       ${hrEnd}

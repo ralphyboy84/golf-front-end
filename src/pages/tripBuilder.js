@@ -327,6 +327,7 @@ function doTheHardBit(availabilityObject) {
         timesAvailable: firstAvailable.timesAvailable,
         firstTime: firstAvailable.firstTime,
         image: firstAvailable.image,
+        bookingUrl: firstAvailable.bookingUrl,
       });
 
       // Mark this date as used
