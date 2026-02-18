@@ -18,6 +18,11 @@ export async function dayAvailability() {
   const app = document.getElementById("app");
 
   app.innerHTML = `
+  <div class="flex justify-center mb-6">
+    <div class="card sm:max-w-sm md:max-w-xl bg-gray-100 border border-base-300 rounded-xl text-gray-900">
+      <figure><img src="images/arbroath.jpg" alt="Watch" /></figure>
+    </div>
+  </div>
   <input type='hidden' id='days' value='1' />
   <div class="card card-border bg-base-500 border border-base-300 w-full">
     <div class="card-body w-full">
