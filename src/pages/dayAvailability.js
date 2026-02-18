@@ -234,24 +234,28 @@ function displayContent(msg, travelInfo, courseId, weather) {
 
     if (weather[courseId]) {
       weatherInfo = buildCardRow(
+        `<i class='${weather[courseId].generalForecastIcon}'></i>`,
         weather[courseId].generalForecast,
         "General Forecast",
-        weather[courseId].generalForecastIcon,
       );
 
       weatherInfo += buildCardRow(
+        "<i class='bi-cloud-rain'></i>",
         weather[courseId].chanceOfRain,
         "Chance of Rain",
-        "bi-cloud-rain",
       );
 
       weatherInfo += buildCardRow(
+        "<i class='bi-thermometer'></i>",
         weather[courseId].tmeperature,
         "Daily High",
-        "bi-thermometer",
       );
 
-      weatherInfo += buildCardRow(weather[courseId].wind, "Wind", "bi-wind");
+      weatherInfo += buildCardRow(
+        "<i class='bi-wind'></i>",
+        weather[courseId].wind,
+        "Wind",
+      );
     }
 
     if (travelInfo[courseId]) {

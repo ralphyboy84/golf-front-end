@@ -50,7 +50,7 @@ foreach ($courses as $course) {
 
     if (isset($golfCourses[$course]["location"]) && $dateOk) {
         if ($_SERVER["HTTP_HOST"] == "localhost") {
-            $response = file_get_contents("../mockCalls/weather.json");
+            $response = file_get_contents("../../mockCalls/weather.json");
         } else {
             $lat = $golfCourses[$course]["location"]["lat"];
             $long = $golfCourses[$course]["location"]["lon"];
