@@ -175,14 +175,15 @@ document.addEventListener("DOMContentLoaded", () => {
       buildFullTripSummary();
     }
 
-    if (event.target.closest("#filterRegions")) {
-      event.preventDefault();
-      updateCourseList();
-    }
-
     if (event.target.closest("#searchForAvailability")) {
       event.preventDefault();
       searchForAvailability();
+    }
+  });
+
+  document.body.addEventListener("change", function (event) {
+    if (event.target.closest("#regionFilter")) {
+      updateCourseList();
     }
   });
 });

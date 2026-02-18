@@ -35,3 +35,15 @@ export async function getCourses(region) {
     `${import.meta.env.VITE_API_URL}api/getCourses.php?region=${region}`,
   ).then((res) => res.json());
 }
+
+export async function getMapDistance(whereStaying, courseList) {
+  return await fetch(
+    `${import.meta.env.VITE_API_URL}api/map/getDistance.php?from=${whereStaying}&to=${courseList}`,
+  ).then((res) => res.json());
+}
+
+export async function getWeather(courseList) {
+  return await fetch(
+    `${import.meta.env.VITE_API_URL}api/weather/getWeather.php?to=${courseList}&date=${document.getElementById("start").value}`,
+  ).then((res) => res.json());
+}
