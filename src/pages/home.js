@@ -16,7 +16,7 @@ export function loadHome() {
   </div>
   `;
   app.innerHTML = buildCard(
-    "standrews",
+    "standrewsold",
     "Welcome to Scottish Golf Tee Booker",
     content,
     "homePage",
