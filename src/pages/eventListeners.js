@@ -12,6 +12,7 @@ import {
 } from "../pages/dayAvailability.js";
 import { getAllOpensEndPoint } from "../pages/api";
 import { openSearcher } from "../pages/calendar.js";
+import { viewCourse } from "../pages/courseDirectory.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -192,6 +193,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (button) {
         window.open(button.dataset.bookingurl, "_blank");
       }
+    }
+
+    if (event.target.closest("#viewCourse")) {
+      event.preventDefault();
+      viewCourse();
     }
   });
 

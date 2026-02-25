@@ -1,6 +1,6 @@
 <?php
 
-require_once "courses.php";
+require_once "../api/courses.php";
 
 if ($_SERVER["HTTP_HOST"] == "localhost") {
     //dev settings
@@ -28,8 +28,8 @@ if ($_GET["load"] == "clubv1") {
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            require_once "call/clubV1Call.php";
-            require_once "processor/clubV1Processor.php";
+            require_once "../api/call/clubV1Call.php";
+            require_once "../api/processor/clubV1Processor.php";
 
             $ClubV1Call = new ClubV1Call();
             $ClubV1Processor = new ClubV1Processor();
@@ -60,8 +60,8 @@ if ($_GET["load"] == "clubv1") {
                         $slotsAvailable =
                             $openCompetitionInfo["slotsAvailable"];
 
-                        require_once "database/database.php";
-                        require_once "opens/opens.php";
+                        require_once "../api/database/database.php";
+                        require_once "../api/opens/opens.php";
 
                         $database = new database();
 
@@ -94,8 +94,8 @@ if ($_GET["load"] == "brs") {
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            require_once "call/brsCall.php";
-            require_once "processor/brsProcessor.php";
+            require_once "../api/call/brsCall.php";
+            require_once "../api/processor/brsProcessor.php";
 
             $BRSCall = new BRSCall();
             $BRSProcessor = new BRSProcessor();
@@ -119,8 +119,8 @@ if ($_GET["load"] == "brs") {
 
                     $slotsAvailable = $openCompetitionInfo["slotsAvailable"];
 
-                    require_once "database/database.php";
-                    require_once "opens/opens.php";
+                    require_once "../api/database/database.php";
+                    require_once "../api/opens/opens.php";
 
                     $database = new database();
 
@@ -151,8 +151,8 @@ if ($_GET["load"] == "intelligent") {
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            require_once "call/intelligentCall.php";
-            require_once "processor/intelligentProcessor.php";
+            require_once "../api/call/intelligentCall.php";
+            require_once "../api/processor/intelligentProcessor.php";
 
             $intelligentCall = new intelligentCall();
             $intelligentProcessor = new IntelligentProcessor();
@@ -185,8 +185,8 @@ if ($_GET["load"] == "intelligent") {
                         $slotsAvailable =
                             $openCompetitionInfo["slotsAvailable"];
 
-                        require_once "database/database.php";
-                        require_once "opens/opens.php";
+                        require_once "../api/database/database.php";
+                        require_once "../api/opens/opens.php";
 
                         $database = new database();
 

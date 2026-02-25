@@ -3,7 +3,7 @@ services:
     working_dir: /var/www/html
     build: .
     volumes:
-      - /Users/ralph/Documents/demo/golf-front-end:/var/www/html
+      - /Users/ralph/Documents/golf-front-end:/var/www/html
     ports:
       - 80:80
   database:
@@ -12,6 +12,8 @@ services:
       - /Users/ralph/Documents/Docker Databases/Golf:/var/lib/mysql
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 3306:3306
   phpmyadmin:
     image: phpmyadmin
     restart: always

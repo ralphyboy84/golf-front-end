@@ -1,7 +1,5 @@
 arbroath use something called sweet spot
 
-brs opens not loading from calendar
-
 barassie uses golf genius for opens
 
 look at mearns castle as they have prices differently
@@ -16,20 +14,17 @@ bathgate looks like it uses clubv1 for opens - check from 01/02
 
 none of the dotgolf opens work
 
-
 irvine does not use howdidido hub
 Gatehouse competitions not available yet
 
-
 moray new also has opens on it
-
 
 dotgolf appears to have a competitions for this day section on the tee booker
 
 UPDATE clubs
 SET location = ST_SRID(POINT(lon, lat), 4326)
 WHERE lat <> 0
-  AND lon <> 0;
+AND lon <> 0;
 
 Need to look at Carnoustie where all tee times are taken but still some slots free
 
@@ -50,6 +45,11 @@ Need to look at Carnoustie where all tee times are taken but still some slots fr
 dot golf open url;
 https://fraserburghgolfclub.org/Teebooking/SearchSlots.aspx?ClubId=2262&CourseId=2060&Date=2026-05-02&CompetitionId=64617
 
-
 34484
 2026-07-05
+
+INSERT INTO `clubs` (`id`, `name`, `bookingLink`, `openBookingLink`, `onlineBooking`, `openBooking`, `bookingSystem`, `openBookingSystem`, `availabilityDays`, `region`, `working`, `lat`, `lon`, `courseId`, `clubId`, `reason`, `baseUrl`, `clubv1hub`, `clubv1opencourseid`, `brsDomain`, `brsCourseId`, `top100`, `category`, `coursetype`, `image`) VALUES ('plgc', 'Paul Lawrie Golf Centre', 'https://www.paullawriegolfcentre.co.uk/', '', 'No', 'No', '', '', '', 'aberdeen', '', '57.11117646020003', '-2.1691151601346967', '0', '0', '', '', '', '0', '', '0', '0', 'e', 'nonlinks', 'No');
+
+
+
+Can you write me an individual description of the following golf courses in Scotland with each description being roughly 200 words. Can you make sure to use paragraphs as well

@@ -16,6 +16,7 @@ import { reBuildTrip } from "./pages/reBuildTrip.js";
 import { openSearcher } from "./pages/calendar.js";
 import { loadHome } from "./pages/home.js";
 import { dayAvailability } from "./pages/dayAvailability.js";
+import { courseDirectory } from "./pages/courseDirectory.js";
 
 export const router = new Navigo("/");
 
@@ -32,6 +33,7 @@ router
   .on("/fullSummaryButton", buildFullTripSummary)
   .on("/openSearcher", openSearcher)
   .on("/dayAvailability", dayAvailability)
+  .on("/courseDirectory", courseDirectory)
   .on("/", loadHome)
   .notFound(() => {
     document.getElementById("app").innerHTML = "<h1>404</h1>";

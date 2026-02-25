@@ -76,7 +76,7 @@ export async function getCoursesForDropDown(region) {
   }
 }
 
-function getSelectValues(select) {
+export function getSelectValues(select) {
   var result = [];
   var options = select && select.options;
   var opt;
@@ -285,6 +285,9 @@ function displayContent(msg, travelInfo, courseId, weather) {
       temp = "Sorry - there are no tee times available on this day";
     }
   }
+
+  console.log(msg);
+  console.log(courseId);
 
   const content = `
   <p class="card-text">${temp}</p>

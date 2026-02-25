@@ -10,8 +10,8 @@ export function loadHome() {
   <p class="mb-4 text-base">Tell us where you are staying, answer a few questions and we will go away and build a trip tailored to your needs.</p>
   <p class="mb-4 text-base">We also include Open Competitions in our search results - a relatively unknown way to play Scottish golf courses for significantly cheaper than the rack rate.</p>
   <div class="flex gap-2">
-    <div class="badge badge-primary h-auto text-center">528 Courses Loaded in the app</div>
-    <div class="badge badge-accent h-auto text-center">354 Courses With Online Booking</div>
+    <div class="badge badge-primary h-auto text-center">547 Courses Loaded in the app</div>
+    <div class="badge badge-accent h-auto text-center">357 Courses With Online Booking</div>
     <div id='openSearcherBadge' class="badge badge-info h-auto text-center">262 Courses With Open Competition Booking</div>
   </div>
   `;

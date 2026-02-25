@@ -47,3 +47,9 @@ export async function getWeather(courseList) {
     `${import.meta.env.VITE_API_URL}api/weather/getWeather.php?to=${courseList}&date=${document.getElementById("start").value}`,
   ).then((res) => res.json());
 }
+
+export async function getCourse(courseId) {
+  return await fetch(
+    `${import.meta.env.VITE_API_URL}api/getCourses.php?courseId=${courseId}`,
+  ).then((res) => res.json());
+}

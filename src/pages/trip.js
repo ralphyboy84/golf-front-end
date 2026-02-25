@@ -186,7 +186,7 @@ export async function courseCategory() {
       <a href='/lastQuestion' data-navigo class="btn btn-primary" id="lastQuestionButton">Onto The Last Question</a>
     </div>
     `;
-  app.innerHTML = buildCard("scotscraig", "Course Category", content);
+  app.innerHTML = buildCard("scotscraiggolfclub", "Course Category", content);
 }
 
 export async function lastQuestion() {

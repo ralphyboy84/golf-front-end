@@ -19,6 +19,10 @@ $sqlParams = [];
 $selectParams = [];
 $orderByParams = [];
 
+if (isset($_GET["courseId"]) && !empty($_GET["courseId"])) {
+    $sqlParams[] = " id = '{$_GET["courseId"]}' ";
+}
+
 if (isset($_GET["location"]) && !empty($_GET["location"])) {
     $sqlParams[] = " lat != '0.000000' ";
 }
@@ -149,6 +153,10 @@ if ($result->num_rows > 0) {
             "brsDomain" => $row["brsDomain"],
             "brsCourseId" => $row["brsCourseId"],
             "image" => $row["image"],
+            "top100" => $row["top100"],
+            "category" => $row["category"],
+            "coursetype" => $row["coursetype"],
+            "description" => $row["description"],
         ];
 
         unset($coursesArray);
