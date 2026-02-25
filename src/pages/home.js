@@ -15,7 +15,7 @@ export function loadHome() {
   `;
   app.innerHTML = buildCard(
     "standrewsold",
-    "Welcome to Scottish Golf Tee Booker",
+    "Welcome to Scottish Golf Database",
     content,
     "homePage",
   );
