@@ -13,6 +13,7 @@ import {
 import { getAllOpensEndPoint } from "../pages/api";
 import { openSearcher } from "../pages/calendar.js";
 import { viewCourse } from "../pages/courseDirectory.js";
+import { viewCourseGallery } from "../pages/courseGallery.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -198,6 +199,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target.closest("#viewCourse")) {
       event.preventDefault();
       viewCourse();
+    }
+
+    if (event.target.closest("#viewCourseGallery")) {
+      event.preventDefault();
+      const courseId = document
+        .getElementById("viewCourseGallery")
+        .getAttribute("data-courseid");
+
+      viewCourseGallery(courseId);
     }
   });
 

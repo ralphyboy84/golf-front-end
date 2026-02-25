@@ -24,6 +24,7 @@ export async function courseDirectory() {
     </div>
   </div>
   <div id='resultsDiv' class='pt-4'></div>
+  <div id='carouselDiv' class='pt-4'></div>
 `;
 
   const select = document.getElementById("courseDirectoryListSelect");
@@ -50,7 +51,6 @@ export async function viewCourse() {
   const courseInfo = await getCourse(courseId[0].course);
   const firstKey = Object.keys(courseInfo)[0];
   const club = courseInfo[firstKey];
-  console.log(club);
 
   let content = "";
 
@@ -92,10 +92,17 @@ export async function viewCourse() {
 
   if (club.image == "Yes") {
     imageToUse = firstKey;
+
+    content += `
+    <p class="card-text">
+      <a id="viewCourseGallery" class="btn btn-primary" data-courseid=${firstKey}>View Gallery</a>
+    </p>
+    `;
   }
 
   const card = buildCard(imageToUse, club.name, content);
   document.getElementById("resultsDiv").innerHTML = card;
+  document.getElementById("carouselDiv").innerHTML = "";
 }
 
 function nl2br(str) {
