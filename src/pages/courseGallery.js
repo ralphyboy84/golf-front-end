@@ -579,6 +579,9 @@ export function viewCourseGallery(courseId) {
     "0564",
     "0568",
   ];
+  const nairndunbargolf = ["-1", "-2", "-3", "-4", "-5"];
+  const nairngc = ["-1", "-2", "-3", "-4", "-5", "-6", "-7"];
+  const trumpnew = ["-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9"];
 
   const images = {
     boatofgarten,
@@ -613,6 +616,9 @@ export function viewCourseGallery(courseId) {
     northberwick,
     carnoustie,
     kingsbarns,
+    nairndunbargolf,
+    nairngc,
+    trumpnew,
   };
 
   let x = 1;

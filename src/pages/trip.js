@@ -158,7 +158,7 @@ export async function linksOrNoLinks() {
       <a href='/courseCategory' data-navigo class="btn btn-primary" id="courseCategoryButton">Not Much Longer Now</a>
     </div>
     `;
-  app.innerHTML = buildCard("nairn", "Links Or No Links?", content);
+  app.innerHTML = buildCard("nairngc", "Links Or No Links?", content);
 }
 
 export async function courseCategory() {
