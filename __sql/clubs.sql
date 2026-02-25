@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Generation Time: Feb 25, 2026 at 06:12 PM
+-- Generation Time: Feb 25, 2026 at 06:15 PM
 -- Server version: 8.2.0
 -- PHP Version: 8.3.30
 
@@ -45,7 +45,7 @@ CREATE TABLE `clubs` (
   `brsCourseId` int NOT NULL,
   `top100` tinyint(1) NOT NULL DEFAULT '0',
   `category` enum('a','b','c','d','e') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'e',
-  `location` point SRID 4326 DEFAULT NULL,
+  `location` point DEFAULT NULL,
   `coursetype` enum('links','nonlinks') NOT NULL DEFAULT 'nonlinks',
   `image` enum('Yes','No') NOT NULL DEFAULT 'No',
   `description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci

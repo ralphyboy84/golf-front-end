@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Generation Time: Feb 25, 2026 at 06:13 PM
+-- Generation Time: Feb 25, 2026 at 06:17 PM
 -- Server version: 8.2.0
 -- PHP Version: 8.3.30
 
@@ -14,6 +14,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `golf`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `opens`
+--
+
+CREATE TABLE `opens` (
+  `clubid` varchar(40) NOT NULL,
+  `courseid` varchar(40) NOT NULL,
+  `openid` varchar(40) NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `date` date NOT NULL,
+  `availability` enum('Yes','No') NOT NULL,
+  `slots` int NOT NULL,
+  `token` varchar(100) NOT NULL,
+  `lastupdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createdon` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `opens`
@@ -1624,4 +1643,14 @@ INSERT INTO `opens` (`clubid`, `courseid`, `openid`, `name`, `date`, `availabili
 ('woll', '0', '5715', 'Cancer Research Charity Golf Day', '2027-04-23', 'Yes', 2, '', '2026-02-25 17:02:07', '2026-01-31 19:01:53'),
 ('woll', '0', '5720', 'Border Club Open - Stableford', '2027-05-22', 'Yes', 2, '', '2026-01-31 19:06:09', '2026-01-31 19:01:53'),
 ('woll', '0', '5728', 'Border Club Open - Stableford', '2027-06-19', 'Yes', 2, '', '2026-02-25 17:02:07', '2026-01-31 19:01:53');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `opens`
+--
+ALTER TABLE `opens`
+  ADD PRIMARY KEY (`clubid`,`courseid`,`openid`,`date`);
 COMMIT;
