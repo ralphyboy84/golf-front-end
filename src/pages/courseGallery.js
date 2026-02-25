@@ -582,6 +582,7 @@ export function viewCourseGallery(courseId) {
   const nairndunbargolf = ["-1", "-2", "-3", "-4", "-5"];
   const nairngc = ["-1", "-2", "-3", "-4", "-5", "-6", "-7"];
   const trumpnew = ["-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9"];
+  const banchory = ["-1", "-2", "-3", "-4", "-5", "-6", "-7"];
 
   const images = {
     boatofgarten,
@@ -619,6 +620,7 @@ export function viewCourseGallery(courseId) {
     nairndunbargolf,
     nairngc,
     trumpnew,
+    banchory,
   };
 
   let x = 1;
