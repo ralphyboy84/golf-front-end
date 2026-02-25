@@ -5,10 +5,8 @@ export function loadHome() {
   const app = document.getElementById("app");
 
   const content = `
-  <p class="mb-4 text-base">Always fancied a trip to Scotland, but found it to be too overwhelming to workout where to play? Put off by the cost? Don't know where to start?</p>
-  <p class="mb-4 text-base">Well this app is exactly what you are looking for.</p>
-  <p class="mb-4 text-base">Tell us where you are staying, answer a few questions and we will go away and build a trip tailored to your needs.</p>
-  <p class="mb-4 text-base">We also include Open Competitions in our search results - a relatively unknown way to play Scottish golf courses for significantly cheaper than the rack rate.</p>
+  <p class="mb-4 text-base">Welcome to the Scottish Golf Database - the most comprehensive resource for Scottish Golf on the internet</p>
+  <p class="mb-4 text-base">Where it is checking course availability, searching for open competitions, or just merely wanting to look at pictures of beautiful Scottish golf courses, we have everything you could ever need.</p>
   <div class="flex gap-2">
     <div class="badge badge-primary h-auto text-center">547 Courses Loaded in the app</div>
     <div class="badge badge-accent h-auto text-center">357 Courses With Online Booking</div>
