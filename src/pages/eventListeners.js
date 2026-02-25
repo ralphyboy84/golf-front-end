@@ -183,11 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
       searchForAvailability();
     }
 
-    if (event.target.closest("#openSearcherBadge")) {
-      event.preventDefault();
-      openSearcher();
-    }
-
     if (event.target.closest(".bookTripButton")) {
       const button = event.target.closest(".bookTripButton");
 
