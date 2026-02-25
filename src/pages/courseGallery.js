@@ -1,27 +1,7 @@
 export function viewCourseGallery(courseId) {
   const boatofgarten = ["0440-2", "0441-2", "0436-Enhanced-NR"];
-  const alwoodley = ["0353", "0357", "0362"];
   const corrie = ["0123", "0125", "0130"];
   const fraserburgh = ["0179", "0181", "0186", "0188", "0191"];
-  const royalporthcawl = [
-    "0459",
-    "0460",
-    "0461",
-    "0463",
-    "0464",
-    "0465",
-    "0467",
-    "0469",
-    "0470",
-    "0471",
-    "0472",
-    "0473",
-    "0474",
-    "0475",
-    "0476",
-    "0477",
-    "0479",
-  ];
   const ardfin = [
     "0059",
     "0060",
@@ -81,18 +61,7 @@ export function viewCourseGallery(courseId) {
     "0898-Enhanced-NR",
     "0909",
   ];
-  const silloth = [
-    "0217-Enhanced-NR",
-    "0218-Enhanced-NR",
-    "0219-Enhanced-NR",
-    "0220",
-    "0221",
-    "0227",
-    "0242",
-    "0243",
-    "0247-Enhanced-NR",
-  ];
-  const skibo = [
+  const carnegie = [
     "0577-Enhanced-NR",
     "0578-Enhanced-NR",
     "0580-Enhanced-NR",
@@ -101,22 +70,6 @@ export function viewCourseGallery(courseId) {
     "0585-Enhanced-NR",
     "0586-Enhanced-NR",
     "0588-Enhanced-NR",
-  ];
-  const ganton = [
-    "0296-Enhanced-NR",
-    "0297-Enhanced-NR",
-    "0311-Enhanced-NR",
-    "0319-Enhanced-NR",
-    "0320-Enhanced-NR",
-    "0321-Enhanced-NR",
-    "0323-Enhanced-NR",
-    "0324-Enhanced-NR",
-    "0326-Enhanced-NR",
-    "0328-Enhanced-NR",
-    "0329-Enhanced-NR",
-    "0330-Enhanced-NR",
-    "0331-Enhanced-NR",
-    "0332-Enhanced-NR",
   ];
   const brora = [
     "0598-Enhanced-NR",
@@ -214,28 +167,6 @@ export function viewCourseGallery(courseId) {
     "0962-Enhanced-NR",
     "0963-Enhanced-NR",
   ];
-  const birkdale = [
-    "0364-Enhanced-NR",
-    "0365-Enhanced-NR",
-    "0366-Enhanced-NR",
-    "0367-Enhanced-NR",
-    "0368-Enhanced-NR",
-    "0369-Enhanced-NR",
-    "0370-Enhanced-NR",
-    "0371-Enhanced-NR",
-    "0372-Enhanced-NR",
-    "0373-Enhanced-NR",
-    "0374-Enhanced-NR",
-    "0375-Enhanced-NR",
-    "0376-Enhanced-NR",
-    "0378-Enhanced-NR",
-    "0379-Enhanced-NR",
-    "0380-Enhanced-NR",
-    "0381-Enhanced-NR",
-    "0382-Enhanced-NR",
-    "0383-Enhanced-NR",
-    "0384-Enhanced-NR",
-  ];
   const crudenbay = [
     "0624-Enhanced-NR",
     "0629-Enhanced-NR",
@@ -257,7 +188,7 @@ export function viewCourseGallery(courseId) {
     "0912-Enhanced-NR",
     "0913-Enhanced-NR",
   ];
-  const dumbarnie = [
+  const Dumbarnie = [
     "0480-Enhanced-NR",
     "0481-Enhanced-NR",
     "0482-Enhanced-NR",
@@ -341,7 +272,7 @@ export function viewCourseGallery(courseId) {
     "0694",
     "0696",
   ];
-  const trumpaberdeen = [
+  const trumpold = [
     "0598-Enhanced-NR",
     "0599-Enhanced-NR",
     "0600-Enhanced-NR",
@@ -376,7 +307,7 @@ export function viewCourseGallery(courseId) {
     "0652-Enhanced-NR",
     "0653-Enhanced-NR",
   ];
-  const standrews = [
+  const standrewsold = [
     "0484-Enhanced-NR",
     "0487-Enhanced-NR",
     "0490-Enhanced-NR",
@@ -459,7 +390,7 @@ export function viewCourseGallery(courseId) {
     "0985-Enhanced-NR",
     "0987-Enhanced-NR",
   ];
-  const buddon = [
+  const carnoustiebuddon = [
     "0347-Enhanced-NR",
     "0353-Enhanced-NR",
     "0354-Enhanced-NR",
@@ -496,7 +427,7 @@ export function viewCourseGallery(courseId) {
     "0589_D",
     "0593_D",
   ];
-  const burnside = [
+  const carnoustieburnside = [
     "0319-Enhanced-NR",
     "0320-Enhanced-NR",
     "0321-Enhanced-NR",
@@ -522,109 +453,6 @@ export function viewCourseGallery(courseId) {
     "0511_D",
     "0596_D",
   ];
-  const portstewart = [
-    "0641-Enhanced-NR",
-    "0642-Enhanced-NR",
-    "0643-Enhanced-NR",
-    "0644-Enhanced-NR",
-    "0645-Enhanced-NR",
-    "0646-Enhanced-NR",
-    "0647-Enhanced-NR",
-    "0648-Enhanced-NR",
-    "0649-Enhanced-NR",
-    "0650-Enhanced-NR",
-    "0651-Enhanced-NR",
-    "0652-Enhanced-NR",
-    "0653-Enhanced-NR",
-    "0654-Enhanced-NR",
-    "0655-Enhanced-NR",
-    "0656-Enhanced-NR",
-    "0657-Enhanced-NR",
-    "0659-Enhanced-NR",
-    "0660-Enhanced-NR",
-    "0661-Enhanced-NR",
-    "0662-Enhanced-NR",
-    "0663-Enhanced-NR",
-    "0664-Enhanced-NR",
-  ];
-  const royalcountydown = [
-    "0667-Enhanced-NR",
-    "0668-Enhanced-NR",
-    "0669-Enhanced-NR",
-    "0670-Enhanced-NR",
-    "0671-Enhanced-NR",
-    "0672-Enhanced-NR",
-    "0674-Enhanced-NR",
-    "0675-Enhanced-NR",
-    "0676-Enhanced-NR",
-    "0677-Enhanced-NR",
-    "0678-Enhanced-NR",
-    "0679-Enhanced-NR",
-    "0680-Enhanced-NR",
-    "0682-Enhanced-NR",
-    "0683-Enhanced-NR",
-    "0685-Enhanced-NR",
-    "0689-Enhanced-NR",
-    "0690-Enhanced-NR",
-    "0692-Enhanced-NR",
-    "0694-Enhanced-NR",
-    "0696-Enhanced-NR",
-    "0697-Enhanced-NR",
-    "0698-Enhanced-NR",
-    "0699-Enhanced-NR",
-    "0701-Enhanced-NR",
-    "0702-Enhanced-NR",
-    "0703-Enhanced-NR",
-    "0705-Enhanced-NR",
-    "0706-Enhanced-NR",
-    "0708-Enhanced-NR",
-    "0710-Enhanced-NR",
-    "0711-Enhanced-NR",
-    "0713-Enhanced-NR",
-    "0714-Enhanced-NR",
-    "0717-Enhanced-NR",
-    "0718-Enhanced-NR",
-  ];
-  const royalportrush = [
-    "0590-Enhanced-NR",
-    "0591-Enhanced-NR",
-    "0592-Enhanced-NR",
-    "0593-Enhanced-NR",
-    "0596-Enhanced-NR",
-    "0597-Enhanced-NR",
-    "0598-Enhanced-NR",
-    "0599-Enhanced-NR",
-    "0600-Enhanced-NR",
-    "0601-Enhanced-NR",
-    "0602-Enhanced-NR",
-    "0603-Enhanced-NR",
-    "0604-Enhanced-NR",
-    "0605-Enhanced-NR",
-    "0606-Enhanced-NR",
-    "0607-Enhanced-NR",
-    "0610-Enhanced-NR",
-    "0612-Enhanced-NR",
-    "0613-Enhanced-NR",
-    "0614-Enhanced-NR",
-    "0615-Enhanced-NR",
-    "0617-Enhanced-NR",
-    "0621-Enhanced-NR",
-    "0622-Enhanced-NR",
-    "0624-Enhanced-NR",
-    "0625-Enhanced-NR",
-    "0626-Enhanced-NR",
-    "0627-Enhanced-NR",
-    "0628-Enhanced-NR",
-    "0629-Enhanced-NR",
-    "0630-Enhanced-NR",
-    "0631-Enhanced-NR",
-    "0632-Enhanced-NR",
-    "0633-Enhanced-NR",
-    "0635-Enhanced-NR",
-    "0637-Enhanced-NR",
-    "0639-Enhanced-NR",
-  ];
-
   const montrose = [
     "0175_D",
     "0176_D",
@@ -635,7 +463,6 @@ export function viewCourseGallery(courseId) {
     "0181_D",
     "0182_D",
   ];
-
   const northberwick = [
     "0011_D",
     "0015_D",
@@ -659,40 +486,32 @@ export function viewCourseGallery(courseId) {
 
   const images = {
     boatofgarten,
-    alwoodley,
     corrie,
     fraserburgh,
-    royalporthcawl,
     ardfin,
     castlestuart,
     elie,
-    silloth,
-    skibo,
-    ganton,
+    carnegie,
     brora,
     fortrose,
     monifieth,
     panmure,
-    birkdale,
     crudenbay,
-    dumbarnie,
+    Dumbarnie,
     muirfield,
     renaissance,
     lundinlinks,
     shiskine,
     ailsa,
-    trumpaberdeen,
+    trumpold,
     royalaberdeen,
     murcar,
-    standrews,
+    standrewsold,
     rosemount,
     arbroath,
     machrie,
-    buddon,
-    burnside,
-    portstewart,
-    royalcountydown,
-    royalportrush,
+    carnoustiebuddon,
+    carnoustieburnside,
     montrose,
     northberwick,
   };
