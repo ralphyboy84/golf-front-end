@@ -1,10 +1,15 @@
 import { getFullCourseList, getCourse } from "../pages/api";
 import { getSelectValues } from "../pages/dayAvailability";
-import { buildCard, buildCardRow } from "../pages/components";
+import { buildCard, buildCardRow, getErrorMessage } from "../pages/components";
 import { capitalizeFirstChar } from "../../src/pages/selectBoxes";
 
 export async function courseDirectory() {
   const courses = await getFullCourseList();
+
+  const noCourseAlertMsg = getErrorMessage(
+    "noCourseSelectedError",
+    "You have not selected a course",
+  );
 
   document.getElementById("app").innerHTML = `
   <div class="flex justify-center mb-6">
@@ -20,6 +25,7 @@ export async function courseDirectory() {
         <div class="w-full">Courses:</div>
         <div class="w-full"><select id='courseDirectoryListSelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select"><option value=''>Select....</option></select></div>
       </div> 
+      ${noCourseAlertMsg}
       <div class="w-full justify-center text-center"><a id="viewCourse" class="btn btn-primary">View Course</a></div>
     </div>
   </div>

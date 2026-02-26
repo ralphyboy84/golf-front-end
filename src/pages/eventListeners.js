@@ -224,6 +224,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (event.target.closest("#viewCourse")) {
       event.preventDefault();
+
+      const courseCategory = document.getElementById(
+        "courseDirectoryListSelect",
+      ).value;
+
+      if (!courseCategory.length) {
+        document
+          .getElementById("courseDirectoryListSelect")
+          .classList.add("input-error");
+        document
+          .getElementById("noCourseSelectedError")
+          .classList.remove("hidden");
+        return;
+      }
+
+      document
+        .getElementById("courseDirectoryListSelect")
+        .classList.remove("input-error");
+      document.getElementById("noCourseSelectedError").classList.add("hidden");
+
       viewCourse();
     }
 

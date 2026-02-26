@@ -17,6 +17,21 @@ test("Check you can navigate to index screen", async ({ page }) => {
   );
 });
 
+test("Check no search with no course", async ({ page }) => {
+  await page.click("#dropDownButton");
+  await expect(page.locator("#courseDirectory")).toBeVisible();
+  await page.click("#courseDirectory");
+  await expect(page.locator("#courseDirectoryHeader")).toBeVisible();
+  await page.click("#viewCourse");
+  await expect(
+    page.locator("#resultsDiv").locator("#levenlinks_div"),
+  ).not.toBeVisible();
+  await expect(page.locator("#noCourseSelectedError")).toBeVisible();
+  await expect(page.locator("#noCourseSelectedError")).toHaveText(
+    /You have not selected a course/,
+  );
+});
+
 test("Check you view Leven", async ({ page }) => {
   // Expect a title "to contain" a substring.
   await page.click("#dropDownButton");
