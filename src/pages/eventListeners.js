@@ -191,6 +191,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      document.getElementById("start").classList.remove("input-error");
+      document
+        .getElementById("dayAvailabilityDateError")
+        .classList.add("hidden");
+
       const courseCategory = getMultiSelectValues(
         document.getElementById("clubsSelect"),
       );
@@ -202,6 +207,9 @@ document.addEventListener("DOMContentLoaded", () => {
           .classList.remove("hidden");
         return;
       }
+
+      document.getElementById("clubsSelect").classList.remove("input-error");
+      document.getElementById("noCourseSelectedError").classList.add("hidden");
 
       searchForAvailability();
     }
