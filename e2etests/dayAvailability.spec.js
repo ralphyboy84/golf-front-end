@@ -1,10 +1,12 @@
 import { test, expect } from "@playwright/test";
 import { interceptGetCourseAvailabilityForDateAPICall } from "./helpers/getCourseAvailabilityForDate";
+import { interceptGetCoursesAPICall } from "./helpers/getCoursesHelper";
 
 test.beforeEach(async ({ page }) => {
   await page.clock.install();
   await page.clock.setSystemTime(new Date("2026-02-01"));
   await page.goto("/");
+  await interceptGetCoursesAPICall(page);
 });
 
 test("Check you can navigate to index screen", async ({ page }) => {
