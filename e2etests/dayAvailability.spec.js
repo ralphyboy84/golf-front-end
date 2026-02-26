@@ -48,7 +48,7 @@ test("Check no search with no course", async ({ page }) => {
   );
 });
 
-test.only("Search for Tain with availability", async ({ page }) => {
+test("Search for Tain with availability", async ({ page }) => {
   await interceptGetCourseAvailabilityForDateAPICall(page);
 
   await page.click("#dropDownButton");
