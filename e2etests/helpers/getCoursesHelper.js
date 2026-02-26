@@ -2,12 +2,15 @@ import {
   tripCoursesBasic,
   tripCoursesTooMany,
   getAllCourses,
+  levenCourseInfo,
+  aberdourCourseInfo,
 } from "../fixtures/getCoursesForTrip";
 
 export async function interceptGetCoursesAPICall(page) {
   await page.route("**/api/getCourses.php*", async (route) => {
     const url = new URL(route.request().url());
     const travelDistanceOption = url.searchParams.get("travelDistanceOption");
+    const courseId = url.searchParams.get("courseId");
 
     let body = getAllCourses;
 
@@ -15,9 +18,11 @@ export async function interceptGetCoursesAPICall(page) {
       body = tripCoursesBasic;
     } else if (travelDistanceOption == 40000) {
       body = tripCoursesTooMany;
+    } else if (courseId == "levenlinks") {
+      body = levenCourseInfo;
+    } else if (courseId == "aberdour") {
+      body = aberdourCourseInfo;
     }
-
-    console.log(body);
 
     await route.fulfill({
       status: 200,

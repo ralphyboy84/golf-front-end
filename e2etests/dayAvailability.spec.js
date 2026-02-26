@@ -1,12 +1,17 @@
 import { test, expect } from "@playwright/test";
 import { interceptGetCourseAvailabilityForDateAPICall } from "./helpers/getCourseAvailabilityForDate";
 import { interceptGetCoursesAPICall } from "./helpers/getCoursesHelper";
+import { interceptGetDistanceAPICall } from "./helpers/getDistanceHelper";
+import { interceptGetWeatherAPICall } from "./helpers/getWeatherHelper";
 
 test.beforeEach(async ({ page }) => {
   await page.clock.install();
   await page.clock.setSystemTime(new Date("2026-02-01"));
   await page.goto("/");
   await interceptGetCoursesAPICall(page);
+  await interceptGetCourseAvailabilityForDateAPICall(page);
+  await interceptGetDistanceAPICall(page);
+  await interceptGetWeatherAPICall(page);
 });
 
 test("Check you can navigate to index screen", async ({ page }) => {
@@ -17,8 +22,6 @@ test("Check you can navigate to index screen", async ({ page }) => {
 });
 
 test("Check no search with no date", async ({ page }) => {
-  await interceptGetCourseAvailabilityForDateAPICall(page);
-
   await page.click("#dropDownButton");
   await expect(page.locator("#dayAvailability")).toBeVisible();
   await page.click("#dayAvailability");
@@ -33,8 +36,6 @@ test("Check no search with no date", async ({ page }) => {
 });
 
 test("Check no search with no course", async ({ page }) => {
-  await interceptGetCourseAvailabilityForDateAPICall(page);
-
   await page.click("#dropDownButton");
   await expect(page.locator("#dayAvailability")).toBeVisible();
   await page.click("#dayAvailability");
@@ -49,8 +50,6 @@ test("Check no search with no course", async ({ page }) => {
 });
 
 test("Search for Tain with availability", async ({ page }) => {
-  await interceptGetCourseAvailabilityForDateAPICall(page);
-
   await page.click("#dropDownButton");
   await expect(page.locator("#dayAvailability")).toBeVisible();
   await page.click("#dayAvailability");
@@ -65,8 +64,6 @@ test("Search for Tain with availability", async ({ page }) => {
 });
 
 test("Search for Tain and Brora with availability", async ({ page }) => {
-  await interceptGetCourseAvailabilityForDateAPICall(page);
-
   await page.click("#dropDownButton");
   await expect(page.locator("#dayAvailability")).toBeVisible();
   await page.click("#dayAvailability");
@@ -89,8 +86,6 @@ test("Search for Tain and Brora with availability", async ({ page }) => {
 });
 
 test("Search for Tain with availability and an Open", async ({ page }) => {
-  await interceptGetCourseAvailabilityForDateAPICall(page);
-
   await page.click("#dropDownButton");
   await expect(page.locator("#dayAvailability")).toBeVisible();
   await page.click("#dayAvailability");
@@ -108,8 +103,6 @@ test("Search for Tain with availability and an Open", async ({ page }) => {
 });
 
 test("Search for Tain with no availability", async ({ page }) => {
-  await interceptGetCourseAvailabilityForDateAPICall(page);
-
   await page.click("#dropDownButton");
   await expect(page.locator("#dayAvailability")).toBeVisible();
   await page.click("#dayAvailability");
