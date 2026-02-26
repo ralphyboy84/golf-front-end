@@ -6,7 +6,7 @@ import {
   getCourseAvailabilityForDate,
 } from "../pages/api";
 import { populateSelectOptionsForRegionFilter } from "../pages/selectBoxes";
-import { buildCard, buildCardRow } from "../pages/components";
+import { buildCard, buildCardRow, getErrorMessage } from "../pages/components";
 import {
   iconPound,
   iconSlots,
@@ -17,9 +17,14 @@ import {
 export async function dayAvailability() {
   const app = document.getElementById("app");
 
+  const alertMsg = getErrorMessage(
+    "dayAvailabilityDateError",
+    "You have not entered a date",
+  );
+
   app.innerHTML = `
   <div class="flex justify-center mb-6">
-    <div class="card sm:max-w-sm md:max-w-xl bg-gray-100 border border-base-300 rounded-xl text-gray-900">
+    <div class="card sm:max-w-sm md:max-w-xl bg-gray-100 border border-base-300 rounded-xl text-gray-900 overflow-hidden">
       <figure><img src="images/arbroath.jpg" alt="Watch" /></figure>
     </div>
   </div>
@@ -30,6 +35,9 @@ export async function dayAvailability() {
       <div class="grid grid-cols-2 gap-4 items-center w-full">
         <div class="w-full">Enter Date:</div>
         <div class="w-full"><input type='date' id='start' value='' class='input bg-gray-50 text-gray-900' /></div>
+      </div>
+      ${alertMsg}
+      <div class="grid grid-cols-2 gap-4 items-center w-full">
         <div class="w-full">Regions:</div>
         <div class="w-full"><select id="regionFilter" class="select w-full appearance-none bg-gray-50 text-gray-900" aria-label="select"><option value=''>Select....</option></select></div>
         <div class="w-full">Courses:</div>

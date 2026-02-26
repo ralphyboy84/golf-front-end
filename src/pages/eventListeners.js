@@ -11,9 +11,9 @@ import {
   searchForAvailability,
 } from "../pages/dayAvailability.js";
 import { getAllOpensEndPoint } from "../pages/api";
-import { openSearcher } from "../pages/calendar.js";
 import { viewCourse } from "../pages/courseDirectory.js";
-import { viewCourseGallery } from "../pages/courseGallery.js";
+import { viewCourseGallery } from "../pages/courseGallery/courseGallery.js";
+import { images } from "../pages/courseGallery/courseVariables";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -180,6 +180,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (event.target.closest("#searchForAvailability")) {
       event.preventDefault();
+
+      const dateValue = document.getElementById("start").value;
+
+      if (!dateValue) {
+        document.getElementById("start").classList.add("input-error");
+        document
+          .getElementById("dayAvailabilityDateError")
+          .classList.remove("hidden");
+        return;
+      }
+
       searchForAvailability();
     }
 
@@ -202,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .getElementById("viewCourseGallery")
         .getAttribute("data-courseid");
 
-      viewCourseGallery(courseId);
+      viewCourseGallery(courseId, images);
     }
   });
 
