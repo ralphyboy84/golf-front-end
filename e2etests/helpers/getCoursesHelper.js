@@ -17,6 +17,8 @@ export async function interceptGetCoursesAPICall(page) {
       body = tripCoursesTooMany;
     }
 
+    console.log(body);
+
     await route.fulfill({
       status: 200,
       contentType: "application/json",
