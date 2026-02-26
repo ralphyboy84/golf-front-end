@@ -583,6 +583,35 @@ export function viewCourseGallery(courseId) {
   const nairngc = ["-1", "-2", "-3", "-4", "-5", "-6", "-7"];
   const trumpnew = ["-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9"];
   const banchory = ["-1", "-2", "-3", "-4", "-5", "-6", "-7"];
+  const standrewscastle = ["-1", "-2", "-3", "-4", "-5"];
+  const kilspindie = ["-1", "-2"];
+  const Craigielaw = ["-1", "-2"];
+  const grantownonspey = [
+    "-1",
+    "-2",
+    "-3",
+    "-4",
+    "-5",
+    "-6",
+    "-7",
+    "-8",
+    "-9",
+    "-10",
+  ];
+  const gleneagleskings = ["-1", "-2"];
+  const gleneaglesqueens = [
+    "-1",
+    "-2",
+    "-3",
+    "-4",
+    "-5",
+    "-6",
+    "-7",
+    "-8",
+    "-9",
+    "-10",
+    "-11",
+  ];
 
   const images = {
     boatofgarten,
@@ -621,6 +650,12 @@ export function viewCourseGallery(courseId) {
     nairngc,
     trumpnew,
     banchory,
+    standrewscastle,
+    kilspindie,
+    Craigielaw,
+    grantownonspey,
+    gleneagleskings,
+    gleneaglesqueens,
   };
 
   let x = 1;
