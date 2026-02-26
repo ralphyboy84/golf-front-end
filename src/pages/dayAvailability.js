@@ -22,6 +22,11 @@ export async function dayAvailability() {
     "You have not entered a date",
   );
 
+  const noCourseAlertMsg = getErrorMessage(
+    "noCourseSelectedError",
+    "You have not selected a course",
+  );
+
   app.innerHTML = `
   <div class="flex justify-center mb-6">
     <div class="card sm:max-w-sm md:max-w-xl bg-gray-100 border border-base-300 rounded-xl text-gray-900 overflow-hidden">
@@ -42,7 +47,8 @@ export async function dayAvailability() {
         <div class="w-full"><select id="regionFilter" class="select w-full appearance-none bg-gray-50 text-gray-900" aria-label="select"><option value=''>Select....</option></select></div>
         <div class="w-full">Courses:</div>
         <div class="w-full"><select id="clubsSelect" multiple class="select w-full appearance-none bg-gray-50 text-gray-900" aria-label="select"></select></div>
-      </div> 
+      </div>
+      ${noCourseAlertMsg}
       <div class="w-full justify-center text-center"><a id="searchForAvailability" class="btn btn-primary">Search For Availability</a></div>
     </div>
   </div>

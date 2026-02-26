@@ -191,6 +191,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      const courseCategory = getMultiSelectValues(
+        document.getElementById("clubsSelect"),
+      );
+
+      if (!courseCategory.length) {
+        document.getElementById("clubsSelect").classList.add("input-error");
+        document
+          .getElementById("noCourseSelectedError")
+          .classList.remove("hidden");
+        return;
+      }
+
       searchForAvailability();
     }
 

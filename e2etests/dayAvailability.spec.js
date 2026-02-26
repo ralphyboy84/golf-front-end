@@ -30,6 +30,22 @@ test("Check no search with no date", async ({ page }) => {
   );
 });
 
+test("Check no search with no course", async ({ page }) => {
+  await interceptGetCourseAvailabilityForDateAPICall(page);
+
+  await page.click("#dropDownButton");
+  await expect(page.locator("#dayAvailability")).toBeVisible();
+  await page.click("#dayAvailability");
+  await expect(page.locator("#searchForAvailability")).toBeVisible();
+  await page.fill("#start", "2026-02-02");
+  await page.click("#searchForAvailability");
+  await expect(page.locator("#resultsDiv").locator("#tain")).not.toBeVisible();
+  await expect(page.locator("#noCourseSelectedError")).toBeVisible();
+  await expect(page.locator("#noCourseSelectedError")).toHaveText(
+    /You have not selected a course/,
+  );
+});
+
 test("Search for Tain with availability", async ({ page }) => {
   await interceptGetCourseAvailabilityForDateAPICall(page);
 
@@ -43,6 +59,30 @@ test("Search for Tain with availability", async ({ page }) => {
   await expect(page.locator("#resultsDiv").locator("#tain")).toBeVisible();
   await expect(
     page.locator("#resultsDiv").locator("#tain").locator(".card-text"),
+  ).toHaveText(/Good news! There are tee times available on this day/);
+});
+
+test("Search for Tain and Brora with availability", async ({ page }) => {
+  await interceptGetCourseAvailabilityForDateAPICall(page);
+
+  await page.click("#dropDownButton");
+  await expect(page.locator("#dayAvailability")).toBeVisible();
+  await page.click("#dayAvailability");
+  await expect(page.locator("#searchForAvailability")).toBeVisible();
+  await page.fill("#start", "2026-02-02");
+  await page
+    .locator("#clubsSelect")
+    .selectOption([{ label: "Tain" }, { label: "Brora" }]);
+  await page.click("#searchForAvailability");
+  await expect(page.locator("#resultsDiv").locator("#tain")).toBeVisible();
+  await expect(
+    page.locator("#resultsDiv").locator("#tain").locator(".card-text"),
+  ).toHaveText(/Good news! There are tee times available on this day/);
+  await expect(
+    page.locator("#resultsDiv").locator("#broragolfclub"),
+  ).toBeVisible();
+  await expect(
+    page.locator("#resultsDiv").locator("#broragolfclub").locator(".card-text"),
   ).toHaveText(/Good news! There are tee times available on this day/);
 });
 

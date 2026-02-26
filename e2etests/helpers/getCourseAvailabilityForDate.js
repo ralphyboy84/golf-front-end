@@ -16,6 +16,7 @@ import { kilspindie20260411 } from "../fixtures/courseAvailability/kilspindie/20
 import { tain20260202 } from "../fixtures/courseAvailability/tain/20260202";
 import { tain20260203 } from "../fixtures/courseAvailability/tain/20260203";
 import { tain20260204 } from "../fixtures/courseAvailability/tain/20260204";
+import { broragolfclub20260202 } from "../fixtures/courseAvailability/broragolfclub/20260202";
 
 export async function interceptGetCourseAvailabilityForDateAPICall(page) {
   await page.route(
@@ -63,6 +64,8 @@ export async function interceptGetCourseAvailabilityForDateAPICall(page) {
         body = tain20260203;
       } else if (club == "tain" && date == "2026-02-04") {
         body = tain20260204;
+      } else if (club == "broragolfclub" && date == "2026-02-02") {
+        body = broragolfclub20260202;
       }
 
       await route.fulfill({
