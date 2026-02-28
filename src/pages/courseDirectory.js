@@ -70,11 +70,13 @@ export async function viewCourse() {
   </p>
   `;
 
-  content += `
-  <p class="card-text">
-    <iframe style="width:100%;height:300px;border:0;" src="https://www.youtube.com/embed/61uF-UUomTg?si=ComTy8Q7dA3KJqCp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  </p>
-  `;
+  if (club.youtube) {
+    content += `
+    <p class="card-text">
+      <iframe style="width:100%;height:300px;border:0;" src="${club.youtube}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </p>
+    `;
+  }
 
   content += buildCardRow(
     "<i class='bi-chat-left'></i>",
