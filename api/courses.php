@@ -139,6 +139,7 @@ if ($result->num_rows > 0) {
             "category" => $row["category"],
             "coursetype" => $row["coursetype"],
             "description" => $row["description"],
+            "youtube" => $row["youtube"],
         ];
 
         unset($coursesArray);
