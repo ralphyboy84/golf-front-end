@@ -62,24 +62,7 @@ if (
     $lon = $_GET["lon"];
     $travelDistanceOption = $_GET["travelDistanceOption"];
 
-    if ($_SERVER["HTTP_HOST"] == "localhost") {
-        $selectParams[] = "
-        ST_Distance_Sphere(
-            location,
-            ST_SRID(POINT($lon, $lat), 4326)
-        ) as 'distance'
-        ";
-
-        $sqlParams[] = "
-        location IS NOT NULL
-        AND ST_Distance_Sphere(
-            location,
-            ST_SRID(POINT($lon, $lat), 4326)
-        ) <= $travelDistanceOption
-        AND onlineBooking = 'Yes'
-        ";
-    } else {
-        $sqlParams[] = "
+    $sqlParams[] = "
         location IS NOT NULL
         AND ST_Distance_Sphere(
             location,
@@ -88,13 +71,12 @@ if (
         AND onlineBooking = 'Yes'
         ";
 
-        $selectParams[] = "
+    $selectParams[] = "
         ST_Distance_Sphere(
             location,
             ST_GeomFromText('POINT($lon $lat)')
         ) as 'distance'
         ";
-    }
 
     $orderByParams[] = "distance";
 }

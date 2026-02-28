@@ -7,9 +7,9 @@ services:
     ports:
       - 80:80
   database:
-    image: mysql:8.2.0
+    image: mariadb:latest
     volumes:
-      - /Users/ralph/Documents/Docker Databases/Golf:/var/lib/mysql
+      - /Users/ralph/Documents/Docker Databases/Golf2:/var/lib/mysql
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
