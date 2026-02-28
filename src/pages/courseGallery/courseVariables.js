@@ -615,6 +615,25 @@ const anstruther = ["-1", "-2", "-3", "-4", "-5", "-6", "-7"];
 const crailbalcomie = ["-1", "-2"];
 const crailcraighead = ["-1"];
 const levenlinks = ["-1", "-2", "-3"];
+const scotscraiggc = [
+  "-1",
+  "-2",
+  "-3",
+  "-4",
+  "-5",
+  "-6",
+  "-7",
+  "-8",
+  "-9",
+  "-10",
+  "-11",
+  "-12",
+  "-13",
+  "-14",
+  "-15",
+  "-16",
+  "-17",
+];
 
 export const images = {
   boatofgarten,
@@ -663,4 +682,5 @@ export const images = {
   crailbalcomie,
   crailcraighead,
   levenlinks,
+  scotscraiggc,
 };
