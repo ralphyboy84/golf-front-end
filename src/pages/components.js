@@ -12,9 +12,14 @@ export function buildCardRow(icon, titleText, subText) {
   `;
 }
 
-export function buildCard(img, header, content, id, additionalClass) {
+export function buildCard(img, header, content, id, additionalClass, badges) {
   let idToUse = "";
   let additionalClassToUse = "";
+  let badgeString = "";
+
+  if (badges) {
+    badgeString = `<p class="card-text flex flex-wrap gap-2 mb-2.5">${badges}</p>`;
+  }
 
   if (id && id != "undefined") {
     idToUse = ` id='${id}'`;
@@ -36,6 +41,7 @@ export function buildCard(img, header, content, id, additionalClass) {
     ${imgString}
     <div class="card-body">
       <h5 class="card-title mb-2.5 text-gray-900">${header}</h5>
+      ${badgeString}
       ${content}
     </div>
   </div>

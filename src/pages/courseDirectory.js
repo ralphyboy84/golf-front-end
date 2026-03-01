@@ -78,29 +78,11 @@ export async function viewCourse() {
     `;
   }
 
-  content += buildCardRow(
-    "<i class='bi-chat-left'></i>",
-    formatCourseType(club.coursetype),
-    "Course Style",
-  );
-
-  content += buildCardRow(
-    "<i class='bi-collection'></i>",
-    capitalizeFirstChar(club.region),
-    "Region",
-  );
-
-  content += buildCardRow(
-    "<i class='bi-bullseye'></i>",
-    club.category.toUpperCase(),
-    "Category",
-  );
-
-  content += buildCardRow(
-    "<i class='bi-123'></i>",
-    formatTop100(club.top100),
-    "Top 100",
-  );
+  const top100 = formatTop100(club.top100);
+  const courseType = formatCourseType(club.coursetype);
+  const region = buildRegion(club.region);
+  const category = buildCategory(club.category);
+  const onlineBooking = buildOnlineBooking(club.onlineBooking);
 
   let imageToUse = "";
 
@@ -114,7 +96,14 @@ export async function viewCourse() {
     `;
   }
 
-  const card = buildCard(imageToUse, club.name, content, firstKey + "_div");
+  const card = buildCard(
+    imageToUse,
+    club.name,
+    content,
+    firstKey + "_div",
+    "",
+    top100 + courseType + region + category + onlineBooking,
+  );
   document.getElementById("resultsDiv").innerHTML = card;
   document.getElementById("carouselDiv").innerHTML = "";
 }
@@ -124,17 +113,35 @@ function nl2br(str) {
 }
 
 function formatCourseType(type) {
+  let cType = "Inland";
+
   if (type == "links") {
-    return "Links Course";
+    cType = "Links";
   }
 
-  return "Inland Course";
+  return `<span class='badge badge-success'>${cType}</span>`;
 }
 
 function formatTop100(top100) {
   if (top100 == 1) {
-    return "Yes";
+    return "<span class='badge badge-success'>Top 100</span>";
   }
 
-  return "No";
+  return "";
+}
+
+function buildRegion(region) {
+  return `<span class='badge badge-success'>${capitalizeFirstChar(region)}</span>`;
+}
+
+function buildCategory(category) {
+  return `<span class='badge badge-success'>Category ${capitalizeFirstChar(category.toUpperCase())}</span>`;
+}
+
+function buildOnlineBooking(onlineBooking) {
+  if (onlineBooking == "Yes") {
+    return "<span class='badge badge-success'>Online Booking</span>";
+  }
+
+  return "";
 }
