@@ -199,3 +199,71 @@ test("Check trip rebuilt ok", async ({ page }) => {
   await page.click("#rebuildMyTripButton");
   await validateTripCards(page);
 });
+
+test("Validate a trip is built and then added to search history", async ({
+  page,
+}) => {
+  await interceptGetCoursesAPICall(page);
+  await interceptGetCourseAvailabilityForDateAPICall(page);
+  await createTrip(
+    page,
+    "2026-04-09",
+    "Leven",
+    "Links Courses",
+    "B - not the Open Championship courses but still good",
+    "20000",
+    "3",
+  );
+  await validateTripCards(page);
+  await page.click("#dropDownButton");
+  await expect(page.locator("#previousTrips")).toBeVisible();
+  await page.click("#previousTrips");
+  await expect(page.locator("#previousSearchesDiv")).toBeVisible();
+  await expect(page.locator("#previousSearchesDiv").locator("h5")).toHaveText(
+    /Previous Trip Searches/,
+  );
+  const previousSearches = await page
+    .locator("#previousSearchesDiv")
+    .locator(".flex.items-center.justify-between.p-3.space-x-3");
+
+  const count = await previousSearches.count();
+  await expect(count).toBe(1);
+});
+
+test("Validate a trip is built and then added to search history and the search history is cleared", async ({
+  page,
+}) => {
+  await interceptGetCoursesAPICall(page);
+  await interceptGetCourseAvailabilityForDateAPICall(page);
+  await createTrip(
+    page,
+    "2026-04-09",
+    "Leven",
+    "Links Courses",
+    "B - not the Open Championship courses but still good",
+    "20000",
+    "3",
+  );
+  await validateTripCards(page);
+  await page.click("#dropDownButton");
+  await expect(page.locator("#previousTrips")).toBeVisible();
+  await page.click("#previousTrips");
+  await expect(page.locator("#previousSearchesDiv")).toBeVisible();
+  await expect(page.locator("#previousSearchesDiv").locator("h5")).toHaveText(
+    /Previous Trip Searches/,
+  );
+  const previousSearches = await page
+    .locator("#previousSearchesDiv")
+    .locator(".flex.items-center.justify-between.p-3.space-x-3");
+
+  const count = await previousSearches.count();
+  await expect(count).toBe(1);
+  await page.click("#deletePreviousTripSearches");
+  await expect(page.locator("#noPreviousSearches")).toBeVisible();
+  await expect(page.locator("#noPreviousSearches").locator("h5")).toHaveText(
+    /Cannot Find Search/,
+  );
+  await expect(
+    page.locator("#noPreviousSearches").locator(".card-body"),
+  ).toHaveText(/You do not seem to have made any previous searches/);
+});

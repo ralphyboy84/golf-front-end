@@ -7,8 +7,12 @@ export function previousTrips() {
   const app = document.getElementById("app");
 
   if (!searchCounts) {
-    document.getElementById("app").innerHTML =
-      "You have not conducted any previous searches";
+    app.innerHTML = buildCard(
+      "fraserburgh",
+      "Cannot Find Search",
+      "You do not seem to have made any previous searches",
+      "noPreviousSearches",
+    );
     return;
   }
 
@@ -29,7 +33,15 @@ export function previousTrips() {
     );
   }
 
-  app.innerHTML = buildCard("blairgowrie", "Previous Trips", content);
+  content +=
+    "<p class='card-text text-center'><a id='deletePreviousTripSearches' class='btn btn-primary'>Delete Previous Trip Searches</a></p>";
+
+  app.innerHTML = buildCard(
+    "blairgowrie",
+    "Previous Trip Searches",
+    content,
+    "previousSearchesDiv",
+  );
 }
 
 function getPreviousTripMessage(x, storage) {
@@ -56,4 +68,17 @@ export function viewTrip(tripId) {
     results,
     localStorage.getItem("searchNumberOfDays" + tripId),
   );
+}
+
+export function deletePreviousSearches() {
+  const searchCounts = localStorage.getItem("searchCount");
+
+  for (let x = 1; x <= searchCounts; x++) {
+    localStorage.removeItem("search" + x);
+    localStorage.removeItem("searchCriteria" + x);
+    localStorage.removeItem("searchCriteriaDate" + x);
+    localStorage.removeItem("searchNumberOfDays" + x);
+  }
+
+  localStorage.removeItem("searchCount");
 }

@@ -14,7 +14,10 @@ import { getAllOpensEndPoint } from "../pages/api";
 import { viewCourse } from "../pages/courseDirectory.js";
 import { viewCourseGallery } from "../pages/courseGallery/courseGallery.js";
 import { images } from "../pages/courseGallery/courseVariables";
-import { viewTrip } from "../pages/previousTrips/previousTrips";
+import {
+  previousTrips,
+  deletePreviousSearches,
+} from "../pages/previousTrips/previousTrips";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -264,6 +267,12 @@ document.addEventListener("DOMContentLoaded", () => {
         .getAttribute("data-tripId");
 
       router.navigate(`/viewTrip/${tripId}`);
+    }
+
+    if (event.target.closest("#deletePreviousTripSearches")) {
+      event.preventDefault();
+      deletePreviousSearches();
+      previousTrips();
     }
   });
 
