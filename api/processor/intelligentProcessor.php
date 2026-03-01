@@ -89,6 +89,7 @@ class IntelligentProcessor extends Processor
 
         if ($openFlag) {
             return $this->returnCheckForOpenOnDayParams(
+                $this->_format_date($date),
                 $openFlag,
                 $greenFee,
                 $availableDate,

@@ -31,6 +31,21 @@ test("Validate no date entered", async ({ page }) => {
   );
 });
 
+test("Validate no opens selected", async ({ page }) => {
+  // Expect a title "to contain" a substring.
+  await interceptGetCoursesAPICall(page);
+  await page.click("#dropDownButton");
+  await page.click("#buildATrip");
+  await page.click("#startTripBuilder");
+  await page.fill("#startDate", "2026-04-09");
+  await page.click("#nextStepBtn");
+  await page.click("#ontoTripLength");
+  await expect(page.locator("#openBtnAlert")).toBeVisible();
+  await expect(page.locator("#openBtnAlert").locator("span")).toHaveText(
+    /You have not set whether you are interested in playing in Opens or not/,
+  );
+});
+
 test("Validate no where staying selected", async ({ page }) => {
   // Expect a title "to contain" a substring.
   await interceptGetCoursesAPICall(page);
@@ -39,6 +54,8 @@ test("Validate no where staying selected", async ({ page }) => {
   await page.click("#startTripBuilder");
   await page.fill("#startDate", "2026-04-09");
   await page.click("#nextStepBtn");
+  await page.selectOption("#opensSelect", "I do not care");
+  await page.click("#ontoTripLength");
   await page.click("#tripLengthButton");
   await page.click("#linksNoLinks");
   await expect(page.locator("#whereStayingAlert")).toBeVisible();
@@ -55,6 +72,8 @@ test("Validate no links or no links selected", async ({ page }) => {
   await page.click("#startTripBuilder");
   await page.fill("#startDate", "2026-04-09");
   await page.click("#nextStepBtn");
+  await page.selectOption("#opensSelect", "I do not care");
+  await page.click("#ontoTripLength");
   await page.click("#tripLengthButton");
   await page.selectOption("#whereStayingSelect", "Leven");
   await page.click("#linksNoLinks");
@@ -73,6 +92,8 @@ test("Validate no course category selected", async ({ page }) => {
   await page.click("#startTripBuilder");
   await page.fill("#startDate", "2026-04-09");
   await page.click("#nextStepBtn");
+  await page.selectOption("#opensSelect", "I do not care");
+  await page.click("#ontoTripLength");
   await page.click("#tripLengthButton");
   await page.selectOption("#whereStayingSelect", "Leven");
   await page.click("#linksNoLinks");

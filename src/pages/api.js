@@ -16,9 +16,9 @@ export async function getListOfPotentialCourses(
   ).then((res) => res.json());
 }
 
-export function getCourseAvailabilityForDate(club, date, courseId) {
+export function getCourseAvailabilityForDate(club, date, courseId, opens) {
   return fetch(
-    `${import.meta.env.VITE_API_URL}api/getCourseAvailabilityForDate.php?club=${club}&date=${date}&courseId=${courseId}`,
+    `${import.meta.env.VITE_API_URL}api/getCourseAvailabilityForDate.php?club=${club}&date=${date}&courseId=${courseId}&opens=${opens}`,
   ).then((res) => res.json());
 }
 

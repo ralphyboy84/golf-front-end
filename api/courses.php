@@ -83,6 +83,32 @@ if (
         ";
 
     $orderByParams[] = "distance";
+} elseif (
+    isset($_GET["lat"]) &&
+    !empty($_GET["lat"]) &&
+    $_GET["travelDistanceOption"] == 0
+) {
+    $lat = $_GET["lat"];
+    $lon = $_GET["lon"];
+    $travelDistanceOption = $_GET["travelDistanceOption"];
+
+    $sqlParams[] = "
+        location IS NOT NULL
+        AND ST_Distance_Sphere(
+            location,
+            ST_GeomFromText('POINT($lon $lat)')
+        ) <= 0
+        AND onlineBooking = 'Yes'
+        ";
+
+    $selectParams[] = "
+        ST_Distance_Sphere(
+            location,
+            ST_GeomFromText('POINT($lon $lat)')
+        ) as 'distance'
+        ";
+
+    $orderByParams[] = "distance";
 }
 
 $selectSql = "";

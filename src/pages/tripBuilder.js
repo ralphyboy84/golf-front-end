@@ -1,5 +1,4 @@
 import { buildTripSummaryTable } from "../pages/tripSummaryTable";
-import { commonHeaderInfo } from "../pages/trip";
 import { getLoadingDiv } from "../pages/loadingDiv";
 import { buildCardRow, buildCard } from "../pages/components";
 import {
@@ -7,11 +6,15 @@ import {
   getCourseAvailabilityForDate,
 } from "../pages/api";
 import { router } from "../router";
-import { iconPound, iconDate, iconClock } from "../pages/icons";
+import {
+  iconPound,
+  iconDate,
+  iconClock,
+  iconCompetition,
+} from "../pages/icons";
 
 // this function is called when actually building a trip
 export async function buildTrip() {
-  commonHeaderInfo();
   const app = document.getElementById("app");
   app.innerHTML = getLoadingDiv(0);
 
@@ -38,8 +41,29 @@ export function buildTripBuilderOutput(
   maxDays,
 ) {
   let content = buildCardRow(iconDate, courseInfo.date, "Date");
-  content += buildCardRow(iconPound, courseInfo.price, "Price");
-  content += buildCardRow(iconClock, courseInfo.firstTime, "First Tee Time");
+
+  if (courseInfo.openCompetition) {
+    content += buildCardRow(
+      iconCompetition,
+      courseInfo.openCompetition,
+      "Competition Name",
+    );
+  }
+
+  if (courseInfo.price) {
+    content += buildCardRow(iconPound, courseInfo.price, "Price");
+  } else if (courseInfo.openGreenFee) {
+    content += buildCardRow(
+      iconPound,
+      courseInfo.openGreenFee,
+      "Open Entry Fee",
+    );
+  }
+
+  if (courseInfo.firstTime) {
+    content += buildCardRow(iconClock, courseInfo.firstTime, "First Tee Time");
+  }
+
   content += `<div class="card-actions justify-center">`;
 
   if (dayNumber != 0) {
@@ -91,6 +115,7 @@ export async function getAllCourseAvailability(courses, numberOfDays, app) {
         x,
         date,
         courses[x].courseId,
+        document.getElementById("opens").value,
       );
       fetchPromises.push(fetchPromise);
     }
@@ -168,6 +193,8 @@ export function abstractedFunction(results, numberOfDays, app) {
 
   if (Object.keys(results).length == numberOfDays) {
     const newResults = doTheHardBit(results);
+
+    console.log(newResults);
 
     if (typeof newResults === "string") {
       app.innerHTML += newResults;
@@ -326,10 +353,13 @@ function doTheHardBit(availabilityObject) {
 
     // Find the first available date that hasn't been used yet
     const firstAvailable = teeTimes.find(
-      (tt) => tt.teeTimesAvailable === "Yes" && !usedDates.has(tt.date),
+      (tt) =>
+        (tt.teeTimesAvailable === "Yes" || (tt.name && tt.slotsAvailable)) &&
+        !usedDates.has(tt.date),
     );
 
     if (firstAvailable) {
+      console.log(firstAvailable);
       // Add to returned array
       returnedObject.push({
         id: courseName,
@@ -340,6 +370,10 @@ function doTheHardBit(availabilityObject) {
         firstTime: firstAvailable.firstTime,
         image: firstAvailable.image,
         bookingUrl: firstAvailable.bookingUrl,
+        openCompetition: firstAvailable.name,
+        slotsAvailable: firstAvailable.slotsAvailable,
+        openGreenFee: firstAvailable.openGreenFee,
+        openBookingUrl: firstAvailable.openBookingUrl,
       });
 
       // Mark this date as used

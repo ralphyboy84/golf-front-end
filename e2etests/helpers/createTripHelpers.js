@@ -16,6 +16,8 @@ export async function createTrip(
   await page.click("#startTripBuilder");
   await page.fill("#startDate", date);
   await page.click("#nextStepBtn");
+  await page.selectOption("#opensSelect", "I do not care");
+  await page.click("#ontoTripLength");
   await page.fill("#tripLengthInDays", tripLength);
   await page.click("#tripLengthButton");
   await page.selectOption("#whereStayingSelect", whereStaying);

@@ -20,9 +20,21 @@ if ($result->num_rows > 0) {
     }
 }
 
+$openFlag = 1;
+$bookingFlag = 1;
+
+if ($_GET["opens"] == "opens") {
+    $openFlag = 1;
+    $bookingFlag = 0;
+} elseif ($_GET["opens"] == "noopens") {
+    $bookingFlag = 1;
+    $openFlag = 0;
+}
+
 if (
     isset($golfCourses[$_GET["club"]]["bookingSystem"]) &&
-    !empty($golfCourses[$_GET["club"]]["bookingSystem"])
+    !empty($golfCourses[$_GET["club"]]["bookingSystem"]) &&
+    $bookingFlag
 ) {
     if (!$MOCK) {
         require_once "getCourseAvailabilityForDate/teeTimes/{$golfCourses[$_GET["club"]]["bookingSystem"]}.php";
@@ -41,7 +53,8 @@ if (
 if (
     isset($golfCourses[$_GET["club"]]["openBookingSystem"]) &&
     !empty($golfCourses[$_GET["club"]]["openBookingSystem"]) &&
-    !$MOCK
+    !$MOCK &&
+    $openFlag
 ) {
     require_once "getCourseAvailabilityForDate/opens/{$golfCourses[$_GET["club"]]["openBookingSystem"]}.php";
 }

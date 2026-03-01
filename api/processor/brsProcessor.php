@@ -68,6 +68,7 @@ class BRSProcessor extends Processor
 
         if ($competitionId) {
             return $this->returnCheckForOpenOnDayParams(
+                $this->_format_date($date),
                 $competitionId,
                 $greenFee,
                 $this->_format_date($availableDate),

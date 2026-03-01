@@ -70,6 +70,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       document.getElementById("date").value = encodeURIComponent(dateValue);
+      router.navigate("/openCompetitions");
+    }
+
+    if (event.target.closest("#ontoTripLength")) {
+      event.preventDefault();
+      const opensSelect = document.getElementById("opensSelect").value;
+
+      if (!opensSelect) {
+        document.getElementById("opensSelect").classList.add("input-error");
+        document.getElementById("openBtnAlert").classList.remove("hidden");
+        return;
+      }
+
+      document.getElementById("opens").value = encodeURIComponent(opensSelect);
       router.navigate("/tripLength");
     }
 

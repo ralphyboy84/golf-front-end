@@ -10,6 +10,11 @@ export function buildFullTripSummary() {
   let hrEnd = "";
   let hrStart = "";
   let count = 0;
+  let price = "";
+  let from = "";
+  let bookingUrl = "";
+
+  console.log(previousResults);
 
   for (let x in previousResults) {
     hrEnd = "";
@@ -21,7 +26,27 @@ export function buildFullTripSummary() {
     if (count > 0) {
       hrStart = "<hr />";
     }
-    console.log(previousResults[x]);
+
+    if (previousResults[x].price) {
+      price = previousResults[x].price;
+    } else if (previousResults[x].openGreenFee) {
+      price = previousResults[x].openGreenFee;
+    }
+
+    if (previousResults[x].firstTime) {
+      from = `From: ${previousResults[x].firstTime}`;
+    } else if (previousResults[x].openCompetition) {
+      from = `Competition Name: ${previousResults[x].openCompetition}`;
+    }
+
+    if (previousResults[x].openBookingUrl) {
+      bookingUrl = previousResults[x].openBookingUrl;
+    } else if (previousResults[x].bookingUrl) {
+      bookingUrl = previousResults[x].bookingUrl;
+    }
+
+    bookingUrl;
+
     timeline += `
     <li>
       ${hrStart}
@@ -42,10 +67,10 @@ export function buildFullTripSummary() {
       </div>
       <div class="timeline-end timeline-box grid grid-cols-[2fr_1fr_2fr_auto] items-center gap-4 text-base w-full">
         <div>${previousResults[x].course}</div> 
-        <div>£${previousResults[x].price}</div>
-        <div>From: ${previousResults[x].firstTime}</div>
+        <div>£${price}</div>
+        <div>${from}</div>
         <div class="text-right">
-          <a class="btn btn-primary bookTripButton" data-bookingurl=${previousResults[x].bookingUrl}>Book</a>
+          <a class="btn btn-primary bookTripButton" data-bookingurl=${bookingUrl}>Book</a>
         </div>
       </div>
       ${hrEnd}

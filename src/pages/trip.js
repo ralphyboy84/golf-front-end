@@ -1,20 +1,7 @@
 import { getFullCourseList } from "../pages/api";
 import { buildCard, getErrorMessage } from "../pages/components";
 
-export async function commonHeaderInfo() {
-  const header = document.getElementById("pageHeader");
-  //  const liTag = document.getElementById("golfInScotland");
-  // const firstUl = liTag.querySelector("ul");
-  // const anchor = document.querySelector('a[href="/trip"]');
-
-  //  liTag.classList.add("menu-open");
-  //header.innerHTML = "Trip Planner";
-  //  firstUl.style.display = "block";
-  //  anchor.classList.add("active");
-}
-
 export async function tripPage() {
-  await commonHeaderInfo();
   const app = document.getElementById("app");
 
   const content = `
@@ -32,8 +19,7 @@ export async function tripPage() {
 }
 
 export async function setDate() {
-  await commonHeaderInfo();
-  const app = document.getElementById("app");
+  const app = await document.getElementById("app");
   const alertMsg = getErrorMessage(
     "nextStepBtnAlert",
     "You have not entered a date",
@@ -43,22 +29,21 @@ export async function setDate() {
   ${getSteps(0)}
   <p class="mb-4 text-center">Can you start by telling me when you would like the trip to start?</p>
   <div class="p-3 col-4 d-flex justify-content-center text-center">
-    <input type="date" class="input max-w-sm bg-gray-50 text-gray-900" placeholder="YYYY-MM-DD" id="startDate" value="" />
+    <input type="date" class="input max-w-sm bg-gray-50 text-gray-900" placeholder="YYYY-MM-DD" id="startDate" value="2026-04-04" />
   </div>
   ${alertMsg}
   <div class="card-actions justify-center">
-     <a href='/tripLength' data-navigo class="btn btn-primary" id="nextStepBtn">To The Next Step!</a>
+     <a data-navigo class="btn btn-primary" id="nextStepBtn">On to Opens</a>
   </div>
   `;
   app.innerHTML = buildCard("crudenbay", "Lets Get Some Dates Sorted", content);
 }
 
 export async function tripLength() {
-  await commonHeaderInfo();
-  const app = document.getElementById("app");
+  const app = await document.getElementById("app");
 
   const content = `
-  ${getSteps(1)}
+  ${getSteps(2)}
   <p class="mb-4 text-center">And how many days do you want the trip to last?</p>
     <div class="flex justify-center m-6">
       <div class="w-full max-w-xs">
@@ -91,8 +76,7 @@ export async function tripLength() {
 }
 
 export async function whereStaying() {
-  await commonHeaderInfo();
-  const app = document.getElementById("app");
+  const app = await document.getElementById("app");
   const alertMsg = getErrorMessage(
     "whereStayingAlert",
     "You have not selected where you are planning to stay",
@@ -102,7 +86,7 @@ export async function whereStaying() {
     const data = await getFullCourseList();
 
     const content = `
-    ${getSteps(2)}
+    ${getSteps(3)}
     <p class="mb-4 text-center">What course will you be staying closest to?</p>
     <div class="p-3 col-4 d-flex justify-content-center text-center">
       <select id='whereStayingSelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select"><option value=''>Select....</option></select> 
@@ -134,8 +118,7 @@ export async function whereStaying() {
 }
 
 export async function linksOrNoLinks() {
-  await commonHeaderInfo();
-  const app = document.getElementById("app");
+  const app = await document.getElementById("app");
 
   const alertMsg = getErrorMessage(
     "linksNoLinksAlert",
@@ -143,12 +126,12 @@ export async function linksOrNoLinks() {
   );
 
   const content = `
-  ${getSteps(3)}
+  ${getSteps(4)}
     <p class="mb-4 text-center">Now I would like to know what type of courses you are interested in playing. A true Scottish links like a Royal Troon or Royal Dornoch? Or are you more interested in inland courses like a Gleneagles or Blairgowrie?</p>
     <div class="p-3 col-4 d-flex justify-content-center text-center">
       <select id='courseTypeSelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select">
       <option value=''>Select....</option>
-        <option value="links">Links Courses</option>
+        <option value="links" selected>Links Courses</option>
         <option value="nonlinks">Non Links Courses</option>
         <option value="na">Not Fussed</option>
       </select> 
@@ -162,8 +145,7 @@ export async function linksOrNoLinks() {
 }
 
 export async function courseCategory() {
-  await commonHeaderInfo();
-  const app = document.getElementById("app");
+  const app = await document.getElementById("app");
 
   const alertMsg = getErrorMessage(
     "courseCategoryAlert",
@@ -171,13 +153,13 @@ export async function courseCategory() {
   );
 
   const content = `
-  ${getSteps(4)}
+  ${getSteps(5)}
     <p class="mb-4 text-center">OK second last question. I'd love to know the "Category" of course you would like to play. Is it just the A rated courses? The Open Championship venues like Carnoustie and Turnberry? Or what about the B categories like a Nairn? They might not host Open Championships but they are still top, top courses. Don't forget about C category courses as well. These are courses that are generally ranked between 50 and 100 in the course rankings. They offer great savings on some of the A&B category courses. You also have the D category courses. These are the hidden gems, the courses off the beaten track that don't tend to be visited much by tourists. Great value for money and very friendly members!</p>
     <div class="p-3 col-4 d-flex justify-content-center text-center">
       <select id='courseCategorySelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select" multiple="multiple">
         <option value="a">A - the best of the best</option>
         <option value="b">B - not the Open Championship courses but still good</option>
-        <option value="c">C - the 50-100 ranked courses</option>
+        <option value="c" selected>C - the 50-100 ranked courses</option>
         <option value="d">D - the hidden gems and authentic Scottish experiences</option>
       </select> 
     </div>
@@ -190,11 +172,10 @@ export async function courseCategory() {
 }
 
 export async function lastQuestion() {
-  await commonHeaderInfo();
-  const app = document.getElementById("app");
+  const app = await document.getElementById("app");
 
   const content = `
-  ${getSteps(5)}
+  ${getSteps(6)}
     <p class="mb-4 text-center">And finally - how many miles are you prepared to travel?</p>
     <div class="flex justify-center m-6">
       <div class="w-full max-w-xs">
@@ -224,9 +205,10 @@ export async function lastQuestion() {
   app.innerHTML = buildCard("northberwick", "How Far To Travel?", content);
 }
 
-function getSteps(defaultValue) {
+export function getSteps(defaultValue) {
   const elements = [
     "Dates",
+    "Opens",
     "Length",
     "Staying",
     "Types",

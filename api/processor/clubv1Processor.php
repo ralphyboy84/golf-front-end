@@ -124,6 +124,7 @@ class ClubV1Processor extends Processor
 
         if ($openExists) {
             return $this->returnCheckForOpenOnDayParams(
+                $this->_format_date($date),
                 $competition_id,
                 $greenFee,
                 "TBC",

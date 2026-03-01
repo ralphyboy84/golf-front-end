@@ -19,6 +19,7 @@ abstract class Processor
     }
 
     protected function returnCheckForOpenOnDayParams(
+        $date,
         $competitionId,
         $greenFee,
         $bookingsOpenDate,
@@ -28,6 +29,7 @@ abstract class Processor
         $openBookingUrl = false,
     ) {
         return [
+            "date" => $date,
             "competitionId" => $competitionId,
             "openGreenFee" => $greenFee,
             "bookingsOpenDate" => $bookingsOpenDate,

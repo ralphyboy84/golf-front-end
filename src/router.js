@@ -21,6 +21,7 @@ import {
   previousTrips,
   viewTrip,
 } from "./pages/previousTrips/previousTrips.js";
+import { setOpenCompetitions } from "./pages/tripBuilder/opens.js";
 
 export const router = new Navigo("/");
 
@@ -39,6 +40,7 @@ router
   .on("/dayAvailability", dayAvailability)
   .on("/courseDirectory", courseDirectory)
   .on("/previousTrips", previousTrips)
+  .on("/openCompetitions", setOpenCompetitions)
   .on("/viewTrip/:tripId", (match) => {
     viewTrip(match.data.tripId);
   })
