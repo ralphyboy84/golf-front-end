@@ -21,10 +21,17 @@ moray new also has opens on it
 
 dotgolf appears to have a competitions for this day section on the tee booker
 
+-- mysql
 UPDATE clubs
 SET location = ST_SRID(POINT(lon, lat), 4326)
 WHERE lat <> 0
 AND lon <> 0;
+
+-- mariadb
+UPDATE clubs
+SET location = ST_GeomFromText(CONCAT('POINT(', lon, ' ', lat, ')'), 4326)
+WHERE lat <> 0
+  AND lon <> 0;
 
 Need to look at Carnoustie where all tee times are taken but still some slots free
 
