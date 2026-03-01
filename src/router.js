@@ -17,6 +17,10 @@ import { openSearcher } from "./pages/calendar.js";
 import { loadHome } from "./pages/home.js";
 import { dayAvailability } from "./pages/dayAvailability.js";
 import { courseDirectory } from "./pages/courseDirectory.js";
+import {
+  previousTrips,
+  viewTrip,
+} from "./pages/previousTrips/previousTrips.js";
 
 export const router = new Navigo("/");
 
@@ -34,6 +38,10 @@ router
   .on("/openSearcher", openSearcher)
   .on("/dayAvailability", dayAvailability)
   .on("/courseDirectory", courseDirectory)
+  .on("/previousTrips", previousTrips)
+  .on("/viewTrip/:tripId", (match) => {
+    viewTrip(match.data.tripId);
+  })
   .on("/", loadHome)
   .notFound(() => {
     document.getElementById("app").innerHTML = "<h1>404</h1>";

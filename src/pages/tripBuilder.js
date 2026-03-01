@@ -9,37 +9,12 @@ import {
 import { router } from "../router";
 import { iconPound, iconDate, iconClock } from "../pages/icons";
 
-function getMultiSelectValues(selectBox) {
-  var result = [];
-  var options = select && select.options;
-  var opt;
-
-  for (var i = 0, iLen = options.length; i < iLen; i++) {
-    opt = options[i];
-
-    if (
-      opt.selected
-      // &&
-      // (opt.getAttribute("data-onlineBooking") == "Yes" ||
-      //   opt.getAttribute("data-openBooking") == "Yes")
-    ) {
-      result.push({
-        course: opt.value,
-        courseName: opt.text,
-        courseId: opt.getAttribute("data-courseId") || 1,
-      });
-    }
-  }
-
-  return result;
-}
-
+// this function is called when actually building a trip
 export async function buildTrip() {
   commonHeaderInfo();
   const app = document.getElementById("app");
-
-  // try {
   app.innerHTML = getLoadingDiv(0);
+
   const lat = document.getElementById("lat").value;
   const lon = document.getElementById("lon").value;
   const courseTypeOption = document.getElementById("courseType").value;
@@ -53,10 +28,6 @@ export async function buildTrip() {
     travelDistanceOption,
   );
   await getTripInformation(courseList);
-  // } catch (err) {
-  //   app.innerHTML = "<p>Error loading data.</p>";
-  //   console.log(err);
-  // }
 }
 
 export function buildTripBuilderOutput(
@@ -91,9 +62,6 @@ export function buildTripBuilderOutput(
     imageToUse = courseInfo.id;
   }
 
-  console.log(imageToUse);
-  console.log(courseInfo);
-
   return buildCard(
     imageToUse,
     `${courseInfo.course} - Day ${dayNumber * 1 + 1}`,
@@ -104,11 +72,6 @@ export function buildTripBuilderOutput(
 }
 
 export async function getAllCourseAvailability(courses, numberOfDays, app) {
-  if (!numberOfDays) {
-    router.navigate("/");
-    return;
-  }
-
   const totalApiCalls = Object.keys(courses).length * numberOfDays;
   const startDate = getStartDate();
   const results = {};
@@ -136,9 +99,6 @@ export async function getAllCourseAvailability(courses, numberOfDays, app) {
     results[x] = await Promise.all(fetchPromises);
 
     percentage = (otherCount / totalApiCalls) * 100;
-
-    await sleep(250);
-
     app.innerHTML = getLoadingDiv(percentage);
   }
 
@@ -154,11 +114,32 @@ export async function getTripInformation(courses) {
     return;
   }
 
-  const results = await getAllCourseAvailability(courses, numberOfDays, app);
-  console.log(results);
-  document.getElementById("previousTripResults").value =
-    JSON.stringify(results);
-  abstractedFunction(results, numberOfDays, app);
+  let results = "";
+
+  if (!numberOfDays && !localStorage.getItem("searchCount")) {
+    router.navigate("/");
+    return;
+  } else if (!numberOfDays && localStorage.getItem("searchCount")) {
+    results = JSON.parse(
+      localStorage.getItem("search" + localStorage.getItem("searchCount")),
+    );
+
+    document.getElementById("tripResults").value = localStorage.getItem(
+      "search" + localStorage.getItem("searchCount"),
+    );
+
+    createCardsForDayAndAddToDOM(
+      results,
+      localStorage.getItem(
+        "searchNumberOfDays" + localStorage.getItem("searchCount"),
+      ),
+    );
+  } else {
+    results = await getAllCourseAvailability(courses, numberOfDays, app);
+    document.getElementById("previousTripResults").value =
+      JSON.stringify(results);
+    abstractedFunction(results, numberOfDays, app);
+  }
 }
 
 export function abstractedFunction(results, numberOfDays, app) {
@@ -193,30 +174,10 @@ export function abstractedFunction(results, numberOfDays, app) {
       return;
     }
 
-    let tmp = "";
-    let additionalClass = "";
-
-    for (let a in newResults) {
-      if (a != 0) {
-        additionalClass = "hidden";
-      }
-      tmp += buildTripBuilderOutput(
-        newResults[a],
-        a,
-        `course${a}`,
-        additionalClass,
-        numberOfDays,
-      );
-    }
+    createCardsForDayAndAddToDOM(newResults, numberOfDays);
 
     document.getElementById("tripResults").value = JSON.stringify(newResults);
-    const diaryDiv = document.createElement("div");
-    diaryDiv.innerHTML = `
-    <div class="flex justify-center">
-    ${tmp}
-    </div>
-    `;
-    div.appendChild(diaryDiv);
+    setLocalStorageForSearch(numberOfDays, newResults);
   } else if (Object.keys(results).length > numberOfDays) {
     const content = `
     <p class="mb-4">Too many courses have been returned to build your trip. Check the checkboxes of the courses you would like to include in your trip.</p>
@@ -241,6 +202,34 @@ export function abstractedFunction(results, numberOfDays, app) {
   }
 }
 
+export function createCardsForDayAndAddToDOM(newResults, numberOfDays) {
+  let tmp = "";
+  let additionalClass = "";
+
+  for (let a in newResults) {
+    if (a != 0) {
+      additionalClass = "hidden";
+    }
+    tmp += buildTripBuilderOutput(
+      newResults[a],
+      a,
+      `course${a}`,
+      additionalClass,
+      numberOfDays,
+    );
+  }
+
+  const diaryDiv = document.createElement("div");
+  diaryDiv.innerHTML = `
+    <div class="flex justify-center">
+    ${tmp}
+    </div>
+    `;
+
+  document.getElementById("app").innerHTML = "";
+  document.getElementById("app").appendChild(diaryDiv);
+}
+
 export function addDays(date, days) {
   var result = new Date(date).getTime() + 86400000 * days;
   const tomorrow = new Date(result);
@@ -257,6 +246,29 @@ export function addDays(date, days) {
   }
 
   return tomorrow.getFullYear() + "-" + month + "-" + day;
+}
+
+function setLocalStorageForSearch(numberOfDays, newResults) {
+  let searchCount = localStorage.getItem("searchCount");
+
+  if (!searchCount) {
+    searchCount = 1;
+  } else {
+    searchCount++;
+  }
+
+  localStorage.setItem("search" + searchCount, JSON.stringify(newResults));
+  localStorage.setItem("searchNumberOfDays" + searchCount, numberOfDays);
+  localStorage.setItem("searchCriteriaDate" + searchCount, getStartDate());
+  localStorage.setItem(
+    "searchCriteria" + searchCount,
+    summariseSearchCriteria(newResults),
+  );
+  localStorage.setItem("searchCount", searchCount);
+}
+
+function summariseSearchCriteria(newResults) {
+  return newResults.map((item) => item.course).join(", ");
 }
 
 export function sortAvailabilityByCount(availabilityObject) {
@@ -366,10 +378,6 @@ export function findDatesWhereNoAvailability(allDates, usedDates) {
 
   // Filter the first array to only include dates NOT in the second array
   return allDates.filter((d) => !usedDatesOnly.includes(d));
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function getStartDate() {

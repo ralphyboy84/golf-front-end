@@ -17,7 +17,7 @@ describe("buildCard", () => {
   it("should include the correct image path", () => {
     const result = buildCard("golfcourse", "Header", "Content");
 
-    expect(result).toContain('src="images/golfcourse.jpg"');
+    expect(result).toContain('src="/images/golfcourse.jpg"');
   });
 
   it("should include id when provided", () => {
@@ -67,6 +67,6 @@ describe("buildCard", () => {
 
     expect(card).not.toBeNull();
     expect(header.textContent).toBe("Header Text");
-    expect(img.getAttribute("src")).toBe("images/img.jpg");
+    expect(img.getAttribute("src")).toBe("/images/img.jpg");
   });
 });

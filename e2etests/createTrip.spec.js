@@ -100,6 +100,25 @@ test("Validate a trip is built", async ({ page }) => {
   await validateTripCards(page);
 });
 
+test("Validate a trip is built and check navigating to tripBuilder reloads same trip", async ({
+  page,
+}) => {
+  await interceptGetCoursesAPICall(page);
+  await interceptGetCourseAvailabilityForDateAPICall(page);
+  await createTrip(
+    page,
+    "2026-04-09",
+    "Leven",
+    "Links Courses",
+    "B - not the Open Championship courses but still good",
+    "20000",
+    "3",
+  );
+  await validateTripCards(page);
+  await page.goto("/tripBuilder");
+  await validateTripCards(page);
+});
+
 test("Check for too many courses returned", async ({ page }) => {
   await interceptGetCoursesAPICall(page);
   await interceptGetCourseAvailabilityForDateAPICall(page);

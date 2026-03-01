@@ -19,7 +19,11 @@ $sqlParams = [];
 $selectParams = [];
 $orderByParams = [];
 
-if (isset($_GET["courseId"]) && !empty($_GET["courseId"])) {
+if (
+    isset($_GET["courseId"]) &&
+    !empty($_GET["courseId"]) &&
+    (!isset($_GET["club"]) || empty($_GET["club"]))
+) {
     $sqlParams[] = " id = '{$_GET["courseId"]}' ";
 }
 

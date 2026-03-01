@@ -1,13 +1,27 @@
-export function buildCardRow(icon, titleText, subText) {
+export function buildCardRow(icon, titleText, subText, button) {
+  let buttonHtml = "";
+
+  if (button) {
+    buttonHtml = `
+    <div class="flex flex-col">${button}</div>
+    `;
+  }
+
   return `
-  <div class="flex items-center space-x-3 p-3">
-    <!-- Icon -->
-    <div class="flex-shrink-0">${icon}</div>
-    <!-- Text Column -->
-    <div class="flex flex-col">
-      <span class="font-semibold text-gray-900">${titleText}</span>
-      <span class="text-sm text-gray-600">${subText}</span>
+  <div class="flex items-center justify-between p-3 space-x-3">
+    <!-- Left side: icon + text -->
+    <div class="flex items-center space-x-3 p-3">
+      <!-- Icon -->
+      <div class="flex-shrink-0">${icon}</div>
+      <!-- Text Column -->
+      <div class="flex flex-col">
+        <span class="font-semibold text-gray-900">${titleText}</span>
+        <span class="text-sm text-gray-600">${subText}</span>
+      </div>
     </div>
+
+    <!-- Right side: button -->
+    ${buttonHtml}
   </div>
   `;
 }
@@ -32,7 +46,7 @@ export function buildCard(img, header, content, id, additionalClass, badges) {
   let imgString = "";
 
   if (img) {
-    imgString = `<figure><img src="images/${img}.jpg" alt="Watch" /></figure>`;
+    imgString = `<figure><img src="/images/${img}.jpg" alt="${img}" /></figure>`;
   }
 
   return `
