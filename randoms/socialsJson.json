@@ -1,0 +1,2732 @@
+{
+  "Aberdour": {
+    "website": "https://www.aberdourgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/AberdourGolfClub",
+    "instagram": "https://www.instagram.com/aberdourgc"
+  },
+  "Aberfeldy": {
+    "website": "https://www.aberfeldy-golfclub.co.uk",
+    "facebook": "https://www.facebook.com/aberfeldygolfclub",
+    "instagram": null
+  },
+  "Aberfoyle": {
+    "website": "https://www.aberfoylegolf.co.uk",
+    "facebook": "https://www.facebook.com/aberfoylegolfclub",
+    "instagram": null
+  },
+  "Abernethy": {
+    "website": "https://www.abernethygolfclub.com",
+    "facebook": "https://www.facebook.com/AbernethyGolfClub",
+    "instagram": null
+  },
+  "Aboyne": {
+    "website": "https://www.aboynegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/aboynegolfclub",
+    "instagram": "https://www.instagram.com/aboynegolfclub"
+  },
+  "Aigas": {
+    "website": "https://aigasgolfcourse.co.uk",
+    "facebook": "https://www.facebook.com/aigasgolfcourse",
+    "instagram": "https://www.instagram.com/aigasgolfcourse"
+  },
+  "Turnberry - Ailsa": {
+    "website": "https://www.turnberry.co.uk",
+    "facebook": "https://www.facebook.com/TrumpTurnberry",
+    "instagram": "https://www.instagram.com/trumpturnberry"
+  },
+  "Airdrie": {
+    "website": "https://www.airdriegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/AirdrieGolfClub",
+    "instagram": null
+  },
+  "Alford": {
+    "website": "https://www.alfordgolfclub.com",
+    "facebook": "https://www.facebook.com/AlfordGolfClub",
+    "instagram": null
+  },
+  "Alloa": {
+    "website": "https://www.alloagolfclub.co.uk",
+    "facebook": "https://www.facebook.com/AlloaGolfClub",
+    "instagram": "https://www.instagram.com/alloagolfclub"
+  },
+  "Alness": {
+    "website": "https://www.alnessgolf.co.uk",
+    "facebook": "https://www.facebook.com/alness.golfclub",
+    "instagram": null
+  },
+  "Alva": {
+    "website": "https://www.alvagolfclub.co.uk",
+    "facebook": null,
+    "instagram": null
+  },
+  "Alyth": {
+    "website": "https://www.alythgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/Alyth-Golf-Club",
+    "instagram": null
+  },
+  "Annanhill": {
+    "website": "https://eastayrshireleisure.com/venue/annanhill-golf-course",
+    "facebook": null,
+    "instagram": null
+  },
+  "Anstruther": {
+    "website": "https://www.anstruthergolf.co.uk",
+    "facebook": "https://www.facebook.com/AnstrutherGolfClub",
+    "instagram": "https://www.instagram.com/anstruthergolfclub"
+  },
+  "Arbroath": {
+    "website": "https://www.arbroathgolfcourse.co.uk",
+    "facebook": "https://www.facebook.com/ArbroathGolfLinks",
+    "instagram": "https://www.instagram.com/arbroathgolflinks"
+  },
+  "Archerfield - Dirleton": {
+    "website": "https://www.archerfieldlinks.com",
+    "facebook": "https://www.facebook.com/ArcherfieldLinks",
+    "instagram": "https://www.instagram.com/archerfieldlinks"
+  },
+  "Archerfield - Fidra": {
+    "website": "https://www.archerfieldlinks.com",
+    "facebook": "https://www.facebook.com/ArcherfieldLinks",
+    "instagram": "https://www.instagram.com/archerfieldlinks"
+  },
+  "Ardeer": {
+    "website": "https://ardeergolfclub.co.uk",
+    "facebook": "https://www.facebook.com/ardeergolfclub",
+    "instagram": null
+  },
+  "Ardfin": {
+    "website": "https://www.ardfin.com",
+    "facebook": null,
+    "instagram": "https://www.instagram.com/ardfin"
+  },
+  "Askernish": {
+    "website": "https://www.askernishgolfclub.com",
+    "facebook": "https://www.facebook.com/AskernishGolfClub",
+    "instagram": "https://www.instagram.com/askernishlinks"
+  },
+  "Asta - Classic": {
+    "website": "http://astagolfcourse.com",
+    "facebook": "https://www.facebook.com/astagolfcourse",
+    "instagram": "https://www.instagram.com/astagolfcourse"
+  },
+  "Asta - New": {
+    "website": "http://astagolfcourse.com",
+    "facebook": "https://www.facebook.com/astagolfcourse",
+    "instagram": "https://www.instagram.com/astagolfcourse"
+  },
+  "Auchenblae": {
+    "website": "http://auchenblaegolf.co.uk",
+    "facebook": "https://www.facebook.com/auchenblaegolfclub",
+    "instagram": "https://www.instagram.com/auchenblae_golf_club"
+  },
+  "Auchenharvie": {
+    "website": "https://www.kaleisure.com/golf/auchenharvie-golf-complex",
+    "facebook": "https://www.facebook.com/KALeisure",
+    "instagram": "https://www.instagram.com/ka_leisure"
+  },
+  "Auchmill": {
+    "website": "https://www.auchmillgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/AuchmillGolfClub",
+    "instagram": null
+  },
+  "Auchterarder": {
+    "website": "https://www.auchterardergolf.co.uk",
+    "facebook": "https://www.facebook.com/AuchterarderGolfClub",
+    "instagram": null
+  },
+  "Auchterderran": {
+    "website": "https://fifegolftrust.co.uk/auchterderran",
+    "facebook": "https://www.facebook.com/FifeGolfTrust",
+    "instagram": null
+  },
+  "Baberton": {
+    "website": "https://www.babertongolfclub.com",
+    "facebook": "https://www.facebook.com/babertongc",
+    "instagram": "https://www.instagram.com/babertongc"
+  },
+  "Balbirnie Park": {
+    "website": "https://www.balbirniegolf.com",
+    "facebook": "https://www.facebook.com/BalbirnieParkGolfClub",
+    "instagram": "https://www.instagram.com/balbirnieparkgolfclub"
+  },
+  "Balfron": {
+    "website": "https://www.balfrongolfclub.org.uk",
+    "facebook": "https://www.facebook.com/BalfronGolfClub",
+    "instagram": null
+  },
+  "Ballater": {
+    "website": "https://www.ballatergolfclub.co.uk",
+    "facebook": "https://www.facebook.com/ballatergolfclub",
+    "instagram": "https://www.instagram.com/ballatergolfclub"
+  },
+  "Ballindalloch": {
+    "website": "https://www.ballindallochcastle.co.uk/golf",
+    "facebook": "https://www.facebook.com/ballindallochgolf",
+    "instagram": null
+  },
+  "Ballochmyle": {
+    "website": "https://www.ballochmylegolfclub.com",
+    "facebook": "https://www.facebook.com/ballochmylegolfclub",
+    "instagram": null
+  },
+  "Ballumbie": {
+    "website": "https://www.ballumbiecastlegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/BallumbieCastleGolfClub",
+    "instagram": null
+  },
+  "Balmore": {
+    "website": "https://www.balmoregolfclub.co.uk",
+    "facebook": "https://www.facebook.com/BalmoreGolfClub",
+    "instagram": "https://www.instagram.com/balmoregolfclub"
+  },
+  "Balnagask": {
+    "website": "https://www.sportaberdeen.co.uk/balnagask-golf-course",
+    "facebook": "https://www.facebook.com/sportaberdeen",
+    "instagram": "https://www.instagram.com/sportaberdeen"
+  },
+  "Banchory": {
+    "website": "https://www.banchorygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/BanchoryGolfClub",
+    "instagram": "https://www.instagram.com/banchorygolfclub"
+  },
+  "Barra": {
+    "website": "http://www.barragolfclub.co.uk",
+    "facebook": "https://www.facebook.com/IsleofBarraGolfClub",
+    "instagram": null
+  },
+  "Barshaw": {
+    "website": "https://www.renfrewshireleisure.com/barshaw-golf-course",
+    "facebook": "https://www.facebook.com/RL4Leisure",
+    "instagram": null
+  },
+  "Bathgate": {
+    "website": "https://www.bathgategolfclub.com",
+    "facebook": "https://www.facebook.com/bathgategolfclub",
+    "instagram": "https://www.instagram.com/bathgategolfclub"
+  },
+  "Bearsden": {
+    "website": "https://www.bearsdengolfclub.com",
+    "facebook": "https://www.facebook.com/BearsdenGolfClub",
+    "instagram": null
+  },
+  "Beith": {
+    "website": "https://www.beithgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/BeithGolfClub",
+    "instagram": null
+  },
+  "Belleisle": {
+    "website": "https://www.south-ayrshire.gov.uk/golf/belleisle",
+    "facebook": "https://www.facebook.com/GolfSouthAyrshire",
+    "instagram": "https://www.instagram.com/golfsouthayrshire"
+  },
+  "Bellshill": {
+    "website": "https://www.bellshillgolfclub.com",
+    "facebook": "https://www.facebook.com/bellshillgolf",
+    "instagram": null
+  },
+  "Benbecula": {
+    "website": "http://www.benbeculagolfclub.co.uk",
+    "facebook": "https://www.facebook.com/benbeculagolf",
+    "instagram": null
+  },
+  "Biggar": {
+    "website": "https://www.southlanarkshireleisure.co.uk/biggar-golf-course",
+    "facebook": "https://www.facebook.com/SouthLanarkshireLeisure",
+    "instagram": null
+  },
+  "Bishopbriggs": {
+    "website": "https://www.bishopbriggsgolfclub.com",
+    "facebook": "https://www.facebook.com/BishopbriggsGolfClub",
+    "instagram": null
+  },
+  "Bishopshire": {
+    "website": "https://www.bishopshiregolfclub.co.uk",
+    "facebook": "https://www.facebook.com/BishopshireGolfClub",
+    "instagram": null
+  },
+  "Blair Atholl": {
+    "website": "https://www.blairathollgolf.co.uk",
+    "facebook": "https://www.facebook.com/blairathollgolfclub",
+    "instagram": null
+  },
+  "Blairgowrie - Rosemount": {
+    "website": "https://www.theblairgowriegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/TheBlairgowrieGolfClub",
+    "instagram": "https://www.instagram.com/blairgowriegolf"
+  },
+  "Blairgowrie - Landsdown": {
+    "website": "https://www.theblairgowriegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/TheBlairgowrieGolfClub",
+    "instagram": "https://www.instagram.com/blairgowriegolf"
+  },
+  "Blairgowrie - Wee": {
+    "website": "https://www.theblairgowriegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/TheBlairgowrieGolfClub",
+    "instagram": "https://www.instagram.com/blairgowriegolf"
+  },
+  "Blairmore and Strone": {
+    "website": "https://www.blairmoreandstronegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/BlairmoreandStroneGolfClub",
+    "instagram": null
+  },
+  "Boat of Garten": {
+    "website": "https://www.boatgolf.com",
+    "facebook": "https://www.facebook.com/boatofgartengolfclub",
+    "instagram": "https://www.instagram.com/boatofgartengolfclub"
+  },
+  "Bonar Bridge and Ardgay": {
+    "website": "https://www.bonarbridgegolf.co.uk",
+    "facebook": "https://www.facebook.com/BonarBridgeGolf",
+    "instagram": null
+  },
+  "Bonnybridge": {
+    "website": "http://www.bonnybridgegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/BonnybridgeGolfClub",
+    "instagram": null
+  },
+  "Bonnyton": {
+    "website": "https://www.bonnyton.com",
+    "facebook": "https://www.facebook.com/bonnytongolf",
+    "instagram": null
+  },
+  "Bothwell Castle": {
+    "website": "https://www.bcgc.co.uk",
+    "facebook": "https://www.facebook.com/BothwellCastleGolfClub",
+    "instagram": "https://www.instagram.com/bothwellcastlegc"
+  },
+  "Braehead": {
+    "website": "https://www.braeheadgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/BraeheadGolfClub",
+    "instagram": null
+  },
+  "Braemar": {
+    "website": "https://www.braemargolfclub.co.uk",
+    "facebook": "https://www.facebook.com/braemargolfclub",
+    "instagram": null
+  },
+  "Braes": {
+    "website": "https://www.braesgolf.co.uk",
+    "facebook": "https://www.facebook.com/TheBraesGolfCentre",
+    "instagram": null
+  },
+  "Braid Hills": {
+    "website": "https://www.edinburghleisure.co.uk/braid-hills-golf-course",
+    "facebook": "https://www.facebook.com/edinburghleisure",
+    "instagram": "https://www.instagram.com/ed_leisure"
+  },
+  "Brechin": {
+    "website": "https://www.brechingolfclub.co.uk",
+    "facebook": "https://www.facebook.com/BrechinGolfClub",
+    "instagram": null
+  },
+  "Bridgend and District": {
+    "website": "https://www.bridgendanddistrictgolfclub.com",
+    "facebook": "https://www.facebook.com/bridgendgolf",
+    "instagram": null
+  },
+  "Bridge of Allan": {
+    "website": "https://www.bofagc.com",
+    "facebook": "https://www.facebook.com/BridgeofAllanGolfClub",
+    "instagram": null
+  },
+  "Brighouse Bay": {
+    "website": "https://www.brighousebaygolf.co.uk",
+    "facebook": "https://www.facebook.com/BrighouseBayHolidayPark",
+    "instagram": null
+  },
+  "Broadlees": {
+    "website": "https://www.broadleesgolf.co.uk",
+    "facebook": "https://www.facebook.com/broadleesgolf",
+    "instagram": "https://www.instagram.com/broadleesgolf"
+  },
+  "Brodick": {
+    "website": "https://www.brodickgolf.com",
+    "facebook": "https://www.facebook.com/brodickgolf",
+    "instagram": null
+  },
+  "Broomieknowe": {
+    "website": "https://www.broomieknowe.com",
+    "facebook": "https://www.facebook.com/BroomieknoweGolfClub",
+    "instagram": "https://www.instagram.com/broomieknowegolf"
+  },
+  "Brora": {
+    "website": "https://www.broragolfclub.co.uk",
+    "facebook": "https://www.facebook.com/BroraGolfClub",
+    "instagram": "https://www.instagram.com/broragolfclub"
+  },
+  "Bruntsfield Links": {
+    "website": "https://www.bruntsfieldlinks.co.uk",
+    "facebook": "https://www.facebook.com/BruntsfieldLinks",
+    "instagram": "https://www.instagram.com/bruntsfieldlinks"
+  },
+  "Buchanan Castle": {
+    "website": "https://www.buchanancastlegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/BuchananCastleGolfClub",
+    "instagram": "https://www.instagram.com/buchanancastlegolfclub"
+  },
+  "Buckpool": {
+    "website": "https://www.buckpoolgolf.com",
+    "facebook": "https://www.facebook.com/BuckpoolGolfClub",
+    "instagram": null
+  },
+  "Royal Burgess": {
+    "website": "https://www.royalburgess.co.uk",
+    "facebook": "https://www.facebook.com/RoyalBurgess",
+    "instagram": "https://www.instagram.com/royalburgessgolf"
+  },
+  "Burntisland": {
+    "website": "https://www.burntislandgolfhouseclub.co.uk",
+    "facebook": "https://www.facebook.com/BurntislandGolf",
+    "instagram": null
+  },
+  "Bute": {
+    "website": "https://www.butegolfclub.com",
+    "facebook": "https://www.facebook.com/butegolfclub",
+    "instagram": null
+  },
+  "Cabot Highlands - Castle Stuart": {
+    "website": "https://cabothighlands.com",
+    "facebook": "https://www.facebook.com/CabotHighlands",
+    "instagram": "https://www.instagram.com/cabothighlands"
+  },
+  "Cabot Highlands - Old Petty": {
+    "website": "https://cabothighlands.com",
+    "facebook": "https://www.facebook.com/CabotHighlands",
+    "instagram": "https://www.instagram.com/cabothighlands"
+  },
+  "Calderbraes": {
+    "website": "https://www.calderbraesgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CalderbraesGolfClub",
+    "instagram": null
+  },
+  "Caldwell": {
+    "website": "https://www.caldwellgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CaldwellGolfClub",
+    "instagram": null
+  },
+  "Callander": {
+    "website": "https://www.callandergolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CallanderGolfClub",
+    "instagram": null
+  },
+  "Cally Palace": {
+    "website": "https://www.callypalace.co.uk/golf",
+    "facebook": "https://www.facebook.com/McMillanHotels",
+    "instagram": null
+  },
+  "Cambuslang": {
+    "website": "https://www.cambuslanggolf.co.uk",
+    "facebook": "https://www.facebook.com/CambuslangGolfClub",
+    "instagram": null
+  },
+  "Cameron House - Carrick": {
+    "website": "https://www.cameronhouse.co.uk/golf",
+    "facebook": "https://www.facebook.com/CameronHouseResort",
+    "instagram": "https://www.instagram.com/cameronhouseresort"
+  },
+  "Cameron House - Wee Demon": {
+    "website": "https://www.cameronhouse.co.uk/golf",
+    "facebook": "https://www.facebook.com/CameronHouseResort",
+    "instagram": "https://www.instagram.com/cameronhouseresort"
+  },
+  "Campsie": {
+    "website": "https://www.campsiegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CampsieGolfClub",
+    "instagram": null
+  },
+  "Canmore": {
+    "website": "https://www.canmoregolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CanmoreGolfClub",
+    "instagram": null
+  },
+  "Caprington": {
+    "website": "https://eastayrshireleisure.com/venue/caprington-golf-course",
+    "facebook": "https://www.facebook.com/EastAyrshireLeisure",
+    "instagram": "https://www.instagram.com/eastayrshireleisure"
+  },
+  "Cardrona": {
+    "website": "https://www.macdonaldhotels.co.uk/cardrona/golf",
+    "facebook": "https://www.facebook.com/MacdonaldCardronaHotel",
+    "instagram": null
+  },
+  "Cardross": {
+    "website": "https://www.cardrossgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CardrossGolfClub",
+    "instagram": "https://www.instagram.com/cardrossgolfclub"
+  },
+  "Carluke": {
+    "website": "https://www.carlukegolfclub.com",
+    "facebook": "https://www.facebook.com/CarlukeGolfClub",
+    "instagram": null
+  },
+  "Carnegie Links - Skibo Castle": {
+    "website": "https://www.skibo.org",
+    "facebook": null,
+    "instagram": "https://www.instagram.com/skibocastle"
+  },
+  "Carnoustie - Championship": {
+    "website": "https://www.carnoustiegolflinks.com",
+    "facebook": "https://www.facebook.com/carnoustiegolflinks",
+    "instagram": "https://www.instagram.com/carnoustiegolflinks"
+  },
+  "Carnoustie - Buddon": {
+    "website": "https://www.carnoustiegolflinks.com",
+    "facebook": "https://www.facebook.com/carnoustiegolflinks",
+    "instagram": "https://www.instagram.com/carnoustiegolflinks"
+  },
+  "Carnoustie - Burnside": {
+    "website": "https://www.carnoustiegolflinks.com",
+    "facebook": "https://www.facebook.com/carnoustiegolflinks",
+    "instagram": "https://www.instagram.com/carnoustiegolflinks"
+  },
+  "Carnwath": {
+    "website": "https://www.carnwathgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CarnwathGolfClub",
+    "instagram": null
+  },
+  "Carradale": {
+    "website": "https://www.carradalegolf.com",
+    "facebook": "https://www.facebook.com/CarradaleGolfClub",
+    "instagram": null
+  },
+  "Carrbridge": {
+    "website": "https://www.carrbridgegolf.com",
+    "facebook": "https://www.facebook.com/CarrbridgeGolfClub",
+    "instagram": null
+  },
+  "Carrick Knowe": {
+    "website": "https://www.edinburghleisure.co.uk/carrick-knowe-golf-course",
+    "facebook": "https://www.facebook.com/edinburghleisure",
+    "instagram": "https://www.instagram.com/ed_leisure"
+  },
+  "Castle Douglas": {
+    "website": "https://www.castledouglasgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CastleDouglasGolfClub",
+    "instagram": null
+  },
+  "Castle Park": {
+    "website": "https://www.castleparkgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CastleParkGolfClub",
+    "instagram": null
+  },
+  "Cathcart Castle": {
+    "website": "https://www.cathcartcastle.com",
+    "facebook": "https://www.facebook.com/CathcartCastleGolfClub",
+    "instagram": "https://www.instagram.com/cathcartcastlegc"
+  },
+  "Cathkin Braes": {
+    "website": "https://www.cathkinbraesgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CathkinBraesGolfClub",
+    "instagram": null
+  },
+  "Cawder - Championship": {
+    "website": "https://www.cawdergolfclub.com",
+    "facebook": "https://www.facebook.com/CawderGolfClub",
+    "instagram": "https://www.instagram.com/cawdergolfclub"
+  },
+  "Cawder - Keir": {
+    "website": "https://www.cawdergolfclub.com",
+    "facebook": "https://www.facebook.com/CawderGolfClub",
+    "instagram": "https://www.instagram.com/cawdergolfclub"
+  },
+  "Cawdor Castle": {
+    "website": "https://www.cawdorcastle.com/golf",
+    "facebook": "https://www.facebook.com/CawdorCastle",
+    "instagram": "https://www.instagram.com/cawdor_castle"
+  },
+  "Charleton": {
+    "website": "https://www.charletongolfclub.com",
+    "facebook": "https://www.facebook.com/CharletonGolfClub",
+    "instagram": null
+  },
+  "Clober": {
+    "website": "https://www.clobergolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CloberGolfClub",
+    "instagram": null
+  },
+  "Cluny": {
+    "website": "https://www.clunyclays.co.uk/golf",
+    "facebook": "https://www.facebook.com/ClunyClays",
+    "instagram": null
+  },
+  "Clydebank District": {
+    "website": "https://www.clydebankgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/ClydebankDistrictGolfClub",
+    "instagram": null
+  },
+  "Cochrane Castle": {
+    "website": "https://www.cochranecastle.com",
+    "facebook": "https://www.facebook.com/CochraneCastleGolfClub",
+    "instagram": null
+  },
+  "Colonsay": {
+    "website": "http://www.colonsaygolfclub.co.uk",
+    "facebook": null,
+    "instagram": null
+  },
+  "Colvend": {
+    "website": "https://www.colvendgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/ColvendGolfClub",
+    "instagram": null
+  },
+  "Colville Park": {
+    "website": "https://www.colvilleparkgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/ColvilleParkGolfClub",
+    "instagram": null
+  },
+  "Comrie": {
+    "website": "https://www.comriegolf.co.uk",
+    "facebook": "https://www.facebook.com/ComrieGolfClub",
+    "instagram": null
+  },
+  "Corrie": {
+    "website": "http://www.corriegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CorrieGolfClubArran",
+    "instagram": null
+  },
+  "Covesea": {
+    "website": "https://www.covesealinks.com",
+    "facebook": "https://www.facebook.com/covesealinks",
+    "instagram": null
+  },
+  "Cowal": {
+    "website": "https://www.cowalgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CowalGolfClub",
+    "instagram": null
+  },
+  "Cowdenbeath": {
+    "website": "https://fifegolftrust.co.uk/cowdenbeath",
+    "facebook": "https://www.facebook.com/FifeGolfTrust",
+    "instagram": null
+  },
+  "Cowglen": {
+    "website": "https://www.cowglengolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CowglenGolfClub",
+    "instagram": "https://www.instagram.com/cowglengolfclub"
+  },
+  "Craggan": {
+    "website": "https://www.cragganoutdoors.co.uk/golf",
+    "facebook": "https://www.facebook.com/CragganOutdoors",
+    "instagram": null
+  },
+  "Craibstone": {
+    "website": "https://www.marshall-leisure.co.uk/craibstone-golf",
+    "facebook": "https://www.facebook.com/CraibstoneGolf",
+    "instagram": null
+  },
+  "Craigentinny": {
+    "website": "https://www.edinburghleisure.co.uk/craigentinny-golf-course",
+    "facebook": "https://www.facebook.com/edinburghleisure",
+    "instagram": "https://www.instagram.com/ed_leisure"
+  },
+  "CraigieHill": {
+    "website": "https://www.craigiehill.co.uk",
+    "facebook": "https://www.facebook.com/CraigieHillGolfClub",
+    "instagram": null
+  },
+  "Craigieknowes": {
+    "website": "http://www.craigieknowes.co.uk",
+    "facebook": "https://www.facebook.com/Craigieknowes",
+    "instagram": null
+  },
+  "Craigielaw": {
+    "website": "https://www.craigielawgolfclub.com",
+    "facebook": "https://www.facebook.com/CraigielawGolfClub",
+    "instagram": "https://www.instagram.com/craigielaw"
+  },
+  "Craigmillar Park": {
+    "website": "https://www.craigmillarpark.co.uk",
+    "facebook": "https://www.facebook.com/CraigmillarParkGC",
+    "instagram": "https://www.instagram.com/craigmillarpark"
+  },
+  "Craignure": {
+    "website": "https://www.craignuregolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CraignureGolfClub",
+    "instagram": null
+  },
+  "Crail - Balcomie": {
+    "website": "https://www.crailgolfingsociety.co.uk",
+    "facebook": "https://www.facebook.com/CrailGolfingSociety",
+    "instagram": "https://www.instagram.com/crailgolf"
+  },
+  "Crail - Craighead": {
+    "website": "https://www.crailgolfingsociety.co.uk",
+    "facebook": "https://www.facebook.com/CrailGolfingSociety",
+    "instagram": "https://www.instagram.com/crailgolf"
+  },
+  "Crichton": {
+    "website": "https://www.crichtongolfclub.co.uk",
+    "facebook": "https://www.facebook.com/crichtongolf",
+    "instagram": null
+  },
+  "Crieff - Ferntower": {
+    "website": "https://www.crieffgolf.co.uk",
+    "facebook": "https://www.facebook.com/CrieffGolfClub",
+    "instagram": "https://www.instagram.com/crieffgolfclub"
+  },
+  "Crieff - Dornock": {
+    "website": "https://www.crieffgolf.co.uk",
+    "facebook": "https://www.facebook.com/CrieffGolfClub",
+    "instagram": "https://www.instagram.com/crieffgolfclub"
+  },
+  "Crow Wood": {
+    "website": "https://www.crowwoodgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CrowWoodGolfClub",
+    "instagram": null
+  },
+  "Cruden Bay": {
+    "website": "https://www.crudenbaygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CrudenBayGolfClub",
+    "instagram": "https://www.instagram.com/crudenbaygolfclub"
+  },
+  "Cruden Bay - St Olaf": {
+    "website": "https://www.crudenbaygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CrudenBayGolfClub",
+    "instagram": "https://www.instagram.com/crudenbaygolfclub"
+  },
+  "Culcrieff": {
+    "website": "https://www.crieffhydro.com/golf",
+    "facebook": "https://www.facebook.com/CrieffHydroResort",
+    "instagram": "https://www.instagram.com/crieffhydroresort"
+  },
+  "Cullen Links": {
+    "website": "https://www.cullenlinksgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CullenLinksGolfClub",
+    "instagram": null
+  },
+  "Cupar": {
+    "website": "https://www.cupargolfclub.co.uk",
+    "facebook": "https://www.facebook.com/CuparGolfClub",
+    "instagram": null
+  },
+  "Dalbeattie": {
+    "website": "https://www.dalbeattiegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/DalbeattieGolfClub",
+    "instagram": null
+  },
+  "Dalfaber": {
+    "website": "https://www.macdonaldhotels.co.uk/aviemore/golf",
+    "facebook": "https://www.facebook.com/MacdonaldAviemoreResort",
+    "instagram": null
+  },
+  "Dalmahoy - East": {
+    "website": "https://www.dalmahoyhotelandresort.co.uk/golf",
+    "facebook": "https://www.facebook.com/Dalmahoy",
+    "instagram": "https://www.instagram.com/dalmahoyresort"
+  },
+  "Dalmahoy - West": {
+    "website": "https://www.dalmahoyhotelandresort.co.uk/golf",
+    "facebook": "https://www.facebook.com/Dalmahoy",
+    "instagram": "https://www.instagram.com/dalmahoyresort"
+  },
+  "Dalmally": {
+    "website": "https://www.dalmallygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/DalmallyGolfClub",
+    "instagram": null
+  },
+  "Dalmilling": {
+    "website": "https://www.south-ayrshire.gov.uk/golf/dalmilling",
+    "facebook": "https://www.facebook.com/GolfSouthAyrshire",
+    "instagram": "https://www.instagram.com/golfsouthayrshire"
+  },
+  "Dalmuir": {
+    "website": "https://www.west-dunbarton.gov.uk/leisure-parks-events/golf-courses/dalmuir-golf-course",
+    "facebook": "https://www.facebook.com/DalmuirGolfCourse",
+    "instagram": null
+  },
+  "Dalmunzie": {
+    "website": "http://www.dalmunziegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/DalmunzieHotel",
+    "instagram": null
+  },
+  "Dalziel Park": {
+    "website": "https://www.lisini.co.uk/dalziel-park/golf",
+    "facebook": "https://www.facebook.com/DalzielParkHotel",
+    "instagram": null
+  },
+  "Deer Park": {
+    "website": "https://www.deer-park.co.uk",
+    "facebook": "https://www.facebook.com/DeerParkGolfandCountryClub",
+    "instagram": "https://www.instagram.com/deerparkgolf"
+  },
+  "Deeside - Haughton": {
+    "website": "https://www.deesidegolfclub.com",
+    "facebook": "https://www.facebook.com/DeesideGolfClub",
+    "instagram": "https://www.instagram.com/deesidegolfclub"
+  },
+  "Deeside - Blairs": {
+    "website": "https://www.deesidegolfclub.com",
+    "facebook": "https://www.facebook.com/DeesideGolfClub",
+    "instagram": "https://www.instagram.com/deesidegolfclub"
+  },
+  "Dollar": {
+    "website": "https://www.dollargolfclub.com",
+    "facebook": "https://www.facebook.com/DollarGolfClub",
+    "instagram": null
+  },
+  "Royal Dornoch - Struie": {
+    "website": "https://royaldornoch.com",
+    "facebook": "https://www.facebook.com/RoyalDornochGolfClub",
+    "instagram": "https://www.instagram.com/royaldornochgolfclub"
+  },
+  "Dougalston": {
+    "website": "https://www.nuffieldhealth.com/gyms/milngavie/golf",
+    "facebook": "https://www.facebook.com/NuffieldHealth",
+    "instagram": null
+  },
+  "Douglas Park": {
+    "website": "https://www.douglasparkgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/DouglasParkGolfClub",
+    "instagram": "https://www.instagram.com/douglasparkgolfclub"
+  },
+  "Douglas Water": {
+    "website": "https://www.douglaswatergolfclub.co.uk",
+    "facebook": "https://www.facebook.com/douglaswatergc",
+    "instagram": null
+  },
+  "Downfield": {
+    "website": "https://www.downfieldgolf.com",
+    "facebook": "https://www.facebook.com/DownfieldGolfClub",
+    "instagram": "https://www.instagram.com/downfieldgolfclub"
+  },
+  "Drumoig": {
+    "website": "https://www.drumoiggolfhotel.com",
+    "facebook": "https://www.facebook.com/DrumoigGolfHotel",
+    "instagram": null
+  },
+  "Drumpellier": {
+    "website": "https://www.drumpelliergolfclub.org.uk",
+    "facebook": "https://www.facebook.com/DrumpellierGolfClub",
+    "instagram": null
+  },
+  "Duddingston": {
+    "website": "https://www.duddingstongolfclub.co.uk",
+    "facebook": "https://www.facebook.com/DuddingstonGolfClub",
+    "instagram": "https://www.instagram.com/duddingstongolf"
+  },
+  "Duff House Royal": {
+    "website": "https://www.duffhouseroyal.com",
+    "facebook": "https://www.facebook.com/DuffHouseRoyalGolfClub",
+    "instagram": null
+  },
+  "Dufftown": {
+    "website": "https://www.dufftowngolfclub.com",
+    "facebook": "https://www.facebook.com/dufftowngolf",
+    "instagram": null
+  },
+  "Dullatur - Carrickstone": {
+    "website": "https://www.dullaturgolf.com",
+    "facebook": "https://www.facebook.com/DullaturGolfClub",
+    "instagram": "https://www.instagram.com/dullaturgc"
+  },
+  "Dullatur - Antonine": {
+    "website": "https://www.dullaturgolf.com",
+    "facebook": "https://www.facebook.com/DullaturGolfClub",
+    "instagram": "https://www.instagram.com/dullaturgc"
+  },
+  "Dumbarnie": {
+    "website": "https://www.dumbarnielinks.com",
+    "facebook": "https://www.facebook.com/DumbarnieLinks",
+    "instagram": "https://www.instagram.com/dumbarnielinks"
+  },
+  "Dumbarton": {
+    "website": "https://www.dumbartongolfclub.co.uk",
+    "facebook": "https://www.facebook.com/DumbartonGolfClub",
+    "instagram": null
+  },
+  "Dumfries and County": {
+    "website": "https://www.dumfriesandcountygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/DumfriesAndCountyGolfClub",
+    "instagram": null
+  },
+  "Dumfries and Galloway": {
+    "website": "https://www.dandggolfclub.co.uk",
+    "facebook": "https://www.facebook.com/dandggolfclub",
+    "instagram": null
+  },
+  "Dunaverty": {
+    "website": "https://www.dunavertygolfclub.com",
+    "facebook": "https://www.facebook.com/DunavertyGolfClub",
+    "instagram": null
+  },
+  "Dunbar": {
+    "website": "https://www.dunbargolfclub.com",
+    "facebook": "https://www.facebook.com/DunbarGolfClub",
+    "instagram": "https://www.instagram.com/dunbargolfclub"
+  },
+  "Dunblane New": {
+    "website": "https://www.dunblanenewgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/DunblaneNewGolfClub",
+    "instagram": null
+  },
+  "Dundas Parks": {
+    "website": "https://www.dundasparksgolf.co.uk",
+    "facebook": "https://www.facebook.com/DundasParksGolfClub",
+    "instagram": null
+  },
+  "Dundonald": {
+    "website": "https://www.dundonaldlinks.com",
+    "facebook": "https://www.facebook.com/DundonaldLinks",
+    "instagram": "https://www.instagram.com/dundonaldlinks"
+  },
+  "Dunecht House": {
+    "website": "http://www.dunechtestate.co.uk/golf",
+    "facebook": null,
+    "instagram": null
+  },
+  "Dunfermline": {
+    "website": "https://www.dunfermlinegolfclub.com",
+    "facebook": "https://www.facebook.com/DunfermlineGolfClub",
+    "instagram": null
+  },
+  "Dunfermline - Halkett": {
+    "website": "https://www.dunfermlinegolfclub.com",
+    "facebook": "https://www.facebook.com/DunfermlineGolfClub",
+    "instagram": null
+  },
+  "Dunkeld and Birnam": {
+    "website": "https://www.dunkeldandbirnamgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/DunkeldandBirnamGolfClub",
+    "instagram": null
+  },
+  "Dunnikier": {
+    "website": "https://fifegolftrust.co.uk/dunnikier",
+    "facebook": "https://www.facebook.com/FifeGolfTrust",
+    "instagram": null
+  },
+  "Dunning": {
+    "website": "https://www.dunninggolfclub.co.uk",
+    "facebook": "https://www.facebook.com/DunningGolfClub",
+    "instagram": null
+  },
+  "Duns": {
+    "website": "https://www.dunsgolfclub.com",
+    "facebook": "https://www.facebook.com/DunsGolfClub",
+    "instagram": null
+  },
+  "Durness": {
+    "website": "https://www.durnessgolfclub.org",
+    "facebook": "https://www.facebook.com/durnessgolfclub",
+    "instagram": null
+  },
+  "Easter Moffat": {
+    "website": "https://www.eastermoffatgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/EasterMoffatGolfClub",
+    "instagram": null
+  },
+  "East Kilbride": {
+    "website": "https://www.ekgolfclub.com",
+    "facebook": "https://www.facebook.com/EastKilbrideGolfClub",
+    "instagram": null
+  },
+  "East Renfrewshire": {
+    "website": "https://www.eastrengolfclub.co.uk",
+    "facebook": "https://www.facebook.com/EastRenfrewshireGolfClub",
+    "instagram": "https://www.instagram.com/eastrengolf"
+  },
+  "Edzell": {
+    "website": "https://www.edzellgolfclub.com",
+    "facebook": "https://www.facebook.com/EdzellGolfClub",
+    "instagram": "https://www.instagram.com/edzellgolfclub"
+  },
+  "Edzell - West Water": {
+    "website": "https://www.edzellgolfclub.com",
+    "facebook": "https://www.facebook.com/EdzellGolfClub",
+    "instagram": "https://www.instagram.com/edzellgolfclub"
+  },
+  "Elderslie": {
+    "website": "https://www.eldersliegolfclub.com",
+    "facebook": "https://www.facebook.com/ElderslieGolfClub",
+    "instagram": null
+  },
+  "Elgin": {
+    "website": "https://www.elgingolfclub.com",
+    "facebook": "https://www.facebook.com/ElginGolfClub",
+    "instagram": "https://www.instagram.com/elgingolfclub"
+  },
+  "Elie": {
+    "website": "https://www.golfhousetrust.org",
+    "facebook": "https://www.facebook.com/elie.golf",
+    "instagram": "https://www.instagram.com/eliegolfhouseclub"
+  },
+  "Elie Sports Club": {
+    "website": "https://www.eliesportsclub.co.uk",
+    "facebook": "https://www.facebook.com/ElieSportsClub",
+    "instagram": null
+  },
+  "Elmwood": {
+    "website": "https://www.elmwoodgolf.co.uk",
+    "facebook": "https://www.facebook.com/ElmwoodGolf",
+    "instagram": null
+  },
+  "Isle of Eriska": {
+    "website": "https://www.eriska-hotel.co.uk/golf",
+    "facebook": "https://www.facebook.com/IsleofEriskaHotel",
+    "instagram": "https://www.instagram.com/isleoferiska"
+  },
+  "Erskine": {
+    "website": "https://www.erskinegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/ErskineGolfClub",
+    "instagram": null
+  },
+  "Eyemouth": {
+    "website": "https://www.eyemouthgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/EyemouthGolfClub",
+    "instagram": null
+  },
+  "Fairmont - Kittocks": {
+    "website": "https://www.fairmont.com/st-andrews-scotland/golf",
+    "facebook": "https://www.facebook.com/FairmontStAndrews",
+    "instagram": "https://www.instagram.com/fairmontstandrews"
+  },
+  "Fairmont - Torrance": {
+    "website": "https://www.fairmont.com/st-andrews-scotland/golf",
+    "facebook": "https://www.facebook.com/FairmontStAndrews",
+    "instagram": "https://www.instagram.com/fairmontstandrews"
+  },
+  "Falkirk": {
+    "website": "https://www.falkirkgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/falkirkgolfclub",
+    "instagram": null
+  },
+  "Falkirk - Antonine": {
+    "website": "https://www.falkirkgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/falkirkgolfclub",
+    "instagram": null
+  },
+  "Falkirk Tryst": {
+    "website": "https://www.falkirktrystgolfclub.com",
+    "facebook": "https://www.facebook.com/FalkirkTrystGolfClub",
+    "instagram": null
+  },
+  "Falkland": {
+    "website": "http://www.falklandgolfclub.com",
+    "facebook": "https://www.facebook.com/falklandgolf",
+    "instagram": null
+  },
+  "Fereneze": {
+    "website": "https://www.ferenezegolfclub.com",
+    "facebook": "https://www.facebook.com/FerenezeGolfClub",
+    "instagram": null
+  },
+  "Forbes of Kingennie": {
+    "website": "https://www.forbesofkingennie.com/golf",
+    "facebook": "https://www.facebook.com/ForbesOfKingennie",
+    "instagram": "https://www.instagram.com/forbesofkingennie"
+  },
+  "Forfar": {
+    "website": "https://www.forfargolfclub.co.uk",
+    "facebook": "https://www.facebook.com/ForfarGolfClub",
+    "instagram": null
+  },
+  "Forres": {
+    "website": "https://www.forresgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/forresgolfclub",
+    "instagram": null
+  },
+  "Forrester Park Resort": {
+    "website": "https://www.forresterparkresort.com",
+    "facebook": "https://www.facebook.com/forresterparkresort",
+    "instagram": null
+  },
+  "Fort Augustus": {
+    "website": "http://www.fortaugustusgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/FortAugustusGolfClub",
+    "instagram": null
+  },
+  "Fortrose and Rosemarkie": {
+    "website": "https://www.fortrosegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/fortrosegolfclub",
+    "instagram": "https://www.instagram.com/fortrosegolfclub"
+  },
+  "Fort William": {
+    "website": "https://www.fortwilliamgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/FortWilliamGolfClub",
+    "instagram": null
+  },
+  "Foulford": {
+    "website": null,
+    "facebook": null,
+    "instagram": null
+  },
+  "Fraseburgh - Corbiehill": {
+    "website": "https://www.fraserburghgolfclub.org",
+    "facebook": "https://www.facebook.com/FraserburghGolfClub",
+    "instagram": null
+  },
+  "Fraserburgh - Rosehill": {
+    "website": "https://www.fraserburghgolfclub.org",
+    "facebook": "https://www.facebook.com/FraserburghGolfClub",
+    "instagram": null
+  },
+  "Gairloch": {
+    "website": "https://www.gairlochgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/gairlochgolfclub",
+    "instagram": null
+  },
+  "Galashiels": {
+    "website": "https://www.galashielsgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/GalashielsGolfClub",
+    "instagram": null
+  },
+  "Garmouth and Kingston": {
+    "website": "https://www.garmouthandkingstongolfclub.co.uk",
+    "facebook": "https://www.facebook.com/garmouthgolf",
+    "instagram": null
+  },
+  "Gatehouse of Fleet": {
+    "website": "https://www.gatehousegolfclub.com",
+    "facebook": "https://www.facebook.com/gatehousegolf",
+    "instagram": null
+  },
+  "Gifford": {
+    "website": "https://www.giffordgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/GiffordGolfClub",
+    "instagram": null
+  },
+  "Girvan": {
+    "website": "https://www.south-ayrshire.gov.uk/golf/girvan",
+    "facebook": "https://www.facebook.com/GolfSouthAyrshire",
+    "instagram": "https://www.instagram.com/golfsouthayrshire"
+  },
+  "Glasgow Gailes": {
+    "website": "https://www.gaileslinks.co.uk",
+    "facebook": "https://www.facebook.com/GailesLinks",
+    "instagram": "https://www.instagram.com/gaileslinks"
+  },
+  "Gleddoch": {
+    "website": "https://gleddoch.com/golf",
+    "facebook": "https://www.facebook.com/GleddochResort",
+    "instagram": "https://www.instagram.com/gleddochresort"
+  },
+  "Glenbervie": {
+    "website": "https://www.glenberviegolfclub.com",
+    "facebook": "https://www.facebook.com/GlenbervieGolfClub",
+    "instagram": "https://www.instagram.com/glenberviegc"
+  },
+  "Glencorse": {
+    "website": "https://www.glencorsegolfclub.com",
+    "facebook": "https://www.facebook.com/GlencorseGolfClub",
+    "instagram": null
+  },
+  "Glencruitten": {
+    "website": "https://www.obangolf.com",
+    "facebook": "https://www.facebook.com/GlencruittenGolfClub",
+    "instagram": null
+  },
+  "Gleneagles - Kings": {
+    "website": "https://www.gleneagles.com/golf",
+    "facebook": "https://www.facebook.com/gleneagleshotel",
+    "instagram": "https://www.instagram.com/gleneagleshotel"
+  },
+  "Gleneagles - PGA": {
+    "website": "https://www.gleneagles.com/golf",
+    "facebook": "https://www.facebook.com/gleneagleshotel",
+    "instagram": "https://www.instagram.com/gleneagleshotel"
+  },
+  "Gleneagles - Queens": {
+    "website": "https://www.gleneagles.com/golf",
+    "facebook": "https://www.facebook.com/gleneagleshotel",
+    "instagram": "https://www.instagram.com/gleneagleshotel"
+  },
+  "Gleneagles - Wee": {
+    "website": "https://www.gleneagles.com/golf",
+    "facebook": "https://www.facebook.com/gleneagleshotel",
+    "instagram": "https://www.instagram.com/gleneagleshotel"
+  },
+  "Glen North Berwick": {
+    "website": "https://www.glengolfclub.co.uk",
+    "facebook": "https://www.facebook.com/TheGlenGolfClub",
+    "instagram": "https://www.instagram.com/glengolfclub"
+  },
+  "Glen Isla": {
+    "website": "https://www.glenislagolf.com",
+    "facebook": "https://www.facebook.com/GlenislaGolf",
+    "instagram": null
+  },
+  "Glenrothes": {
+    "website": "https://fifegolftrust.co.uk/glenrothes",
+    "facebook": "https://www.facebook.com/FifeGolfTrust",
+    "instagram": null
+  },
+  "Gogarburn": {
+    "website": "http://www.gogarburngolfclub.co.uk",
+    "facebook": "https://www.facebook.com/GogarburnGolfClub",
+    "instagram": null
+  },
+  "Golf It": {
+    "website": "https://www.golfit.com",
+    "facebook": "https://www.facebook.com/GolfItGlasgow",
+    "instagram": "https://www.instagram.com/golfitglasgow"
+  },
+  "Golspie": {
+    "website": "https://www.golspiegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/GolspieGolfClub",
+    "instagram": "https://www.instagram.com/golspie_golf_club"
+  },
+  "Gourock": {
+    "website": "https://www.gourockgolfclub.com",
+    "facebook": "https://www.facebook.com/GourockGolfClub",
+    "instagram": "https://www.instagram.com/gourockgolfclub"
+  },
+  "Grangemouth": {
+    "website": "https://www.falkirk.gov.uk/places/sport-leisure/golf/grangemouth-golf-course.aspx",
+    "facebook": "https://www.facebook.com/GrangemouthGolfCourse",
+    "instagram": null
+  },
+  "Grantown on Spey": {
+    "website": "https://www.grantowngolfclub.co.uk",
+    "facebook": "https://www.facebook.com/grantowngolfclub",
+    "instagram": null
+  },
+  "Greenburn": {
+    "website": "https://www.greenburngolfclub.co.uk",
+    "facebook": "https://www.facebook.com/GreenburnGolfClub",
+    "instagram": null
+  },
+  "Greenock": {
+    "website": "https://www.greenockgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/GreenockGolfClub",
+    "instagram": null
+  },
+  "Greenock - Wee": {
+    "website": "https://www.greenockgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/GreenockGolfClub",
+    "instagram": null
+  },
+  "Greenock Whinhill": {
+    "website": "https://www.whinhillgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/WhinhillGolfClub",
+    "instagram": null
+  },
+  "Gullane - 1": {
+    "website": "https://www.gullanegolfclub.com",
+    "facebook": "https://www.facebook.com/GullaneGolfClub",
+    "instagram": "https://www.instagram.com/gullanegolfclub"
+  },
+  "Gullane - 2": {
+    "website": "https://www.gullanegolfclub.com",
+    "facebook": "https://www.facebook.com/GullaneGolfClub",
+    "instagram": "https://www.instagram.com/gullanegolfclub"
+  },
+  "Gullane - 3": {
+    "website": "https://www.gullanegolfclub.com",
+    "facebook": "https://www.facebook.com/GullaneGolfClub",
+    "instagram": "https://www.instagram.com/gullanegolfclub"
+  },
+  "Haddington": {
+    "website": "https://www.haddingtongolf.co.uk",
+    "facebook": "https://www.facebook.com/HaddingtonGolfClub",
+    "instagram": null
+  },
+  "Haggs Castle": {
+    "website": "https://www.haggscastlegolfclub.com",
+    "facebook": "https://www.facebook.com/HaggsCastleGolfClub",
+    "instagram": "https://www.instagram.com/haggscastlegolf"
+  },
+  "Hamilton": {
+    "website": "https://www.hamiltongolfclub.co.uk",
+    "facebook": "https://www.facebook.com/HamiltonGolfClub",
+    "instagram": null
+  },
+  "Harburn": {
+    "website": "https://www.harburngolfclub.co.uk",
+    "facebook": "https://www.facebook.com/HarburnGolfClub",
+    "instagram": null
+  },
+  "Hawick": {
+    "website": "https://www.hawickgolfclub.com",
+    "facebook": "https://www.facebook.com/hawickgolf",
+    "instagram": null
+  },
+  "Hayston": {
+    "website": "https://www.haystongolf.co.uk",
+    "facebook": "https://www.facebook.com/HaystonGolfClub",
+    "instagram": null
+  },
+  "Hazlehead - MacKenzie": {
+    "website": "https://www.sportaberdeen.co.uk/hazlehead-golf-club",
+    "facebook": "https://www.facebook.com/sportaberdeen",
+    "instagram": "https://www.instagram.com/sportaberdeen"
+  },
+  "Hazlehead 9 Holer": {
+    "website": "https://www.sportaberdeen.co.uk/hazlehead-golf-club",
+    "facebook": "https://www.facebook.com/sportaberdeen",
+    "instagram": "https://www.instagram.com/sportaberdeen"
+  },
+  "Hazlehead - Pines": {
+    "website": "https://www.sportaberdeen.co.uk/hazlehead-golf-club",
+    "facebook": "https://www.facebook.com/sportaberdeen",
+    "instagram": "https://www.instagram.com/sportaberdeen"
+  },
+  "Helensburgh": {
+    "website": "https://www.helensburghgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/HelensburghGolfClub",
+    "instagram": null
+  },
+  "Helmsdale": {
+    "website": "https://www.helmsdalegolfclub.com",
+    "facebook": "https://www.facebook.com/helmsdalegolf",
+    "instagram": null
+  },
+  "Hilton Park - Hilton": {
+    "website": "https://www.hiltonpark.co.uk",
+    "facebook": "https://www.facebook.com/HiltonParkGolfClub",
+    "instagram": null
+  },
+  "Hilton Park - Allander": {
+    "website": "https://www.hiltonpark.co.uk",
+    "facebook": "https://www.facebook.com/HiltonParkGolfClub",
+    "instagram": null
+  },
+  "Hoddom Castle": {
+    "website": "https://www.hoddomcastle.co.uk/golf",
+    "facebook": "https://www.facebook.com/hoddomcastle",
+    "instagram": null
+  },
+  "Hollandbush": {
+    "website": "https://www.hollandbushgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/hollandbushgolf",
+    "instagram": null
+  },
+  "Hopeman": {
+    "website": "https://www.hopemangolf.com",
+    "facebook": "https://www.facebook.com/HopemanGolfClub",
+    "instagram": null
+  },
+  "Huntly": {
+    "website": "https://www.huntlygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/HuntlyGolfClub",
+    "instagram": null
+  },
+  "Invereshie Estate": {
+    "website": null,
+    "facebook": null,
+    "instagram": null
+  },
+  "Inchmarlo": {
+    "website": "https://www.inchmarlogolf.co.uk",
+    "facebook": "https://www.facebook.com/InchmarloGolfCentre",
+    "instagram": null
+  },
+  "Innellan": {
+    "website": "https://www.innellangolfclub.co.uk",
+    "facebook": "https://www.facebook.com/InnellanGolfClub",
+    "instagram": null
+  },
+  "Innerleithen": {
+    "website": "https://www.innerleithengolf.co.uk",
+    "facebook": "https://www.facebook.com/innerleithengolfclub",
+    "instagram": null
+  },
+  "Insch": {
+    "website": "https://www.inschgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/inschgolfclub",
+    "instagram": null
+  },
+  "Inverallochy": {
+    "website": "https://www.inverallochygolfclub.com",
+    "facebook": "https://www.facebook.com/InverallochyGolfClub",
+    "instagram": null
+  },
+  "Inveraray": {
+    "website": "http://www.inveraraygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/InverarayGolfClub",
+    "instagram": null
+  },
+  "Invergordon": {
+    "website": "https://www.invergordongolf.co.uk",
+    "facebook": "https://www.facebook.com/invergordongolf",
+    "instagram": null
+  },
+  "Inverness": {
+    "website": "https://www.invernessgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/InvernessGolfClub",
+    "instagram": "https://www.instagram.com/invernessgolfclub"
+  },
+  "Inverurie": {
+    "website": "https://www.inveruriegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/InverurieGolfClub",
+    "instagram": null
+  },
+  "Irvine": {
+    "website": "https://www.theirvinegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/TheIrvineGolfClub",
+    "instagram": "https://www.instagram.com/theirvinegolfclub"
+  },
+  "Irvine Ravenspark": {
+    "website": "https://www.kaleisure.com/golf/ravenspark-golf-course",
+    "facebook": "https://www.facebook.com/KALeisure",
+    "instagram": "https://www.instagram.com/ka_leisure"
+  },
+  "Isle of Gigha": {
+    "website": "http://www.gigha.org.uk/golf",
+    "facebook": "https://www.facebook.com/isleofgigha",
+    "instagram": null
+  },
+  "Isle of Harris": {
+    "website": "https://www.harrisgolf.com",
+    "facebook": "https://www.facebook.com/IsleOfHarrisGolfClub",
+    "instagram": null
+  },
+  "Isle of Seil": {
+    "website": "http://www.seilgolf.org.uk",
+    "facebook": "https://www.facebook.com/IsleOfSeilGolfClub",
+    "instagram": null
+  },
+  "Isle of Skye": {
+    "website": "https://www.isleofskyegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/IsleOfSkyeGolfClub",
+    "instagram": null
+  },
+  "Jedburgh": {
+    "website": "https://www.jedburghgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/JedburghGolfClub",
+    "instagram": null
+  },
+  "Keith": {
+    "website": "https://www.keithgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/keithgolfclub",
+    "instagram": null
+  },
+  "Kelso": {
+    "website": "https://www.kelsogolfclub.co.uk",
+    "facebook": "https://www.facebook.com/KelsoGolfClub",
+    "instagram": null
+  },
+  "Kemnay": {
+    "website": "https://www.kemnaygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/KemnayGolfClub",
+    "instagram": null
+  },
+  "Kilbirnie Place": {
+    "website": "https://www.kilbirnieplacegolfclub.com",
+    "facebook": "https://www.facebook.com/kilbirnieplacegolfclub",
+    "instagram": null
+  },
+  "Killermont": {
+    "website": "https://www.glasgowgolfclub.com",
+    "facebook": "https://www.facebook.com/GlasgowGolfClub",
+    "instagram": null
+  },
+  "Killin": {
+    "website": "https://www.killingolfclub.co.uk",
+    "facebook": "https://www.facebook.com/KillinGolfClub",
+    "instagram": null
+  },
+  "Kilmacolm": {
+    "website": "https://www.kilmacolmgolfclub.com",
+    "facebook": "https://www.facebook.com/KilmacolmGolfClub",
+    "instagram": null
+  },
+  "Kilmarnock Barassie": {
+    "website": "https://www.barassiegolf.com",
+    "facebook": "https://www.facebook.com/BarassieGolfClub",
+    "instagram": "https://www.instagram.com/barassiegolf"
+  },
+  "Kilmarnock Barassie - Hillhouse": {
+    "website": "https://www.barassiegolf.com",
+    "facebook": "https://www.facebook.com/BarassieGolfClub",
+    "instagram": "https://www.instagram.com/barassiegolf"
+  },
+  "Kilspindie": {
+    "website": "https://www.kilspindiegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/KilspindieGolfClub",
+    "instagram": "https://www.instagram.com/kilspindiegolfclub"
+  },
+  "Kilsyth Lennox": {
+    "website": "https://www.kilsythlennox.com",
+    "facebook": "https://www.facebook.com/KilsythLennoxGolfClub",
+    "instagram": null
+  },
+  "Kingarrock Hickory": {
+    "website": "https://www.kingarrock.com",
+    "facebook": "https://www.facebook.com/Kingarrock",
+    "instagram": null
+  },
+  "Kinghorn": {
+    "website": "https://fifegolftrust.co.uk/kinghorn",
+    "facebook": "https://www.facebook.com/FifeGolfTrust",
+    "instagram": null
+  },
+  "King James VI": {
+    "website": "https://www.kingjamesvi.co.uk",
+    "facebook": "https://www.facebook.com/KingJamesVIGolfClub",
+    "instagram": null
+  },
+  "Kings": {
+    "website": "https://www.kingsgolfclubinverness.co.uk",
+    "facebook": "https://www.facebook.com/KingsGolfClubInverness",
+    "instagram": "https://www.instagram.com/kingsgolfclubinverness"
+  },
+  "Kings Acre": {
+    "website": "https://www.kingsacre.com",
+    "facebook": "https://www.facebook.com/KingsAcreGolf",
+    "instagram": null
+  },
+  "Kingsbarns": {
+    "website": "https://www.kingsbarns.com",
+    "facebook": "https://www.facebook.com/KingsbarnsGolfLinks",
+    "instagram": "https://www.instagram.com/kingsbarnsgolflinks"
+  },
+  "Kingsfield": {
+    "website": "https://www.kingsfieldgolfcentre.com",
+    "facebook": "https://www.facebook.com/KingsfieldGolf",
+    "instagram": null
+  },
+  "Kingsknowe": {
+    "website": "https://www.kingsknowe.com",
+    "facebook": "https://www.facebook.com/KingsknoweGolfClub",
+    "instagram": null
+  },
+  "Kings Links": {
+    "website": "https://www.sportaberdeen.co.uk/kings-links-golf-course",
+    "facebook": "https://www.facebook.com/sportaberdeen",
+    "instagram": "https://www.instagram.com/sportaberdeen"
+  },
+  "Kingussie": {
+    "website": "https://www.kingussiegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/KingussieGolfClub",
+    "instagram": null
+  },
+  "Kinross - Montgomery": {
+    "website": "https://www.kinrossgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/KinrossGolfClub",
+    "instagram": null
+  },
+  "Kinross - Bruce": {
+    "website": "https://www.kinrossgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/KinrossGolfClub",
+    "instagram": null
+  },
+  "Kintore": {
+    "website": "https://www.kintoregolfclub.net",
+    "facebook": "https://www.facebook.com/KintoreGolfClub",
+    "instagram": null
+  },
+  "Kirkcaldy": {
+    "website": "https://www.kirkcaldygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/KirkcaldyGolfClub",
+    "instagram": null
+  },
+  "Kirkcudbright": {
+    "website": "https://www.kirkcudbrightgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/KirkcudbrightGolfClub",
+    "instagram": null
+  },
+  "Kirkhill": {
+    "website": "https://www.kirkhillgolfclub.org.uk",
+    "facebook": "https://www.facebook.com/KirkhillGolfClub",
+    "instagram": null
+  },
+  "Kirkintilloch": {
+    "website": "https://www.kirkintillochgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/KirkintillochGolfClub",
+    "instagram": null
+  },
+  "Kirriemuir": {
+    "website": "https://www.kirriemuirgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/KirriemuirGolfClub",
+    "instagram": null
+  },
+  "Knightswood": {
+    "website": "https://www.glasgowlife.org.uk/knightswood-golf-course",
+    "facebook": "https://www.facebook.com/GlasgowLife",
+    "instagram": "https://www.instagram.com/glasgow_life"
+  },
+  "Turnberry - King Robert the Bruce": {
+    "website": "https://www.turnberry.co.uk",
+    "facebook": "https://www.facebook.com/TrumpTurnberry",
+    "instagram": "https://www.instagram.com/trumpturnberry"
+  },
+  "Kyles of Bute": {
+    "website": "https://www.kylesofbutegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/KylesOfButeGolfClub",
+    "instagram": null
+  },
+  "Ladybank": {
+    "website": "https://www.ladybankgolf.co.uk",
+    "facebook": "https://www.facebook.com/LadybankGolfClub",
+    "instagram": "https://www.instagram.com/ladybankgolfclub"
+  },
+  "Lamlash": {
+    "website": "https://www.lamlashgolfclub.com",
+    "facebook": "https://www.facebook.com/LamlashGolfClub",
+    "instagram": null
+  },
+  "Lanark": {
+    "website": "https://www.lanarkgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LanarkGolfClub",
+    "instagram": "https://www.instagram.com/lanarkgolfclub"
+  },
+  "Langholm": {
+    "website": "https://www.langholmgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LangholmGolfClub",
+    "instagram": null
+  },
+  "Langlands": {
+    "website": "https://www.southlanarkshireleisure.co.uk/langlands-golf-course",
+    "facebook": "https://www.facebook.com/SouthLanarkshireLeisure",
+    "instagram": null
+  },
+  "Largs": {
+    "website": "https://www.largsgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LargsGolfClub",
+    "instagram": null
+  },
+  "Larkhall": {
+    "website": "https://www.southlanarkshireleisure.co.uk/larkhall-golf-course",
+    "facebook": "https://www.facebook.com/SouthLanarkshireLeisure",
+    "instagram": null
+  },
+  "Lauder": {
+    "website": "https://www.laudergolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LauderGolfClub",
+    "instagram": null
+  },
+  "Leadhills": {
+    "website": "http://www.leadhillsgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LeadhillsGolfClub",
+    "instagram": null
+  },
+  "Leitfie": {
+    "website": null,
+    "facebook": null,
+    "instagram": null
+  },
+  "Lenzie": {
+    "website": "https://www.lenziegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LenzieGolfClub",
+    "instagram": null
+  },
+  "Leslie": {
+    "website": "https://www.lesliegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LeslieGolfClub",
+    "instagram": null
+  },
+  "Leven": {
+    "website": "https://www.leven-links.com",
+    "facebook": "https://www.facebook.com/LevenLinks",
+    "instagram": "https://www.instagram.com/levenlinks"
+  },
+  "Liberton": {
+    "website": "https://www.libertongolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LibertonGolfClub",
+    "instagram": null
+  },
+  "Lilliardsedge": {
+    "website": "https://www.lilliardsedge.co.uk/golf",
+    "facebook": "https://www.facebook.com/LilliardsedgeHolidayPark",
+    "instagram": "https://www.instagram.com/lilliardsedge"
+  },
+  "Lilliesleaf": {
+    "website": null,
+    "facebook": null,
+    "instagram": null
+  },
+  "Linlithgow": {
+    "website": "https://www.linlithgowgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LinlithgowGolfClub",
+    "instagram": null
+  },
+  "Littlehill": {
+    "website": "https://www.glasgowlife.org.uk/littlehill-golf-course",
+    "facebook": "https://www.facebook.com/GlasgowLife",
+    "instagram": "https://www.instagram.com/glasgow_life"
+  },
+  "Lochcarron": {
+    "website": "https://www.lochcarrongolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LochcarronGolfClub",
+    "instagram": null
+  },
+  "Lochgelly": {
+    "website": "https://fifegolftrust.co.uk/lochgelly",
+    "facebook": "https://www.facebook.com/FifeGolfTrust",
+    "instagram": null
+  },
+  "Lochgilphead": {
+    "website": "https://www.lochgilpheadgolf.co.uk",
+    "facebook": "https://www.facebook.com/LochgilpheadGolfClub",
+    "instagram": null
+  },
+  "Lochgoilhead": {
+    "website": "https://www.lochgoilheadgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LochgoilheadGolfClub",
+    "instagram": null
+  },
+  "Loch Lomond": {
+    "website": "https://www.lochlomond.com",
+    "facebook": null,
+    "instagram": "https://www.instagram.com/lochlomondgolfclub"
+  },
+  "Lochmaben": {
+    "website": "https://www.lochmabengolf.co.uk",
+    "facebook": "https://www.facebook.com/LochmabenGolfClub",
+    "instagram": null
+  },
+  "Loch Ness - Fairways Golf Centre": {
+    "website": "https://www.fairways-inverness.co.uk",
+    "facebook": "https://www.facebook.com/FairwaysGolfCentre",
+    "instagram": null
+  },
+  "Lochore Meadows": {
+    "website": "https://fifegolftrust.co.uk/lochore-meadows",
+    "facebook": "https://www.facebook.com/FifeGolfTrust",
+    "instagram": null
+  },
+  "Lochranza": {
+    "website": "http://www.lochranzagolf.com",
+    "facebook": "https://www.facebook.com/LochranzaGolf",
+    "instagram": null
+  },
+  "Lochview": {
+    "website": "https://www.nlleisure.co.uk/lochview-golf-centre",
+    "facebook": "https://www.facebook.com/NLLeisure",
+    "instagram": null
+  },
+  "Loch Winnoch": {
+    "website": "https://www.lochwinnochgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LochwinnochGolfClub",
+    "instagram": null
+  },
+  "Lockerbie": {
+    "website": "https://www.lockerbiegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LockerbieGolfClub",
+    "instagram": null
+  },
+  "Longniddry": {
+    "website": "https://www.longniddrygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LongniddryGolfClub",
+    "instagram": "https://www.instagram.com/longniddrygolfclub"
+  },
+  "Longside": {
+    "website": "https://www.longsidegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LongsideGolfClub",
+    "instagram": null
+  },
+  "Loudoun Gowf": {
+    "website": "https://www.loudoungowfclub.co.uk",
+    "facebook": "https://www.facebook.com/LoudounGowfClub",
+    "instagram": null
+  },
+  "Luffness New": {
+    "website": "https://www.luffnessnew.com",
+    "facebook": null,
+    "instagram": null
+  },
+  "Lumphanan": {
+    "website": "https://www.lumphanangolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LumphananGolfClub",
+    "instagram": null
+  },
+  "Lundin Links": {
+    "website": "https://www.lundinlinks.com",
+    "facebook": "https://www.facebook.com/LundinLinks",
+    "instagram": "https://www.instagram.com/lundingolfclub"
+  },
+  "Lundin Ladies": {
+    "website": "https://www.lundinladiesgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LundinLadiesGolfClub",
+    "instagram": null
+  },
+  "Lybster": {
+    "website": "https://www.lybstergolfclub.co.uk",
+    "facebook": "https://www.facebook.com/LybsterGolfClub",
+    "instagram": null
+  },
+  "Murrayshall - Lynedoch": {
+    "website": "https://www.murrayshall.co.uk",
+    "facebook": "https://www.facebook.com/Murrayshall",
+    "instagram": "https://www.instagram.com/murrayshall"
+  },
+  "The Machrie": {
+    "website": "https://www.themachrie.com",
+    "facebook": "https://www.facebook.com/machrielinks",
+    "instagram": "https://www.instagram.com/themachriehotel"
+  },
+  "Machrie Bay": {
+    "website": "https://www.machriebay.com",
+    "facebook": "https://www.facebook.com/MachrieBayGolfClub",
+    "instagram": null
+  },
+  "Machrihanish": {
+    "website": "https://www.machgolf.com",
+    "facebook": "https://www.facebook.com/MachrihanishGolfClub",
+    "instagram": "https://www.instagram.com/machrihanishgolfclub"
+  },
+  "Machrihanish Dunes": {
+    "website": "https://machrihanishdunes.com",
+    "facebook": "https://www.facebook.com/MachDunes",
+    "instagram": "https://www.instagram.com/machrihanishdunes"
+  },
+  "Mains of Taymouth": {
+    "website": "https://www.taymouthgolfcourse.com",
+    "facebook": "https://www.facebook.com/mainsoftaymouth",
+    "instagram": "https://www.instagram.com/mainsoftaymouth"
+  },
+  "Mar Hall": {
+    "website": "https://www.marhall.com/golf",
+    "facebook": "https://www.facebook.com/MarHallResort",
+    "instagram": "https://www.instagram.com/marhallresort"
+  },
+  "Maverston": {
+    "website": "https://www.maverstongolf.com",
+    "facebook": "https://www.facebook.com/Maverstongolf",
+    "instagram": null
+  },
+  "Maverston - Kempston": {
+    "website": "https://www.maverstongolf.com",
+    "facebook": "https://www.facebook.com/Maverstongolf",
+    "instagram": null
+  },
+  "Maybole": {
+    "website": "https://www.south-ayrshire.gov.uk/golf/maybole",
+    "facebook": "https://www.facebook.com/GolfSouthAyrshire",
+    "instagram": "https://www.instagram.com/golfsouthayrshire"
+  },
+  "McDonald": {
+    "website": "https://www.mcdonaldgolfclub.com",
+    "facebook": "https://www.facebook.com/mcdonaldgolfclubellon",
+    "instagram": null
+  },
+  "Mearns Castle": {
+    "website": "https://www.mcga.co.uk",
+    "facebook": "https://www.facebook.com/MearnsCastleGolfAcademy",
+    "instagram": "https://www.instagram.com/mearnscastlegolfacademy"
+  },
+  "Meldrum House": {
+    "website": "https://www.meldrumhouse.com/golf",
+    "facebook": "https://www.facebook.com/MeldrumHouse",
+    "instagram": "https://www.instagram.com/meldrumhouse"
+  },
+  "Melrose": {
+    "website": "https://www.melrosegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/melrosegolfclub",
+    "instagram": null
+  },
+  "Melville": {
+    "website": "https://www.melvillegolf.com",
+    "facebook": "https://www.facebook.com/MelvilleGolfCentre",
+    "instagram": null
+  },
+  "Merchants of Edinburgh": {
+    "website": "https://www.merchantsgolf.com",
+    "facebook": "https://www.facebook.com/merchantsofedinburghgolfclub",
+    "instagram": null
+  },
+  "Millport": {
+    "website": "https://www.millportgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/MillportGolfClub",
+    "instagram": null
+  },
+  "Milnathort": {
+    "website": "https://www.milnathortgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/milnathortgolf",
+    "instagram": null
+  },
+  "Milngavie": {
+    "website": "https://www.milngaviegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/MilngavieGolfClub",
+    "instagram": null
+  },
+  "Minto": {
+    "website": "https://www.mintogolfclub.net",
+    "facebook": "https://www.facebook.com/MintoGolfClub",
+    "instagram": null
+  },
+  "Moffat": {
+    "website": "https://www.moffatgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/moffatgolfclub",
+    "instagram": null
+  },
+  "Monifieth - Medal": {
+    "website": "https://www.monifiethgolflinks.com",
+    "facebook": "https://www.facebook.com/MonifiethGolfLinks",
+    "instagram": "https://www.instagram.com/monifiethgolflinks"
+  },
+  "Monifieth - Ashludie": {
+    "website": "https://www.monifiethgolflinks.com",
+    "facebook": "https://www.facebook.com/MonifiethGolfLinks",
+    "instagram": "https://www.instagram.com/monifiethgolflinks"
+  },
+  "Montrose - 1562": {
+    "website": "https://www.montrosegolflinks.com",
+    "facebook": "https://www.facebook.com/MontroseGolfLinks",
+    "instagram": "https://www.instagram.com/montrosegolflinks"
+  },
+  "Montrose - Broomfield": {
+    "website": "https://www.montrosegolflinks.com",
+    "facebook": "https://www.facebook.com/MontroseGolfLinks",
+    "instagram": "https://www.instagram.com/montrosegolflinks"
+  },
+  "Moray - Old": {
+    "website": "https://www.moraygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/MorayGolfClub",
+    "instagram": "https://www.instagram.com/moraygolfclub"
+  },
+  "Moray - New": {
+    "website": "https://www.moraygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/MorayGolfClub",
+    "instagram": "https://www.instagram.com/moraygolfclub"
+  },
+  "Mortonhall": {
+    "website": "https://www.mortonhallgc.co.uk",
+    "facebook": "https://www.facebook.com/MortonhallGC",
+    "instagram": "https://www.instagram.com/mortonhall_gc"
+  },
+  "Muckhart": {
+    "website": "https://www.muckhartgolf.com",
+    "facebook": "https://www.facebook.com/MuckhartGolfClub",
+    "instagram": null
+  },
+  "Muirfield": {
+    "website": "https://www.muirfield.org.uk",
+    "facebook": null,
+    "instagram": "https://www.instagram.com/muirfieldgolflinks"
+  },
+  "Muirkirk": {
+    "website": "https://www.muirkirkgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/MuirkirkGolfClub",
+    "instagram": null
+  },
+  "Muir of Ord": {
+    "website": "https://www.muirofordgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/MuirOfOrdGolfClub",
+    "instagram": null
+  },
+  "Murcar": {
+    "website": "https://www.murcarlinks.com",
+    "facebook": "https://www.facebook.com/MurcarLinksGolfClub",
+    "instagram": "https://www.instagram.com/murcarlinks"
+  },
+  "Murcar - Strabathie": {
+    "website": "https://www.murcarlinks.com",
+    "facebook": "https://www.facebook.com/MurcarLinksGolfClub",
+    "instagram": "https://www.instagram.com/murcarlinks"
+  },
+  "Murrayfield": {
+    "website": "https://www.murrayfieldgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/murrayfieldgc",
+    "instagram": null
+  },
+  "Murrayshall": {
+    "website": "https://www.murrayshall.co.uk",
+    "facebook": "https://www.facebook.com/Murrayshall",
+    "instagram": "https://www.instagram.com/murrayshall"
+  },
+  "Musselburgh": {
+    "website": "https://www.themusselburghgolfclub.com",
+    "facebook": "https://www.facebook.com/TheMusselburghGolfClub",
+    "instagram": null
+  },
+  "Musselburgh Old Links": {
+    "website": "https://www.musselburgholdlinks.co.uk",
+    "facebook": "https://www.facebook.com/MusselburghOldLinks",
+    "instagram": null
+  },
+  "Muthill": {
+    "website": "https://www.muthillgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/MuthillGolfClub",
+    "instagram": null
+  },
+  "Nairn Dunbar": {
+    "website": "https://www.nairndunbar.com",
+    "facebook": "https://www.facebook.com/NairnDunbarGolfClub",
+    "instagram": "https://www.instagram.com/nairndunbar"
+  },
+  "Nairn": {
+    "website": "https://www.nairngolfclub.com",
+    "facebook": "https://www.facebook.com/nairngolfclub",
+    "instagram": "https://www.instagram.com/nairngolfclub"
+  },
+  "Nairn - Cameron": {
+    "website": "https://www.nairngolfclub.com",
+    "facebook": "https://www.facebook.com/nairngolfclub",
+    "instagram": "https://www.instagram.com/nairngolfclub"
+  },
+  "Newbattle": {
+    "website": "https://www.newbattlegolfclub.com",
+    "facebook": "https://www.facebook.com/NewbattleGolfClub",
+    "instagram": null
+  },
+  "Newburgh on Ythan": {
+    "website": "https://www.newburghgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/newburghgolf",
+    "instagram": null
+  },
+  "Newcastleton": {
+    "website": "http://www.newcastleton.com/golf",
+    "facebook": "https://www.facebook.com/NewcastletonGolfClub",
+    "instagram": null
+  },
+  "New Cumnock": {
+    "website": "https://www.newcumnockgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/newcumnockgolf",
+    "instagram": null
+  },
+  "New Galloway": {
+    "website": "https://www.newgallowaygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/newgallowaygolf",
+    "instagram": null
+  },
+  "Newmachar - Hawkshill": {
+    "website": "https://www.newmachargolfclub.co.uk",
+    "facebook": "https://www.facebook.com/newmachargolf",
+    "instagram": "https://www.instagram.com/newmachargolfclub"
+  },
+  "Newmachar - Swailend": {
+    "website": "https://www.newmachargolfclub.co.uk",
+    "facebook": "https://www.facebook.com/newmachargolf",
+    "instagram": "https://www.instagram.com/newmachargolfclub"
+  },
+  "Newtonmore": {
+    "website": "https://www.newtonmoregolf.com",
+    "facebook": "https://www.facebook.com/NewtonmoreGolfClub",
+    "instagram": null
+  },
+  "Newton Stewart": {
+    "website": "https://www.newtonstewartgolfclub.com",
+    "facebook": "https://www.facebook.com/NewtonStewartGolfClub",
+    "instagram": null
+  },
+  "Niddry Castle": {
+    "website": "https://www.niddrycastlegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/NiddryCastleGolfClub",
+    "instagram": null
+  },
+  "North Berwick": {
+    "website": "https://www.northberwickgolfclub.com",
+    "facebook": "https://www.facebook.com/northberwickgolfclub",
+    "instagram": "https://www.instagram.com/northberwickgolfclub"
+  },
+  "North Inch": {
+    "website": "https://www.northinchgolf.co.uk",
+    "facebook": "https://www.facebook.com/northinchgolf",
+    "instagram": "https://www.instagram.com/northinchgolf"
+  },
+  "Oatridge and Binny": {
+    "website": "https://www.binnygolf.co.uk",
+    "facebook": "https://www.facebook.com/BinnyGolfClub",
+    "instagram": null
+  },
+  "Old Meldrum": {
+    "website": "https://www.oldmeldrumgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/oldmeldrumgolfclub",
+    "instagram": null
+  },
+  "Old Ranfurly": {
+    "website": "https://www.oldranfurly.com",
+    "facebook": "https://www.facebook.com/OldRanfurlyGolfClub",
+    "instagram": null
+  },
+  "Orkney": {
+    "website": "https://www.orkneygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/OrkneyGolfClub",
+    "instagram": null
+  },
+  "Paisley": {
+    "website": "https://www.paisleygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/PaisleyGolfClub",
+    "instagram": null
+  },
+  "Palacerigg": {
+    "website": "https://www.palacerigg.co.uk",
+    "facebook": "https://www.facebook.com/PalaceriggGolfClub",
+    "instagram": null
+  },
+  "Panmure": {
+    "website": "https://www.panmuregolfclub.co.uk",
+    "facebook": "https://www.facebook.com/PanmureGolfClub",
+    "instagram": "https://www.instagram.com/panmuregolf"
+  },
+  "Peebles": {
+    "website": "https://www.peeblesgolfclub.com",
+    "facebook": "https://www.facebook.com/PeeblesGolfClub",
+    "instagram": "https://www.instagram.com/peeblesgolfclub"
+  },
+  "Peterculter": {
+    "website": "https://www.petercultergolfclub.co.uk",
+    "facebook": "https://www.facebook.com/petercultergolfclub",
+    "instagram": null
+  },
+  "Peterhead - Old": {
+    "website": "https://www.peterheadgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/PeterheadGolfClub",
+    "instagram": null
+  },
+  "Peterhead - New": {
+    "website": "https://www.peterheadgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/PeterheadGolfClub",
+    "instagram": null
+  },
+  "Piperdam": {
+    "website": "https://www.piperdam.com/golf",
+    "facebook": "https://www.facebook.com/Piperdam",
+    "instagram": "https://www.instagram.com/piperdam"
+  },
+  "Pitlochry": {
+    "website": "https://www.pitlochrygolf.co.uk",
+    "facebook": "https://www.facebook.com/PitlochryGolfClub",
+    "instagram": "https://www.instagram.com/pitlochry_golf"
+  },
+  "Pitreavie": {
+    "website": "https://www.pitreaviegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/PitreavieGolfClub",
+    "instagram": null
+  },
+  "Paul Lawrie Golf Centre": {
+    "website": "https://www.paullawriegolfcentre.co.uk",
+    "facebook": "https://www.facebook.com/PaulLawrieGolfCentre",
+    "instagram": "https://www.instagram.com/paullawriegolfcentre"
+  },
+  "Polkemmet": {
+    "website": "https://www.westlothian.gov.uk/polkemmet-golf",
+    "facebook": "https://www.facebook.com/PolkemmetCountryPark",
+    "instagram": null
+  },
+  "Pollok": {
+    "website": "https://www.pollokgolf.com",
+    "facebook": "https://www.facebook.com/PollokGolfClub",
+    "instagram": null
+  },
+  "Port Bannatyne": {
+    "website": "https://www.portbannatynegolf.co.uk",
+    "facebook": "https://www.facebook.com/portbannatynegolf",
+    "instagram": null
+  },
+  "Port Glasgow": {
+    "website": "https://www.portglasgowgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/PortGlasgowGolfClub",
+    "instagram": null
+  },
+  "Portlethen": {
+    "website": "https://www.portlethengolfclub.com",
+    "facebook": "https://www.facebook.com/PortlethenGolfClub",
+    "instagram": "https://www.instagram.com/portlethengolfclub"
+  },
+  "Portmahomack": {
+    "website": "http://www.portmahomackgolfclub.com",
+    "facebook": "https://www.facebook.com/PortmahomackGolfClub",
+    "instagram": null
+  },
+  "Portobello": {
+    "website": "https://www.edinburghleisure.co.uk/portobello-golf-course",
+    "facebook": "https://www.facebook.com/edinburghleisure",
+    "instagram": "https://www.instagram.com/ed_leisure"
+  },
+  "Portpatrick Dunskey": {
+    "website": "https://www.portpatrickgolfclub.com",
+    "facebook": "https://www.facebook.com/PortpatrickGolfClub",
+    "instagram": null
+  },
+  "Portpatrick Dinvin Course": {
+    "website": "https://www.portpatrickgolfclub.com",
+    "facebook": "https://www.facebook.com/PortpatrickGolfClub",
+    "instagram": null
+  },
+  "Powfoot": {
+    "website": "https://www.powfootgolfclub.com",
+    "facebook": "https://www.facebook.com/PowfootGolfClub",
+    "instagram": null
+  },
+  "Prestonfield": {
+    "website": "https://www.prestonfieldgolf.co.uk",
+    "facebook": "https://www.facebook.com/PrestonfieldGolfClub",
+    "instagram": "https://www.instagram.com/prestonfieldgc"
+  },
+  "Prestwick": {
+    "website": "https://www.prestwickgc.co.uk",
+    "facebook": null,
+    "instagram": "https://www.instagram.com/prestwickgolfclub"
+  },
+  "Prestwick St Cuthbert": {
+    "website": "https://www.stcuthbert.co.uk",
+    "facebook": "https://www.facebook.com/PrestwickStCuthbert",
+    "instagram": null
+  },
+  "Prestwick St Nicholas": {
+    "website": "https://www.prestwickstnicholas.com",
+    "facebook": "https://www.facebook.com/PrestwickStNicholas",
+    "instagram": null
+  },
+  "Pumpherston": {
+    "website": "https://www.pumpherstongolfclub.co.uk",
+    "facebook": "https://www.facebook.com/PumpherstonGolfClub",
+    "instagram": null
+  },
+  "Ralston": {
+    "website": "https://www.ralstongolfclub.com",
+    "facebook": "https://www.facebook.com/RalstonGolfClub",
+    "instagram": null
+  },
+  "Ranfurly Castle": {
+    "website": "https://www.ranfurlycastlegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/RanfurlyCastleGolfClub",
+    "instagram": null
+  },
+  "Ratho Park": {
+    "website": "https://www.rathoparkgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/RathoParkGolfClub",
+    "instagram": null
+  },
+  "Ravelston": {
+    "website": "https://www.ravelstongolfclub.co.uk",
+    "facebook": "https://www.facebook.com/RavelstonGolfClub",
+    "instagram": null
+  },
+  "Reay": {
+    "website": "https://www.reaygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/reaygolfclub",
+    "instagram": null
+  },
+  "Renfrew": {
+    "website": "https://www.renfrewgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/RenfrewGolfClub",
+    "instagram": null
+  },
+  "Roodlea Golf Center": {
+    "website": "http://www.roodleagolf.co.uk",
+    "facebook": "https://www.facebook.com/RoodleaGolfCentre",
+    "instagram": null
+  },
+  "Rosehearty": {
+    "website": "https://www.roseheartygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/RoseheartyGolfClub",
+    "instagram": null
+  },
+  "Rothes": {
+    "website": "https://www.rothesgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/RothesGolfClub",
+    "instagram": null
+  },
+  "Rothesay": {
+    "website": "https://www.rothesaygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/RothesayGolfClub",
+    "instagram": null
+  },
+  "Rouken Glen": {
+    "website": "https://www.ercultureandleisure.org/sports/golf",
+    "facebook": "https://www.facebook.com/RoukenGlenGolfCourse",
+    "instagram": null
+  },
+  "Routenburn": {
+    "website": "https://www.kaleisure.com/golf/routenburn-golf-course",
+    "facebook": "https://www.facebook.com/KALeisure",
+    "instagram": "https://www.instagram.com/ka_leisure"
+  },
+  "Rowallan Castle": {
+    "website": "https://www.rowallancastle.com",
+    "facebook": "https://www.facebook.com/RowallanCastleGolf",
+    "instagram": "https://www.instagram.com/rowallancastle"
+  },
+  "Roxburghe": {
+    "website": "https://www.roxburghe-golf.com",
+    "facebook": "https://www.facebook.com/RoxburgheGolfClub",
+    "instagram": "https://www.instagram.com/roxburghe_hotel"
+  },
+  "Royal Aberdeen": {
+    "website": "https://www.royalaberdeengolf.com",
+    "facebook": null,
+    "instagram": "https://www.instagram.com/royalaberdeengolfclub"
+  },
+  "Royal Aberdeen - Silverburn": {
+    "website": "https://www.royalaberdeengolf.com",
+    "facebook": null,
+    "instagram": "https://www.instagram.com/royalaberdeengolfclub"
+  },
+  "Royal Dornoch": {
+    "website": "https://royaldornoch.com",
+    "facebook": "https://www.facebook.com/RoyalDornochGolfClub",
+    "instagram": "https://www.instagram.com/royaldornochgolfclub"
+  },
+  "Royal Musselburgh": {
+    "website": "https://www.royalmusselburgh.co.uk",
+    "facebook": "https://www.facebook.com/RoyalMusselburghGolfClub",
+    "instagram": null
+  },
+  "Royal Tarlair": {
+    "website": "https://www.royaltarlair.co.uk",
+    "facebook": "https://www.facebook.com/RoyalTarlairGolfClub",
+    "instagram": null
+  },
+  "Royal Troon - Old": {
+    "website": "https://www.royaltroon.co.uk",
+    "facebook": null,
+    "instagram": "https://www.instagram.com/royaltroongolfclub"
+  },
+  "Royal Troon - Craigend": {
+    "website": "https://www.royaltroon.co.uk",
+    "facebook": null,
+    "instagram": "https://www.instagram.com/royaltroongolfclub"
+  },
+  "Royal Troon - Portland": {
+    "website": "https://www.royaltroon.co.uk",
+    "facebook": null,
+    "instagram": "https://www.instagram.com/royaltroongolfclub"
+  },
+  "Saline": {
+    "website": "https://www.salinegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/SalineGolfClub",
+    "instagram": null
+  },
+  "Sanday": {
+    "website": null,
+    "facebook": "https://www.facebook.com/groups/439775089397980",
+    "instagram": null
+  },
+  "Sandyhills": {
+    "website": "https://www.sandyhillsgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/SandyhillsGolfClub",
+    "instagram": null
+  },
+  "Sanquhar": {
+    "website": "https://www.sanquhargolfclub.co.uk",
+    "facebook": "https://www.facebook.com/SanquharGolfClub",
+    "instagram": null
+  },
+  "Scoonie": {
+    "website": "https://fifegolftrust.co.uk/scoonie",
+    "facebook": "https://www.facebook.com/FifeGolfTrust",
+    "instagram": null
+  },
+  "Scotscraig": {
+    "website": "https://www.scotscraiggolfclub.com",
+    "facebook": "https://www.facebook.com/ScotscraigGolfClub",
+    "instagram": "https://www.instagram.com/scotscraiggolfclub"
+  },
+  "Seafield": {
+    "website": "https://www.south-ayrshire.gov.uk/golf/seafield",
+    "facebook": "https://www.facebook.com/GolfSouthAyrshire",
+    "instagram": "https://www.instagram.com/golfsouthayrshire"
+  },
+  "Selkirk": {
+    "website": "https://www.selkirkgolfclub.com",
+    "facebook": "https://www.facebook.com/SelkirkGolfClub",
+    "instagram": null
+  },
+  "Shetland": {
+    "website": "https://www.shetlandgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/shetlandgolfclub",
+    "instagram": null
+  },
+  "Shiskine": {
+    "website": "https://www.shiskinegolf.com",
+    "facebook": "https://www.facebook.com/shiskinegolf",
+    "instagram": null
+  },
+  "Shotts": {
+    "website": "https://www.shottsgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/ShottsGolfClub",
+    "instagram": null
+  },
+  "Silverknowes": {
+    "website": "https://www.edinburghleisure.co.uk/silverknowes-golf-course",
+    "facebook": "https://www.facebook.com/edinburghleisure",
+    "instagram": "https://www.instagram.com/ed_leisure"
+  },
+  "Skeabost": {
+    "website": "https://www.skeabosthotel.com/golf",
+    "facebook": "https://www.facebook.com/skeabosthotel",
+    "instagram": "https://www.instagram.com/skeabosthotel"
+  },
+  "Skelmorlie": {
+    "website": "https://www.skelmorliegolf.co.uk",
+    "facebook": "https://www.facebook.com/skelmorliegolf",
+    "instagram": null
+  },
+  "Southerness": {
+    "website": "https://www.southernessgolfclub.com",
+    "facebook": "https://www.facebook.com/SouthernessGolfClub",
+    "instagram": "https://www.instagram.com/southernessgolfclub"
+  },
+  "South Ronaldsay": {
+    "website": "https://www.southronaldsaygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/SouthRonaldsayGolfClub",
+    "instagram": null
+  },
+  "Spean Bridge": {
+    "website": "https://www.speanbridgegolf.com",
+    "facebook": "https://www.facebook.com/SpeanBridgeGolfClub",
+    "instagram": null
+  },
+  "Spey Bay": {
+    "website": "https://www.speybaygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/speybaygolfclub",
+    "instagram": null
+  },
+  "Spey Valley": {
+    "website": "https://www.macdonaldhotels.co.uk/aviemore/golf/spey-valley",
+    "facebook": "https://www.facebook.com/MacdonaldAviemoreResort",
+    "instagram": null
+  },
+  "St Andrews - Balgove": {
+    "website": "https://www.standrews.com",
+    "facebook": "https://www.facebook.com/standrewslinks",
+    "instagram": "https://www.instagram.com/standrewslinks"
+  },
+  "St Andrews - Castle": {
+    "website": "https://www.standrews.com",
+    "facebook": "https://www.facebook.com/standrewslinks",
+    "instagram": "https://www.instagram.com/standrewslinks"
+  },
+  "St Andrews - Craigtoun": {
+    "website": "https://www.standrews.com",
+    "facebook": "https://www.facebook.com/standrewslinks",
+    "instagram": "https://www.instagram.com/standrewslinks"
+  },
+  "St Andrews - Eden": {
+    "website": "https://www.standrews.com",
+    "facebook": "https://www.facebook.com/standrewslinks",
+    "instagram": "https://www.instagram.com/standrewslinks"
+  },
+  "St Andrews - Jubilee": {
+    "website": "https://www.standrews.com",
+    "facebook": "https://www.facebook.com/standrewslinks",
+    "instagram": "https://www.instagram.com/standrewslinks"
+  },
+  "St Andrews - New": {
+    "website": "https://www.standrews.com",
+    "facebook": "https://www.facebook.com/standrewslinks",
+    "instagram": "https://www.instagram.com/standrewslinks"
+  },
+  "St Andrews - Old": {
+    "website": "https://www.standrews.com",
+    "facebook": "https://www.facebook.com/standrewslinks",
+    "instagram": "https://www.instagram.com/standrewslinks"
+  },
+  "St Andrews - Strathtyrum": {
+    "website": "https://www.standrews.com",
+    "facebook": "https://www.facebook.com/standrewslinks",
+    "instagram": "https://www.instagram.com/standrewslinks"
+  },
+  "St Boswells": {
+    "website": "https://www.stboswellsgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/stboswellsgolf",
+    "instagram": null
+  },
+  "St Fillans": {
+    "website": "https://www.stfillansgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/stfillansgolfclub",
+    "instagram": null
+  },
+  "Stirling": {
+    "website": "https://www.stirlinggolfclub.com",
+    "facebook": "https://www.facebook.com/StirlingGolfClub",
+    "instagram": "https://www.instagram.com/stirlinggolf"
+  },
+  "St Medan": {
+    "website": "https://www.stmedangolfclub.com",
+    "facebook": "https://www.facebook.com/stmedangolf",
+    "instagram": null
+  },
+  "St Michaels": {
+    "website": "https://www.stmichaelsgolfclub.com",
+    "facebook": "https://www.facebook.com/StMichaelsGolfClub",
+    "instagram": null
+  },
+  "Stonehaven": {
+    "website": "https://www.stonehavengolfclub.com",
+    "facebook": "https://www.facebook.com/StonehavenGolfClub",
+    "instagram": null
+  },
+  "Stornoway": {
+    "website": "https://www.stornowaygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/stornowaygolf",
+    "instagram": null
+  },
+  "Stranraer": {
+    "website": "https://www.stranraergolfclub.net",
+    "facebook": "https://www.facebook.com/StranraerGolfClub",
+    "instagram": null
+  },
+  "Strathaven": {
+    "website": "https://www.strathavengolfclub.com",
+    "facebook": "https://www.facebook.com/StrathavenGolfClub",
+    "instagram": null
+  },
+  "Strathclyde Park": {
+    "website": "https://www.northlanarkshire.gov.uk/leisure-parks-and-culture/strathclyde-country-park/golf",
+    "facebook": null,
+    "instagram": null
+  },
+  "Strathendrick": {
+    "website": "https://www.strathendrickgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/StrathendrickGolfClub",
+    "instagram": null
+  },
+  "Strathlene": {
+    "website": "https://www.strathlenegolfclub.com",
+    "facebook": "https://www.facebook.com/StrathleneGolfClub",
+    "instagram": null
+  },
+  "Strathmore": {
+    "website": "https://www.strathmoregolf.com",
+    "facebook": "https://www.facebook.com/StrathmoreGolfCentre",
+    "instagram": "https://www.instagram.com/strathmoregolf"
+  },
+  "Strathpeffer Spa": {
+    "website": "https://www.strathpeffergolfclub.co.uk",
+    "facebook": "https://www.facebook.com/StrathpefferGolfClub",
+    "instagram": null
+  },
+  "Strathtay": {
+    "website": "https://www.strathtaygolfclub.com",
+    "facebook": "https://www.facebook.com/StrathtayGolfClub",
+    "instagram": null
+  },
+  "Stromness": {
+    "website": "https://www.stromnessgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/StromnessGolfClub",
+    "instagram": null
+  },
+  "Swanston": {
+    "website": "https://www.swanstongolf.co.uk",
+    "facebook": "https://www.facebook.com/SwanstonGolf",
+    "instagram": "https://www.instagram.com/swanstongolf"
+  },
+  "Swanston Templar": {
+    "website": "https://www.swanstongolf.co.uk",
+    "facebook": "https://www.facebook.com/SwanstonGolf",
+    "instagram": "https://www.instagram.com/swanstongolf"
+  },
+  "Tain": {
+    "website": "https://www.taingolfclub.co.uk",
+    "facebook": "https://www.facebook.com/TainGolfClub",
+    "instagram": "https://www.instagram.com/taingolfclub"
+  },
+  "Tarbert": {
+    "website": "https://www.tarbertgolfclub.com",
+    "facebook": "https://www.facebook.com/TarbertGolfClub",
+    "instagram": null
+  },
+  "Tarland": {
+    "website": "https://www.tarlandgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/tarlandgolfclub",
+    "instagram": null
+  },
+  "Taynuilt": {
+    "website": "https://www.taynuiltgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/taynuiltgolfclub",
+    "instagram": null
+  },
+  "Renaissance": {
+    "website": "https://www.renaissanceclub.com",
+    "facebook": "https://www.facebook.com/therenaissanceclub",
+    "instagram": "https://www.instagram.com/therenaissanceclub"
+  },
+  "Thornhill": {
+    "website": "https://www.thornhillgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/thornhillgolfclub",
+    "instagram": null
+  },
+  "Thornton": {
+    "website": "https://www.thorntongolfclub.co.uk",
+    "facebook": "https://www.facebook.com/thorntongolf",
+    "instagram": null
+  },
+  "Thurso": {
+    "website": "https://www.thursogolfclub.co.uk",
+    "facebook": "https://www.facebook.com/ThursoGolfClub",
+    "instagram": null
+  },
+  "Tillicoultry": {
+    "website": "https://www.tillicoultrygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/tillicoultrygolf",
+    "instagram": null
+  },
+  "Tobermory": {
+    "website": "https://www.tobermorygolfclub.com",
+    "facebook": "https://www.facebook.com/TobermoryGolfClub",
+    "instagram": null
+  },
+  "Torphins": {
+    "website": "https://www.torphinsgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/TorphinsGolfClub",
+    "instagram": null
+  },
+  "Torrance House": {
+    "website": "https://www.southlanarkshireleisure.co.uk/torrance-house-golf-course",
+    "facebook": "https://www.facebook.com/SouthLanarkshireLeisure",
+    "instagram": null
+  },
+  "Torwoodlee": {
+    "website": "https://www.torwoodleegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/TorwoodleeGolfClub",
+    "instagram": null
+  },
+  "Traigh": {
+    "website": "https://www.traighgolf.co.uk",
+    "facebook": "https://www.facebook.com/TraighGolfCourse",
+    "instagram": null
+  },
+  "Troon Darley": {
+    "website": "https://www.south-ayrshire.gov.uk/golf/troon-links",
+    "facebook": "https://www.facebook.com/GolfSouthAyrshire",
+    "instagram": "https://www.instagram.com/golfsouthayrshire"
+  },
+  "Troon Fullarton": {
+    "website": "https://www.south-ayrshire.gov.uk/golf/troon-links",
+    "facebook": "https://www.facebook.com/GolfSouthAyrshire",
+    "instagram": "https://www.instagram.com/golfsouthayrshire"
+  },
+  "Troon Lochgreen": {
+    "website": "https://www.south-ayrshire.gov.uk/golf/troon-links",
+    "facebook": "https://www.facebook.com/GolfSouthAyrshire",
+    "instagram": "https://www.instagram.com/golfsouthayrshire"
+  },
+  "Trump International - New": {
+    "website": "https://www.trumpgolfscotland.com",
+    "facebook": "https://www.facebook.com/TrumpInternationalScotland",
+    "instagram": "https://www.instagram.com/trumpgolfscotland"
+  },
+  "Trump International - Old": {
+    "website": "https://www.trumpgolfscotland.com",
+    "facebook": "https://www.facebook.com/TrumpInternationalScotland",
+    "instagram": "https://www.instagram.com/trumpgolfscotland"
+  },
+  "Tulliallan": {
+    "website": "https://www.tulliallangolf.co.uk",
+    "facebook": "https://www.facebook.com/TulliallanGolfClub",
+    "instagram": null
+  },
+  "Turnhouse": {
+    "website": "https://www.turnhousegolfclub.org.uk",
+    "facebook": "https://www.facebook.com/TurnhouseGolfClub",
+    "instagram": null
+  },
+  "Turriff": {
+    "website": "https://www.turriffgolfclub.com",
+    "facebook": "https://www.facebook.com/turriffgolfclub",
+    "instagram": null
+  },
+  "Ullapool": {
+    "website": "https://www.ullapoolgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/ullapoolgolfclub",
+    "instagram": null
+  },
+  "Uphall": {
+    "website": "https://www.uphallgolfclub.org.uk",
+    "facebook": "https://www.facebook.com/UphallGolfClub",
+    "instagram": null
+  },
+  "Vale of Leven": {
+    "website": "https://www.valeoflevengolfclub.co.uk",
+    "facebook": "https://www.facebook.com/ValeOfLevenGolfClub",
+    "instagram": null
+  },
+  "Vaul": {
+    "website": "https://www.vaulgolfclub.com",
+    "facebook": "https://www.facebook.com/vaulgolfclub",
+    "instagram": null
+  },
+  "Wigtown and Bladnoch": {
+    "website": "https://www.wigtowngolf.co.uk",
+    "facebook": "https://www.facebook.com/wigtownandbladnochgolfclub",
+    "instagram": null
+  },
+  "Wee Braids": {
+    "website": "https://www.edinburghleisure.co.uk/braid-hills-golf-course",
+    "facebook": "https://www.facebook.com/edinburghleisure",
+    "instagram": "https://www.instagram.com/ed_leisure"
+  },
+  "Western Gailes": {
+    "website": "https://www.westerngailes.com",
+    "facebook": null,
+    "instagram": "https://www.instagram.com/westerngailes"
+  },
+  "Westerwood": {
+    "website": "https://www.thewestinwesterwood.com/golf",
+    "facebook": "https://www.facebook.com/WestinWesterwood",
+    "instagram": "https://www.instagram.com/westinwesterwood"
+  },
+  "Westhill": {
+    "website": "https://www.westhillgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/WesthillGolfClub",
+    "instagram": null
+  },
+  "West Kilbride": {
+    "website": "https://www.wkgc.co.uk",
+    "facebook": "https://www.facebook.com/WestKilbrideGolfClub",
+    "instagram": "https://www.instagram.com/westkilbridegolfclub"
+  },
+  "West Linton": {
+    "website": "https://www.wlgc.co.uk",
+    "facebook": "https://www.facebook.com/WestLintonGolfClub",
+    "instagram": null
+  },
+  "West Lothian": {
+    "website": "https://www.westlothiangolfclub.com",
+    "facebook": "https://www.facebook.com/WestLothianGolfClub",
+    "instagram": null
+  },
+  "Westray": {
+    "website": null,
+    "facebook": "https://www.facebook.com/groups/271297599573562",
+    "instagram": null
+  },
+  "Whalsay": {
+    "website": "https://www.whalsaygolfclub.co.uk",
+    "facebook": "https://www.facebook.com/whalsaygolf",
+    "instagram": null
+  },
+  "Whitecraigs": {
+    "website": "https://www.whitecraigsgolfclub.com",
+    "facebook": "https://www.facebook.com/WhitecraigsGolfClub",
+    "instagram": null
+  },
+  "Whitecraigs - Wee": {
+    "website": "https://www.whitecraigsgolfclub.com",
+    "facebook": "https://www.facebook.com/WhitecraigsGolfClub",
+    "instagram": null
+  },
+  "Whitehill House": {
+    "website": "https://www.whitehillhousegolfclub.co.uk",
+    "facebook": "https://www.facebook.com/whitehillhousegolfclub",
+    "instagram": null
+  },
+  "Whiting Bay": {
+    "website": "https://www.whitingbaygolf.com",
+    "facebook": "https://www.facebook.com/WhitingBayGolfClub",
+    "instagram": null
+  },
+  "Wick": {
+    "website": "https://www.wickgolfclub.org.uk",
+    "facebook": "https://www.facebook.com/wickgolfclub",
+    "instagram": null
+  },
+  "Wigtownshire County": {
+    "website": "https://www.wigtownshirecounty.co.uk",
+    "facebook": "https://www.facebook.com/WigtownshireCountyGolfClub",
+    "instagram": null
+  },
+  "Williamwood": {
+    "website": "https://www.williamwoodgc.co.uk",
+    "facebook": "https://www.facebook.com/WilliamwoodGolfClub",
+    "instagram": null
+  },
+  "Windyhill": {
+    "website": "https://www.windyhillgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/WindyhillGolfClub",
+    "instagram": null
+  },
+  "Winterfield": {
+    "website": "https://www.winterfieldgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/WinterfieldGolfClub",
+    "instagram": null
+  },
+  "Wishaw": {
+    "website": "https://www.wishawgolfclub.co.uk",
+    "facebook": "https://www.facebook.com/WishawGolfClub",
+    "instagram": null
+  },
+  "Woll": {
+    "website": "https://www.wollgolf.co.uk",
+    "facebook": "https://www.facebook.com/WollGolfCourse",
+    "instagram": "https://www.instagram.com/newwollestate"
+  },
+  "Woodlands": {
+    "website": "https://www.nlleisure.co.uk/woodlands-golf-course",
+    "facebook": "https://www.facebook.com/NLLeisure",
+    "instagram": null
+  }
+}

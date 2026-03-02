@@ -1,0 +1,9 @@
+For the following list of Scottish Golf Courses, could you please give me their website URL, Facebook page and Instagram page, as a JSON object, in the following format:
+
+If they do not have one just leave it as null.
+
+courseName: {
+    website: URL,
+    facebook: URL,
+    instagram: URL
+}

@@ -51,14 +51,14 @@ export function buildCard(img, header, content, id, additionalClass, badges) {
 
   return `
   <div class="flex justify-center mb-6">
-  <div${idToUse} class="card sm:max-w-sm md:max-w-xl bg-gray-100 border border-base-300 rounded-xl text-gray-900${additionalClassToUse}">
-    ${imgString}
-    <div class="card-body">
-      <h5 class="card-title mb-2.5 text-gray-900">${header}</h5>
-      ${badgeString}
-      ${content}
+    <div${idToUse} class="card sm:max-w-sm md:max-w-xl bg-gray-100 border border-base-300 rounded-xl text-gray-900${additionalClassToUse}">
+      ${imgString}
+      <div class="card-body">
+        <h5 class="card-title mb-2.5 text-gray-900">${header}</h5>
+        ${badgeString}
+        ${content}
+      </div>
     </div>
-  </div>
   </div>
   `;
 }

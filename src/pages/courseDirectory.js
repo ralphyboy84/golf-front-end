@@ -61,20 +61,50 @@ export async function viewCourse() {
   let content = "";
 
   content += `
+  <h5 class="card-title mb-2.5 text-gray-900">Summary</h5>
   <p class="card-text">${nl2br(club.description)}</p>
   `;
 
   content += `
-  <p class="card-text">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3167.487838230765!2d${club.location.lon}!3d${club.location.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2suk!4v1772042690652!5m2!1sen!2suk" style="width:100%;height:300px;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <h5 class="card-title mb-2.5 text-gray-900">Map</h5>
+  <p class="card-text mb-2">
+    <iframe id='map' src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3167.487838230765!2d${club.location.lon}!3d${club.location.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2suk!4v1772042690652!5m2!1sen!2suk" style="width:100%;height:300px;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </p>
   `;
 
   if (club.youtube) {
     content += `
+    <h5 class="card-title mb-2.5 text-gray-900">YouTube</h5>
     <p class="card-text">
       <iframe style="width:100%;height:300px;border:0;" src="${club.youtube}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </p>
+    `;
+  }
+
+  if (club.instagram) {
+    content += `
+    <h5 class="card-title mb-2.5 text-gray-900">Instagram</h5>
+    <p class="card-text">
+      <a href="https://www.instagram.com/${club.instagram}" target="_blank" class="link link-primary">https://www.instagram.com/${club.instagram}</a>
+    </p>
+    `;
+  }
+
+  if (club.facebook) {
+    content += `
+    <h5 class="card-title mb-2.5 text-gray-900">Facebook</h5>
+    `;
+
+    content += `
+    <div class="w-full max-w-md mx-auto">
+      <div id="facebookEmbed"
+        class="fb-page"
+        data-href="https://www.facebook.com/${club.facebook}"
+        data-tabs="timeline"
+        data-width="500"
+        data-adapt-container-width="true">
+      </div>
+    </div>
     `;
   }
 
@@ -82,7 +112,15 @@ export async function viewCourse() {
   const courseType = formatCourseType(club.coursetype);
   const region = buildRegion(club.region);
   const category = buildCategory(club.category);
-  const onlineBooking = buildOnlineBooking(club.onlineBooking);
+  const onlineBooking = buildOnlineBooking(club);
+
+  let website = "";
+
+  if (club.website) {
+    website = `
+    <a href="${club.website}" target="_blank" class='badge badge-success'>Website</a>
+    `;
+  }
 
   let imageToUse = "";
 
@@ -90,6 +128,7 @@ export async function viewCourse() {
     imageToUse = firstKey;
 
     content += `
+    <h5 class="card-title mb-2.5 text-gray-900">Gallery</h5>
     <p class="card-text">
       <a id="viewCourseGallery" class="btn btn-primary" data-courseid=${firstKey}>View Gallery</a>
     </p>
@@ -102,10 +141,17 @@ export async function viewCourse() {
     content,
     firstKey + "_div",
     "",
-    top100 + courseType + region + category + onlineBooking,
+    top100 + courseType + region + category + onlineBooking + website,
   );
+
   document.getElementById("resultsDiv").innerHTML = card;
   document.getElementById("carouselDiv").innerHTML = "";
+
+  if (window.FB) {
+    if (document.getElementById("facebookEmbed")) {
+      window.FB.XFBML.parse();
+    }
+  }
 }
 
 function nl2br(str) {
@@ -138,9 +184,18 @@ function buildCategory(category) {
   return `<span class='badge badge-success'>Category ${capitalizeFirstChar(category.toUpperCase())}</span>`;
 }
 
-function buildOnlineBooking(onlineBooking) {
-  if (onlineBooking == "Yes") {
-    return "<span class='badge badge-success'>Online Booking</span>";
+function buildOnlineBooking(club) {
+  if (club.onlineBooking == "Yes") {
+    let bookingLink = club.bookingLink;
+
+    if (bookingLink.includes("SearchSlots.aspx")) {
+      bookingLink = bookingLink.replace(
+        "SearchSlots.aspx",
+        "SearchClubDay.aspx",
+      );
+    }
+
+    return `<a href="${bookingLink}" target="_blank" class='badge badge-success'>Online Booking</a>`;
   }
 
   return "";

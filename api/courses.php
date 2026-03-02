@@ -170,6 +170,9 @@ if ($result->num_rows > 0) {
             "coursetype" => $row["coursetype"],
             "description" => $row["description"],
             "youtube" => $row["youtube"],
+            "facebook" => $row["facebook"],
+            "instagram" => $row["instagram"],
+            "website" => $row["website"],
         ];
 
         unset($coursesArray);
