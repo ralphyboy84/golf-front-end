@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Generation Time: Mar 02, 2026 at 04:13 PM
+-- Generation Time: Mar 02, 2026 at 05:38 PM
 -- Server version: 12.2.2-MariaDB-ubu2404
 -- PHP Version: 8.3.30
 
@@ -14,6 +14,46 @@ SET time_zone = "+00:00";
 --
 -- Database: `golf`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clubs`
+--
+
+CREATE TABLE `clubs` (
+  `id` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `bookingLink` varchar(100) NOT NULL,
+  `openBookingLink` varchar(100) NOT NULL,
+  `onlineBooking` enum('Yes','No') NOT NULL,
+  `openBooking` enum('Yes','No') NOT NULL,
+  `bookingSystem` enum('brs','clubv1','intelligent','dotgolf','carnoustie','','masters','golfscape','trumpAberdeen','turnberry','gleneagles') NOT NULL,
+  `openBookingSystem` enum('brs','clubv1','intelligent','dotgolf','','masters','golfscape','scottishgolf') NOT NULL,
+  `availabilityDays` varchar(40) NOT NULL,
+  `region` enum('aberdeen','angus','ayrshire','borders','eastlothian','edinburgh','fife','glasgow','highlands','islands','perthshire','south','other','central') NOT NULL,
+  `working` enum('Yes','No','') NOT NULL,
+  `lat` decimal(10,6) NOT NULL,
+  `lon` decimal(10,6) NOT NULL,
+  `courseId` int(11) NOT NULL,
+  `clubId` int(11) NOT NULL,
+  `reason` varchar(100) NOT NULL,
+  `baseUrl` varchar(100) NOT NULL,
+  `clubv1hub` varchar(100) NOT NULL,
+  `clubv1opencourseid` int(11) NOT NULL,
+  `brsDomain` varchar(100) NOT NULL,
+  `brsCourseId` int(11) NOT NULL,
+  `top100` tinyint(1) NOT NULL DEFAULT 0,
+  `category` enum('a','b','c','d') NOT NULL DEFAULT 'd',
+  `location` point DEFAULT NULL,
+  `coursetype` enum('links','nonlinks') NOT NULL DEFAULT 'nonlinks',
+  `image` enum('Yes','No') NOT NULL DEFAULT 'No',
+  `description` mediumtext DEFAULT NULL,
+  `youtube` varchar(200) NOT NULL,
+  `facebook` varchar(100) NOT NULL,
+  `website` varchar(100) NOT NULL,
+  `instagram` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `clubs`
@@ -582,4 +622,14 @@ INSERT INTO `clubs` (`id`, `name`, `bookingLink`, `openBookingLink`, `onlineBook
 ('wishaw', 'Wishaw', 'https://visitors.brsgolf.com/wishaw#/course/1', 'https://visitors.brsgolf.com/wishaw#/course/1', 'Yes', 'Yes', 'brs', 'brs', '', 'glasgow', 'Yes', 55.782340, -3.933240, 0, 0, '', '', '', 0, 'wishaw', 1, 0, 'd', 0xe61000000101000000658d7a8846770fc0232d95b723e44b40, 'nonlinks', 'No', 'Wishaw Golf Club is a historic parkland course in North Lanarkshire with roots dating back to 1894. The current layout was designed in 1935 by the legendary James Braid after the club moved to its present site at Foggielea. It is a quintessential Braid design, making expert use of the natural undulations to create a strategic and fair test of golf. The course is characterized by its mature tree-lined fairways and exceptionally true, undulating greens.\r\n\r\nThe club has a long-standing reputation for its high-quality conditioning and its welcoming, family-oriented atmosphere. Notable for its \"humps and hollows\"—a classic Braid feature—it requires a sharp short game to navigate the tricky surrounds. While it sits within a busy part of the central belt, the course feels remarkably secluded and offers lovely views of the surrounding countryside. It is a traditional club that takes great pride in its heritage, offering a polished and engaging parkland round that remains a favorite in the Lanarkshire golfing circuit.', '', 'WishawGolfClub', 'https://www.wishawgolfclub.co.uk', ''),
 ('woll', 'Woll', 'https://www.wollgolf.co.uk/visitorbooking/', 'competition2', 'Yes', 'Yes', 'intelligent', 'intelligent', '', 'borders', 'Yes', 55.483322, -2.847816, 0, 0, '', 'https://www.wollgolf.co.uk', '', 0, '', 0, 0, 'd', 0xe610000001010000004c3448c153c806c0fab7cb7eddbd4b40, 'nonlinks', 'No', 'The Woll Golf Course, located at the New Woll Estate in Ashkirk near Selkirk, is one of the most popular and modern golfing destinations in the Scottish Borders. Originally opened as a 9-hole course in 1993, it was expanded to a full 18-hole championship layout by 2004. It is a beautiful parkland course that follows the contours of the Ale Valley, featuring water hazards on several holes, including a spectacular 17th hole where the green is almost entirely surrounded by water.\r\n\r\nThe club is famous for its \"Play, Stay, and Eat\" concept, featuring luxury self-catering cottages and an award-winning restaurant. Notable for being voted into the Top 100 Golf Course Society Venues in the UK, it offers a high-gloss, resort-style experience. The greens are built to USGA specifications, ensuring excellent year-round playability. The Woll is known as \"The Friendliest Course in the Borders\" providing a high-value, professional, and scenic round of golf that is a mandatory stop for anyone touring the south of Scotland.', '', 'WollGolfCourse', 'https://www.wollgolf.co.uk', 'newwollestate'),
 ('Woodlands', 'Woodlands', 'https://www.woodlands.scot/golf-course/', '', 'No', 'No', '', '', '', 'highlands', '', 51.544600, -2.540788, 0, 0, '', '', '', 0, '', 0, 0, 'd', 0xe61000000101000000d28db0a8885304c068b3ea73b5c54940, 'nonlinks', 'No', 'Woodlands Golf Course, often referred to as The Dragon\'s Tooth, is a world-renowned 9-hole masterpiece located at the foot of Glencoe. Situated on the shores of Loch Linnhe, the course is shadowed by the majestic peaks of Sgorr Dhearg and Sgorr Dhonuill. It has been ranked by Golf Magazine as one of the Top 50 9-hole courses in the world and is widely considered the best 9-hole track in Scotland.\r\n\r\nThe layout features USGA-specification greens and a design that is both visually stunning and technically demanding. Notable for its dramatic elevation changes and the \"Dragon\'s Tooth\" mountain backdrop, it offers a \"boutique\" golfing experience of the highest order. The club operates on a relaxed \"turn up and play\" basis and features a charming clubhouse with an honesty bar. For any golfer traveling through the Highlands, Woodlands provides a raw, beautiful, and spiritually moving round of golf that captures the very essence of the Scottish landscape.', '', 'NLLeisure', 'https://www.nlleisure.co.uk/woodlands-golf-course', '');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `clubs`
+--
+ALTER TABLE `clubs`
+  ADD PRIMARY KEY (`id`);
 COMMIT;
