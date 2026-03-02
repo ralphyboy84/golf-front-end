@@ -3,7 +3,7 @@ export function viewCourseGallery(courseId, images) {
   let html = "";
   let buttons = "";
 
-  if (images[courseId]) {
+  if (images[courseId] && images[courseId].length > 0) {
     images[courseId].forEach(function (image) {
       html += `
       <div id="item${x}" class="carousel-item w-full">
@@ -27,6 +27,5 @@ export function viewCourseGallery(courseId, images) {
     `;
   }
 
-  document.getElementById("carouselDiv").innerHTML =
-    `No gallery available for this course`;
+  return `No gallery available for this course`;
 }

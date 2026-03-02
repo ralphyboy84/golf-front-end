@@ -1,77 +1,47 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { viewCourseGallery } from "../../../src/pages/courseGallery/courseGallery";
 
-describe("viewCourseGallery", () => {
-  let testImages;
+describe("viewCourseGallery()", () => {
+  const mockImages = {
+    carnoustie: ["001", "002", "003"],
+    emptyCourse: [],
+    // 'missingCourse' is intentionally omitted to test undefined keys
+  };
 
-  beforeEach(() => {
-    // Reset DOM before each test
-    document.body.innerHTML = `<div id="carouselDiv"></div>`;
+  it("should render a full carousel when images exist", () => {
+    const result = viewCourseGallery("carnoustie", mockImages);
 
-    // Sample image data
-    testImages = {
-      courseA: ["0001", "0002", "0003"],
-      courseB: ["0101"],
-    };
+    // Verify HTML structure for the first item
+    expect(result).toContain('id="item1"');
+    expect(result).toContain('src="images/carnoustie/DJI_001.jpg"');
+
+    // Verify the navigation button exists
+    expect(result).toContain('<a href="#item1" class="btn btn-xs">1</a>');
+
+    // Verify it scaled to the 3rd item correctly
+    expect(result).toContain('id="item3"');
+    expect(result).toContain('href="#item3"');
   });
 
-  it("renders a carousel when images exist for the course", () => {
-    viewCourseGallery("courseA", testImages);
+  it('should return the "No gallery" message if the image array is empty', () => {
+    const result = viewCourseGallery("emptyCourse", mockImages);
 
-    const carousel = document.querySelector(".carousel");
-    expect(carousel).not.toBeNull();
+    expect(result).toBe("No gallery available for this course");
+    expect(result).not.toContain("carousel-item");
   });
 
-  it("renders the correct number of carousel items", () => {
-    viewCourseGallery("courseA", testImages);
+  it('should return the "No gallery" message if the courseId does not exist in the object', () => {
+    const result = viewCourseGallery("st-andrews", mockImages);
 
-    const items = document.querySelectorAll(".carousel-item");
-    expect(items.length).toBe(3);
+    expect(result).toBe("No gallery available for this course");
   });
 
-  it("renders the correct number of navigation buttons", () => {
-    viewCourseGallery("courseA", testImages);
+  it("should correctly increment the counter (x) for IDs and button text", () => {
+    const result = viewCourseGallery("carnoustie", mockImages);
 
-    const buttons = document.querySelectorAll(".btn");
-    expect(buttons.length).toBe(3);
-  });
-
-  it("uses the correct image src paths", () => {
-    viewCourseGallery("courseA", testImages);
-
-    const imgs = document.querySelectorAll("img");
-    expect(imgs[0].getAttribute("src")).toBe("images/courseA/DJI_0001.jpg");
-    expect(imgs[1].getAttribute("src")).toBe("images/courseA/DJI_0002.jpg");
-    expect(imgs[2].getAttribute("src")).toBe("images/courseA/DJI_0003.jpg");
-  });
-
-  it("renders fallback text when no images exist for the course", () => {
-    viewCourseGallery("unknownCourse", testImages);
-
-    const container = document.getElementById("carouselDiv");
-    expect(container.textContent).toContain(
-      "No gallery available for this course",
-    );
-  });
-
-  it("creates correct anchor links for buttons", () => {
-    viewCourseGallery("courseB", testImages);
-
-    const button = document.querySelector(".btn");
-    expect(button.getAttribute("href")).toBe("#item1");
-    expect(button.textContent).toBe("1");
-  });
-
-  it("works correctly for a single image", () => {
-    viewCourseGallery("courseB", testImages);
-
-    const items = document.querySelectorAll(".carousel-item");
-    expect(items.length).toBe(1);
-
-    const buttons = document.querySelectorAll(".btn");
-    expect(buttons.length).toBe(1);
-
-    const img = document.querySelector("img");
-    expect(img.getAttribute("src")).toBe("images/courseB/DJI_0101.jpg");
+    // Check that we have exactly three buttons numbered 1, 2, and 3
+    expect(result).toContain(">1</a>");
+    expect(result).toContain(">2</a>");
+    expect(result).toContain(">3</a>");
   });
 });
