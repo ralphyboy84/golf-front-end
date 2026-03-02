@@ -108,7 +108,7 @@ export async function viewCourse() {
 
   if (club.website) {
     website = `
-    <a href="${club.website}" target="_blank" class='badge badge-success'>Website</a>
+    <a href="${club.website}" target="_blank" class='badge badge-success'><i class="bi bi-globe"></i>Website</a>
     `;
   }
 
@@ -116,7 +116,7 @@ export async function viewCourse() {
 
   if (club.instagram) {
     instagram = `
-    <a href="https://www.instagram.com/${club.instagram}" target="_blank" class='badge badge-success'>Instagram</a>
+    <a href="https://www.instagram.com/${club.instagram}" target="_blank" class='badge badge-success'><i class="fa-brands fa-instagram"></i>Instagram</a>
     `;
   }
 
@@ -127,7 +127,7 @@ export async function viewCourse() {
     imageToUse = firstKey;
 
     gallery = `
-    <span id="viewCourseGallery" class='badge badge-success cursor-pointer cdModal' data-toShow=gallery data-courseid=${firstKey}>Gallery</span>
+    <span id="viewCourseGallery" class='badge badge-success cursor-pointer cdModal' data-toShow=gallery data-courseid=${firstKey}><i class="fa-solid fa-image"></i>Gallery</span>
     `;
   }
 
@@ -183,23 +183,23 @@ function formatCourseType(type) {
     cType = "Links";
   }
 
-  return `<span class='badge badge-success cursor-pointer cdModal' data-toShow=courseType data-courseType=${cType}>${cType}</span>`;
+  return `<span class='badge badge-success cursor-pointer cdModal' data-toShow=courseType data-courseType=${cType}><i class="fa-solid fa-golf-ball-tee"></i>${cType} Course</span>`;
 }
 
 function formatTop100(top100) {
   if (top100 == 1) {
-    return "<span class='badge badge-success cursor-pointer cdModal' data-toShow=top100>Top 100</span>";
+    return `<span class='badge badge-success cursor-pointer cdModal' data-toShow=top100><i class="bi bi-123"></i>Top 100</span>`;
   }
 
   return "";
 }
 
 function buildRegion(region) {
-  return `<span class='badge badge-success cursor-pointer cdModal' data-toShow=region data-region=${region}>${capitalizeFirstChar(region)}</span>`;
+  return `<span class='badge badge-success cursor-pointer cdModal' data-toShow=region data-region=${region}><i class="bi bi-input-cursor"></i>${capitalizeFirstChar(region)}</span>`;
 }
 
 function buildCategory(category) {
-  return `<span class='badge badge-success cursor-pointer cdModal' data-toShow=category data-category=${category}>Category ${capitalizeFirstChar(category.toUpperCase())}</span>`;
+  return `<span class='badge badge-success cursor-pointer cdModal' data-toShow=category data-category=${category}><i class="bi bi-textarea-resize"></i>Category ${capitalizeFirstChar(category.toUpperCase())}</span>`;
 }
 
 function buildOnlineBooking(club) {
@@ -213,7 +213,7 @@ function buildOnlineBooking(club) {
       );
     }
 
-    return `<a href="${bookingLink}" target="_blank" class='badge badge-success'>Online Booking</a>`;
+    return `<a href="${bookingLink}" target="_blank" class='badge badge-success'><i class="bi bi-currency-pound"></i>Online Booking</a>`;
   }
 
   return "";
