@@ -14,7 +14,7 @@ export async function setOpenCompetitions() {
   <div class="p-3 col-4 d-flex justify-content-center text-center">
     <select id='opensSelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select">
       <option value=''>Select....</option>
-        <option value="opens" selected>I only want to play Opens</option>
+        <option value="opens">I only want to play Opens</option>
         <option value="noopens">I hate the idea of playing Opens</option>
         <option value="both">I do not care</option>
       </select> 

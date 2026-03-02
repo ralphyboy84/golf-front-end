@@ -29,7 +29,7 @@ export async function setDate() {
   ${getSteps(0)}
   <p class="mb-4 text-center">Can you start by telling me when you would like the trip to start?</p>
   <div class="p-3 col-4 d-flex justify-content-center text-center">
-    <input type="date" class="input max-w-sm bg-gray-50 text-gray-900" placeholder="YYYY-MM-DD" id="startDate" value="2026-04-04" />
+    <input type="date" class="input max-w-sm bg-gray-50 text-gray-900" placeholder="YYYY-MM-DD" id="startDate" value="" />
   </div>
   ${alertMsg}
   <div class="card-actions justify-center">
@@ -131,7 +131,7 @@ export async function linksOrNoLinks() {
     <div class="p-3 col-4 d-flex justify-content-center text-center">
       <select id='courseTypeSelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select">
       <option value=''>Select....</option>
-        <option value="links" selected>Links Courses</option>
+        <option value="links">Links Courses</option>
         <option value="nonlinks">Non Links Courses</option>
         <option value="na">Not Fussed</option>
       </select> 
@@ -159,7 +159,7 @@ export async function courseCategory() {
       <select id='courseCategorySelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select" multiple="multiple">
         <option value="a">A - the best of the best</option>
         <option value="b">B - not the Open Championship courses but still good</option>
-        <option value="c" selected>C - the 50-100 ranked courses</option>
+        <option value="c">C - the 50-100 ranked courses</option>
         <option value="d">D - the hidden gems and authentic Scottish experiences</option>
       </select> 
     </div>

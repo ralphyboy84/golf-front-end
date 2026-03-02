@@ -81,15 +81,6 @@ export async function viewCourse() {
     `;
   }
 
-  if (club.instagram) {
-    content += `
-    <h5 class="card-title mb-2.5 text-gray-900">Instagram</h5>
-    <p class="card-text">
-      <a href="https://www.instagram.com/${club.instagram}" target="_blank" class="link link-primary">https://www.instagram.com/${club.instagram}</a>
-    </p>
-    `;
-  }
-
   if (club.facebook) {
     content += `
     <h5 class="card-title mb-2.5 text-gray-900">Facebook</h5>
@@ -122,6 +113,14 @@ export async function viewCourse() {
     `;
   }
 
+  let instagram = "";
+
+  if (club.instagram) {
+    instagram = `
+    <a href="https://www.instagram.com/${club.instagram}" target="_blank" class='badge badge-success'>Instagram</a>
+    `;
+  }
+
   let imageToUse = "";
 
   if (club.image == "Yes") {
@@ -141,7 +140,13 @@ export async function viewCourse() {
     content,
     firstKey + "_div",
     "",
-    top100 + courseType + region + category + onlineBooking + website,
+    top100 +
+      courseType +
+      region +
+      category +
+      onlineBooking +
+      website +
+      instagram,
   );
 
   document.getElementById("resultsDiv").innerHTML = card;
