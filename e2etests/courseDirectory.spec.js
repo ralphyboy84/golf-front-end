@@ -67,7 +67,9 @@ test("Check Leven gallery exists", async ({ page }) => {
     page.locator("#levenlinks_div").locator("#viewCourseGallery"),
   ).toBeVisible();
   await page.click("#viewCourseGallery");
-  await expect(page.locator("#carouselDiv").locator(".carousel")).toBeVisible();
+  await expect(
+    page.locator("#modalContent").locator(".carousel"),
+  ).toBeVisible();
 });
 
 test("Check Aberdour has no image", async ({ page }) => {

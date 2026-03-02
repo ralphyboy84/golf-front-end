@@ -127,7 +127,7 @@ export async function viewCourse() {
     imageToUse = firstKey;
 
     gallery = `
-    <span class='badge badge-success cursor-pointer cdModal' data-toShow=gallery data-courseid=${firstKey}>Gallery</span>
+    <span id="viewCourseGallery" class='badge badge-success cursor-pointer cdModal' data-toShow=gallery data-courseid=${firstKey}>Gallery</span>
     `;
   }
 
