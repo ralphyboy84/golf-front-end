@@ -12,8 +12,6 @@ import {
 } from "../pages/dayAvailability.js";
 import { getAllOpensEndPoint } from "../pages/api";
 import { viewCourse } from "../pages/courseDirectory.js";
-import { viewCourseGallery } from "../pages/courseGallery/courseGallery.js";
-import { images } from "../pages/courseGallery/courseVariables";
 import {
   previousTrips,
   deletePreviousSearches,
@@ -263,15 +261,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("noCourseSelectedError").classList.add("hidden");
 
       viewCourse();
-    }
-
-    if (event.target.closest("#viewCourseGallery")) {
-      event.preventDefault();
-      const courseId = document
-        .getElementById("viewCourseGallery")
-        .getAttribute("data-courseid");
-
-      viewCourseGallery(courseId, images);
     }
 
     if (event.target.closest(".viewTrip")) {

@@ -30,7 +30,6 @@ export async function courseDirectory() {
     </div>
   </div>
   <div id='resultsDiv' class='pt-4'></div>
-  <div id='carouselDiv' class='pt-4'></div>
 `;
 
   const select = document.getElementById("courseDirectoryListSelect");
@@ -122,19 +121,17 @@ export async function viewCourse() {
   }
 
   let imageToUse = "";
+  let gallery = "";
 
   if (club.image == "Yes") {
     imageToUse = firstKey;
 
-    content += `
-    <h5 class="card-title mb-2.5 text-gray-900">Gallery</h5>
-    <p class="card-text">
-      <a id="viewCourseGallery" class="btn btn-primary" data-courseid=${firstKey}>View Gallery</a>
-    </p>
+    gallery = `
+    <span class='badge badge-success cursor-pointer cdModal' data-toShow=gallery data-courseid=${firstKey}>Gallery</span>
     `;
   }
 
-  const card = buildCard(
+  let card = buildCard(
     imageToUse,
     club.name,
     content,
@@ -146,11 +143,27 @@ export async function viewCourse() {
       category +
       onlineBooking +
       website +
-      instagram,
+      instagram +
+      gallery,
   );
 
+  card += `
+  <dialog id="my_modal_1" class="modal">
+    <div class="modal-box">
+      <h3 id="modalHeader" class="text-lg font-bold mb-2"></h3>
+      <div id="modalContent">
+      </div>
+      <div class="modal-action">
+        <form method="dialog">
+          <!-- if there is a button in form, it will close the modal -->
+          <button class="btn">Close</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+  `;
+
   document.getElementById("resultsDiv").innerHTML = card;
-  document.getElementById("carouselDiv").innerHTML = "";
 
   if (window.FB) {
     if (document.getElementById("facebookEmbed")) {
@@ -170,23 +183,23 @@ function formatCourseType(type) {
     cType = "Links";
   }
 
-  return `<span class='badge badge-success'>${cType}</span>`;
+  return `<span class='badge badge-success cursor-pointer cdModal' data-toShow=courseType data-courseType=${cType}>${cType}</span>`;
 }
 
 function formatTop100(top100) {
   if (top100 == 1) {
-    return "<span class='badge badge-success'>Top 100</span>";
+    return "<span class='badge badge-success cursor-pointer cdModal' data-toShow=top100>Top 100</span>";
   }
 
   return "";
 }
 
 function buildRegion(region) {
-  return `<span class='badge badge-success'>${capitalizeFirstChar(region)}</span>`;
+  return `<span class='badge badge-success cursor-pointer cdModal' data-toShow=region data-region=${region}>${capitalizeFirstChar(region)}</span>`;
 }
 
 function buildCategory(category) {
-  return `<span class='badge badge-success'>Category ${capitalizeFirstChar(category.toUpperCase())}</span>`;
+  return `<span class='badge badge-success cursor-pointer cdModal' data-toShow=category data-category=${category}>Category ${capitalizeFirstChar(category.toUpperCase())}</span>`;
 }
 
 function buildOnlineBooking(club) {

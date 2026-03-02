@@ -17,7 +17,7 @@ export function viewCourseGallery(courseId, images) {
       x++;
     });
 
-    document.getElementById("carouselDiv").innerHTML = `
+    return `
     <div class="carousel w-full">
       ${html}
     </div>
@@ -25,8 +25,6 @@ export function viewCourseGallery(courseId, images) {
       ${buttons}
     </div>
     `;
-
-    return;
   }
 
   document.getElementById("carouselDiv").innerHTML =
