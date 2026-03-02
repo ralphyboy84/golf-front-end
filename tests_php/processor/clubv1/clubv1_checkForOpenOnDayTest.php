@@ -45,6 +45,7 @@ class clubv1_checkForOpenOnDayTest extends TestCase
             ->expects($this->once())
             ->method("returnCheckForOpenOnDayParams")
             ->with(
+                "2026-01-01",
                 "comp123",
                 "£50",
                 "TBC",
@@ -81,6 +82,7 @@ class clubv1_checkForOpenOnDayTest extends TestCase
             ->expects($this->once())
             ->method("returnCheckForOpenOnDayParams")
             ->with(
+                "2026-01-01",
                 "comp456",
                 "",
                 "TBC",
@@ -115,7 +117,7 @@ class clubv1_checkForOpenOnDayTest extends TestCase
         $service
             ->expects($this->once())
             ->method("returnCheckForOpenOnDayParams")
-            ->with("comp2", "", "TBC", "", "Second Open", "", "")
+            ->with("2026-01-01", "comp2", "", "TBC", "", "Second Open", "", "")
             ->willReturn(["winner" => "second"]);
 
         $opens = [
