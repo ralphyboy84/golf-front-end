@@ -634,6 +634,28 @@ const scotscraiggc = [
   "-16",
   "-17",
 ];
+const brechin = ["-1", "-2"];
+const edzell9 = ["-1", "-2"];
+const edzell = ["-1", "-2", "-3", "-4", "-5", "-6", "-7"];
+const forfar = [
+  "-1",
+  "-2",
+  "-3",
+  "-4",
+  "-5",
+  "-6",
+  "-7",
+  "-8",
+  "-9",
+  "-10",
+  "-11",
+  "-12",
+  "-13",
+  "-14",
+  "-15",
+  "-16",
+  "-17",
+];
 
 export const images = {
   boatofgarten,
@@ -683,4 +705,8 @@ export const images = {
   crailcraighead,
   levenlinks,
   scotscraiggc,
+  brechin,
+  edzell9,
+  edzell,
+  forfar,
 };
