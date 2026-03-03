@@ -3,7 +3,7 @@ services:
     working_dir: /var/www/html
     build: .
     volumes:
-      - /Users/ralph/Documents/golf-front-end:/var/www/html
+      - /Users/ralph/Documents/golf-front-end.nosync:/var/www/html
     ports:
       - 80:80
   database:
