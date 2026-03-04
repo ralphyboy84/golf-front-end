@@ -15,7 +15,7 @@ class BRSProcessor extends Processor
             ];
         }
 
-        if ($data["data"]["tee_times"]) {
+        if ($data && $data["data"]["tee_times"]) {
             $x = sizeof($data["data"]["tee_times"]);
             $start = $data["data"]["tee_times"][0]["time"];
 
