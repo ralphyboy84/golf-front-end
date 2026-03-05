@@ -1,10 +1,14 @@
 arbroath use something called sweet spot
 
 barassie uses golf genius for opens
+montrose uses golf genius for opens
+newmachar use golf genius for opens
+carnoustie use golf genius for opens
+dornoch use golf genius for opens
 
 look at mearns castle as they have prices differently
 
-Need a better error message for courses that don't allow online booking but do allow opens
+Need a better error message for courses that dont allow online booking but do allow opens
 
 Need to checking bookingOpen flag on intelligent golf opens
 
@@ -60,3 +64,8 @@ INSERT INTO `clubs` (`id`, `name`, `bookingLink`, `openBookingLink`, `onlineBook
 
 
 Can you write me an individual description of the following golf courses in Scotland with each description being roughly 200 words. Can you make sure to use paragraphs as well
+
+
+Query to find opens with open booking but no opens
+
+SELECT id, name, openBooking, openBookingSystem FROM `clubs` WHERE id NOT IN(select clubId from opens) AND openBooking = 'Yes';
