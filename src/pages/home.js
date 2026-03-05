@@ -26,7 +26,8 @@ export function loadHome() {
       class="w-full aspect-video rounded-lg shadow-md" 
       style="border:0;" 
       allowfullscreen="" 
-      loading="lazy">
+      loading="lazy"
+    >
     </iframe>
   </div>  
   `;
