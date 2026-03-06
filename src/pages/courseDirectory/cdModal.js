@@ -61,6 +61,12 @@ function loadModalContent(button) {
 
     header = "Gallery";
     content = viewCourseGallery(courseid, images);
+  } else if (toShow == "ralphRecommends") {
+    const courseid = button.getAttribute("data-courseid");
+
+    header = "Ralph Recommends";
+    content =
+      "A special Ralph recommendation. These courses have a special place in my heart and are well worth a visit";
   }
 
   document.getElementById("modalHeader").innerHTML = header;

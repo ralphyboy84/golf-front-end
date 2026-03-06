@@ -120,6 +120,14 @@ export async function viewCourse() {
     `;
   }
 
+  let ralph_recommends = "";
+
+  if (club.ralph_recommends) {
+    ralph_recommends = `
+    <span id="ralphRecommends" class='badge badge-primary cursor-pointer cdModal' data-toShow=ralphRecommends data-courseid=${firstKey}><i class="fa-solid fa-star"></i>Ralph Recomends</span>
+    `;
+  }
+
   let imageToUse = "";
   let gallery = "";
 
@@ -137,7 +145,8 @@ export async function viewCourse() {
     content,
     firstKey + "_div",
     "",
-    top100 +
+    ralph_recommends +
+      top100 +
       courseType +
       region +
       category +
