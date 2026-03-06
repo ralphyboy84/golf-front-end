@@ -173,6 +173,7 @@ if ($result->num_rows > 0) {
             "facebook" => $row["facebook"],
             "instagram" => $row["instagram"],
             "website" => $row["website"],
+            "ralph_recommends" => $row["ralph_recommends"],
         ];
 
         unset($coursesArray);
