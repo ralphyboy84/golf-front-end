@@ -656,6 +656,23 @@ const forfar = [
   "-16",
   "-17",
 ];
+const stonehaven = [
+  "-1",
+  "-2",
+  "-3",
+  "-4",
+  "-5",
+  "-6",
+  "-7",
+  "-8",
+  "-9",
+  "-10",
+  "-11",
+  "-12",
+  "-13",
+  "-14",
+];
+const kirriemuir = ["-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8"];
 
 export const images = {
   boatofgarten,
@@ -709,4 +726,6 @@ export const images = {
   edzell9,
   edzell,
   forfar,
+  stonehaven,
+  kirriemuir,
 };
