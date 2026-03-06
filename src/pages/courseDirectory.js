@@ -122,7 +122,7 @@ export async function viewCourse() {
 
   let ralph_recommends = "";
 
-  if (club.ralph_recommends) {
+  if (club.ralph_recommends == 1) {
     ralph_recommends = `
     <span id="ralphRecommends" class='badge badge-primary cursor-pointer cdModal' data-toShow=ralphRecommends data-courseid=${firstKey}><i class="fa-solid fa-star"></i>Ralph Recomends</span>
     `;
