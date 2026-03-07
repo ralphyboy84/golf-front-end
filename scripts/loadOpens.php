@@ -206,3 +206,32 @@ if ($_GET["load"] == "intelligent") {
         }
     }
 }
+
+if ($_GET["load"] == "masters") {
+    echo "LOADING MASTERS";
+    $json = file_get_contents("data.json");
+    $data = json_decode($json, true);
+
+    require_once "../api/database/database.php";
+    require_once "../api/opens/opens.php";
+
+    $database = new database();
+
+    if ($data) {
+        foreach ($data as $row) {
+            $opens = new opens();
+            $opens->updateOpenInformation(
+                $database->getDatabaseConnection(),
+                $row["clubid"],
+                $row["openid"],
+                $row["courseid"],
+                $row["date"],
+                $row["competition"],
+                1,
+                false,
+            );
+        }
+    }
+}
+
+echo "OPENS LOADED";

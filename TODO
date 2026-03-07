@@ -61,3 +61,8 @@ https://fraserburghgolfclub.org/Teebooking/SearchSlots.aspx?ClubId=2262&CourseId
 Query to find opens with open booking but no opens
 
 SELECT id, name, openBooking, openBookingSystem FROM `clubs` WHERE id NOT IN(select clubId from opens) AND openBooking = 'Yes';
+
+
+Facebook
+auchmill and ballumbie dont work despite the url being correct
+
