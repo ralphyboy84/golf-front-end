@@ -53,3 +53,9 @@ export async function getCourse(courseId) {
     `${import.meta.env.VITE_API_URL}api/getCourses.php?courseId=${courseId}`,
   ).then((res) => res.json());
 }
+
+export async function getOpensForCourse(clubid) {
+  return await fetch(
+    `${import.meta.env.VITE_API_URL}api/getOpensForCourse.php?clubid=${clubid}`,
+  ).then((res) => res.json());
+}
