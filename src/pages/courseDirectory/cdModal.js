@@ -1,5 +1,7 @@
 import { images } from "../../pages/courseGallery/courseVariables";
 import { viewCourseGallery } from "../../pages/courseGallery/courseGallery";
+import { getOpensForCourse } from "../../pages/api";
+import { formatDateToDMY } from "../../pages/dateFunctions";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -12,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function loadModalContent(button) {
+async function loadModalContent(button) {
   const toShow = button.getAttribute("data-toShow");
 
   let header = "TBC";
@@ -67,8 +69,42 @@ function loadModalContent(button) {
     header = "Ralph Recommends";
     content =
       "A special Ralph recommendation. These courses have a special place in my heart and are well worth a visit";
+  } else if (toShow == "opens") {
+    const courseid = button.getAttribute("data-courseid");
+
+    const opens = await getOpensForCourse(courseid);
+
+    content = "No Opens found for this course";
+
+    if (opens.length > 0) {
+      content = `<div class="max-w-md mx-auto mt-6 space-y-2">`;
+
+      for (let x in opens) {
+        const openName = getUrl(opens[x]);
+        const date = formatDateToDMY(opens[x].date);
+        content += `
+        <div class="flex justify-between pb-1">
+          <div class="font-medium text-gray-700">${date}</div>
+          <div>${openName}</div>
+        </div>`;
+      }
+
+      content += `</div<`;
+    }
+
+    header = "Opens";
   }
 
   document.getElementById("modalHeader").innerHTML = header;
   document.getElementById("modalContent").innerHTML = content;
+}
+
+function getUrl(opens) {
+  if (opens.openBookingSystem == "brs") {
+    return `<a href="https://visitors.brsgolf.com/${opens.brsDomain}#/open-competitions/${opens.openid}/teesheet" target="_blank">${opens.name}</a>`;
+  } else if (opens.openBookingSystem == "clubv1") {
+    return `<a href="https://howdidido-whs.clubv1.com/hdidbooking/open?token=${opens.token}&cid=${opens.openid}" target="_blank">${opens.name}</a>`;
+  }
+
+  return opens.name;
 }

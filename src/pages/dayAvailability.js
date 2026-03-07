@@ -295,6 +295,9 @@ function displayContent(msg, travelInfo, courseId, weather) {
       moreInfoButton = "";
     } else if (msg.bookingsOpenDate == "TBC") {
       temp = `There is an Open Competition on on this day but it is not available for booking yet`;
+    } else if (msg.BookingNotYet == 1) {
+      temp =
+        "Sorry - the booking system for this club has not yet been added to this app";
     } else {
       temp = "Sorry - there are no tee times available on this day";
     }

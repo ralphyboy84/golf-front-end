@@ -37,7 +37,17 @@ if (
     $bookingFlag
 ) {
     if (!$MOCK) {
-        require_once "getCourseAvailabilityForDate/teeTimes/{$golfCourses[$_GET["club"]]["bookingSystem"]}.php";
+        if (
+            file_exists(
+                "getCourseAvailabilityForDate/teeTimes/{$golfCourses[$_GET["club"]]["bookingSystem"]}.php",
+            )
+        ) {
+            require_once "getCourseAvailabilityForDate/teeTimes/{$golfCourses[$_GET["club"]]["bookingSystem"]}.php";
+        } else {
+            $teeTimeInfo = [
+                "BookingNotYet" => "1",
+            ];
+        }
     } else {
         $teeTimeInfo = [];
 
@@ -54,7 +64,10 @@ if (
     isset($golfCourses[$_GET["club"]]["openBookingSystem"]) &&
     !empty($golfCourses[$_GET["club"]]["openBookingSystem"]) &&
     !$MOCK &&
-    $openFlag
+    $openFlag &&
+    file_exists(
+        "getCourseAvailabilityForDate/opens/{$golfCourses[$_GET["club"]]["openBookingSystem"]}.php",
+    )
 ) {
     require_once "getCourseAvailabilityForDate/opens/{$golfCourses[$_GET["club"]]["openBookingSystem"]}.php";
 }

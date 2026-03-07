@@ -104,6 +104,8 @@ export async function viewCourse() {
   const category = buildCategory(club.category);
   const onlineBooking = buildOnlineBooking(club);
 
+  console.log(club);
+
   let website = "";
 
   if (club.website) {
@@ -139,6 +141,14 @@ export async function viewCourse() {
     `;
   }
 
+  let opens = "";
+
+  if (club.opens) {
+    opens = `
+    <span id="viewOpens" class='badge badge-success cursor-pointer cdModal' data-toShow=opens data-courseid=${firstKey} class='badge badge-success'><i class="fa-solid fa-rainbow"></i>Opens</span>
+    `;
+  }
+
   let card = buildCard(
     imageToUse,
     club.name,
@@ -153,7 +163,8 @@ export async function viewCourse() {
       onlineBooking +
       website +
       instagram +
-      gallery,
+      gallery +
+      opens,
   );
 
   card += `

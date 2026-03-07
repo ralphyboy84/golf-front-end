@@ -128,7 +128,12 @@ if ($orderByParams) {
 }
 
 $sql = "
-SELECT *
+SELECT *,
+IF (
+    EXISTS (SELECT 1 FROM opens WHERE opens.clubid = clubs.id),
+    1,
+    0
+) as opens
 $selectSql
 FROM clubs
 $additionalSql 
@@ -174,6 +179,7 @@ if ($result->num_rows > 0) {
             "instagram" => $row["instagram"],
             "website" => $row["website"],
             "ralph_recommends" => $row["ralph_recommends"],
+            "opens" => $row["opens"],
         ];
 
         unset($coursesArray);
