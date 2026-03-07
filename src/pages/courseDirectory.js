@@ -143,9 +143,13 @@ export async function viewCourse() {
 
   let opens = "";
 
-  if (club.opens) {
+  if (club.opens == 1) {
     opens = `
     <span id="viewOpens" class='badge badge-success cursor-pointer cdModal' data-toShow=opens data-courseid=${firstKey} class='badge badge-success'><i class="fa-solid fa-rainbow"></i>Opens</span>
+    `;
+  } else if (club.opens == 0 && club.openBookingLink) {
+    opens = `
+    <a href="${club.openBookingLink}" target="_blank" class='badge badge-success'><i class="fa-solid fa-rainbow"></i>Opens</a>
     `;
   }
 
