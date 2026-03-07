@@ -5,7 +5,9 @@ test.describe.configure({ mode: "serial" });
 
 var competitions = [];
 
-test.describe("local-only tests", () => {
+const localOnlyDescribe = process.env.CI ? test.describe.skip : test.describe;
+
+localOnlyDescribe("local-only tests", () => {
   test("Check bonarbridge", async ({ page }) => {
     await getOpen(6048, "bonarbridge", page);
   });
