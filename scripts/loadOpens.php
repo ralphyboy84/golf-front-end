@@ -234,4 +234,51 @@ if ($_GET["load"] == "masters") {
     }
 }
 
+if ($_GET["load"] == "dotgolf") {
+    echo "LOADING DOT GOLF";
+
+    $sql = "
+    SELECT *
+    FROM clubs
+    WHERE openBookingSystem = 'dotgolf'
+    AND clubId != '0'
+    ";
+
+    $result = $mysqli->query($sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            require_once "../api/call/dotGolfCall.php";
+            require_once "../api/processor/dotGolfProcessor.php";
+
+            $DotGolfCall = new DotGolfCall();
+            $opens = $DotGolfCall->getAllOpensForCourse($row["clubId"]);
+
+            if ($opens["Competitions"]) {
+                foreach ($opens["Competitions"] as $open) {
+                    if ($open["EntryFeeVisitor"]) {
+                        require_once "../api/database/database.php";
+                        require_once "../api/opens/opens.php";
+
+                        $dates = explode("T", $open["CompetitionDate"]);
+                        $database = new database();
+
+                        $opens = new opens();
+                        $opens->updateOpenInformation(
+                            $database->getDatabaseConnection(),
+                            $row["id"],
+                            $open["CompetitionID"],
+                            $row["clubId"],
+                            $dates[0],
+                            $open["CompetitionName"],
+                            1,
+                            false,
+                        );
+                    }
+                }
+            }
+        }
+    }
+}
+
 echo "OPENS LOADED";
