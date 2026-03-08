@@ -1,6 +1,6 @@
 import { getFullCourseList, getCourse } from "../pages/api";
 import { getSelectValues } from "../pages/dayAvailability";
-import { buildCard, buildCardRow, getErrorMessage } from "../pages/components";
+import { buildCard, getErrorMessage } from "../pages/components";
 import { capitalizeFirstChar } from "../../src/pages/selectBoxes";
 
 export async function courseDirectory() {
@@ -11,26 +11,26 @@ export async function courseDirectory() {
     "You have not selected a course",
   );
 
-  document.getElementById("app").innerHTML = `
-  <div class="flex justify-center mb-6">
-    <div class="card sm:max-w-sm md:max-w-xl bg-gray-100 border border-base-300 rounded-xl text-gray-900 overflow-hidden">
-      <figure><img src="images/dornoch2.jpg" alt="Watch" /></figure>
-    </div>
-  </div>
+  const content = `
   <input type='hidden' id='days' value='1' />
-  <div class="card card-border bg-base-500 border border-base-300 w-full">
-    <div class="card-body w-full">
-      <h2 id="courseDirectoryHeader" class="card-title">Course Directory</h2>
-      <div class="grid grid-cols-2 gap-4 items-center w-full">
-        <div class="w-full">Courses:</div>
-        <div class="w-full"><select id='courseDirectoryListSelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select"><option value=''>Select....</option></select></div>
-      </div> 
-      ${noCourseAlertMsg}
-      <div class="w-full justify-center text-center"><a id="viewCourse" class="btn btn-primary">View Course</a></div>
-    </div>
+  <p class="mb-4">Use our course directory to view any golf course in Scotland.</p>
+  <div class="grid grid-cols-2 gap-4 items-center w-full mb-4">
+    <div class="w-full">Courses:</div>
+    <div class="w-full"><select id='courseDirectoryListSelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select"><option value=''>Select....</option></select></div>
+  </div> 
+  ${noCourseAlertMsg}
+  <div class="card-actions justify-center">
+    <a id="viewCourse" class="btn btn-primary">View Course</a>
   </div>
-  <div id='resultsDiv' class='pt-4'></div>
-`;
+  `;
+
+  document.getElementById("app").innerHTML =
+    buildCard(
+      "dornoch2",
+      "Course Directory",
+      content,
+      "courseDirectoryHeader",
+    ) + `  <div id='resultsDiv' class='pt-4'></div>`;
 
   const select = document.getElementById("courseDirectoryListSelect");
 

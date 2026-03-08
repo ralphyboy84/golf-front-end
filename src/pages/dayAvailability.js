@@ -27,33 +27,29 @@ export async function dayAvailability() {
     "You have not selected a course",
   );
 
-  app.innerHTML = `
-  <div class="flex justify-center mb-6">
-    <div class="card sm:max-w-sm md:max-w-xl bg-gray-100 border border-base-300 rounded-xl text-gray-900 overflow-hidden">
-      <figure><img src="images/arbroath.jpg" alt="Watch" /></figure>
-    </div>
-  </div>
+  const content = `
   <input type='hidden' id='days' value='1' />
-  <div class="card card-border bg-base-500 border border-base-300 w-full">
-    <div class="card-body w-full">
-      <h2 class="card-title">Search for Day Availability</h2>
-      <div class="grid grid-cols-2 gap-4 items-center w-full">
-        <div class="w-full">Enter Date:</div>
-        <div class="w-full"><input type='date' id='start' value='' class='input bg-gray-50 text-gray-900' /></div>
-      </div>
-      ${alertMsg}
-      <div class="grid grid-cols-2 gap-4 items-center w-full">
-        <div class="w-full">Regions:</div>
-        <div class="w-full"><select id="regionFilter" class="select w-full appearance-none bg-gray-50 text-gray-900" aria-label="select"><option value=''>Select....</option></select></div>
-        <div class="w-full">Courses:</div>
-        <div class="w-full"><select id="clubsSelect" multiple class="select w-full appearance-none bg-gray-50 text-gray-900" aria-label="select"></select></div>
-      </div>
-      ${noCourseAlertMsg}
-      <div class="w-full justify-center text-center"><a id="searchForAvailability" class="btn btn-primary">Search For Availability</a></div>
-    </div>
+  <p class="mb-4">Check for tee time availability at any course in Scotland.</p>
+  <div class="grid grid-cols-2 gap-4 items-center w-full">
+    <div class="w-full">Enter Date:</div>
+    <div class="w-full"><input type='date' id='start' value='' class='input bg-gray-50 text-gray-900' /></div>
   </div>
-  <div id='resultsDiv' class='pt-4'></div>
+  ${alertMsg}
+  <div class="grid grid-cols-2 gap-4 items-center w-full mb-4">
+    <div class="w-full">Regions:</div>
+    <div class="w-full"><select id="regionFilter" class="select w-full appearance-none bg-gray-50 text-gray-900" aria-label="select"><option value=''>Select....</option></select></div>
+    <div class="w-full">Courses:</div>
+    <div class="w-full"><select id="clubsSelect" multiple class="select w-full appearance-none bg-gray-50 text-gray-900" aria-label="select"></select></div>
+  </div>
+  ${noCourseAlertMsg}
+  <div class="card-actions justify-center">
+    <a id="searchForAvailability" class="btn btn-primary">Search For Availability</a>
+  </div>
   `;
+
+  document.getElementById("app").innerHTML =
+    buildCard("arbroath", "Day Availability", content) +
+    `  <div id='resultsDiv' class='pt-4'></div>`;
 
   await getCoursesForDropDown();
   const data = await getRegions();

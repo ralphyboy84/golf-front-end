@@ -18,7 +18,7 @@ export async function openSearcher() {
   document.getElementById("app").innerHTML = `
   <div class="flex justify-center mb-6">
     <div class="card sm:max-w-sm md:max-w-xl bg-gray-100 border border-base-300 rounded-xl text-gray-900 overflow-hidden">
-      <figure><img src="images/lochlomond.jpg" alt="Watch" /></figure>
+      <figure><img src="images/LochLomond.jpg" alt="Watch" /></figure>
     </div>
   </div>
   <details id="openFilters" class="collapse bg-base-100 border-base-300 border">
