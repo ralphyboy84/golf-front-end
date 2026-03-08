@@ -2,6 +2,7 @@ import { images } from "../../pages/courseGallery/courseVariables";
 import { viewCourseGallery } from "../../pages/courseGallery/courseGallery";
 import { getOpensForCourse } from "../../pages/api";
 import { formatDateToDMY } from "../../pages/dateFunctions";
+import { getLoadingDiv } from "../../pages/loadingDiv";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -72,6 +73,9 @@ async function loadModalContent(button) {
   } else if (toShow == "opens") {
     const courseid = button.getAttribute("data-courseid");
 
+    document.getElementById("modalContent").innerHTML =
+      "Please wait.... loading....";
+
     const opens = await getOpensForCourse(courseid);
 
     content = "No Opens found for this course";
@@ -107,4 +111,8 @@ function getUrl(opens) {
   }
 
   return opens.name;
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

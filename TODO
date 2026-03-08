@@ -66,3 +66,4 @@ SELECT id, name, openBooking, openBookingSystem FROM `clubs` WHERE id NOT IN(sel
 Facebook
 auchmill and ballumbie dont work despite the url being correct
 
+SELECT id, name, confirmed_no_opens FROM `clubs` WHERE openBookingLink = '' AND openBookingSystem = '' AND confirmed_no_opens = '0';
