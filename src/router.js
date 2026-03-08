@@ -22,6 +22,8 @@ import {
   viewTrip,
 } from "./pages/previousTrips/previousTrips.js";
 import { setOpenCompetitions } from "./pages/tripBuilder/opens.js";
+import { logIn } from "./pages/logIn/logIn.js";
+import { signUp } from "./pages/signUp/signUp.js";
 
 export const router = new Navigo("/");
 
@@ -41,9 +43,12 @@ router
   .on("/courseDirectory", courseDirectory)
   .on("/previousTrips", previousTrips)
   .on("/openCompetitions", setOpenCompetitions)
+  .on("/logIn", logIn)
+  .on("/signUp", signUp)
   .on("/viewTrip/:tripId", (match) => {
     viewTrip(match.data.tripId);
   })
+  .on("/drone.html", loadHome)
   .on("/", loadHome)
   .notFound(() => {
     document.getElementById("app").innerHTML = "<h1>404</h1>";
