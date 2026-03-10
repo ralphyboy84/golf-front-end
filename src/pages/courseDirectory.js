@@ -58,6 +58,7 @@ export async function viewCourse() {
   );
 
   const courseInfo = await getCourse(courseId[0].course);
+
   const firstKey = Object.keys(courseInfo)[0];
   const club = courseInfo[firstKey];
 
@@ -120,8 +121,6 @@ export async function viewCourse() {
   const category = buildCategory(club.category);
   const onlineBooking = buildOnlineBooking(club);
 
-  console.log(club);
-
   let website = "";
 
   if (club.website) {
@@ -171,7 +170,7 @@ export async function viewCourse() {
 
   let played = "";
 
-  if (club.loggedIn) {
+  if (club.loggedIn == 1) {
     let coursePlayedClass = "hidden";
     let courseNotPlayedClass = "hidden";
 
