@@ -284,18 +284,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (event.target.closest("#signUpButton")) {
       event.preventDefault();
-      signTheUserUp(
-        document.getElementById("username").value,
-        document.getElementById("password").value,
-      );
+      signTheUserUp();
     }
 
     if (event.target.closest("#logInButton")) {
       event.preventDefault();
-      logInTheUser(
-        document.getElementById("username").value,
-        document.getElementById("password").value,
-      );
+      logInTheUser();
     }
 
     if (event.target.closest("#logOutButton")) {

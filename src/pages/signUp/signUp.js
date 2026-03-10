@@ -6,7 +6,7 @@ export function signUp() {
 
   const noUserNameMsg = getErrorMessage(
     "noUserName",
-    "You have not entered a date",
+    "You have not entered a username",
   );
 
   const noPasswordMsg = getErrorMessage(
@@ -15,7 +15,7 @@ export function signUp() {
   );
 
   const noPasswordConfirmMsg = getErrorMessage(
-    "noPassword",
+    "noPasswordConfirm",
     "You have not confirmed your password",
   );
 
@@ -39,7 +39,7 @@ export function signUp() {
   ${noPasswordMsg}
   <div class="grid grid-cols-2 gap-4 items-center w-full mb-4">
     <div class="w-full">Confirm Password:</div>
-    <div class="w-full"><input type='password' id='password' value='' class='input bg-gray-50 text-gray-900' /></div>
+    <div class="w-full"><input type='password' id='passwordConfirmed' value='' class='input bg-gray-50 text-gray-900' /></div>
   </div>
   ${noPasswordConfirmMsg}  
   ${passwordsDoNotMatch} 
@@ -52,8 +52,32 @@ export function signUp() {
   app.innerHTML = buildCard("fortrose", "Sign Up", content, "signUp");
 }
 
-export async function signTheUserUp(forename, surname) {
-  const result = await createUser(forename, surname);
+export async function signTheUserUp() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("passwordConfirmed").value;
+
+  if (!username) {
+    document.getElementById("noUserName").classList.remove("hidden");
+    return;
+  }
+
+  if (!password) {
+    document.getElementById("noPassword").classList.remove("hidden");
+    return;
+  }
+
+  if (!confirmPassword) {
+    document.getElementById("noPasswordConfirm").classList.remove("hidden");
+    return;
+  }
+
+  if (password != confirmPassword) {
+    document.getElementById("passwordsDoNotMatch").classList.remove("hidden");
+    return;
+  }
+
+  const result = await createUser(username, password);
 
   if (result.success) {
     const app = document.getElementById("app");

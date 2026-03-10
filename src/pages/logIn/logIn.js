@@ -6,7 +6,7 @@ export function logIn() {
 
   const noUserNameMsg = getErrorMessage(
     "noUserName",
-    "You have not entered a date",
+    "You have not entered a username",
   );
 
   const noPasswordMsg = getErrorMessage(
@@ -39,7 +39,20 @@ export function logIn() {
   app.innerHTML = buildCard("grantownonspey", "Log In", content, "logIn");
 }
 
-export async function logInTheUser(username, password) {
+export async function logInTheUser() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  if (!username) {
+    document.getElementById("noUserName").classList.remove("hidden");
+    return;
+  }
+
+  if (!password) {
+    document.getElementById("noPassword").classList.remove("hidden");
+    return;
+  }
+
   const result = await logInUser(username, password);
 
   if (result.success) {
