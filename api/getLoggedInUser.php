@@ -6,5 +6,5 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 session_start();
-print_r($_SESSION);
-echo "TEST";
+
+echo "coming soon";
