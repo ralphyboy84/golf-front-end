@@ -256,7 +256,10 @@ if ($_GET["load"] == "dotgolf") {
 
             if ($opens["Competitions"]) {
                 foreach ($opens["Competitions"] as $open) {
-                    if ($open["EntryFeeVisitor"]) {
+                    if (
+                        $open["EntryFeeVisitor"] ||
+                        ($open["EntryFee"] && $open["EntryFee"] > 19)
+                    ) {
                         require_once "../api/database/database.php";
                         require_once "../api/opens/opens.php";
 

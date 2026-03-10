@@ -26,7 +26,15 @@ export function buildCardRow(icon, titleText, subText, button) {
   `;
 }
 
-export function buildCard(img, header, content, id, additionalClass, badges) {
+export function buildCard(
+  img,
+  header,
+  content,
+  id,
+  additionalClass,
+  badges,
+  headerIcon,
+) {
   let idToUse = "";
   let additionalClassToUse = "";
   let badgeString = "";
@@ -49,12 +57,21 @@ export function buildCard(img, header, content, id, additionalClass, badges) {
     imgString = `<figure><img src="/images/${img}.jpg" alt="${img}" /></figure>`;
   }
 
+  let headerIconString = "";
+
+  if (headerIcon) {
+    headerIconString = headerIcon;
+  }
+
   return `
   <div class="flex justify-center mb-6">
     <div${idToUse} class="card sm:max-w-sm md:max-w-xl bg-gray-100 border border-base-300 rounded-xl text-gray-900${additionalClassToUse}">
       ${imgString}
       <div class="card-body">
-        <h5 class="card-title mb-2.5 text-gray-900">${header}</h5>
+        <div class="flex justify-between items-center">
+          <h5 class="card-title mb-2.5 text-gray-900">${header}</h5>
+          ${headerIconString}
+        </div>
         ${badgeString}
         ${content}
       </div>

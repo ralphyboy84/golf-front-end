@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if ($_SERVER["HTTP_HOST"] == "localhost") {
     //dev settings
     $SERVERNAME = "database";

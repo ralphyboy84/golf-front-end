@@ -153,6 +153,16 @@ export async function viewCourse() {
     `;
   }
 
+  let played = "";
+
+  if (club.loggedIn) {
+    played = `<img src='/images/golf-field-bw.png' style='height:24px;width:24px' title='You have not played this course' class='cursor-pointer playedCourse' id='playedCourse_${firstKey}' data-courseid=${firstKey} />`;
+
+    if (club.played == 1) {
+      played = `<img src='/images/golf-field-color.png' style='height:24px;width:24px' title='You have played this course!' />`;
+    }
+  }
+
   let card = buildCard(
     imageToUse,
     club.name,
@@ -169,6 +179,7 @@ export async function viewCourse() {
       instagram +
       gallery +
       opens,
+    played,
   );
 
   card += `

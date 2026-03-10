@@ -67,3 +67,8 @@ Facebook
 auchmill and ballumbie dont work despite the url being correct
 
 SELECT id, name, confirmed_no_opens FROM `clubs` WHERE openBookingLink = '' AND openBookingSystem = '' AND confirmed_no_opens = '0';
+
+Islay golf club opens not available until the day before the open - look at adding it anyway
+
+Credits
+<a href="https://www.flaticon.com/free-icons/golf" title="golf icons">Golf icons created by Good Ware - Flaticon</a>

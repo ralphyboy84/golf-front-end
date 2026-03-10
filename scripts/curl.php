@@ -1,27 +1,45 @@
 <?php
 
-$ch = curl_init("https://www.facebook.com/AnstrutherGolfClub");
+$ch = curl_init();
+
+$params = [
+    "pageNumber" => 1,
+    "pageSize" => 500,
+    "clubIds" => 2035,
+    "sorting" => [
+        [
+            "orderBy" => "CompetitionDate",
+            "order" => "ASC",
+        ],
+    ],
+    "dateFrom" => "Sun Mar 08 2026",
+    "dateTo" => "Thu Dec 31 2026",
+    "regionIds" => "",
+    "provinceIds" => "",
+    "competitionFixtureTypeIds" => "",
+    "competitionScoreFormatIds" => "",
+    "isNineHoles" => "",
+    "genders" => "",
+    "userLatitude" => 56.613289,
+    "userLongitude" => -3.46239,
+    "radius" => "",
+    "applyContentModeration" => "false",
+    "fixtureAgeGroup" => "",
+    "fixtureStatus" => "Unpublished",
+];
 
 curl_setopt_array($ch, [
+    CURLOPT_URL => "https://www.scottishgolf.org/api/competitions/GetFixtures",
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HEADER => true,
-    CURLOPT_NOBODY => true, // We only need the header, not the whole page
-    CURLOPT_FOLLOWLOCATION => true, // Follow redirects
-    CURLOPT_TIMEOUT => 10,
-    // CRITICAL: Facebook blocks scripts without a User-Agent
-    CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => http_build_query($params), // form encoded
+    CURLOPT_HTTPHEADER => ["Content-Type: application/x-www-form-urlencoded"],
 ]);
 
-curl_exec($ch);
-$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$response = curl_exec($ch);
 curl_close($ch);
 
-echo $httpCode;
+$info = json_decode($response, true);
 
-if ($httpCode === 200) {
-    return ["status" => "Live", "code" => $httpCode];
-} elseif ($httpCode === 404) {
-    return ["status" => "Broken/Not Found", "code" => $httpCode];
-} else {
-    return ["status" => "Private or Blocked", "code" => $httpCode];
-}
+echo "<pre>";
+print_r($info);

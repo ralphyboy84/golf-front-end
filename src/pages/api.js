@@ -51,6 +51,9 @@ export async function getWeather(courseList) {
 export async function getCourse(courseId) {
   return await fetch(
     `${import.meta.env.VITE_API_URL}api/getCourses.php?courseId=${courseId}`,
+    {
+      credentials: "include",
+    },
   ).then((res) => res.json());
 }
 
@@ -58,4 +61,60 @@ export async function getOpensForCourse(clubid) {
   return await fetch(
     `${import.meta.env.VITE_API_URL}api/getOpensForCourse.php?clubid=${clubid}`,
   ).then((res) => res.json());
+}
+
+export async function createUser(username, password) {
+  const formData = new FormData();
+  formData.append("username", username);
+  formData.append("password", password);
+
+  return await fetch(`${import.meta.env.VITE_API_URL}api/createUser.php`, {
+    method: "POST",
+    body: formData,
+    credentials: "include",
+  }).then((res) => res.json());
+}
+
+export async function logInUser(username, password) {
+  const formData = new FormData();
+  formData.append("username", username);
+  formData.append("password", password);
+
+  return await fetch(`${import.meta.env.VITE_API_URL}api/logInUser.php`, {
+    method: "POST",
+    body: formData,
+    credentials: "include",
+  }).then((res) => res.json());
+}
+
+export async function getLoggedInUserInfo() {
+  return await fetch(`${import.meta.env.VITE_API_URL}api/getLoggedInUser.php`, {
+    credentials: "include",
+  }).then((res) => res.text());
+}
+
+export async function markCourseAsPlayedAPI(courseid) {
+  const formData = new FormData();
+  formData.append("courseid", courseid);
+
+  return await fetch(
+    `${import.meta.env.VITE_API_URL}api/markCourseAsPlayed.php`,
+    {
+      method: "POST",
+      body: formData,
+      credentials: "include",
+    },
+  ).then((res) => res.json());
+}
+
+export async function getLeaderBoardAPI() {
+  return await fetch(`${import.meta.env.VITE_API_URL}api/getLeaderBoard.php`, {
+    credentials: "include",
+  }).then((res) => res.json());
+}
+
+export async function logOutUserAPI() {
+  return await fetch(`${import.meta.env.VITE_API_URL}api/logOutUser.php`, {
+    credentials: "include",
+  }).then((res) => res.json());
 }

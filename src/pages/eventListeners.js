@@ -16,6 +16,10 @@ import {
   previousTrips,
   deletePreviousSearches,
 } from "../pages/previousTrips/previousTrips";
+import { signTheUserUp } from "../pages/signUp/signUp.js";
+import { logInTheUser } from "../pages/logIn/logIn.js";
+import { logTheUserOut } from "../pages/logOut/logOut.js";
+import { markCourseAsPlayed } from "../pages/courseDirectory/coursePlayed.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -276,6 +280,36 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       deletePreviousSearches();
       previousTrips();
+    }
+
+    if (event.target.closest("#signUpButton")) {
+      event.preventDefault();
+      signTheUserUp(
+        document.getElementById("username").value,
+        document.getElementById("password").value,
+      );
+    }
+
+    if (event.target.closest("#logInButton")) {
+      event.preventDefault();
+      logInTheUser(
+        document.getElementById("username").value,
+        document.getElementById("password").value,
+      );
+    }
+
+    if (event.target.closest("#logOutButton")) {
+      event.preventDefault();
+      logTheUserOut();
+    }
+
+    if (event.target.closest(".playedCourse")) {
+      event.preventDefault();
+      const courseid = event.target
+        .closest(".playedCourse")
+        .getAttribute("data-courseid");
+
+      markCourseAsPlayed(courseid);
     }
   });
 

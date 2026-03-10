@@ -9,7 +9,7 @@ export function loadHome() {
   <div class="flex gap-2">
     <a href="/courseDirectory" class="badge badge-primary h-auto text-center">557 Courses Loaded in the app</a>
     <a href="/dayAvailability" class="badge badge-accent h-auto text-center">372 Courses With Online Booking</a>
-    <a href="/openSearcher" class="badge badge-info h-auto text-center">265 Courses With Open Competition Booking</a>
+    <a href="/openSearcher" class="badge badge-info h-auto text-center">284 Courses With Open Competition Booking</a>
   </div>
   `;
   app.innerHTML = buildCard(

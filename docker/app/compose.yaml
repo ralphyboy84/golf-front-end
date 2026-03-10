@@ -4,6 +4,7 @@ services:
     build: .
     volumes:
       - /Users/ralph/Documents/golf-front-end.nosync:/var/www/html
+      - ./php/php.ini:/usr/local/etc/php/php.ini
     ports:
       - 80:80
   database:
