@@ -28,13 +28,6 @@ test("Check no password entered", async ({ page }) => {
 });
 
 test("Check password incorrect", async ({ page }) => {
-  // Expect a title "to contain" a substring.
-  await page.click("#userDropDown");
-  await page.click("#logIn");
-  await page.fill("#username", "ralph");
-  await page.fill("#password", "ralph");
-  await page.click("#logInButton");
-
   await page.route("**/api/logInUser.php*", async (route) => {
     let body = { error: "xxx" };
 
@@ -44,6 +37,13 @@ test("Check password incorrect", async ({ page }) => {
       body: JSON.stringify(body),
     });
   });
+
+  // Expect a title "to contain" a substring.
+  await page.click("#userDropDown");
+  await page.click("#logIn");
+  await page.fill("#username", "ralph");
+  await page.fill("#password", "ralph");
+  await page.click("#logInButton");
 
   await expect(page.locator("#passwordsDoNotMatch")).toBeVisible();
   await expect(page.locator("#passwordsDoNotMatch")).toHaveText(

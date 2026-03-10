@@ -67,7 +67,6 @@ test("Check passwords do not match", async ({ page }) => {
 
 test("Check account already exists", async ({ page }) => {
   await page.route("**/api/createUser.php*", async (route) => {
-    console.log("in here");
     let body = { error: "user created" };
 
     await route.fulfill({
@@ -92,7 +91,6 @@ test("Check account already exists", async ({ page }) => {
 
 test("Check account created successfully", async ({ page }) => {
   await page.route("**/api/createUser.php*", async (route) => {
-    console.log("in here");
     let body = { success: "user created" };
 
     await route.fulfill({
