@@ -19,7 +19,10 @@ import {
 import { signTheUserUp } from "../pages/signUp/signUp.js";
 import { logInTheUser } from "../pages/logIn/logIn.js";
 import { logTheUserOut } from "../pages/logOut/logOut.js";
-import { markCourseAsPlayed } from "../pages/courseDirectory/coursePlayed.js";
+import {
+  markCourseAsPlayed,
+  markCourseAsNotPlayed,
+} from "../pages/courseDirectory/coursePlayed.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -304,6 +307,15 @@ document.addEventListener("DOMContentLoaded", () => {
         .getAttribute("data-courseid");
 
       markCourseAsPlayed(courseid);
+    }
+
+    if (event.target.closest(".notPlayedCourse")) {
+      event.preventDefault();
+      const courseid = event.target
+        .closest(".notPlayedCourse")
+        .getAttribute("data-courseid");
+
+      markCourseAsNotPlayed(courseid);
     }
   });
 

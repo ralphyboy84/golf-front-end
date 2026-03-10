@@ -107,6 +107,20 @@ export async function markCourseAsPlayedAPI(courseid) {
   ).then((res) => res.json());
 }
 
+export async function markCourseAsNotPlayedAPI(courseid) {
+  const formData = new FormData();
+  formData.append("courseid", courseid);
+
+  return await fetch(
+    `${import.meta.env.VITE_API_URL}api/markCourseAsNotPlayed.php`,
+    {
+      method: "POST",
+      body: formData,
+      credentials: "include",
+    },
+  ).then((res) => res.json());
+}
+
 export async function getLeaderBoardAPI() {
   return await fetch(`${import.meta.env.VITE_API_URL}api/getLeaderBoard.php`, {
     credentials: "include",

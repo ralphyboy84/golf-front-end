@@ -1,6 +1,10 @@
 import { getFullCourseList, getCourse } from "../pages/api";
 import { getSelectValues } from "../pages/dayAvailability";
-import { buildCard, getErrorMessage } from "../pages/components";
+import {
+  buildCard,
+  getErrorMessage,
+  getSuccessMessage,
+} from "../pages/components";
 import { capitalizeFirstChar } from "../../src/pages/selectBoxes";
 
 export async function courseDirectory() {
@@ -57,9 +61,21 @@ export async function viewCourse() {
   const firstKey = Object.keys(courseInfo)[0];
   const club = courseInfo[firstKey];
 
+  const coursePlayedAlert = getSuccessMessage(
+    "coursePlayedAlert",
+    "You have played this course",
+  );
+
+  const courseNotPlayedAlert = getSuccessMessage(
+    "courseNotPlayedAlert",
+    "You have not played this course",
+  );
+
   let content = "";
 
   content += `
+  ${coursePlayedAlert}
+  ${courseNotPlayedAlert}
   <h5 class="card-title mb-2.5 text-gray-900">Summary</h5>
   <p class="card-text">${nl2br(club.description)}</p>
   `;
@@ -156,11 +172,19 @@ export async function viewCourse() {
   let played = "";
 
   if (club.loggedIn) {
-    played = `<img src='/images/golf-field-bw.png' style='height:24px;width:24px' title='You have not played this course' class='cursor-pointer playedCourse' id='playedCourse_${firstKey}' data-courseid=${firstKey} />`;
+    let coursePlayedClass = "hidden";
+    let courseNotPlayedClass = "hidden";
 
     if (club.played == 1) {
-      played = `<img src='/images/golf-field-color.png' style='height:24px;width:24px' title='You have played this course!' />`;
+      coursePlayedClass = "";
+    } else {
+      courseNotPlayedClass = "";
     }
+
+    played = `
+    <img src='/images/golf-field-bw.png' style='height:24px;width:24px' title='You have not played this course' class='cursor-pointer playedCourse ${courseNotPlayedClass}' id='playedCourse_${firstKey}' data-courseid=${firstKey} />
+    <img src='/images/golf-field-color.png' style='height:24px;width:24px' title='You have played this course!' class='cursor-pointer notPlayedCourse ${coursePlayedClass}' id='notPlayedCourse_${firstKey}' data-courseid=${firstKey} />
+    `;
   }
 
   let card = buildCard(
