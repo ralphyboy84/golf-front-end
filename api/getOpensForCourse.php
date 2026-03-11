@@ -18,6 +18,8 @@ if ($_SERVER["HTTP_HOST"] == "localhost") {
 
 $mysqli = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DATABASE);
 
+$opens = [];
+
 if ($_GET["clubid"]) {
     $sql = "
     SELECT opens.clubid, opens.courseid, openid, opens.name, date, openBookingSystem, openBookingLink, opens.token, clubs.brsDomain
@@ -29,8 +31,6 @@ if ($_GET["clubid"]) {
 
     $result = $mysqli->query($sql);
 
-    $opens = [];
-
     if ($result->num_rows > 0) {
         $x = 0;
         while ($row = $result->fetch_assoc()) {
@@ -39,5 +39,9 @@ if ($_GET["clubid"]) {
         }
     }
 
-    echo json_encode($opens);
+    $opens = array_map(function ($open) {
+        return mb_convert_encoding($open, "UTF-8", "auto");
+    }, $opens);
 }
+
+echo json_encode($opens);
