@@ -24,7 +24,7 @@ if ($_SERVER["HTTP_HOST"] == "localhost") {
 $mysqli = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DATABASE);
 
 $sql = "
-SELECT *,
+SELECT usercourses.courseid, name,
     IF (
         EXISTS(
         SELECT 1
@@ -35,8 +35,9 @@ SELECT *,
         1,
         0
     ) as 'played'
-FROM usercourses
+FROM usercourses, clubs
 WHERE userid = '{$_GET["username"]}'
+AND clubs.id = usercourses.courseid
 ";
 
 $result = $mysqli->query($sql);

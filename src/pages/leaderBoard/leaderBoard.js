@@ -74,7 +74,9 @@ export async function getLeaderBoard() {
 async function loadLeaderBoardModalContent(userid) {
   const userCourses = await getUserCoursesComparison(userid);
 
-  let content = `${userid} has played the following courses`;
+  let content = `
+  <div class="flex"><div class="flex-2 p-4">${userid} has played the following courses:</div></div>
+  `;
 
   if (userCourses.length > 0) {
     for (let x in userCourses) {
@@ -90,8 +92,8 @@ async function loadLeaderBoardModalContent(userid) {
 
       content += `
       <div class="flex gap-4">
-        <div class="flex-1 p-4">${userCourses[x].courseid}</div>
-        <div class="flex-1 p-4">${imageString}</div>
+        <div class="p-4">${userCourses[x].name}</div>
+        <div class="p-4 ml-auto">${imageString}</div>
       </div>
       `;
     }
