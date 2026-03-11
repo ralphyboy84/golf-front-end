@@ -7,12 +7,12 @@ $DotGolfCall = new DotGolfCall();
 $DotGolfProcessor = new DotGolfProcessor();
 
 if ($golfCourses[$_GET["club"]]["openBooking"]) {
-    $clubId = $golfCourses[$_GET["club"]]["clubid"];
+    // $clubId = $golfCourses[$_GET["club"]]["clubid"];
 
-    $slotsAvailable = "No";
+    // $slotsAvailable = "No";
 
-    $opens = $DotGolfCall->getAllOpensForCourse($clubId);
-    $openOnDay = $DotGolfProcessor->checkForOpenOnDay($opens, $_GET["date"]);
+    // $opens = $DotGolfCall->getAllOpensForCourse($clubId);
+    // $openOnDay = $DotGolfProcessor->checkForOpenOnDay($opens, $_GET["date"]);
 
     // if (
     //     isset($openOnDay["competitionId"]) &&
