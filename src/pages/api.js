@@ -132,3 +132,12 @@ export async function logOutUserAPI() {
     credentials: "include",
   }).then((res) => res.json());
 }
+
+export async function getUserCoursesComparison(username) {
+  return await fetch(
+    `${import.meta.env.VITE_API_URL}api/getUserCoursesComparison.php?username=${username}`,
+    {
+      credentials: "include",
+    },
+  ).then((res) => res.json());
+}
