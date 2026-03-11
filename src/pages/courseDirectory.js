@@ -186,6 +186,12 @@ export async function viewCourse() {
     `;
   }
 
+  let nineHoler = "";
+
+  if (club.nineHoler == 1) {
+    nineHoler = `<span class='badge badge-success cursor-pointer cdModal' data-toShow=nineHoler><i class="bi bi-9-circle"></i>9 Holes</span>`;
+  }
+
   let card = buildCard(
     imageToUse,
     club.name,
@@ -201,7 +207,8 @@ export async function viewCourse() {
       website +
       instagram +
       gallery +
-      opens,
+      opens +
+      nineHoler,
     played,
   );
 

@@ -182,6 +182,7 @@ if ($result->num_rows > 0) {
             "website" => $row["website"],
             "ralph_recommends" => $row["ralph_recommends"],
             "opens" => $row["opens"],
+            "nineHoler" => $row["9holes"],
         ];
 
         unset($coursesArray);

@@ -24,6 +24,9 @@ async function loadModalContent(button) {
   if (toShow == "top100") {
     header = "Top 100";
     content = "This course appears in many of the Scottish Top 100 list";
+  } else if (toShow == "nineHoler") {
+    header = "9 Holes";
+    content = "This course only has 9 holes, or in some cases, even less!";
   } else if (toShow == "region") {
     header = "Region";
 

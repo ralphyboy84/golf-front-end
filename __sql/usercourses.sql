@@ -22,8 +22,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `usercourses` (
-  `userid` varchar(100) NOT NULL,
-  `courseid` varchar(100) NOT NULL
+  `userid` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `courseid` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
