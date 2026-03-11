@@ -71,11 +71,19 @@ export async function logInTheUser() {
       "loggedIn",
     );
 
-    document.getElementById("logOutLi").classList.remove("hidden");
-    document.getElementById("yourInfoLi").classList.remove("hidden");
-    document.getElementById("logInLi").classList.add("hidden");
-    document.getElementById("signUpLi").classList.add("hidden");
+    setLoginInfoOnUserButton();
   } else {
     document.getElementById("passwordsDoNotMatch").classList.remove("hidden");
   }
+}
+
+export function setLoginInfoOnUserButton() {
+  document.getElementById("logOutLi").classList.remove("hidden");
+  document.getElementById("yourInfoLi").classList.remove("hidden");
+  document.getElementById("logInLi").classList.add("hidden");
+  document.getElementById("signUpLi").classList.add("hidden");
+  document
+    .getElementById("userDropDownSubDiv")
+    .classList.add("bg-blue-400", "border", "border-solid", "border-black");
+  document.getElementById("userDropDownSvg").setAttribute("fill", "black");
 }
