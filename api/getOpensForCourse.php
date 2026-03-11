@@ -44,4 +44,4 @@ if ($_GET["clubid"]) {
     }, $opens);
 }
 
-echo json_encode($opens);
+echo json_encode($opens, JSON_UNESCAPED_UNICODE);
