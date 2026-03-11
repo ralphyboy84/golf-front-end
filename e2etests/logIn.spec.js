@@ -74,3 +74,41 @@ test("Check logged in ok", async ({ page }) => {
     /Congrats, you are logged in!/,
   );
 });
+
+test("Check logged in ok and your info showing", async ({ page }) => {
+  await page.route("**/api/logInUser.php*", async (route) => {
+    let body = { success: "xxx" };
+
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(body),
+    });
+  });
+
+  await page.route("**/api/getLoggedInUser.php*", async (route) => {
+    let body = { username: "ralph" };
+
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(body),
+    });
+  });
+
+  // Expect a title "to contain" a substring.
+  await page.click("#userDropDown");
+  await page.click("#logIn");
+  await page.fill("#username", "ralph");
+  await page.fill("#password", "ralph");
+  await page.click("#logInButton");
+
+  await expect(page.locator("#loggedIn")).toBeVisible();
+  await expect(page.locator("#loggedIn")).toHaveText(
+    /Congrats, you are logged in!/,
+  );
+  await page.click("#userDropDown");
+  await page.click("#yourInfo");
+  await expect(page.locator("#yourInfoDiv")).toBeVisible();
+  await expect(page.locator("#yourInfoDiv")).toHaveText(/ralph/);
+});

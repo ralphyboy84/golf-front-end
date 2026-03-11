@@ -7,4 +7,10 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 session_start();
 
-echo "coming soon";
+if ($_SESSION["username"]) {
+    $args["username"] = $_SESSION["username"];
+} else {
+    $args["error"] = 1;
+}
+
+echo json_encode($args);

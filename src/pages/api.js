@@ -90,7 +90,7 @@ export async function logInUser(username, password) {
 export async function getLoggedInUserInfo() {
   return await fetch(`${import.meta.env.VITE_API_URL}api/getLoggedInUser.php`, {
     credentials: "include",
-  }).then((res) => res.text());
+  }).then((res) => res.json());
 }
 
 export async function markCourseAsPlayedAPI(courseid) {
