@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Generation Time: Mar 11, 2026 at 08:06 PM
+-- Generation Time: Mar 12, 2026 at 05:31 PM
 -- Server version: 12.2.2-MariaDB-ubu2404
 -- PHP Version: 8.3.30
 
@@ -1960,7 +1960,7 @@ INSERT INTO `opens` (`clubid`, `courseid`, `openid`, `name`, `date`, `availabili
 ('tain', '753', '3458516', 'Senior Ladies Open', '2026-05-29', 'Yes', 2, 'II244F1F14O714IOI0', '2026-03-09 17:47:15', '2026-01-31 19:01:53'),
 ('tain', '753', '3461610', 'Mixed Open Greensomes', '2026-09-13', 'Yes', 2, 'II244F1F14O714IOI0', '2026-03-09 17:47:22', '2026-01-31 19:01:53'),
 ('tain', '753', '3538258', 'Texas Open', '2026-03-22', 'Yes', 2, 'II244F1F14O714IOI0', '2026-03-09 17:47:12', '2026-01-31 19:01:53'),
-('tain', '753', '3538311', 'Gents and Ladies Spring Open', '2026-04-04', 'Yes', 2, 'II244F1F14O714IOI0', '2026-03-09 17:47:13', '2026-01-31 19:01:53'),
+('tain', '753', '3538311', 'Gents and Ladies Spring Open', '2026-04-04', 'Yes', 2, 'II244F1F14O714IOI0', '2026-03-11 21:28:58', '2026-01-31 19:01:53'),
 ('tain', '753', '3546347', 'Global Port Services Open', '2026-05-02', 'Yes', 2, 'II244F1F14O714IOI0', '2026-03-09 17:47:13', '2026-01-31 19:01:53'),
 ('tain', '753', '3546373', '55+ Senior Open Stableford', '2026-05-15', 'Yes', 2, 'II244F1F14O714IOI0', '2026-03-09 17:47:14', '2026-01-31 19:01:53'),
 ('tain', '753', '3548436', 'Golf Week Gents and Ladies Open', '2026-08-01', 'Yes', 2, 'II244F1F14O714IOI0', '2026-03-09 17:47:18', '2026-01-31 19:01:53'),
