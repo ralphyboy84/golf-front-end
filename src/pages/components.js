@@ -65,7 +65,7 @@ export function buildCard(
 
   return `
   <div class="flex justify-center mb-6">
-    <div${idToUse} class="card sm:max-w-sm md:max-w-xl bg-gray-100 border border-base-300 rounded-xl text-gray-900${additionalClassToUse}">
+    <div${idToUse} class="card w-full xl:max-w-2xl bg-gray-100 border border-base-300 rounded-xl text-gray-900${additionalClassToUse}">
       ${imgString}
       <div class="card-body">
         <div class="flex justify-between items-center">
