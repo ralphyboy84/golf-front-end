@@ -16,7 +16,9 @@ describe("viewCourseGallery()", () => {
     expect(result).toContain('src="images/carnoustie/DJI_001.jpg"');
 
     // Verify the navigation button exists
-    expect(result).toContain('<a href="#item1" class="btn btn-xs">1</a>');
+    expect(result).toContain(
+      '<a href="#item1" class="btn btn-xs shrink-0">1</a>',
+    );
 
     // Verify it scaled to the 3rd item correctly
     expect(result).toContain('id="item3"');
