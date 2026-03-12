@@ -7,7 +7,7 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 session_start();
 
-if ($_SESSION["username"]) {
+if (isset($_SESSION["username"]) && !empty($_SESSION["username"])) {
     $args["username"] = $_SESSION["username"];
 } else {
     $args["error"] = 1;

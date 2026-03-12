@@ -9,6 +9,7 @@ import "leaflet/dist/leaflet.css";
 
 import { getLoggedInUserInfo } from "./pages/api";
 import { setLoginInfoOnUserButton } from "./pages/logIn/logIn.js";
+import { getLogOutButtons } from "./pages/logOut/logOut.js";
 
 /* Resolve current route on page load */
 router.resolve();
@@ -17,4 +18,6 @@ const loggedIn = await getLoggedInUserInfo();
 
 if (loggedIn.username) {
   setLoginInfoOnUserButton();
+} else {
+  getLogOutButtons();
 }

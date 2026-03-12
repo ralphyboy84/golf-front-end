@@ -6,23 +6,30 @@ export async function getYourInfo() {
 
   const app = document.getElementById("app");
 
-  const content = `
+  if (info.username) {
+    const content = `
     <div class="grid grid-cols-1 gap-4 items-center w-full mb-4">
       <div class="w-full">Username: ${info.username}</div>
     </div>
     `;
 
-  app.innerHTML = buildCard(
-    "crailbalcomie",
-    "Your Info",
-    content,
-    "yourInfoDiv",
-  );
+    app.innerHTML = buildCard(
+      "crailbalcomie",
+      "Your Info",
+      content,
+      "yourInfoDiv",
+    );
 
-  app.innerHTML += `
-  <div id="map"></div>
-  `;
-  loadUserMap();
+    app.innerHTML += `
+    <div id="map"></div>
+    `;
+
+    loadUserMap();
+  } else {
+    app.innerHTML += `
+    Woops. Something has gone wrong here
+    `;
+  }
 }
 
 async function loadUserMap() {

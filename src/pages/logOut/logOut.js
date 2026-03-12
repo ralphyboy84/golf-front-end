@@ -29,6 +29,10 @@ export async function logTheUserOut() {
 
   app.innerHTML = buildCard("royalaberdeen", "Log Out", content, "logOut");
 
+  getLogOutButtons();
+}
+
+export function getLogOutButtons() {
   document.getElementById("logOutLi").classList.add("hidden");
   document.getElementById("yourInfoLi").classList.add("hidden");
   document.getElementById("logInLi").classList.remove("hidden");
