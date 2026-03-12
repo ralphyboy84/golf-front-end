@@ -186,6 +186,12 @@ $result = $mysqli->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $loggedIn = 0;
+
+        if (isset($_SESSION["username"])) {
+            $loggedIn = 1;
+        }
+
         $golfCourses[$row["id"]] = [
             "name" => $row["name"],
             "bookingLink" => $row["bookingLink"],
@@ -223,6 +229,7 @@ if ($result->num_rows > 0) {
             "ralph_recommends" => $row["ralph_recommends"],
             "opens" => $row["opens"],
             "nineHoler" => $row["9holes"],
+            "loggedIn" => $loggedIn,
         ];
 
         unset($coursesArray);

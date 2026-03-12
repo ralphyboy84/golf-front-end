@@ -170,6 +170,8 @@ export async function viewCourse() {
 
   let played = "";
 
+  console.log(club);
+
   if (club.loggedIn == 1) {
     let coursePlayedClass = "hidden";
     let courseNotPlayedClass = "hidden";

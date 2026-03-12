@@ -107,6 +107,13 @@ async function loadUserMap() {
 export async function clearFiltersForMap() {
   map.remove();
   loadUserMap();
+
+  document.getElementById("top100Filter").value = "";
+  document.getElementById("mapRegionFilter").value = "";
+  document.getElementById("9holeFilter").value = "";
+  document.getElementById("ralphRecommends").value = "";
+  document.getElementById("linksCourses").value = "";
+  document.getElementById("mapCourseCategory").value = "";
 }
 
 var map;

@@ -37,7 +37,6 @@ if (isset($golfCourses)) {
                     !empty($golfCourses[$row["courseid"]])
                 ) {
                     $golfCourses[$row["courseid"]]["played"] = 1;
-                    $golfCourses[$row["courseid"]]["loggedIn"] = 1;
                 }
             }
         }
