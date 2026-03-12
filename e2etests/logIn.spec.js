@@ -1,7 +1,9 @@
 import { test, expect } from "@playwright/test";
+import { fakePageLoadLogInCall } from "./helpers/logInHelper";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
+  await fakePageLoadLogInCall(page);
 });
 
 test("Check no username entered", async ({ page }) => {

@@ -4,6 +4,7 @@ import {
   interceptGetRegionsAPICall,
 } from "./helpers/openSearch";
 import { interceptGetCoursesAPICall } from "./helpers/getCoursesHelper";
+import { fakePageLoadLogInCall } from "./helpers/logInHelper";
 
 test.beforeEach(async ({ page }) => {
   await page.clock.install();
@@ -12,6 +13,7 @@ test.beforeEach(async ({ page }) => {
   await interceptGetAllOpensAPICall(page);
   await interceptGetRegionsAPICall(page);
   await interceptGetCoursesAPICall(page);
+  await fakePageLoadLogInCall(page);
 });
 
 test("Check you can navigate to the open searcher screen", async ({ page }) => {

@@ -1,9 +1,11 @@
 import { test, expect } from "@playwright/test";
 import { interceptGetCoursesAPICall } from "./helpers/getCoursesHelper";
+import { fakePageLoadLogInCall } from "./helpers/logInHelper";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
   await interceptGetCoursesAPICall(page);
+  await fakePageLoadLogInCall(page);
 });
 
 test("Check you can navigate to index screen", async ({ page }) => {

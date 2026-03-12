@@ -3,9 +3,11 @@ import { createTrip, validateTripCards } from "./helpers/createTripHelpers";
 import { expectedRows } from "./fixtures/createTripFixtures";
 import { interceptGetCourseAvailabilityForDateAPICall } from "./helpers/getCourseAvailabilityForDate";
 import { interceptGetCoursesAPICall } from "./helpers/getCoursesHelper";
+import { fakePageLoadLogInCall } from "./helpers/logInHelper";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
+  await fakePageLoadLogInCall(page);
 });
 
 test("Check you can navigate to index screen", async ({ page }) => {

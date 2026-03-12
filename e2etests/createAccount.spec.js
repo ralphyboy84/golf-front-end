@@ -1,7 +1,9 @@
 import { test, expect } from "@playwright/test";
+import { fakePageLoadLogInCall } from "./helpers/logInHelper";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
+  await fakePageLoadLogInCall(page);
 });
 
 test("Check correct fields are displayed when not logged in", async ({

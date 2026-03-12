@@ -1,9 +1,11 @@
 import { test, expect } from "@playwright/test";
+import { fakePageLoadLogInCall } from "./helpers/logInHelper";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
   await interceptLogInCall(page);
   await getCoursesCall(page);
+  await fakePageLoadLogInCall(page);
 });
 
 async function interceptLogInCall(page) {

@@ -3,6 +3,7 @@ import { interceptGetCourseAvailabilityForDateAPICall } from "./helpers/getCours
 import { interceptGetCoursesAPICall } from "./helpers/getCoursesHelper";
 import { interceptGetDistanceAPICall } from "./helpers/getDistanceHelper";
 import { interceptGetWeatherAPICall } from "./helpers/getWeatherHelper";
+import { fakePageLoadLogInCall } from "./helpers/logInHelper";
 
 test.beforeEach(async ({ page }) => {
   await page.clock.install();
@@ -12,6 +13,7 @@ test.beforeEach(async ({ page }) => {
   await interceptGetCourseAvailabilityForDateAPICall(page);
   await interceptGetDistanceAPICall(page);
   await interceptGetWeatherAPICall(page);
+  await fakePageLoadLogInCall(page);
 });
 
 test("Check you can navigate to index screen", async ({ page }) => {
