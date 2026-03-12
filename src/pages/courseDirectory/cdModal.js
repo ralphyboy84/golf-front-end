@@ -1,6 +1,9 @@
 import { images } from "../../pages/courseGallery/courseVariables";
 import { viewCourseGallery } from "../../pages/courseGallery/courseGallery";
-import { getOpensForCourse } from "../../pages/api";
+import {
+  getOpensForCourse,
+  getSelectedVenuesTravelTime,
+} from "../../pages/api";
 import { formatDateToDMY } from "../../pages/dateFunctions";
 import { getLoadingDiv } from "../../pages/loadingDiv";
 
@@ -100,6 +103,19 @@ async function loadModalContent(button) {
     }
 
     header = "Opens";
+  } else if (toShow == "travelTime") {
+    const courseid = button.getAttribute("data-courseid");
+
+    header = "Travel Time";
+    content = "The travel time to selected other venues:<br /><br />";
+
+    const travelTime = await getSelectedVenuesTravelTime(courseid);
+
+    for (let x in travelTime) {
+      content += `
+      ${travelTime[x].name} - ${travelTime[x].distance} miles - ${travelTime[x].duration}<br />
+      `;
+    }
   }
 
   document.getElementById("modalHeader").innerHTML = header;

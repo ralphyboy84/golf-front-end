@@ -151,3 +151,12 @@ export async function getUserCoursesComparison(username) {
     },
   ).then((res) => res.json());
 }
+
+export async function getSelectedVenuesTravelTime(courseid) {
+  return await fetch(
+    `${import.meta.env.VITE_API_URL}api/getSelectedVenuesTravelTime.php?courseid=${courseid}`,
+    {
+      credentials: "include",
+    },
+  ).then((res) => res.json());
+}

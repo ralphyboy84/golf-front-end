@@ -171,8 +171,6 @@ export async function viewCourse() {
 
   let played = "";
 
-  console.log(club);
-
   if (club.loggedIn == 1) {
     let coursePlayedClass = "hidden";
     let courseNotPlayedClass = "hidden";
@@ -195,6 +193,8 @@ export async function viewCourse() {
     nineHoler = `<span class='badge badge-success cursor-pointer cdModal' data-toShow=nineHoler><i class="bi bi-9-circle"></i>9 Holes</span>`;
   }
 
+  const travelTime = buildTravelTime(firstKey);
+
   let card = buildCard(
     imageToUse,
     club.name,
@@ -211,6 +211,7 @@ export async function viewCourse() {
       instagram +
       gallery +
       opens +
+      travelTime +
       nineHoler,
     played,
   );
@@ -250,6 +251,10 @@ function formatTop100(top100) {
 
 function buildRegion(region) {
   return `<span class='badge badge-success cursor-pointer cdModal' data-toShow=region data-region=${region}><i class="bi bi-input-cursor"></i>${capitalizeFirstChar(region)}</span>`;
+}
+
+function buildTravelTime(courseId) {
+  return `<span class='badge badge-success cursor-pointer cdModal' data-toShow=travelTime data-courseid=${courseId}><i class="bi bi-car-front"></i>Travel Time</span>`;
 }
 
 function buildCategory(category) {
