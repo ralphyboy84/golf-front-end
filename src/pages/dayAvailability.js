@@ -53,7 +53,7 @@ export async function dayAvailability() {
 
   await getCoursesForDropDown();
   const data = await getRegions();
-  populateSelectOptionsForRegionFilter(data);
+  populateSelectOptionsForRegionFilter(data, "regionFilter");
 }
 
 export async function updateCourseList() {

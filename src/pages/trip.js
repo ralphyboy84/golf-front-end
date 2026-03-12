@@ -130,7 +130,7 @@ export async function linksOrNoLinks() {
     <p class="mb-4 text-center">Now I would like to know what type of courses you are interested in playing. A true Scottish links like a Royal Troon or Royal Dornoch? Or are you more interested in inland courses like a Gleneagles or Blairgowrie?</p>
     <div class="p-3 col-4 d-flex justify-content-center text-center">
       <select id='courseTypeSelect' class="select max-w-sm appearance-none bg-gray-50 text-gray-900" aria-label="select">
-      <option value=''>Select....</option>
+        <option value=''>Select....</option>
         <option value="links">Links Courses</option>
         <option value="nonlinks">Non Links Courses</option>
         <option value="na">Not Fussed</option>

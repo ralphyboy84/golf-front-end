@@ -38,6 +38,46 @@ if (isset($_GET["onlineBooking"]) && !empty($_GET["onlineBooking"])) {
 }
 
 if (
+    isset($_GET["top100"]) &&
+    !empty($_GET["top100"]) &&
+    $_GET["top100"] != "undefined"
+) {
+    $sqlParams[] = " top100 = 1 ";
+}
+
+if (
+    isset($_GET["nineHoles"]) &&
+    !empty($_GET["nineHoles"]) &&
+    $_GET["nineHoles"] != "undefined"
+) {
+    $sqlParams[] = " 9holes = 1 ";
+}
+
+if (
+    isset($_GET["ralphRecommends"]) &&
+    !empty($_GET["ralphRecommends"]) &&
+    $_GET["ralphRecommends"] != "undefined"
+) {
+    $sqlParams[] = " ralph_recommends = 1 ";
+}
+
+if (
+    isset($_GET["category"]) &&
+    !empty($_GET["category"]) &&
+    $_GET["category"] != "undefined"
+) {
+    $sqlParams[] = " category = '" . $_GET["category"] . "' ";
+}
+
+if (
+    isset($_GET["links"]) &&
+    !empty($_GET["links"]) &&
+    $_GET["links"] != "undefined"
+) {
+    $sqlParams[] = " coursetype = 'links' ";
+}
+
+if (
     isset($_GET["courseQualityOption"]) &&
     !empty($_GET["courseQualityOption"])
 ) {

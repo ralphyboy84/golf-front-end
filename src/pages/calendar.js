@@ -96,7 +96,7 @@ export async function openSearcher() {
   <div id='calendar' class='mt-4'></div>
   `;
 
-  populateSelectOptionsForRegionFilter(data);
+  populateSelectOptionsForRegionFilter(data, "regionFilter");
   initialiseCalendar();
 
   const select = document.getElementById("courseListSelect");

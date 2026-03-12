@@ -1,5 +1,6 @@
-import { getLoggedInUserInfo, getCourses } from "../../pages/api";
-import { buildCard } from "../../pages/components";
+import { getLoggedInUserInfo, getCourses, getRegions } from "../../pages/api";
+import { buildCard, getErrorMessage } from "../../pages/components";
+import { populateSelectOptionsForRegionFilter } from "../../pages/selectBoxes";
 
 export async function getYourInfo() {
   const info = await getLoggedInUserInfo();
@@ -20,10 +21,76 @@ export async function getYourInfo() {
       "yourInfoDiv",
     );
 
+    const data = await getRegions();
+
+    const noCriteriaEntered = getErrorMessage(
+      "noCriteriaEntered",
+      "You have not entered any filter to criteria",
+    );
+
     app.innerHTML += `
+    <details id="openFilters" class="collapse bg-base-100 border-base-300 border mb-4">
+    <summary class="collapse-title font-semibold">Show Mapping Filters</summary>
+      <div class="collapse-content text-md">
+        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
+          Top 100 Course: 
+          <select id='top100Filter' class="select">
+            <option value='' selected>Select...</option>
+            <option value='Yes'>Yes</option>
+            <option value='No'>No</option>
+          </select>
+        </div>
+        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
+          9 Hole Course: 
+          <select id='9holeFilter' class="select">
+            <option value='' selected>Select...</option>
+            <option value='Yes'>Yes</option>
+            <option value='No'>No</option>
+          </select>
+        </div>
+        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
+          Region: 
+          <select id='mapRegionFilter' class="select">
+            <option value='' selected>Select...</option>
+          </select>
+        </div>
+        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
+          Ralph Recommends: 
+          <select id='ralphRecommends' class="select">
+            <option value='' selected>Select...</option>
+            <option value='Yes'>Yes</option>
+            <option value='No'>No</option>
+          </select>
+        </div>
+        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
+          Links Courses: 
+          <select id='linksCourses' class="select">
+            <option value='' selected>Select...</option>
+            <option value='Yes'>Yes</option>
+            <option value='No'>No</option>
+          </select>
+        </div>
+        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
+          Category: 
+          <select id='mapCourseCategory' class="select">
+            <option value='' selected>Select...</option>
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+            <option value="d">D</option>
+          </select>
+        </div>
+        ${noCriteriaEntered}
+        <div class="flex text-center justify-center gap-3 mt-3">
+          <a data-navigo class="btn btn-primary" id="clearMapFilter">Clear Filters</a>
+          <a data-navigo class="btn btn-primary" id="mapFilter">Apply Filters</a>
+        </div>
+      </div>
+    </details>
     <div id="map"></div>
     `;
 
+    populateSelectOptionsForRegionFilter(data, "mapRegionFilter");
     loadUserMap();
   } else {
     app.innerHTML += `
@@ -33,9 +100,59 @@ export async function getYourInfo() {
 }
 
 async function loadUserMap() {
+  const coursesData = await getCourses();
+  loadCourseData(coursesData);
+}
+
+export async function clearFiltersForMap() {
+  map.remove();
+  loadUserMap();
+}
+
+var map;
+
+export async function filterMap() {
+  const top100 = document.getElementById("top100Filter").value;
+  const region = document.getElementById("mapRegionFilter").value;
+  const nineHoles = document.getElementById("9holeFilter").value;
+  const ralphRecommends = document.getElementById("ralphRecommends").value;
+  const linksCourses = document.getElementById("linksCourses").value;
+  const courseCategory = document.getElementById("mapCourseCategory").value;
+
+  if (
+    !top100 &&
+    !region &&
+    !nineHoles &&
+    !ralphRecommends &&
+    !linksCourses &&
+    !courseCategory
+  ) {
+    document.getElementById("noCriteriaEntered").classList.remove("hidden");
+    return;
+  }
+
+  document.getElementById("noCriteriaEntered").classList.add("hidden");
+
+  map.remove();
+
+  const mapDiv = document.getElementById("map");
+  mapDiv.innerHTML = "";
+
+  const coursesData = await getCourses(
+    region,
+    top100,
+    nineHoles,
+    courseCategory,
+    linksCourses,
+    ralphRecommends,
+  );
+  loadCourseData(coursesData);
+}
+
+function loadCourseData(coursesData) {
   // 5. Initialize the map (Center it between your points)
   // Format: [Latitude, Longitude], Zoom Level
-  var map = L.map("map").setView([57.3986, -4.05871], 5);
+  map = L.map("map").setView([57.3986, -4.05871], 5);
 
   // 6. Add the OpenStreetMap "Tiles" (The actual map imagery)
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -44,7 +161,6 @@ async function loadUserMap() {
       '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
 
-  const coursesData = await getCourses();
   const features = [];
 
   for (let x in coursesData) {
@@ -102,7 +218,7 @@ async function loadUserMap() {
     },
     onEachFeature: function (feature, layer) {
       // This automatically creates a popup using the "city" property
-      layer.bindPopup("Welcome to " + feature.properties.city);
+      layer.bindPopup(feature.properties.city);
     },
   }).addTo(map);
 

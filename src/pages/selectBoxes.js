@@ -1,5 +1,5 @@
-export function populateSelectOptionsForRegionFilter(data) {
-  const select = document.getElementById("regionFilter");
+export function populateSelectOptionsForRegionFilter(data, idToUse) {
+  const select = document.getElementById(idToUse); //regionFilter
 
   for (let key in data) {
     const option = document.createElement("option");

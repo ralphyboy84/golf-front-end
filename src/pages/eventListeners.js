@@ -23,6 +23,7 @@ import {
   markCourseAsPlayed,
   markCourseAsNotPlayed,
 } from "../pages/courseDirectory/coursePlayed.js";
+import { filterMap, clearFiltersForMap } from "../pages/yourInfo/yourInfo.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -185,6 +186,18 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
 
       filterByKeyWord();
+    }
+
+    if (event.target.closest("#mapFilter")) {
+      event.preventDefault();
+
+      filterMap();
+    }
+
+    if (event.target.closest("#clearMapFilter")) {
+      event.preventDefault();
+
+      clearFiltersForMap();
     }
 
     if (event.target.closest("#clearFilters")) {

@@ -32,8 +32,13 @@ if (isset($golfCourses)) {
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $golfCourses[$row["courseid"]]["played"] = 1;
-                $golfCourses[$row["courseid"]]["loggedIn"] = 1;
+                if (
+                    isset($golfCourses[$row["courseid"]]) &&
+                    !empty($golfCourses[$row["courseid"]])
+                ) {
+                    $golfCourses[$row["courseid"]]["played"] = 1;
+                    $golfCourses[$row["courseid"]]["loggedIn"] = 1;
+                }
             }
         }
     }
