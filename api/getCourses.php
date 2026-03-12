@@ -14,21 +14,28 @@ if (isset($golfCourses)) {
         return mb_convert_encoding($course, "UTF-8", "auto");
     }, $golfCourses);
 
-    if (isset($_SESSION["username"]) && isset($_GET["courseId"])) {
+    if (isset($_SESSION["username"])) {
+        $courseIdSql = "";
+
+        if (isset($_GET["courseId"])) {
+            $courseIdSql = " AND courseid = '{$_GET["courseId"]}' ";
+        }
+
         $sql = "
         SELECT *
         FROM usercourses
         WHERE userid = '{$_SESSION["username"]}'
-        AND courseid = '{$_GET["courseId"]}'
+        $courseIdSql 
         ";
 
         $result = $mysqli->query($sql);
 
         if ($result->num_rows > 0) {
-            $golfCourses[$_GET["courseId"]]["played"] = 1;
+            while ($row = $result->fetch_assoc()) {
+                $golfCourses[$row["courseid"]]["played"] = 1;
+                $golfCourses[$row["courseid"]]["loggedIn"] = 1;
+            }
         }
-
-        $golfCourses[$_GET["courseId"]]["loggedIn"] = 1;
     }
     echo json_encode($golfCourses, JSON_UNESCAPED_UNICODE);
 } else {

@@ -14,6 +14,10 @@ $openOnDay = [];
 $openCompetitionInfo = [];
 $additionalArray = [];
 
+$courseName = get_course_name($_GET["club"], $golfCourses, $_GET["courseId"]);
+
+// $teeTimeInfo = ["teeTimesAvailable" => "No"];
+
 if (
     (isset($golfCourses[$_GET["club"]]["bookingSystem"]) &&
         !empty($golfCourses[$_GET["club"]]["bookingSystem"])) ||
@@ -21,18 +25,15 @@ if (
         !empty($golfCourses[$_GET["club"]]["openBookingSystem"]))
 ) {
     require_once "getCourseAvailabilityForDate/teeTimes.php";
+    $bookingUrl = get_booking_url(
+        $golfCourses[$_GET["club"]],
+        $_GET["date"],
+        $_GET["courseId"],
+    );
 
     $additionalArray = [
-        "bookingUrl" => get_booking_url(
-            $golfCourses[$_GET["club"]],
-            $_GET["date"],
-            $_GET["courseId"],
-        ),
-        "courseName" => get_course_name(
-            $_GET["club"],
-            $golfCourses,
-            $_GET["courseId"],
-        ),
+        "bookingUrl" => $bookingUrl,
+        "courseName" => $courseName,
         "image" => $golfCourses[$_GET["club"]]["image"],
     ];
 } else {
@@ -45,11 +46,7 @@ if (
         in_array($day, $golfCourses[$_GET["club"]]["availabilityDays"])
     ) {
         $additionalArray = [
-            "courseName" => get_course_name(
-                $_GET["club"],
-                $golfCourses,
-                $_GET["courseId"],
-            ),
+            "courseName" => $courseName,
             "onlineBooking" => "No",
             "visitorsAvailable" => "Yes",
             "date" => $df[2] . "/" . $df[1] . "/" . $df[0],
@@ -57,11 +54,7 @@ if (
         ];
     } else {
         $additionalArray = [
-            "courseName" => get_course_name(
-                $_GET["club"],
-                $golfCourses,
-                $_GET["courseId"],
-            ),
+            "courseName" => $courseName,
             "onlineBooking" => "No",
             "visitorsAvailable" => "No",
             "date" => $df[2] . "/" . $df[1] . "/" . $df[0],
