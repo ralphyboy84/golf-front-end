@@ -13,7 +13,7 @@ describe("populateSelectOptionsForRegionFilter", () => {
   it("should populate the select element with options", () => {
     const data = { a: "north", b: "south", c: "east" };
 
-    populateSelectOptionsForRegionFilter(data);
+    populateSelectOptionsForRegionFilter(data, "regionFilter");
 
     const select = document.getElementById("regionFilter");
     const options = Array.from(select.options);
@@ -30,7 +30,7 @@ describe("populateSelectOptionsForRegionFilter", () => {
   it("should handle empty data", () => {
     const data = {};
 
-    populateSelectOptionsForRegionFilter(data);
+    populateSelectOptionsForRegionFilter(data, "regionFilter");
 
     const select = document.getElementById("regionFilter");
     expect(select.options.length).toBe(0);
