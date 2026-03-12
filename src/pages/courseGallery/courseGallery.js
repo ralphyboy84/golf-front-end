@@ -9,11 +9,12 @@ export function viewCourseGallery(courseId, images) {
       <div id="item${x}" class="carousel-item w-full">
         <img
         src="images/${courseId}/DJI_${image}.jpg"
-        class="w-full" />
+        loading="lazy"
+        class="w-full aspect-video object-cover" />
       </div>
       `;
 
-      buttons += `<a href="#item${x}" class="btn btn-xs">${x}</a>`;
+      buttons += `<a href="#item${x}" class="btn btn-xs shrink-0">${x}</a>`;
       x++;
     });
 
@@ -21,8 +22,10 @@ export function viewCourseGallery(courseId, images) {
     <div class="carousel w-full">
       ${html}
     </div>
-    <div class="flex w-full justify-center gap-2 py-2">
-      ${buttons}
+    <div class="flex w-full overflow-x-auto gap-2 py-2">
+      <div class="flex w-fit mx-auto gap-2">
+        ${buttons}
+      </div>
     </div>
     `;
   }

@@ -101,3 +101,21 @@ export function getSuccessMessage(id, message) {
   </div>
   `;
 }
+
+export function getModal() {
+  return `
+  <dialog id="my_modal_1" class="modal">
+    <div class="modal-box w-11/12 md:max-w-5xl">
+      <h3 id="modalHeader" class="text-lg font-bold mb-2"></h3>
+      <div id="modalContent">
+      </div>
+      <div class="modal-action">
+        <form method="dialog">
+          <!-- if there is a button in form, it will close the modal -->
+          <button class="btn btn-primary">Close</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+  `;
+}
