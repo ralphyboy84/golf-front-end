@@ -20,7 +20,7 @@ if ($_SERVER["HTTP_HOST"] == "localhost") {
 
 $mysqli = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DATABASE);
 
-$selectedVenues = ["carnoustie", "crudenbay", "northberwick"];
+$selectedVenues = ["carnoustie", "crudenbay", "northberwick", "royaldornoch"];
 
 $sql = "
 SELECT *
