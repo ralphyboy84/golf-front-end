@@ -673,6 +673,7 @@ const stonehaven = [
   "-14",
 ];
 const kirriemuir = ["-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8"];
+const forbesofkingennie = ["-1", "-2", "-3", "-4", "-5", "-6", "-7"];
 
 export const images = {
   boatofgarten,
@@ -728,4 +729,5 @@ export const images = {
   forfar,
   stonehaven,
   kirriemuir,
+  forbesofkingennie,
 };
