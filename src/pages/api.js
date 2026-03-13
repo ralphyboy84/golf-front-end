@@ -37,9 +37,10 @@ export async function getCourses(
   category,
   links,
   ralphRecommends,
+  played,
 ) {
   return await fetch(
-    `${import.meta.env.VITE_API_URL}api/getCourses.php?region=${region}&top100=${top100}&nineHoles=${nineHoles}&category=${category}&links=${links}&ralphRecommends=${ralphRecommends}`,
+    `${import.meta.env.VITE_API_URL}api/getCourses.php?region=${region}&top100=${top100}&nineHoles=${nineHoles}&category=${category}&links=${links}&ralphRecommends=${ralphRecommends}&played=${played}`,
     {
       credentials: "include",
     },

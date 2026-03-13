@@ -41,6 +41,27 @@ if (isset($golfCourses)) {
             }
         }
     }
+
+    if (
+        isset($_GET["played"]) &&
+        !empty($_GET["played"]) &&
+        $_GET["played"] == "Yes"
+    ) {
+        $golfCourses = array_filter($golfCourses, function ($course) {
+            // We check if the 'played' key exists AND if it is truthy
+            return isset($course["played"]) && $course["played"];
+        });
+    } elseif (
+        isset($_GET["played"]) &&
+        !empty($_GET["played"]) &&
+        $_GET["played"] == "No"
+    ) {
+        $golfCourses = array_filter($golfCourses, function ($course) {
+            // We check if the 'played' key exists AND if it is truthy
+            return !isset($course["played"]) || !$course["played"];
+        });
+    }
+
     echo json_encode($golfCourses, JSON_UNESCAPED_UNICODE);
 } else {
     echo "{}";

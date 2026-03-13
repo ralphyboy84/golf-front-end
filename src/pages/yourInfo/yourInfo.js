@@ -80,6 +80,14 @@ export async function getYourInfo() {
             <option value="d">D</option>
           </select>
         </div>
+        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
+          You've Played: 
+          <select id='played' class="select">
+            <option value='' selected>Select...</option>
+            <option value='Yes'>Yes</option>
+            <option value='No'>No</option>
+          </select>
+        </div>
         ${noCriteriaEntered}
         <div class="flex text-center justify-center gap-3 mt-3">
           <a data-navigo class="btn btn-primary" id="clearMapFilter">Clear Filters</a>
@@ -125,6 +133,7 @@ export async function filterMap() {
   const ralphRecommends = document.getElementById("ralphRecommends").value;
   const linksCourses = document.getElementById("linksCourses").value;
   const courseCategory = document.getElementById("mapCourseCategory").value;
+  const played = document.getElementById("played").value;
 
   if (
     !top100 &&
@@ -132,7 +141,8 @@ export async function filterMap() {
     !nineHoles &&
     !ralphRecommends &&
     !linksCourses &&
-    !courseCategory
+    !courseCategory &&
+    !played
   ) {
     document.getElementById("noCriteriaEntered").classList.remove("hidden");
     return;
@@ -152,6 +162,7 @@ export async function filterMap() {
     courseCategory,
     linksCourses,
     ralphRecommends,
+    played,
   );
   loadCourseData(coursesData);
 }
