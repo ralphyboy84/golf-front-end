@@ -62,7 +62,7 @@ export async function updateCourseList() {
   let regionArray = [];
 
   for (let x in region) {
-    regionArray.push(region[x].course);
+    regionArray.push(region[x]);
   }
 
   await getCoursesForDropDown(regionArray);
@@ -70,6 +70,7 @@ export async function updateCourseList() {
 
 export async function getCoursesForDropDown(region) {
   const courses = await getCourses(region);
+  console.log(region);
 
   document.getElementById("clubsSelect").innerHTML = "";
   const select = document.getElementById("clubsSelect");
@@ -100,11 +101,7 @@ export function getSelectValues(select) {
       // (opt.getAttribute("data-onlineBooking") == "Yes" ||
       //   opt.getAttribute("data-openBooking") == "Yes")
     ) {
-      result.push({
-        course: opt.value,
-        courseName: opt.text,
-        courseId: opt.getAttribute("data-courseId") || 1,
-      });
+      result.push(opt.value);
     }
   }
 
@@ -131,25 +128,7 @@ export async function searchForAvailability() {
 
   document.getElementById("resultsDiv").innerHTML = "";
 
-  for (let x in selectBoxValues) {
-    const parent = document.getElementById("resultsDiv");
-
-    // 2. Create a new child div
-    const child = document.createElement("div");
-    child.id = selectBoxValues[x].course;
-
-    // 3. Set some content for the child
-    child.textContent = "Please wait.... loading.....";
-
-    // 4. Optionally add styles or attributes
-    child.classList.add("col-sm-12");
-    child.classList.add("col-md-4");
-    // child.style.marginTop = "10px";
-    // child.style.padding = "5px";
-
-    // 5. Append the child div to the parent div
-    parent.appendChild(child);
-  }
+  createLoadingDivsForDayAvailabilitySearches(selectBoxValues);
 
   const tripStart = document.getElementById("start").value;
 
@@ -166,7 +145,29 @@ export async function searchForAvailability() {
   fetchAllResults2(selectBoxValues, tripStart, info, weather);
 }
 
-async function getWhereStayingLatLong() {
+export function createLoadingDivsForDayAvailabilitySearches(selectBoxValues) {
+  for (let x in selectBoxValues) {
+    const parent = document.getElementById("resultsDiv");
+
+    // 2. Create a new child div
+    const child = document.createElement("div");
+    child.id = selectBoxValues[x];
+
+    // 3. Set some content for the child
+    child.textContent = "Please wait.... loading.....";
+
+    // 4. Optionally add styles or attributes
+    child.classList.add("col-sm-12");
+    child.classList.add("col-md-4");
+    // child.style.marginTop = "10px";
+    // child.style.padding = "5px";
+
+    // 5. Append the child div to the parent div
+    parent.appendChild(child);
+  }
+}
+
+export async function getWhereStayingLatLong() {
   return;
   const params = new URLSearchParams({
     q: document.getElementById("staying").value,
@@ -178,7 +179,7 @@ async function getWhereStayingLatLong() {
     .then((data) => data.result[0].latlng);
 }
 
-async function fetchAllResults2(
+export async function fetchAllResults2(
   selectBoxValues,
   tripStart,
   travelInfo,
@@ -187,23 +188,20 @@ async function fetchAllResults2(
   const results = {};
 
   for (let x in selectBoxValues) {
+    console.log(selectBoxValues[x]);
     let count = 0;
 
     for (let y = 0; y < document.getElementById("days").value; y++) {
       const date = addDays(tripStart, count);
       count++;
 
-      getCourseAvailabilityForDate(
-        selectBoxValues[x].course,
-        date,
-        selectBoxValues[x].courseId,
-      ).then(
+      getCourseAvailabilityForDate(selectBoxValues[x], date).then(
         (fetchPromise) =>
-          (document.getElementById(selectBoxValues[x].course).innerHTML =
+          (document.getElementById(selectBoxValues[x]).innerHTML =
             displayContent(
               fetchPromise,
               travelInfo,
-              selectBoxValues[x].course,
+              selectBoxValues[x],
               weather,
             )) + "<br />",
       );
@@ -298,9 +296,6 @@ function displayContent(msg, travelInfo, courseId, weather) {
       temp = "Sorry - there are no tee times available on this day";
     }
   }
-
-  console.log(msg);
-  console.log(courseId);
 
   const content = `
   <p class="card-text">${temp}</p>

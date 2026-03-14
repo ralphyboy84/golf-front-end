@@ -58,7 +58,7 @@ export async function viewCourse() {
     document.getElementById("courseDirectoryListSelect"),
   );
 
-  const courseInfo = await getCourse(courseId[0].course);
+  const courseInfo = await getCourse(courseId[0]);
 
   const firstKey = Object.keys(courseInfo)[0];
   const club = courseInfo[firstKey];

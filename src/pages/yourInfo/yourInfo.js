@@ -1,5 +1,15 @@
 import { getLoggedInUserInfo, getCourses, getRegions } from "../../pages/api";
-import { buildCard, getErrorMessage } from "../../pages/components";
+import {
+  buildCard,
+  getErrorMessage,
+  getTop100CourseSelect,
+  get9HoleCourseSelect,
+  getRalphRecommendsSelect,
+  getLinksCourseSelect,
+  getYouHavePlayedSelect,
+  getCourseCategorySelect,
+  getRegionSelect,
+} from "../../pages/components";
 import { populateSelectOptionsForRegionFilter } from "../../pages/selectBoxes";
 
 export async function getYourInfo() {
@@ -32,61 +42,14 @@ export async function getYourInfo() {
     <details id="openFilters" class="collapse bg-base-100 border-base-300 border mb-4">
     <summary class="collapse-title font-semibold">Show Mapping Filters</summary>
       <div class="collapse-content text-md">
-        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
-          Top 100 Course: 
-          <select id='top100Filter' class="select">
-            <option value='' selected>Select...</option>
-            <option value='Yes'>Yes</option>
-            <option value='No'>No</option>
-          </select>
-        </div>
-        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
-          9 Hole Course: 
-          <select id='9holeFilter' class="select">
-            <option value='' selected>Select...</option>
-            <option value='Yes'>Yes</option>
-            <option value='No'>No</option>
-          </select>
-        </div>
-        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
-          Region: 
-          <select id='mapRegionFilter' class="select">
-            <option value='' selected>Select...</option>
-          </select>
-        </div>
-        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
-          Ralph Recommends: 
-          <select id='ralphRecommends' class="select">
-            <option value='' selected>Select...</option>
-            <option value='Yes'>Yes</option>
-            <option value='No'>No</option>
-          </select>
-        </div>
-        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
-          Links Courses: 
-          <select id='linksCourses' class="select">
-            <option value='' selected>Select...</option>
-            <option value='Yes'>Yes</option>
-            <option value='No'>No</option>
-          </select>
-        </div>
-        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
-          Category: 
-          <select id='mapCourseCategory' class="select">
-            <option value='' selected>Select...</option>
-            <option value="a">A</option>
-            <option value="b">B</option>
-            <option value="c">C</option>
-            <option value="d">D</option>
-          </select>
-        </div>
-        <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
-          You've Played: 
-          <select id='played' class="select">
-            <option value='' selected>Select...</option>
-            <option value='Yes'>Yes</option>
-            <option value='No'>No</option>
-          </select>
+        <div class="grid grid-cols-2 gap-4 items-center w-full mb-4">
+          ${getTop100CourseSelect()}
+          ${get9HoleCourseSelect()}
+          ${getRalphRecommendsSelect()}
+          ${getLinksCourseSelect()}
+          ${getYouHavePlayedSelect()}
+          ${getCourseCategorySelect()}
+          ${getRegionSelect()}
         </div>
         ${noCriteriaEntered}
         <div class="flex text-center justify-center gap-3 mt-3">

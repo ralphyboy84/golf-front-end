@@ -114,7 +114,6 @@ export async function getAllCourseAvailability(courses, numberOfDays, app) {
       const fetchPromise = getCourseAvailabilityForDate(
         x,
         date,
-        courses[x].courseId,
         document.getElementById("opens").value,
       );
       fetchPromises.push(fetchPromise);

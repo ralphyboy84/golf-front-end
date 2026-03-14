@@ -14,9 +14,7 @@ $openOnDay = [];
 $openCompetitionInfo = [];
 $additionalArray = [];
 
-$courseName = get_course_name($_GET["club"], $golfCourses, $_GET["courseId"]);
-
-// $teeTimeInfo = ["teeTimesAvailable" => "No"];
+$courseName = get_course_name($_GET["club"], $golfCourses);
 
 if (
     (isset($golfCourses[$_GET["club"]]["bookingSystem"]) &&
@@ -25,11 +23,7 @@ if (
         !empty($golfCourses[$_GET["club"]]["openBookingSystem"]))
 ) {
     require_once "getCourseAvailabilityForDate/teeTimes.php";
-    $bookingUrl = get_booking_url(
-        $golfCourses[$_GET["club"]],
-        $_GET["date"],
-        $_GET["courseId"],
-    );
+    $bookingUrl = get_booking_url($golfCourses[$_GET["club"]], $_GET["date"]);
 
     $additionalArray = [
         "bookingUrl" => $bookingUrl,

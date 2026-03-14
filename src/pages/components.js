@@ -119,3 +119,94 @@ export function getModal() {
   </dialog>
   `;
 }
+
+export function getTop100CourseSelect() {
+  return `
+  <div class="w-full">Top 100 Course:</div>
+  <div class="w-full">
+    <select id='top100Filter' class="select">
+      <option value='' selected>Select...</option>
+      <option value='Yes'>Yes</option>
+      <option value='No'>No</option>
+    </select>
+  </div>
+  `;
+}
+
+export function get9HoleCourseSelect() {
+  return `
+  <div class="w-full">9 Hole Course:</div>
+  <div class="w-full">
+    <select id='9holeFilter' class="select">
+      <option value='' selected>Select...</option>
+      <option value='Yes'>Yes</option>
+      <option value='No'>No</option>
+    </select>
+  </div>
+  `;
+}
+
+export function getRalphRecommendsSelect() {
+  return `
+  <div class="w-full">Ralph Recommends:</div>
+  <div class="w-full">
+    <select id='ralphRecommends' class="select">
+      <option value='' selected>Select...</option>
+      <option value='Yes'>Yes</option>
+      <option value='No'>No</option>
+    </select>
+  </div>
+  `;
+}
+
+export function getLinksCourseSelect() {
+  return `
+  <div class="w-full">Links Courses:</div>
+  <div class="w-full">
+    <select id='linksCourses' class="select">
+      <option value='' selected>Select...</option>
+      <option value='Yes'>Yes</option>
+      <option value='No'>No</option>
+    </select>
+  </div>
+  `;
+}
+
+export function getYouHavePlayedSelect() {
+  return `
+  <div class="w-full">You've Played:</div>
+  <div class="w-full">
+    <select id='played' class="select">
+      <option value='' selected>Select...</option>
+      <option value='Yes'>Yes</option>
+      <option value='No'>No</option>
+    </select>
+  </div>
+  `;
+}
+
+export function getCourseCategorySelect() {
+  return `
+  <div class="w-full">Category:</div>
+  <div class="w-full">
+    <select id='mapCourseCategory' class="select">
+      <option value='' selected>Select...</option>
+      <option value="a">A</option>
+      <option value="b">B</option>
+      <option value="c">C</option>
+      <option value="d">D</option>
+    </select>
+  </div>
+  `;
+}
+
+export function getRegionSelect() {
+  return `
+  <div class="w-full">Region:</div>
+  <div class="w-full">
+    <select id='mapRegionFilter' class="select">
+      <option value='' selected>Select...</option>
+    </select>
+  </div>
+  `;
+}
