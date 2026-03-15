@@ -364,3 +364,36 @@ test("Check for results when you do not know the name of the course and played s
   await expect(page.locator("h5").nth(0)).toBeVisible();
   await expect(page.locator("h5").nth(0)).toHaveText(/Aberdour/);
 });
+
+test("Check no date entered when you know the course you are playing", async ({
+  page,
+}) => {
+  await page.click("#dropDownButton");
+  await expect(page.locator("#bookARound")).toBeVisible();
+  await page.click("#bookARound");
+  const select = page.locator("select#courseLookingForSelect");
+  await select.selectOption({ value: "Yes" });
+  await select.dispatchEvent("change");
+  await page.click("#filterCoursesForBookingARound");
+  await expect(page.locator("#dayAvailabilityDateError")).toBeVisible();
+  await expect(page.locator("#dayAvailabilityDateError")).toHaveText(
+    /You have not entered a date/,
+  );
+});
+
+test("Check no course selected when you know the course you are playing", async ({
+  page,
+}) => {
+  await page.click("#dropDownButton");
+  await expect(page.locator("#bookARound")).toBeVisible();
+  await page.click("#bookARound");
+  await page.fill("#start", "2026-02-02");
+  const select = page.locator("select#courseLookingForSelect");
+  await select.selectOption({ value: "Yes" });
+  await select.dispatchEvent("change");
+  await page.click("#filterCoursesForBookingARound");
+  await expect(page.locator("#noCourseSelectedError")).toBeVisible();
+  await expect(page.locator("#noCourseSelectedError")).toHaveText(
+    /You have not selected a course/,
+  );
+});

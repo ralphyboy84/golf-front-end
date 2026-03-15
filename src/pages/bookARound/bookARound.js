@@ -69,6 +69,7 @@ export async function bookARound() {
     <div class="w-full">Courses:</div>
     <div class="w-full"><select id="clubsSelect" multiple class="select w-full appearance-none bg-gray-50 text-gray-900" aria-label="select"></select></div>
   </div>
+  ${noCourseAlertMsg}
   <div id="courseFilterDiv" class="grid grid-cols-2 gap-4 items-center w-full mb-4 hidden">
     ${getTop100CourseSelect()}
     ${get9HoleCourseSelect()}
@@ -77,7 +78,6 @@ export async function bookARound() {
     ${getCourseCategorySelect()}
     ${youHavePlayed}
   </div>
-  ${noCourseAlertMsg}
   <div id="bookingButtonDiv" class="card-actions justify-center hidden">
     <a id="filterCoursesForBookingARound" href="filterCoursesForBookingARound" data-navigo class="btn btn-primary">Search for Courses</a>
   </div>
@@ -108,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ).value;
 
       document.getElementById("courseSelectDiv").classList.add("hidden");
+      document.getElementById("courseFilterDiv").classList.add("hidden");
 
       if (courseLookingForSelect == "Yes") {
         document.getElementById("courseSelectDiv").classList.remove("hidden");
@@ -129,6 +130,13 @@ async function handleSearchForCourseButton() {
   }
 
   document.getElementById("dayAvailabilityDateError").classList.add("hidden");
+
+  if (!document.getElementById("clubsSelect").value) {
+    document.getElementById("noCourseSelectedError").classList.remove("hidden");
+    return;
+  }
+
+  document.getElementById("noCourseSelectedError").classList.add("hidden");
 
   let played = "";
 
