@@ -210,3 +210,132 @@ test("Check for results when you do not know the name of the course", async ({
   await expect(page.locator("span").nth(2)).toHaveText(/14.00/);
   await expect(page.locator("span").nth(4)).toHaveText(/19/);
 });
+
+async function sharedInterceptFunctionForValidationFormElements(
+  page,
+  getCourseUrl,
+) {
+  await page.route(getCourseUrl, async (route) => {
+    const body = {
+      aberdour: {
+        name: "aberdour",
+      },
+    };
+
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(body),
+    });
+  });
+
+  await page.route(
+    "**/api/getCourseAvailabilityForDate.php?club=aberdour&date=2026-02-02*",
+    async (route) => {
+      const body = {
+        date: "04\/04\/2026",
+        teeTimesAvailable: "Yes",
+        timesAvailable: 19,
+        firstTime: "14:00",
+        cheapestPrice: "75.00",
+        bookingUrl:
+          "https:\/\/www.brsgolf.com\/aberdour\/visitor_home.php?date=2026-04-04",
+        courseName: "Aberdour",
+        image: "No",
+      };
+
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify(body),
+      });
+    },
+  );
+}
+
+async function validatingFormElementsCommonSteps(page) {
+  await expect(page.locator("#dropDownButton")).toBeVisible();
+  await page.click("#dropDownButton");
+  await expect(page.locator("#bookARound")).toBeVisible();
+  await page.click("#bookARound");
+  await expect(page.locator("#courseLookingForSelect")).toBeVisible();
+  await page.fill("#start", "2026-02-02");
+  const select = page.locator("select#courseLookingForSelect");
+  await select.selectOption({ value: "No" });
+  await select.dispatchEvent("change");
+}
+
+test("Check for results when you do not know the name of the course and top 100 course set", async ({
+  page,
+}) => {
+  sharedInterceptFunctionForValidationFormElements(
+    page,
+    "**/api/getCourses.php?region=&top100=Yes&nineHoles=&category=&links=&ralphRecommends=&played=&onlineBooking=Yes",
+  );
+  validatingFormElementsCommonSteps(page);
+  await expect(page.locator("#top100Filter")).toBeVisible();
+  await page.selectOption("#top100Filter", "Yes");
+  await page.click("#filterCoursesForBookingARound");
+  await expect(page.locator("h5").nth(0)).toBeVisible();
+  await expect(page.locator("h5").nth(0)).toHaveText(/Aberdour/);
+});
+
+test("Check for results when you do not know the name of the course and 9 hole course set", async ({
+  page,
+}) => {
+  sharedInterceptFunctionForValidationFormElements(
+    page,
+    "**/api/getCourses.php?region=&top100=&nineHoles=Yes&category=&links=&ralphRecommends=&played=&onlineBooking=Yes",
+  );
+  validatingFormElementsCommonSteps(page);
+  await expect(page.locator("#nineHoleFilter")).toBeVisible();
+  await page.selectOption("#nineHoleFilter", "Yes");
+  await page.click("#filterCoursesForBookingARound");
+  await expect(page.locator("h5").nth(0)).toBeVisible();
+  await expect(page.locator("h5").nth(0)).toHaveText(/Aberdour/);
+});
+
+test("Check for results when you do not know the name of the course and ralph recommends set", async ({
+  page,
+}) => {
+  sharedInterceptFunctionForValidationFormElements(
+    page,
+    "**/api/getCourses.php?region=&top100=&nineHoles=&category=&links=&ralphRecommends=Yes&played=&onlineBooking=Yes",
+  );
+  validatingFormElementsCommonSteps(page);
+  await expect(page.locator("#ralphRecommends")).toBeVisible();
+  await page.selectOption("#ralphRecommends", "Yes");
+  await page.click("#filterCoursesForBookingARound");
+  await expect(page.locator("h5").nth(0)).toBeVisible();
+  await expect(page.locator("h5").nth(0)).toHaveText(/Aberdour/);
+});
+
+test("Check for results when you do not know the name of the course and links course set", async ({
+  page,
+}) => {
+  sharedInterceptFunctionForValidationFormElements(
+    page,
+    "**/api/getCourses.php?region=&top100=&nineHoles=&category=&links=Yes&ralphRecommends=&played=&onlineBooking=Yes",
+  );
+  validatingFormElementsCommonSteps(page);
+  await expect(page.locator("#linksCourses")).toBeVisible();
+  await page.selectOption("#linksCourses", "Yes");
+  await page.click("#filterCoursesForBookingARound");
+  await expect(page.locator("h5").nth(0)).toBeVisible();
+  await expect(page.locator("h5").nth(0)).toHaveText(/Aberdour/);
+});
+
+test("Check for results when you do not know the name of the course and category set", async ({
+  page,
+}) => {
+  sharedInterceptFunctionForValidationFormElements(
+    page,
+    "**/api/getCourses.php?region=&top100=&nineHoles=&category=a&links=&ralphRecommends=&played=&onlineBooking=Yes",
+  );
+  validatingFormElementsCommonSteps(page);
+  await expect(page.locator("#mapCourseCategory")).toBeVisible();
+  await page.selectOption("#mapCourseCategory", "A");
+  await page.click("#filterCoursesForBookingARound");
+  await expect(page.locator("h5").nth(0)).toBeVisible();
+  await expect(page.locator("h5").nth(0)).toHaveText(/Aberdour/);
+});
