@@ -91,7 +91,7 @@ export async function bookARound() {
 
   document.getElementById("app").innerHTML =
     buildCard("arbroath", "Book a Round", content) +
-    `  <div id='resultsDiv' class='pt-4'></div>`;
+    `  <div id='resultsDiv' class='max-w-4xl pt-4 grid grid-cols-1 xl:grid-cols-2 gap-6'></div>`;
 
   await getCoursesForDropDown();
   const data = await getRegions();
@@ -271,7 +271,7 @@ export async function getFilteredCoursesForBookingARound(params) {
 export async function checkBookingForCourses(params) {
   const courseList = params.courses.split(",");
   document.getElementById("app").innerHTML = `
-    <div id="resultsDiv"></div>
+    <div id="resultsDiv" class='pt-4 grid grid-cols-1 xl:grid-cols-2 gap-6'></div>
     <input type='hidden' id='days' name='days' value='1' />
     <input type='hidden' id='start' name='start' value='${params.date}' />
     `;

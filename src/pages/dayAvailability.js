@@ -6,7 +6,13 @@ import {
   getCourseAvailabilityForDate,
 } from "../pages/api";
 import { populateSelectOptionsForRegionFilter } from "../pages/selectBoxes";
-import { buildCard, buildCardRow, getErrorMessage } from "../pages/components";
+import {
+  buildCard,
+  buildCardRow,
+  getErrorMessage,
+  buildSideCard,
+  buildSideCardRow,
+} from "../pages/components";
 import {
   iconPound,
   iconSlots,
@@ -49,7 +55,7 @@ export async function dayAvailability() {
 
   document.getElementById("app").innerHTML =
     buildCard("arbroath", "Day Availability", content) +
-    `  <div id='resultsDiv' class='pt-4'></div>`;
+    `  <div id='resultsDiv' class='pt-4 grid grid-cols-1 xl:grid-cols-2 gap-6'></div>`;
 
   await getCoursesForDropDown();
   const data = await getRegions();
@@ -126,7 +132,7 @@ export async function searchForAvailability() {
     return;
   }
 
-  document.getElementById("resultsDiv").innerHTML = "";
+  document.getElementById("resultsDiv").innerHTML = ``;
 
   createLoadingDivsForDayAvailabilitySearches(selectBoxValues);
 
@@ -155,12 +161,6 @@ export function createLoadingDivsForDayAvailabilitySearches(selectBoxValues) {
 
     // 3. Set some content for the child
     child.textContent = "Please wait.... loading.....";
-
-    // 4. Optionally add styles or attributes
-    child.classList.add("col-sm-12");
-    child.classList.add("col-md-4");
-    // child.style.marginTop = "10px";
-    // child.style.padding = "5px";
 
     // 5. Append the child div to the parent div
     parent.appendChild(child);
@@ -217,7 +217,7 @@ function displayContent(msg, travelInfo, courseId, weather) {
   let openText = "";
   let openTimesAvailable = "";
   let weatherInfo = "";
-  let moreInfoButton = getClickHereForMoreInfoButton(msg);
+  let moreInfoButton = getClickHereForMoreInfoButton(msg, courseId);
 
   if (msg.onlineBooking == "No") {
     temp = `Unfortunately, Online Booking is not available but they do allow visitors on this day`;
@@ -226,17 +226,24 @@ function displayContent(msg, travelInfo, courseId, weather) {
   if (msg.teeTimesAvailable == "Yes") {
     temp = "Good news! There are tee times available on this day";
 
-    timesAvailable = buildCardRow(
+    timesAvailable +=
+      '<div class="flex flex-row w-full items-center justify-between">';
+    timesAvailable += buildSideCardRow(
       iconPound,
       msg.cheapestPrice,
-      "Prices Starting From",
+      "Prices From",
     );
-    timesAvailable += buildCardRow(iconClock, msg.firstTime, "First Tee Time");
-    timesAvailable += buildCardRow(
+    timesAvailable += buildSideCardRow(
+      iconClock,
+      msg.firstTime,
+      "First Tee Time",
+    );
+    timesAvailable += buildSideCardRow(
       iconSlots,
       msg.timesAvailable,
       "Available Slots",
     );
+    timesAvailable += `</div>`;
 
     let driveTime = "Currently Unavailable";
 
@@ -294,6 +301,7 @@ function displayContent(msg, travelInfo, courseId, weather) {
         "Sorry - the booking system for this club has not yet been added to this app";
     } else {
       temp = "Sorry - there are no tee times available on this day";
+      moreInfoButton = "";
     }
   }
 
@@ -311,7 +319,7 @@ function displayContent(msg, travelInfo, courseId, weather) {
     imageToUse = courseId;
   }
 
-  return buildCard(imageToUse, msg.courseName, content);
+  return buildSideCard(imageToUse, msg.courseName, content);
 }
 
 function addDays(date, days) {
@@ -332,8 +340,13 @@ function addDays(date, days) {
   return tomorrow.getFullYear() + "-" + month + "-" + day;
 }
 
-function getClickHereForMoreInfoButton(msg) {
-  return `<a href="${msg.bookingUrl}" class="btn btn-primary" target="_blank">Click here to book your tee time</a>`;
+function getClickHereForMoreInfoButton(msg, courseId) {
+  return `
+  <div class="flex flex-row items-center justify-between gap-4 w-full">
+    <a id="viewCourseFromSearch" class="btn btn-primary flex-1" data-courseid='${courseId}'>View Course</a> 
+    <a href="${msg.bookingUrl}" class="btn btn-primary flex-1" target="_blank">Book Now</a>
+  </div>
+  `;
 }
 
 function getOpenText(msg) {

@@ -26,6 +26,41 @@ export function buildCardRow(icon, titleText, subText, button) {
   `;
 }
 
+export function buildSideCardRow(icon, titleText, subText) {
+  return `
+  <div class="flex flex-1 items-center justify-between space-x-3">
+    <!-- Left side: icon + text -->
+    <div class="flex items-center space-x-3 p-3">
+      <!-- Icon -->
+      <div class="flex-shrink-0">${icon}</div>
+      <!-- Text Column -->
+      <div class="flex flex-col">
+        <span class="font-semibold text-gray-900">${titleText}</span>
+        <span class="text-sm text-gray-600">${subText}</span>
+      </div>
+    </div>
+  </div>
+  `;
+}
+
+export function buildSideCard(img, header, content) {
+  let imgString = `<figure class="w-1/3"><img src="/images/test1.jpg" alt="stock" class="h-full object-cover" /></figure>`;
+
+  if (img) {
+    imgString = `<figure class="w-1/3"><img src="/images/${img}.jpg" alt="${img}" class="h-full object-cover" /></figure>`;
+  }
+
+  return `
+  <div class="card card-side bg-base-100 shadow-sm mb-4 w-full h-full">
+    ${imgString}
+    <div class="card-body w-2/3">
+      <h2 class="card-title">${header}</h2>
+      <p>${content}</p>
+    </div>
+  </div>
+  `;
+}
+
 export function buildCard(
   img,
   header,
@@ -65,7 +100,7 @@ export function buildCard(
 
   return `
   <div class="flex justify-center mb-6">
-    <div${idToUse} class="card w-full xl:max-w-2xl bg-gray-100 border border-base-300 rounded-xl text-gray-900${additionalClassToUse}">
+    <div${idToUse} class="card w-full xl:max-w-7xl bg-base-100 border border-base-300 rounded-xl text-gray-900${additionalClassToUse}">
       ${imgString}
       <div class="card-body">
         <div class="flex justify-between items-center">
