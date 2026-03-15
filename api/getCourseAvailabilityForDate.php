@@ -14,6 +14,31 @@ $openOnDay = [];
 $openCompetitionInfo = [];
 $additionalArray = [];
 
+if ($_SERVER["HTTP_HOST"] == "localhost") {
+    $timeSpan = 100;
+} else {
+    $timeSpan = 24;
+}
+
+$sql = "
+SELECT *
+FROM booking_info
+WHERE course_id = '{$_GET["club"]}'
+AND date = '{$_GET["date"]}'
+AND last_updated_date > NOW() - INTERVAL $timeSpan HOUR
+";
+
+$result = $mysqli->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $array = $row["booking_info"];
+    }
+
+    echo $array;
+    return;
+}
+
 $courseName = get_course_name($_GET["club"], $golfCourses);
 
 if (
@@ -64,4 +89,32 @@ $array = array_merge(
     $additionalArray,
 );
 
-echo json_encode($array);
+$json = json_encode($array);
+
+// first we want to delete any historical booking dates as they are now longer relevant
+$sql = "
+DELETE FROM booking_info 
+WHERE date < NOW()
+";
+
+$result = $mysqli->query($sql);
+
+// no we want to delete the booking date for this course/date
+$sql = "
+DELETE FROM booking_info 
+WHERE course_id = '{$_GET["club"]}'
+AND date = '{$_GET["date"]}'
+";
+
+$result = $mysqli->query($sql);
+
+// now insert the new date
+$sql = "
+INSERT INTO booking_info (`course_id`, `date`, `booking_info`)
+VALUES
+('{$_GET["club"]}', '{$_GET["date"]}', '$json')
+";
+
+$result = $mysqli->query($sql);
+
+echo $json;
