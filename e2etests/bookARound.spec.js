@@ -339,3 +339,28 @@ test("Check for results when you do not know the name of the course and category
   await expect(page.locator("h5").nth(0)).toBeVisible();
   await expect(page.locator("h5").nth(0)).toHaveText(/Aberdour/);
 });
+
+test("Check for results when you do not know the name of the course and played set", async ({
+  page,
+}) => {
+  await page.route("**/api/getLoggedInUser.php*", async (route) => {
+    let body = { username: "1" };
+
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(body),
+    });
+  });
+
+  sharedInterceptFunctionForValidationFormElements(
+    page,
+    "**/api/getCourses.php?region=&top100=&nineHoles=&category=&links=&ralphRecommends=&played=Yes&onlineBooking=Yes",
+  );
+  validatingFormElementsCommonSteps(page);
+  await expect(page.locator("#played")).toBeVisible();
+  await page.selectOption("#played", "Yes");
+  await page.click("#filterCoursesForBookingARound");
+  await expect(page.locator("h5").nth(0)).toBeVisible();
+  await expect(page.locator("h5").nth(0)).toHaveText(/Aberdour/);
+});
