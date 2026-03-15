@@ -333,7 +333,7 @@ function addDays(date, days) {
 }
 
 function getClickHereForMoreInfoButton(msg) {
-  return `<a href="${msg.bookingUrl}" class="btn btn-primary" target="_blank">Click here for more info</a>`;
+  return `<a href="${msg.bookingUrl}" class="btn btn-primary" target="_blank">Click here to book your tee time</a>`;
 }
 
 function getOpenText(msg) {
@@ -345,7 +345,7 @@ function getOpenText(msg) {
   openText += buildCardRow(iconSlots, msg.slotsAvailable, "Available Slots");
   openText += buildCardRow(iconCompetition, msg.name, "Competition");
 
-  openText += `<a href="${msg.openBookingUrl}" class="btn btn-primary" target="_blank">Click here for more info</a>`;
+  openText += `<a href="${msg.openBookingUrl}" class="btn btn-primary" target="_blank">Click here to book your tee time</a>`;
 
   return openText;
 }
