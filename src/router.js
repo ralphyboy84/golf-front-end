@@ -21,7 +21,7 @@ import {
   getFilteredCoursesForBookingARound,
   checkBookingForCourses,
 } from "./pages/bookARound/bookARound.js";
-import { courseDirectory } from "./pages/courseDirectory.js";
+import { courseDirectory, viewCourse } from "./pages/courseDirectory.js";
 import { previousTrips } from "./pages/previousTrips/previousTrips.js";
 import { setOpenCompetitions } from "./pages/tripBuilder/opens.js";
 import { logIn } from "./pages/logIn/logIn.js";
@@ -61,6 +61,9 @@ router
   })
   .on("/checkBookingForCourses", (match) => {
     checkBookingForCourses(match.params);
+  })
+  .on("/viewCourse/:courseid", (match) => {
+    viewCourse(match.data.courseid);
   })
   .on("/drone.html", loadHome)
   .on("/leaderBoard", getLeaderBoard)

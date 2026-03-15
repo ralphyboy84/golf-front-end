@@ -146,6 +146,54 @@ test("Check you can search for two specific courses - user not logged in", async
   await expect(page.locator("span").nth(10)).toHaveText(/100/);
 });
 
+test("Check no criteria entered and not logged in when you do not know the name of the course", async ({
+  page,
+}) => {
+  await page.click("#dropDownButton");
+  await expect(page.locator("#bookARound")).toBeVisible();
+  await page.click("#bookARound");
+  await expect(page.locator("#courseLookingForSelect")).toBeVisible();
+  await page.fill("#start", "2026-02-02");
+  const select = page.locator("select#courseLookingForSelect");
+  await select.selectOption({ value: "No" });
+  await select.dispatchEvent("change");
+  await expect(page.locator("#top100Filter")).toBeVisible();
+  await page.click("#filterCoursesForBookingARound");
+  await expect(page.locator("#noCriteriaAlertMsg")).toBeVisible();
+  await expect(page.locator("#noCriteriaAlertMsg")).toHaveText(
+    /You have not selected any criteria/,
+  );
+});
+
+test("Check no criteria entered and logged in when you do not know the name of the course", async ({
+  page,
+}) => {
+  await page.route("**/api/getLoggedInUser.php*", async (route) => {
+    let body = { username: "1" };
+
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(body),
+    });
+  });
+
+  await page.click("#dropDownButton");
+  await expect(page.locator("#bookARound")).toBeVisible();
+  await page.click("#bookARound");
+  await expect(page.locator("#courseLookingForSelect")).toBeVisible();
+  await page.fill("#start", "2026-02-02");
+  const select = page.locator("select#courseLookingForSelect");
+  await select.selectOption({ value: "No" });
+  await select.dispatchEvent("change");
+  await expect(page.locator("#top100Filter")).toBeVisible();
+  await page.click("#filterCoursesForBookingARound");
+  await expect(page.locator("#noCriteriaAlertMsg")).toBeVisible();
+  await expect(page.locator("#noCriteriaAlertMsg")).toHaveText(
+    /You have not selected any criteria/,
+  );
+});
+
 test("Check for results when you do not know the name of the course", async ({
   page,
 }) => {
@@ -209,6 +257,70 @@ test("Check for results when you do not know the name of the course", async ({
   await expect(page.locator("span").nth(0)).toHaveText(/75.00/);
   await expect(page.locator("span").nth(2)).toHaveText(/14.00/);
   await expect(page.locator("span").nth(4)).toHaveText(/19/);
+});
+
+test("Check for results when you do not know the name of the course and too many returned", async ({
+  page,
+}) => {
+  await page.route("**/api/getCourses.php**", async (route) => {
+    const body = {
+      aberdour: {
+        name: "aberdour",
+      },
+      aberdour1: {
+        name: "aberdour",
+      },
+      aberdour2: {
+        name: "aberdour",
+      },
+      aberdour3: {
+        name: "aberdour",
+      },
+      aberdour4: {
+        name: "aberdour",
+      },
+      aberdour5: {
+        name: "aberdour",
+      },
+      aberdour6: {
+        name: "aberdour",
+      },
+      aberdour7: {
+        name: "aberdour",
+      },
+      aberdour8: {
+        name: "aberdour",
+      },
+      aberdour9: {
+        name: "aberdour",
+      },
+      aberdour0: {
+        name: "aberdour",
+      },
+    };
+
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(body),
+    });
+  });
+
+  await page.click("#dropDownButton");
+  await expect(page.locator("#bookARound")).toBeVisible();
+  await page.click("#bookARound");
+  await expect(page.locator("#courseLookingForSelect")).toBeVisible();
+  await page.fill("#start", "2026-02-02");
+  const select = page.locator("select#courseLookingForSelect");
+  await select.selectOption({ value: "No" });
+  await select.dispatchEvent("change");
+  await expect(page.locator("#top100Filter")).toBeVisible();
+  await page.selectOption("#top100Filter", "Yes");
+  await page.selectOption("#ralphRecommends", "Yes");
+  await page.click("#filterCoursesForBookingARound");
+  await expect(page.locator("#app")).toHaveText(
+    /The following courses meet your criteria:/,
+  );
 });
 
 async function sharedInterceptFunctionForValidationFormElements(

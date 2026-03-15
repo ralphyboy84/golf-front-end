@@ -45,6 +45,11 @@ export async function bookARound() {
     "You have not selected a course",
   );
 
+  const noCriteriaAlertMsg = getErrorMessage(
+    "noCriteriaAlertMsg",
+    "You have not selected any criteria",
+  );
+
   const content = `
   <input type='hidden' id='days' value='1' />
   <p class="mb-4">Check for tee time availability at over 350 courses in Scotland</p>
@@ -78,6 +83,7 @@ export async function bookARound() {
     ${getCourseCategorySelect()}
     ${youHavePlayed}
   </div>
+  ${noCriteriaAlertMsg}
   <div id="bookingButtonDiv" class="card-actions justify-center hidden">
     <a id="filterCoursesForBookingARound" href="filterCoursesForBookingARound" data-navigo class="btn btn-primary">Search for Courses</a>
   </div>
@@ -98,6 +104,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target && event.target.id === "filterCoursesForBookingARound") {
       event.preventDefault();
       handleSearchForCourseButton();
+    }
+
+    if (event.target && event.target.id === "viewCourseFromSearch") {
+      event.preventDefault();
+      const courseid = document
+        .getElementById("viewCourseFromSearch")
+        .getAttribute("data-courseid");
+      viewCourseFromSearchResults(courseid);
+    }
+
+    if (event.target && event.target.id === "reBook") {
+      event.preventDefault();
+      reBookCourses();
     }
   });
 
@@ -131,12 +150,50 @@ async function handleSearchForCourseButton() {
 
   document.getElementById("dayAvailabilityDateError").classList.add("hidden");
 
-  if (!document.getElementById("clubsSelect").value) {
+  if (
+    !document.getElementById("clubsSelect").value &&
+    document.getElementById("courseLookingForSelect").value == "Yes"
+  ) {
     document.getElementById("noCourseSelectedError").classList.remove("hidden");
     return;
   }
 
   document.getElementById("noCourseSelectedError").classList.add("hidden");
+
+  let loggedInFlag = false;
+
+  if (document.getElementById("played")) {
+    loggedInFlag = true;
+  }
+
+  if (loggedInFlag == false) {
+    if (
+      !document.getElementById("top100Filter").value &&
+      !document.getElementById("nineHoleFilter").value &&
+      !document.getElementById("ralphRecommends").value &&
+      !document.getElementById("linksCourses").value &&
+      !document.getElementById("mapCourseCategory").value &&
+      document.getElementById("courseLookingForSelect").value == "No"
+    ) {
+      document.getElementById("noCriteriaAlertMsg").classList.remove("hidden");
+      return;
+    }
+  } else if (loggedInFlag == true) {
+    if (
+      !document.getElementById("top100Filter").value &&
+      !document.getElementById("nineHoleFilter").value &&
+      !document.getElementById("ralphRecommends").value &&
+      !document.getElementById("linksCourses").value &&
+      !document.getElementById("mapCourseCategory").value &&
+      !document.getElementById("played").value &&
+      document.getElementById("courseLookingForSelect").value == "No"
+    ) {
+      document.getElementById("noCriteriaAlertMsg").classList.remove("hidden");
+      return;
+    }
+  }
+
+  document.getElementById("noCriteriaAlertMsg").classList.add("hidden");
 
   let played = "";
 
@@ -185,20 +242,28 @@ async function handleSearchForCourseButton() {
     return;
   }
 
-  router.navigate(`/filterCoursesForBookingARound?courses=${keys.toString()}`);
+  router.navigate(
+    `/filterCoursesForBookingARound?date=${date}&courses=${keys.toString()}`,
+  );
 }
 
 export async function getFilteredCoursesForBookingARound(params) {
-  console.log(params.courses);
+  const coursesFromApi = await getCourses();
   const courses = params.courses.split(",");
   const length = courses.length;
-  let content = `The following courses meet your criteria:<br /><br />${length}<br /><br />`;
+  let content = `The following courses meet your criteria:`;
 
   for (let x in courses) {
     content += `
-    ${courses[x]} <br />
+    <div id="courseSelectDiv" class="grid grid-cols-3 gap-4 items-center mb-4">
+      <div class="w-full"><input type="checkbox" class="checkbox" value="${courses[x]}" id="${courses[x]}_checkbox" /></div>
+      <div class="w-full">${coursesFromApi[courses[x]].name}</div>
+      <div class="w-full"><a id="viewCourseFromSearch" class="btn btn-primary" data-courseid='${courses[x]}'>View Course</a></div>
+    </div>
     `;
   }
+
+  content += `<a id="reBook" class="btn btn-primary">Book</a>`;
 
   document.getElementById("app").innerHTML = content;
 }
@@ -217,4 +282,24 @@ export async function checkBookingForCourses(params) {
   const weather = await getWeather(courseList);
 
   fetchAllResults2(courseList, formatDateToYMD(params.date), info, weather);
+}
+
+function viewCourseFromSearchResults(courseid) {
+  router.navigate(`/viewCourse/${courseid}`);
+}
+
+function reBookCourses() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const date = urlParams.get("date");
+
+  const checkedValues = Array.from(
+    document.querySelectorAll('input[type="checkbox"]:checked'),
+  ).map((cb) => cb.value);
+
+  if (checkedValues.length < 10) {
+    router.navigate(
+      `/checkBookingForCourses?courses=${checkedValues.toString()}&date=${date}`,
+    );
+  }
 }
