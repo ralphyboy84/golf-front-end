@@ -137,7 +137,7 @@ export function get9HoleCourseSelect() {
   return `
   <div class="w-full">9 Hole Course:</div>
   <div class="w-full">
-    <select id='9holeFilter' class="select">
+    <select id='nineHoleFilter' class="select">
       <option value='' selected>Select...</option>
       <option value='Yes'>Yes</option>
       <option value='No'>No</option>

@@ -81,7 +81,7 @@ export async function clearFiltersForMap() {
 
   document.getElementById("top100Filter").value = "";
   document.getElementById("mapRegionFilter").value = "";
-  document.getElementById("9holeFilter").value = "";
+  document.getElementById("nineHoleFilter").value = "";
   document.getElementById("ralphRecommends").value = "";
   document.getElementById("linksCourses").value = "";
   document.getElementById("mapCourseCategory").value = "";
@@ -92,7 +92,7 @@ var map;
 export async function filterMap() {
   const top100 = document.getElementById("top100Filter").value;
   const region = document.getElementById("mapRegionFilter").value;
-  const nineHoles = document.getElementById("9holeFilter").value;
+  const nineHoles = document.getElementById("nineHoleFilter").value;
   const ralphRecommends = document.getElementById("ralphRecommends").value;
   const linksCourses = document.getElementById("linksCourses").value;
   const courseCategory = document.getElementById("mapCourseCategory").value;
