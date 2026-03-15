@@ -165,6 +165,11 @@ async function handleSearchForCourseButton() {
     length = keys.length;
   }
 
+  if (length == 0) {
+    alert("No courses found to match this criteria");
+    return;
+  }
+
   if (length < 10) {
     router.navigate(
       `/checkBookingForCourses?courses=${keys.toString()}&date=${date}`,
