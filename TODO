@@ -76,3 +76,11 @@ Credits
 look at open route service
 
 prestonfield mapping info wrong
+
+have a look at the phpunit gitlhub actions job to include phpunit
+
+- name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          tools: phpunit  # This puts phpunit in your PATH automatically

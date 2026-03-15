@@ -66,6 +66,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: [phpunit, vite, playwright]
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
