@@ -45,15 +45,14 @@ export async function bookARound() {
     "You have not selected a course",
   );
 
-  // ${alertMsg}
-
   const content = `
   <input type='hidden' id='days' value='1' />
-  <p class="mb-4">Check for tee time availability at any course in Scotland.</p>
-  <div class="grid grid-cols-2 gap-4 items-center w-full">
+  <p class="mb-4">Check for tee time availability at over 350 courses in Scotland</p>
+  <div class="grid grid-cols-2 gap-4 items-center w-full mb-4">
     <div class="w-full">Enter Date:</div>
     <div class="w-full"><input type='date' id='start' value='' class='input bg-gray-50 text-gray-900' /></div>
   </div>
+  ${alertMsg}
   <div class="grid grid-cols-2 gap-4 items-center w-full mb-4">
     <div class="w-full">Do you know the name of the course(s) that you are looking to play?:</div>
     <div class="w-full">
@@ -85,7 +84,7 @@ export async function bookARound() {
   `;
 
   document.getElementById("app").innerHTML =
-    buildCard("arbroath", "Day Availability", content) +
+    buildCard("arbroath", "Book a Round", content) +
     `  <div id='resultsDiv' class='pt-4'></div>`;
 
   await getCoursesForDropDown();
@@ -122,13 +121,22 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function handleSearchForCourseButton() {
+  if (!document.getElementById("start").value) {
+    document
+      .getElementById("dayAvailabilityDateError")
+      .classList.remove("hidden");
+    return;
+  }
+
+  document.getElementById("dayAvailabilityDateError").classList.add("hidden");
+
   let played = "";
 
   if (document.getElementById("played")) {
     played = document.getElementById("played").value;
   }
 
-  const nineHoles = document.getElementById("9holeFilter").value;
+  const nineHoles = document.getElementById("nineHoleFilter").value;
   const ralphRecommends = document.getElementById("ralphRecommends").value;
   const linksCourses = document.getElementById("linksCourses").value;
   const category = document.getElementById("mapCourseCategory").value;
