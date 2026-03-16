@@ -8,7 +8,7 @@ import {
 import { populateSelectOptionsForRegionFilter } from "../pages/selectBoxes";
 import {
   buildCard,
-  buildCardRow,
+  buildCardMobile,
   getErrorMessage,
   buildSideCard,
   buildSideCardRow,
@@ -209,7 +209,6 @@ function displayContent(msg, travelInfo, courseId, weather) {
   let temp = "";
   let timesAvailable = "";
   let openText = "";
-  let openTimesAvailable = "";
   let moreInfoButton = getClickHereForMoreInfoButton(msg, courseId);
 
   if (msg.onlineBooking == "No" && msg.visitorsAvailable == "Yes") {
@@ -220,7 +219,7 @@ function displayContent(msg, travelInfo, courseId, weather) {
     temp = "Good news! There are tee times available on this day";
 
     timesAvailable +=
-      '<div class="grid grid-cols-1 md:grid-cols-4 gap-2 w-full">';
+      '<div class="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">';
     timesAvailable += buildSideCardRow(
       `<img src='/images/icons/pound-sterling.png' />`,
       msg.cheapestPrice,
@@ -320,7 +319,28 @@ function displayContent(msg, travelInfo, courseId, weather) {
     imageToUse = courseId;
   }
 
-  return buildSideCard(imageToUse, msg.courseName, content);
+  let played = "";
+
+  if (msg.loggedIn == 1) {
+    let coursePlayedClass = "hidden";
+    let courseNotPlayedClass = "hidden";
+
+    if (msg.played == 1) {
+      coursePlayedClass = "";
+    } else {
+      courseNotPlayedClass = "";
+    }
+
+    played = `
+    <img src='/images/golf-field-bw.png' style='height:24px;width:24px' title='You have not played this course' class='cursor-pointer playedCourse ${courseNotPlayedClass}' />
+    <img src='/images/golf-field-color.png' style='height:24px;width:24px' title='You have played this course!' class='cursor-pointer notPlayedCourse ${coursePlayedClass}' />
+    `;
+  }
+
+  return (
+    buildSideCard(imageToUse, msg.courseName, content, played) +
+    buildCardMobile(imageToUse, msg.courseName, content)
+  );
 }
 
 function addDays(date, days) {
@@ -366,7 +386,7 @@ function getClickHereForMoreInfoButton(msg, courseId) {
 function getOpenText(msg) {
   let openText = `
   <p class="card-text">There is an Open Competition on on this day</p>
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-2 w-full">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">
   `;
 
   openText += buildSideCardRow(

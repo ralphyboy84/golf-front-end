@@ -43,15 +43,21 @@ export function buildSideCardRow(icon, titleText, subText) {
   `;
 }
 
-export function buildSideCard(img, header, content) {
+export function buildSideCard(img, header, content, headerIcon) {
   let imgString = `<img src="/images/test1.jpg" alt="stock" class="h-full object-cover w-full block" />`;
 
   if (img) {
     imgString = `<img src="/images/${img}.jpg" alt="${img}" class="h-full object-cover w-full block" />`;
   }
 
+  let headerIconString = "";
+
+  if (headerIcon) {
+    headerIconString = headerIcon;
+  }
+
   return `
-  <div class="card card-side bg-base-100 shadow-sm mb-4 w-full h-full">
+  <div class="card card-side bg-base-100 shadow-sm mb-4 w-full h-full hidden md:flex">
     <figure class="w-1/3 relative h-full block">
       ${imgString}
       <div class="absolute bottom-2 left-2 z-10 w-max h-fit inset-auto">
@@ -61,8 +67,65 @@ export function buildSideCard(img, header, content) {
       </div>
     </figure>
     <div class="card-body w-2/3">
-      <h2 class="card-title">${header}</h2>
+      <div class="flex justify-between items-center">
+        <h5 class="card-title mb-2.5 text-gray-900">${header}</h5>
+        ${headerIconString}
+      </div>
       ${content}
+    </div>
+  </div>
+  `;
+}
+
+export function buildCardMobile(
+  img,
+  header,
+  content,
+  id,
+  additionalClass,
+  badges,
+  headerIcon,
+) {
+  let idToUse = "";
+  let additionalClassToUse = "";
+  let badgeString = "";
+
+  if (badges) {
+    badgeString = `<p class="card-text flex flex-wrap gap-2 mb-2.5">${badges}</p>`;
+  }
+
+  if (id && id != "undefined") {
+    idToUse = ` id='${id}'`;
+  }
+
+  if (additionalClass && additionalClass != "undefined") {
+    additionalClassToUse = ` ${additionalClass}`;
+  }
+
+  let imgString = "";
+
+  if (img) {
+    imgString = `<figure><img src="/images/${img}.jpg" alt="${img}" /></figure>`;
+  }
+
+  let headerIconString = "";
+
+  if (headerIcon) {
+    headerIconString = headerIcon;
+  }
+
+  return `
+  <div class="flex justify-center mb-6 block md:hidden">
+    <div${idToUse} class="card w-full xl:max-w-7xl bg-base-100 border border-base-300 rounded-xl text-gray-900${additionalClassToUse}">
+      ${imgString}
+      <div class="card-body">
+        <div class="flex justify-between items-center">
+          <h5 class="card-title mb-2.5 text-gray-900">${header}</h5>
+          ${headerIconString}
+        </div>
+        ${badgeString}
+        ${content}
+      </div>
     </div>
   </div>
   `;
@@ -106,7 +169,7 @@ export function buildCard(
   }
 
   return `
-  <div class="flex justify-center mb-6">
+  <div class="flex justify-center mb-6 block">
     <div${idToUse} class="card w-full xl:max-w-7xl bg-base-100 border border-base-300 rounded-xl text-gray-900${additionalClassToUse}">
       ${imgString}
       <div class="card-body">
