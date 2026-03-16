@@ -166,9 +166,9 @@ test("Check for too many courses returned", async ({ page }) => {
   ).toHaveText(
     /Too many courses have been returned to build your trip. Check the checkboxes of the courses you would like to include in your trip./,
   );
-  await expect(page.locator("table")).toBeVisible();
+  await expect(page.locator("table.table.min-w-max")).toBeVisible();
 
-  const rows = page.locator("table tbody tr");
+  const rows = page.locator("table.table min-w-max tbody tr");
 
   // expected rows below is imported from createTripFixtures
   for (let i = 0; i < (await rows.count()); i++) {
