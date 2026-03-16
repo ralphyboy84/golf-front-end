@@ -321,21 +321,21 @@ function displayContent(msg, travelInfo, courseId, weather) {
 
   let played = "";
 
-  if (msg.loggedIn == 1) {
-    let coursePlayedClass = "hidden";
-    let courseNotPlayedClass = "hidden";
+  // if (msg.loggedIn == 1) {
+  //   let coursePlayedClass = "hidden";
+  //   let courseNotPlayedClass = "hidden";
 
-    if (msg.played == 1) {
-      coursePlayedClass = "";
-    } else {
-      courseNotPlayedClass = "";
-    }
+  //   if (msg.played == 1) {
+  //     coursePlayedClass = "";
+  //   } else {
+  //     courseNotPlayedClass = "";
+  //   }
 
-    played = `
-    <img src='/images/golf-field-bw.png' style='height:24px;width:24px' title='You have not played this course' class='cursor-pointer playedCourse ${courseNotPlayedClass}' />
-    <img src='/images/golf-field-color.png' style='height:24px;width:24px' title='You have played this course!' class='cursor-pointer notPlayedCourse ${coursePlayedClass}' />
-    `;
-  }
+  //   played = `
+  //   <img src='/images/golf-field-bw.png' style='height:24px;width:24px' title='You have not played this course' class='cursor-pointer playedCourse ${courseNotPlayedClass}' />
+  //   <img src='/images/golf-field-color.png' style='height:24px;width:24px' title='You have played this course!' class='cursor-pointer notPlayedCourse ${coursePlayedClass}' />
+  //   `;
+  // }
 
   return (
     buildSideCard(imageToUse, msg.courseName, content, played) +
