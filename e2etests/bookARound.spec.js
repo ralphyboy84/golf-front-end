@@ -63,9 +63,9 @@ test("Check you can search for a specific course - user not logged in", async ({
   await expect(page.locator("p").nth(0)).toHaveText(
     /Good news! There are tee times available on this day/,
   );
-  await expect(page.locator("span").nth(1)).toHaveText(/75.00/);
-  await expect(page.locator("span").nth(3)).toHaveText(/14.00/);
-  await expect(page.locator("span").nth(5)).toHaveText(/19/);
+  await expect(page.locator("#aberdour span").nth(1)).toHaveText(/75.00/);
+  await expect(page.locator("#aberdour span").nth(3)).toHaveText(/14.00/);
+  await expect(page.locator("#aberdour span").nth(5)).toHaveText(/19/);
 });
 
 test("Check you can search for two specific courses - user not logged in", async ({
@@ -133,17 +133,17 @@ test("Check you can search for two specific courses - user not logged in", async
   await expect(page.locator("p").nth(0)).toHaveText(
     /Good news! There are tee times available on this day/,
   );
-  await expect(page.locator("span").nth(1)).toHaveText(/75.00/);
-  await expect(page.locator("span").nth(3)).toHaveText(/14.00/);
-  await expect(page.locator("span").nth(5)).toHaveText(/19/);
+  await expect(page.locator("#aberdour span").nth(1)).toHaveText(/75.00/);
+  await expect(page.locator("#aberdour span").nth(3)).toHaveText(/14.00/);
+  await expect(page.locator("#aberdour span").nth(5)).toHaveText(/19/);
   await expect(page.locator("h5").nth(2)).toBeVisible();
   await expect(page.locator("h5").nth(3)).toHaveText(/Aberfeldy/);
   await expect(page.locator("p").nth(3)).toHaveText(
     /Good news! There are tee times available on this day/,
   );
-  await expect(page.locator("span").nth(18)).toHaveText(/15.00/);
-  await expect(page.locator("span").nth(20)).toHaveText(/10.00/);
-  await expect(page.locator("span").nth(22)).toHaveText(/100/);
+  await expect(page.locator("#Aberfeldy span").nth(1)).toHaveText(/15.00/);
+  await expect(page.locator("#Aberfeldy span").nth(3)).toHaveText(/10.00/);
+  await expect(page.locator("#Aberfeldy span").nth(5)).toHaveText(/100/);
 });
 
 test("Check no criteria entered and not logged in when you do not know the name of the course", async ({
@@ -198,7 +198,7 @@ test("Check for results when you do not know the name of the course", async ({
   page,
 }) => {
   await page.route(
-    "**/api/getCourses.php?region=&top100=Yes&nineHoles=&category=&links=&ralphRecommends=Yes&played=&onlineBooking=Yes",
+    "**/api/getCourses.php?region=&top100=Yes&nineHoles=&category=&links=&ralphRecommends=Yes&played=&onlineBooking=Yes&courseList=undefined",
     async (route) => {
       const body = {
         aberdour: {
@@ -249,14 +249,14 @@ test("Check for results when you do not know the name of the course", async ({
   await page.selectOption("#top100Filter", "Yes");
   await page.selectOption("#ralphRecommends", "Yes");
   await page.click("#filterCoursesForBookingARound");
-  await expect(page.locator("h5").nth(0)).toBeVisible();
-  await expect(page.locator("h5").nth(0)).toHaveText(/Aberdour/);
+  await expect(page.locator("#aberdour h5").nth(0)).toBeVisible();
+  await expect(page.locator("#aberdour h5").nth(0)).toHaveText(/Aberdour/);
   await expect(page.locator("p").nth(0)).toHaveText(
     /Good news! There are tee times available on this day/,
   );
-  await expect(page.locator("span").nth(1)).toHaveText(/75.00/);
-  await expect(page.locator("span").nth(3)).toHaveText(/14.00/);
-  await expect(page.locator("span").nth(5)).toHaveText(/19/);
+  await expect(page.locator("#aberdour span").nth(1)).toHaveText(/75.00/);
+  await expect(page.locator("#aberdour span").nth(3)).toHaveText(/14.00/);
+  await expect(page.locator("#aberdour span").nth(5)).toHaveText(/19/);
 });
 
 test("Check for results when you do not know the name of the course and too many returned", async ({
@@ -382,7 +382,7 @@ test("Check for results when you do not know the name of the course and top 100 
 }) => {
   sharedInterceptFunctionForValidationFormElements(
     page,
-    "**/api/getCourses.php?region=&top100=Yes&nineHoles=&category=&links=&ralphRecommends=&played=&onlineBooking=Yes",
+    "**/api/getCourses.php?region=&top100=Yes&nineHoles=&category=&links=&ralphRecommends=&played=&onlineBooking=Yes&courseList=undefined",
   );
   validatingFormElementsCommonSteps(page);
   await expect(page.locator("#top100Filter")).toBeVisible();
@@ -397,7 +397,7 @@ test("Check for results when you do not know the name of the course and 9 hole c
 }) => {
   sharedInterceptFunctionForValidationFormElements(
     page,
-    "**/api/getCourses.php?region=&top100=&nineHoles=Yes&category=&links=&ralphRecommends=&played=&onlineBooking=Yes",
+    "**/api/getCourses.php?region=&top100=&nineHoles=Yes&category=&links=&ralphRecommends=&played=&onlineBooking=Yes&courseList=undefined",
   );
   validatingFormElementsCommonSteps(page);
   await expect(page.locator("#nineHoleFilter")).toBeVisible();
@@ -412,7 +412,7 @@ test("Check for results when you do not know the name of the course and ralph re
 }) => {
   sharedInterceptFunctionForValidationFormElements(
     page,
-    "**/api/getCourses.php?region=&top100=&nineHoles=&category=&links=&ralphRecommends=Yes&played=&onlineBooking=Yes",
+    "**/api/getCourses.php?region=&top100=&nineHoles=&category=&links=&ralphRecommends=Yes&played=&onlineBooking=Yes&courseList=undefined",
   );
   validatingFormElementsCommonSteps(page);
   await expect(page.locator("#ralphRecommends")).toBeVisible();
@@ -427,7 +427,7 @@ test("Check for results when you do not know the name of the course and links co
 }) => {
   sharedInterceptFunctionForValidationFormElements(
     page,
-    "**/api/getCourses.php?region=&top100=&nineHoles=&category=&links=Yes&ralphRecommends=&played=&onlineBooking=Yes",
+    "**/api/getCourses.php?region=&top100=&nineHoles=&category=&links=Yes&ralphRecommends=&played=&onlineBooking=Yes&courseList=undefined",
   );
   validatingFormElementsCommonSteps(page);
   await expect(page.locator("#linksCourses")).toBeVisible();
@@ -442,7 +442,7 @@ test("Check for results when you do not know the name of the course and category
 }) => {
   sharedInterceptFunctionForValidationFormElements(
     page,
-    "**/api/getCourses.php?region=&top100=&nineHoles=&category=a&links=&ralphRecommends=&played=&onlineBooking=Yes",
+    "**/api/getCourses.php?region=&top100=&nineHoles=&category=a&links=&ralphRecommends=&played=&onlineBooking=Yes&courseList=undefined",
   );
   validatingFormElementsCommonSteps(page);
   await expect(page.locator("#mapCourseCategory")).toBeVisible();
@@ -467,7 +467,7 @@ test("Check for results when you do not know the name of the course and played s
 
   sharedInterceptFunctionForValidationFormElements(
     page,
-    "**/api/getCourses.php?region=&top100=&nineHoles=&category=&links=&ralphRecommends=&played=Yes&onlineBooking=Yes",
+    "**/api/getCourses.php?region=&top100=&nineHoles=&category=&links=&ralphRecommends=&played=Yes&onlineBooking=Yes&courseList=undefined",
   );
   validatingFormElementsCommonSteps(page);
   await expect(page.locator("#played")).toBeVisible();
