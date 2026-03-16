@@ -294,7 +294,10 @@ export async function checkBookingForCourses(params) {
   const info = await getMapDistance(whereStaying, courseList);
   const weather = await getWeather(courseList);
 
-  fetchAllResults2(courseList, formatDateToYMD(params.date), info, weather);
+  const urlParams = new URLSearchParams(window.location.search);
+  const dateParam = urlParams.get("date");
+
+  fetchAllResults2(courseList, dateParam, info, weather);
 }
 
 function viewCourseFromSearchResults(courseid) {
