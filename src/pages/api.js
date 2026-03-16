@@ -16,9 +16,12 @@ export async function getListOfPotentialCourses(
   ).then((res) => res.json());
 }
 
-export function getCourseAvailabilityForDate(club, date, courseId, opens) {
+export function getCourseAvailabilityForDate(club, date, opens) {
   return fetch(
-    `${import.meta.env.VITE_API_URL}api/getCourseAvailabilityForDate.php?club=${club}&date=${date}&courseId=${courseId}&opens=${opens}`,
+    `${import.meta.env.VITE_API_URL}api/getCourseAvailabilityForDate.php?club=${club}&date=${date}&opens=${opens}`,
+    {
+      credentials: "include",
+    },
   ).then((res) => res.json());
 }
 
@@ -38,9 +41,10 @@ export async function getCourses(
   links,
   ralphRecommends,
   played,
+  onlineBooking,
 ) {
   return await fetch(
-    `${import.meta.env.VITE_API_URL}api/getCourses.php?region=${region}&top100=${top100}&nineHoles=${nineHoles}&category=${category}&links=${links}&ralphRecommends=${ralphRecommends}&played=${played}`,
+    `${import.meta.env.VITE_API_URL}api/getCourses.php?region=${region}&top100=${top100}&nineHoles=${nineHoles}&category=${category}&links=${links}&ralphRecommends=${ralphRecommends}&played=${played}&onlineBooking=${onlineBooking}`,
     {
       credentials: "include",
     },

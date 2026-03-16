@@ -61,15 +61,22 @@ class ClubV1Processor extends Processor
                 $greenFees = array_values(
                     array_filter($greenFees, fn($v) => (float) $v !== 0.0),
                 );
+
                 $uniqueFees = array_unique($greenFees);
                 sort($uniqueFees);
+
+                $fees = "Unknown";
+
+                if (isset($uniqueFees[0])) {
+                    $fees = $uniqueFees[0];
+                }
 
                 return [
                     "date" => $this->_format_date($date),
                     "teeTimesAvailable" => "Yes",
                     "timesAvailable" => $teeTimes,
                     "firstTime" => $firstTeeSet,
-                    "cheapestPrice" => $uniqueFees[0],
+                    "cheapestPrice" => $fees,
                 ];
             }
         }

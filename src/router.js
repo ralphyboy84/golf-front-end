@@ -16,11 +16,13 @@ import { reBuildTrip } from "./pages/reBuildTrip.js";
 import { openSearcher } from "./pages/calendar.js";
 import { loadHome } from "./pages/home.js";
 import { dayAvailability } from "./pages/dayAvailability.js";
-import { courseDirectory } from "./pages/courseDirectory.js";
 import {
-  previousTrips,
-  viewTrip,
-} from "./pages/previousTrips/previousTrips.js";
+  bookARound,
+  getFilteredCoursesForBookingARound,
+  checkBookingForCourses,
+} from "./pages/bookARound/bookARound.js";
+import { courseDirectory, viewCourse } from "./pages/courseDirectory.js";
+import { previousTrips } from "./pages/previousTrips/previousTrips.js";
 import { setOpenCompetitions } from "./pages/tripBuilder/opens.js";
 import { logIn } from "./pages/logIn/logIn.js";
 import { logOut } from "./pages/logOut/logOut.js";
@@ -43,6 +45,7 @@ router
   .on("/fullSummaryButton", buildFullTripSummary)
   .on("/openSearcher", openSearcher)
   .on("/dayAvailability", dayAvailability)
+  .on("/bookARound", bookARound)
   .on("/courseDirectory", courseDirectory)
   .on("/previousTrips", previousTrips)
   .on("/openCompetitions", setOpenCompetitions)
@@ -52,6 +55,15 @@ router
   .on("/yourInfo", getYourInfo)
   .on("/viewTrip/:tripId", (match) => {
     viewTrip(match.data.tripId);
+  })
+  .on("/filterCoursesForBookingARound", (match) => {
+    getFilteredCoursesForBookingARound(match.params);
+  })
+  .on("/checkBookingForCourses", (match) => {
+    checkBookingForCourses(match.params);
+  })
+  .on("/viewCourse/:courseid", (match) => {
+    viewCourse(match.data.courseid);
   })
   .on("/drone.html", loadHome)
   .on("/leaderBoard", getLeaderBoard)

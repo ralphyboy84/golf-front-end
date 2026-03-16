@@ -6,13 +6,13 @@ import {
   getCourseAvailabilityForDate,
 } from "../pages/api";
 import { populateSelectOptionsForRegionFilter } from "../pages/selectBoxes";
-import { buildCard, buildCardRow, getErrorMessage } from "../pages/components";
 import {
-  iconPound,
-  iconSlots,
-  iconClock,
-  iconCompetition,
-} from "../pages/icons";
+  buildCard,
+  buildCardMobile,
+  getErrorMessage,
+  buildSideCard,
+  buildSideCardRow,
+} from "../pages/components";
 
 export async function dayAvailability() {
   const app = document.getElementById("app");
@@ -49,7 +49,7 @@ export async function dayAvailability() {
 
   document.getElementById("app").innerHTML =
     buildCard("arbroath", "Day Availability", content) +
-    `  <div id='resultsDiv' class='pt-4'></div>`;
+    `  <div id='resultsDiv' class='pt-4 grid grid-cols-1 xl:grid-cols-2 gap-6'></div>`;
 
   await getCoursesForDropDown();
   const data = await getRegions();
@@ -62,7 +62,7 @@ export async function updateCourseList() {
   let regionArray = [];
 
   for (let x in region) {
-    regionArray.push(region[x].course);
+    regionArray.push(region[x]);
   }
 
   await getCoursesForDropDown(regionArray);
@@ -70,6 +70,7 @@ export async function updateCourseList() {
 
 export async function getCoursesForDropDown(region) {
   const courses = await getCourses(region);
+  console.log(region);
 
   document.getElementById("clubsSelect").innerHTML = "";
   const select = document.getElementById("clubsSelect");
@@ -100,11 +101,7 @@ export function getSelectValues(select) {
       // (opt.getAttribute("data-onlineBooking") == "Yes" ||
       //   opt.getAttribute("data-openBooking") == "Yes")
     ) {
-      result.push({
-        course: opt.value,
-        courseName: opt.text,
-        courseId: opt.getAttribute("data-courseId") || 1,
-      });
+      result.push(opt.value);
     }
   }
 
@@ -129,27 +126,9 @@ export async function searchForAvailability() {
     return;
   }
 
-  document.getElementById("resultsDiv").innerHTML = "";
+  document.getElementById("resultsDiv").innerHTML = ``;
 
-  for (let x in selectBoxValues) {
-    const parent = document.getElementById("resultsDiv");
-
-    // 2. Create a new child div
-    const child = document.createElement("div");
-    child.id = selectBoxValues[x].course;
-
-    // 3. Set some content for the child
-    child.textContent = "Please wait.... loading.....";
-
-    // 4. Optionally add styles or attributes
-    child.classList.add("col-sm-12");
-    child.classList.add("col-md-4");
-    // child.style.marginTop = "10px";
-    // child.style.padding = "5px";
-
-    // 5. Append the child div to the parent div
-    parent.appendChild(child);
-  }
+  createLoadingDivsForDayAvailabilitySearches(selectBoxValues);
 
   const tripStart = document.getElementById("start").value;
 
@@ -166,7 +145,23 @@ export async function searchForAvailability() {
   fetchAllResults2(selectBoxValues, tripStart, info, weather);
 }
 
-async function getWhereStayingLatLong() {
+export function createLoadingDivsForDayAvailabilitySearches(selectBoxValues) {
+  for (let x in selectBoxValues) {
+    const parent = document.getElementById("resultsDiv");
+
+    // 2. Create a new child div
+    const child = document.createElement("div");
+    child.id = selectBoxValues[x];
+
+    // 3. Set some content for the child
+    child.textContent = "Please wait.... loading.....";
+
+    // 5. Append the child div to the parent div
+    parent.appendChild(child);
+  }
+}
+
+export async function getWhereStayingLatLong() {
   return;
   const params = new URLSearchParams({
     q: document.getElementById("staying").value,
@@ -178,7 +173,7 @@ async function getWhereStayingLatLong() {
     .then((data) => data.result[0].latlng);
 }
 
-async function fetchAllResults2(
+export async function fetchAllResults2(
   selectBoxValues,
   tripStart,
   travelInfo,
@@ -187,23 +182,20 @@ async function fetchAllResults2(
   const results = {};
 
   for (let x in selectBoxValues) {
+    console.log(selectBoxValues[x]);
     let count = 0;
 
     for (let y = 0; y < document.getElementById("days").value; y++) {
       const date = addDays(tripStart, count);
       count++;
 
-      getCourseAvailabilityForDate(
-        selectBoxValues[x].course,
-        date,
-        selectBoxValues[x].courseId,
-      ).then(
+      getCourseAvailabilityForDate(selectBoxValues[x], date).then(
         (fetchPromise) =>
-          (document.getElementById(selectBoxValues[x].course).innerHTML =
+          (document.getElementById(selectBoxValues[x]).innerHTML =
             displayContent(
               fetchPromise,
               travelInfo,
-              selectBoxValues[x].course,
+              selectBoxValues[x],
               weather,
             )) + "<br />",
       );
@@ -217,71 +209,79 @@ function displayContent(msg, travelInfo, courseId, weather) {
   let temp = "";
   let timesAvailable = "";
   let openText = "";
-  let openTimesAvailable = "";
-  let weatherInfo = "";
-  let moreInfoButton = getClickHereForMoreInfoButton(msg);
+  let moreInfoButton = getClickHereForMoreInfoButton(msg, courseId);
 
-  if (msg.onlineBooking == "No") {
+  if (msg.onlineBooking == "No" && msg.visitorsAvailable == "Yes") {
     temp = `Unfortunately, Online Booking is not available but they do allow visitors on this day`;
   }
 
   if (msg.teeTimesAvailable == "Yes") {
     temp = "Good news! There are tee times available on this day";
 
-    timesAvailable = buildCardRow(
-      iconPound,
+    timesAvailable +=
+      '<div class="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">';
+    timesAvailable += buildSideCardRow(
+      `<img src='/images/icons/pound-sterling.png' />`,
       msg.cheapestPrice,
-      "Prices Starting From",
+      "Prices From",
     );
-    timesAvailable += buildCardRow(iconClock, msg.firstTime, "First Tee Time");
-    timesAvailable += buildCardRow(
-      iconSlots,
+    timesAvailable += buildSideCardRow(
+      `<img src='/images/icons/clock.png' />`,
+      msg.firstTime,
+      "First Tee Time",
+    );
+    timesAvailable += buildSideCardRow(
+      `<img src='/images/icons/golf-ball.png' />`,
       msg.timesAvailable,
       "Available Slots",
     );
 
     let driveTime = "Currently Unavailable";
 
-    if (weather[courseId]) {
-      weatherInfo = buildCardRow(
-        `<i class='${weather[courseId].generalForecastIcon}'></i>`,
-        weather[courseId].generalForecast,
-        "General Forecast",
-      );
-
-      weatherInfo += buildCardRow(
-        "<i class='bi-cloud-rain'></i>",
-        weather[courseId].chanceOfRain,
-        "Chance of Rain",
-      );
-
-      weatherInfo += buildCardRow(
-        "<i class='bi-thermometer'></i>",
-        weather[courseId].tmeperature,
-        "Daily High",
-      );
-
-      weatherInfo += buildCardRow(
-        "<i class='bi-wind'></i>",
-        weather[courseId].wind,
-        "Wind",
-      );
-    }
-
     if (travelInfo[courseId]) {
       driveTime = travelInfo[courseId];
     }
 
     if (driveTime != "Currently Unavailable") {
-      timesAvailable += buildCardRow(
-        driveTime,
-        "Drive to Course",
-        "bi-car-front",
+      timesAvailable += buildSideCardRow(driveTime, "Drive to Course");
+    }
+
+    timesAvailable += buildSideCardRow(
+      `<img src='/images/icons/car.png' />`,
+      "1 hr 15 mins",
+      "Journey",
+    );
+
+    if (weather[courseId]) {
+      timesAvailable += buildSideCardRow(
+        `<img src='/images/icons/${weather[courseId].generalForecastIcon}.png' />`,
+        weather[courseId].generalForecast,
+        "General Forecast",
+      );
+
+      timesAvailable += buildSideCardRow(
+        `<img src='/images/icons/umbrella.png' />`,
+        weather[courseId].chanceOfRain,
+        "Chance of Rain",
+      );
+
+      timesAvailable += buildSideCardRow(
+        `<img src='/images/icons/temperature.png' />`,
+        weather[courseId].tmeperature,
+        "Daily High",
+      );
+
+      timesAvailable += buildSideCardRow(
+        `<img src='/images/icons/wind.png' />`,
+        weather[courseId].wind,
+        "Wind",
       );
     }
 
+    timesAvailable += `</div>`;
+
     if (msg.competitionId || msg.name) {
-      openText = "<br /><br />" + getOpenText(msg);
+      timesAvailable += getOpenText(msg);
     }
   } else if (!temp) {
     if (msg.competitionId && isFutureDate(msg.bookingsOpenDate)) {
@@ -296,16 +296,19 @@ function displayContent(msg, travelInfo, courseId, weather) {
         "Sorry - the booking system for this club has not yet been added to this app";
     } else {
       temp = "Sorry - there are no tee times available on this day";
+      moreInfoButton = "";
     }
   }
 
-  console.log(msg);
-  console.log(courseId);
+  let tempStr = "";
+
+  if (temp) {
+    tempStr = `<p class="card-text">${temp}</p>`;
+  }
 
   const content = `
-  <p class="card-text">${temp}</p>
+  ${tempStr}
   ${timesAvailable}
-  ${weatherInfo}
   ${moreInfoButton}
   ${openText}
   `;
@@ -316,7 +319,28 @@ function displayContent(msg, travelInfo, courseId, weather) {
     imageToUse = courseId;
   }
 
-  return buildCard(imageToUse, msg.courseName, content);
+  let played = "";
+
+  // if (msg.loggedIn == 1) {
+  //   let coursePlayedClass = "hidden";
+  //   let courseNotPlayedClass = "hidden";
+
+  //   if (msg.played == 1) {
+  //     coursePlayedClass = "";
+  //   } else {
+  //     courseNotPlayedClass = "";
+  //   }
+
+  //   played = `
+  //   <img src='/images/golf-field-bw.png' style='height:24px;width:24px' title='You have not played this course' class='cursor-pointer playedCourse ${courseNotPlayedClass}' />
+  //   <img src='/images/golf-field-color.png' style='height:24px;width:24px' title='You have played this course!' class='cursor-pointer notPlayedCourse ${coursePlayedClass}' />
+  //   `;
+  // }
+
+  return (
+    buildSideCard(imageToUse, msg.courseName, content, played) +
+    buildCardMobile(imageToUse, msg.courseName, content)
+  );
 }
 
 function addDays(date, days) {
@@ -337,22 +361,51 @@ function addDays(date, days) {
   return tomorrow.getFullYear() + "-" + month + "-" + day;
 }
 
-function getClickHereForMoreInfoButton(msg) {
-  return `<a href="${msg.bookingUrl}" class="btn btn-primary" target="_blank">Click here for more info</a>`;
+function getClickHereForMoreInfoButton(msg, courseId) {
+  let onlineBooking = `<a href="${msg.bookingUrl}" class="btn btn-primary flex-1" target="_blank">Book Tee Time</a>`;
+
+  if (msg.onlineBooking == "No" && msg.visitorsAvailable == "Yes") {
+    onlineBooking = `<a href="${msg.bookingUrl}" class="btn btn-primary flex-1" target="_blank">Website</a>`;
+  }
+
+  let openBooking = "";
+
+  if (msg.competitionId || msg.name) {
+    openBooking = `<a href="${msg.openBookingUrl}" class="btn btn-primary flex-1" target="_blank">Book Open</a>`;
+  }
+
+  return `
+  <div class="flex flex-row items-center justify-between gap-4 w-full">
+    <a class="btn btn-primary flex-1 viewCourseFromSearch" data-courseid='${courseId}'>View Course</a> 
+    ${onlineBooking}
+    ${openBooking}
+  </div>
+  `;
 }
 
 function getOpenText(msg) {
   let openText = `
-      <p class="card-text">There is an Open Competition on on this day</p>
-      `;
+  <p class="card-text">There is an Open Competition on on this day</p>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">
+  `;
 
-  openText += buildCardRow(iconPound, msg.openGreenFee, "Open Entry Fee");
-  openText += buildCardRow(iconSlots, msg.slotsAvailable, "Available Slots");
-  openText += buildCardRow(iconCompetition, msg.name, "Competition");
+  openText += buildSideCardRow(
+    `<img src='/images/icons/pound-sterling.png' />`,
+    msg.openGreenFee,
+    "Open Entry Fee",
+  );
+  openText += buildSideCardRow(
+    `<img src='/images/icons/golf-ball.png' />`,
+    msg.slotsAvailable,
+    "Available Slots",
+  );
+  openText += buildSideCardRow(
+    `<img src='/images/icons/trophy.png' />`,
+    msg.name,
+    "Competition",
+  );
 
-  openText += `<a href="${msg.openBookingUrl}" class="btn btn-primary" target="_blank">Click here for more info</a>`;
-
-  return openText;
+  return openText + `</div>`;
 }
 
 function isFutureDate(dateStr) {

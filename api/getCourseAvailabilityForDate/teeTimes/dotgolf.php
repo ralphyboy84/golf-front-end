@@ -11,7 +11,7 @@ if ($golfCourses[$_GET["club"]]["onlineBooking"]) {
         $_GET["date"],
         $golfCourses[$_GET["club"]]["bookingLink"],
         $golfCourses[$_GET["club"]]["clubId"],
-        $_GET["courseId"],
+        $golfCourses[$_GET["club"]]["courseId"],
     );
 
     $teeTimeInfo = $DotGolfProcessor->processTeeTimeForDay(

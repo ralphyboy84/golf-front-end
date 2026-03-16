@@ -8,7 +8,7 @@ export function viewCourseGallery(courseId, images) {
       html += `
       <div id="item${x}" class="carousel-item w-full">
         <img
-        src="images/${courseId}/DJI_${image}.jpg"
+        src="/images/${courseId}/DJI_${image}.jpg"
         loading="lazy"
         class="w-full aspect-video object-cover" />
       </div>

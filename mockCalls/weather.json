@@ -12,20 +12,6 @@
         "modelRunDate": "2026-02-18T21:00Z",
         "timeSeries": [
           {
-            "time": "2026-02-17T00:00Z",
-            "midnight10MWindSpeed": 1.02,
-            "midnight10MWindDirection": 82,
-            "midnight10MWindGust": 5.14,
-            "midnightVisibility": 23694,
-            "midnightRelativeHumidity": 82.04,
-            "midnightMslp": 101490,
-            "nightMinScreenTemperature": -1.48,
-            "nightUpperBoundMinTemp": 2.94,
-            "nightLowerBoundMinTemp": -3.54,
-            "nightUpperBoundMinFeelsLikeTemp": -1.68,
-            "nightLowerBoundMinFeelsLikeTemp": -7.66
-          },
-          {
             "time": "2026-02-18T00:00Z",
             "midday10MWindSpeed": 9.31,
             "midnight10MWindSpeed": 7.55,

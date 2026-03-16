@@ -47,10 +47,11 @@ if ($result->num_rows > 0) {
         $info[$x] = $row;
         $info[$x]["totalCourses"] = $totalClubs;
 
-        if ($row["userid"] == $_SESSION["username"]) {
-            $info[$x]["you"] = 1;
+        if (isset($_SESSION["username"])) {
+            if ($row["userid"] == $_SESSION["username"]) {
+                $info[$x]["you"] = 1;
+            }
         }
-
         $x++;
     }
 

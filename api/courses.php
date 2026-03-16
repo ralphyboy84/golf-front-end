@@ -33,32 +33,58 @@ if (isset($_GET["location"]) && !empty($_GET["location"])) {
     $sqlParams[] = " lat != '0.000000' ";
 }
 
-if (isset($_GET["onlineBooking"]) && !empty($_GET["onlineBooking"])) {
-    $sqlParams[] = " onlineBooking = '" . $_GET["onlineBooking"] . "' ";
+if (
+    isset($_GET["onlineBooking"]) &&
+    !empty($_GET["onlineBooking"]) &&
+    $_GET["onlineBooking"] != "undefined"
+) {
+    $sqlParams[] =
+        " onlineBooking = '" .
+        $_GET["onlineBooking"] .
+        "' AND bookingSystem != ''
+        AND working = 'Yes' ";
 }
 
 if (
     isset($_GET["top100"]) &&
     !empty($_GET["top100"]) &&
-    $_GET["top100"] != "undefined"
+    $_GET["top100"] == "Yes"
 ) {
     $sqlParams[] = " top100 = 1 ";
+} elseif (
+    isset($_GET["top100"]) &&
+    !empty($_GET["top100"]) &&
+    $_GET["top100"] == "No"
+) {
+    $sqlParams[] = " top100 = 0 ";
 }
 
 if (
     isset($_GET["nineHoles"]) &&
     !empty($_GET["nineHoles"]) &&
-    $_GET["nineHoles"] != "undefined"
+    $_GET["nineHoles"] == "Yes"
 ) {
     $sqlParams[] = " 9holes = 1 ";
+} elseif (
+    isset($_GET["nineHoles"]) &&
+    !empty($_GET["nineHoles"]) &&
+    $_GET["nineHoles"] == "No"
+) {
+    $sqlParams[] = " 9holes = 0 ";
 }
 
 if (
     isset($_GET["ralphRecommends"]) &&
     !empty($_GET["ralphRecommends"]) &&
-    $_GET["ralphRecommends"] != "undefined"
+    $_GET["ralphRecommends"] == "Yes"
 ) {
     $sqlParams[] = " ralph_recommends = 1 ";
+} elseif (
+    isset($_GET["ralphRecommends"]) &&
+    !empty($_GET["ralphRecommends"]) &&
+    $_GET["ralphRecommends"] == "No"
+) {
+    $sqlParams[] = " ralph_recommends = 0 ";
 }
 
 if (
@@ -72,9 +98,15 @@ if (
 if (
     isset($_GET["links"]) &&
     !empty($_GET["links"]) &&
-    $_GET["links"] != "undefined"
+    $_GET["links"] == "Yes"
 ) {
     $sqlParams[] = " coursetype = 'links' ";
+} elseif (
+    isset($_GET["links"]) &&
+    !empty($_GET["links"]) &&
+    $_GET["links"] == "No"
+) {
+    $sqlParams[] = " coursetype = 'nonlinks' ";
 }
 
 if (
@@ -247,29 +279,15 @@ function format_availability_days($days)
     return;
 }
 
-function get_course_name($course, $golfCourses, $courseId = false)
+function get_course_name($course, $golfCourses)
 {
-    if (
-        isset($golfCourses[$course]["courses"]) &&
-        !empty($golfCourses[$course]["courses"])
-    ) {
-        foreach ($golfCourses[$course]["courses"] as $name => $data) {
-            if ($data["courseId"] == $courseId) {
-                $courseName = $name;
-                break;
-            }
-        }
-
-        return $golfCourses[$course]["name"] . " " . $courseName;
-    }
-
     return $golfCourses[$course]["name"];
 }
 
-function get_booking_url($courseInfo, $date, $courseId)
+function get_booking_url($courseInfo, $date)
 {
     if ($courseInfo["bookingSystem"] == "clubv1") {
-        return $courseInfo["bookingLink"] . "?date={$date}&courseId=$courseId";
+        return $courseInfo["bookingLink"] . "?date={$date}";
     }
 
     if ($courseInfo["bookingSystem"] != "dotgolf") {
@@ -277,7 +295,7 @@ function get_booking_url($courseInfo, $date, $courseId)
     }
 
     return $courseInfo["bookingLink"] .
-        "?date=$date&ClubId={$courseInfo["clubId"]}&CourseId=$courseId";
+        "?date=$date&ClubId={$courseInfo["clubId"]}";
 }
 
 function get_courses_for_area($region, $courseList)

@@ -24,6 +24,7 @@ import {
   markCourseAsNotPlayed,
 } from "../pages/courseDirectory/coursePlayed.js";
 import { filterMap, clearFiltersForMap } from "../pages/yourInfo/yourInfo.js";
+import { getSelectValues } from "../pages/dayAvailability";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", function (event) {
@@ -280,7 +281,11 @@ document.addEventListener("DOMContentLoaded", () => {
         .classList.remove("input-error");
       document.getElementById("noCourseSelectedError").classList.add("hidden");
 
-      viewCourse();
+      const courseId = getSelectValues(
+        document.getElementById("courseDirectoryListSelect"),
+      );
+
+      router.navigate(`/viewCourse/${courseId[0]}`);
     }
 
     if (event.target.closest(".viewTrip")) {

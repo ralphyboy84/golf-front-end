@@ -1,6 +1,9 @@
 <?php
 
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json; charset=utf-8");
 
 $explode = explode("_", $_GET["club"]);
@@ -14,9 +17,32 @@ $openOnDay = [];
 $openCompetitionInfo = [];
 $additionalArray = [];
 
-$courseName = get_course_name($_GET["club"], $golfCourses, $_GET["courseId"]);
+if ($_SERVER["HTTP_HOST"] == "localhost") {
+    $timeSpan = 100;
+} else {
+    $timeSpan = 24;
+}
 
-// $teeTimeInfo = ["teeTimesAvailable" => "No"];
+$sql = "
+SELECT *
+FROM booking_info
+WHERE course_id = '{$_GET["club"]}'
+AND date = '{$_GET["date"]}'
+AND last_updated_date > NOW() - INTERVAL $timeSpan HOUR
+";
+
+$result = $mysqli->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $array = $row["booking_info"];
+    }
+
+    echo $array;
+    return;
+}
+
+$courseName = get_course_name($_GET["club"], $golfCourses);
 
 if (
     (isset($golfCourses[$_GET["club"]]["bookingSystem"]) &&
@@ -25,11 +51,7 @@ if (
         !empty($golfCourses[$_GET["club"]]["openBookingSystem"]))
 ) {
     require_once "getCourseAvailabilityForDate/teeTimes.php";
-    $bookingUrl = get_booking_url(
-        $golfCourses[$_GET["club"]],
-        $_GET["date"],
-        $_GET["courseId"],
-    );
+    $bookingUrl = get_booking_url($golfCourses[$_GET["club"]], $_GET["date"]);
 
     $additionalArray = [
         "bookingUrl" => $bookingUrl,
@@ -51,6 +73,7 @@ if (
             "visitorsAvailable" => "Yes",
             "date" => $df[2] . "/" . $df[1] . "/" . $df[0],
             "bookingUrl" => $golfCourses[$_GET["club"]]["bookingLink"],
+            "image" => $golfCourses[$_GET["club"]]["image"],
         ];
     } else {
         $additionalArray = [
@@ -59,6 +82,7 @@ if (
             "visitorsAvailable" => "No",
             "date" => $df[2] . "/" . $df[1] . "/" . $df[0],
             "bookingUrl" => $golfCourses[$_GET["club"]]["bookingLink"],
+            "image" => $golfCourses[$_GET["club"]]["image"],
         ];
     }
 }
@@ -70,4 +94,32 @@ $array = array_merge(
     $additionalArray,
 );
 
-echo json_encode($array);
+$json = json_encode($array);
+
+// first we want to delete any historical booking dates as they are now longer relevant
+$sql = "
+DELETE FROM booking_info 
+WHERE date < NOW()
+";
+
+$result = $mysqli->query($sql);
+
+// no we want to delete the booking date for this course/date
+$sql = "
+DELETE FROM booking_info 
+WHERE course_id = '{$_GET["club"]}'
+AND date = '{$_GET["date"]}'
+";
+
+$result = $mysqli->query($sql);
+
+// now insert the new date
+$sql = "
+INSERT INTO booking_info (`course_id`, `date`, `booking_info`)
+VALUES
+('{$_GET["club"]}', '{$_GET["date"]}', '$json')
+";
+
+$result = $mysqli->query($sql);
+
+echo $json;

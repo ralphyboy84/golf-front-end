@@ -8,10 +8,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/icon.png" />
     <title>Scottish Golf Database</title>
   </head>
-  <body class="min-h-screen bg-base-100 p-4">
+  <body class="min-h-screen bg-blue-100 p-4">
     <!-- NAVBAR (Top) -->
     <div
-      class="navbar bg-blue-300 shadow-sm mx-auto max-w-7xl rounded-xl border border-base-300"
+      class="navbar bg-secondary shadow-sm mx-auto max-w-8xl rounded-xl border border-base-300"
     >
       <!-- Left -->
       <div class="navbar-start">
@@ -41,12 +41,12 @@
           >
             <li>
               <a id="home" href="/" data-navigo class="text-base"
-                ><i class="bi bi-house"></i>Home</a
+                ><img src="/images/icons/home.png" />Home</a
               >
             </li>
             <li>
               <a id="buildATrip" href="/trip" data-navigo class="text-base"
-                ><i class="bi bi-bar-chart-steps"></i>Build a Trip</a
+                ><img src="/images/icons/golf.png" />Build a Trip</a
               >
             </li>
             <li>
@@ -55,7 +55,7 @@
                 href="/previousTrips"
                 data-navigo
                 class="text-base"
-                ><i class="bi bi-clock-history"></i>Previous Trip Searches</a
+                ><img src="/images/icons/time.png" />Previous Trip Searches</a
               >
             </li>
             <li>
@@ -64,16 +64,25 @@
                 href="/openSearcher"
                 data-navigo
                 class="text-base"
-                ><i class="bi bi-calendar-date"></i>Open Finder</a
+                ><img src="/images/icons/calendar-1.png" />Open Finder</a
               >
             </li>
-            <li>
+            <!-- <li>
               <a
                 id="dayAvailability"
                 href="/dayAvailability"
                 data-navigo
                 class="text-base"
                 ><i class="bi bi-graph-up"></i>Day Availability</a
+              >
+            </li> -->
+            <li>
+              <a
+                id="bookARound"
+                href="/bookARound"
+                data-navigo
+                class="text-base"
+                ><img src="/images/icons/golf-1.png" />Book a Round</a
               >
             </li>
             <li>
@@ -82,7 +91,7 @@
                 href="/courseDirectory"
                 data-navigo
                 class="text-base"
-                ><i class="bi bi-flag"></i>Course Directory</a
+                ><img src="/images/icons/flag.png" />Course Directory</a
               >
             </li>
             <li>
@@ -91,7 +100,7 @@
                 href="/leaderBoard"
                 data-navigo
                 class="text-base"
-                ><i class="bi bi-card-list"></i>Leaderboard</a
+                ><img src="/images/icons/podium.png" />Leaderboard</a
               >
             </li>
           </ul>
@@ -100,9 +109,18 @@
 
       <!-- Center -->
       <div class="navbar-center">
-        <a href="/" data-navigo class="btn btn-ghost text-xl"
-          >Scottish Golf Database</a
-        >
+        <a
+          href="/"
+          data-navigo
+          class="btn btn-ghost text-2xl text-white font-medium flex items-center gap-2"
+          ><img
+            src="/images/golf-field-med.png"
+            alt="logo"
+            class="h-[1em] w-auto hidden sm:block" />Scottish Golf Database<img
+            src="/images/golf-field-med.png"
+            alt="logo"
+            class="h-[1em] w-auto hidden sm:block"
+        /></a>
       </div>
 
       <!-- Right -->
@@ -174,7 +192,7 @@
 
     <!-- MAIN PAGE CONTENT -->
     <main class="pt-6">
-      <div id="app" class="max-w-4xl mx-auto justify-center"></div>
+      <div id="app" class="max-w-8xl mx-auto justify-center"></div>
     </main>
 
     <div id="fb-root"></div>

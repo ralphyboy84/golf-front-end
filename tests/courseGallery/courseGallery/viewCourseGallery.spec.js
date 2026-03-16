@@ -13,7 +13,7 @@ describe("viewCourseGallery()", () => {
 
     // Verify HTML structure for the first item
     expect(result).toContain('id="item1"');
-    expect(result).toContain('src="images/carnoustie/DJI_001.jpg"');
+    expect(result).toContain('src="/images/carnoustie/DJI_001.jpg"');
 
     // Verify the navigation button exists
     expect(result).toContain(

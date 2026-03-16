@@ -9,7 +9,7 @@ $CarnoustieProcessor = new CarnoustieProcessor();
 if ($golfCourses[$_GET["club"]]["onlineBooking"]) {
     $teeTimes = $CarnoustieCall->getTeeTimesForDay(
         $_GET["date"],
-        $_GET["courseId"],
+        $golfCourses[$_GET["club"]]["courseId"],
     );
 
     $teeTimeInfo = $CarnoustieProcessor->processTeeTimeForDay(

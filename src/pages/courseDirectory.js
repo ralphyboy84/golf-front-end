@@ -1,5 +1,4 @@
 import { getFullCourseList, getCourse } from "../pages/api";
-import { getSelectValues } from "../pages/dayAvailability";
 import {
   buildCard,
   getErrorMessage,
@@ -53,12 +52,8 @@ export async function courseDirectory() {
   });
 }
 
-export async function viewCourse() {
-  const courseId = getSelectValues(
-    document.getElementById("courseDirectoryListSelect"),
-  );
-
-  const courseInfo = await getCourse(courseId[0].course);
+export async function viewCourse(courseId) {
+  const courseInfo = await getCourse(courseId);
 
   const firstKey = Object.keys(courseInfo)[0];
   const club = courseInfo[firstKey];
@@ -218,7 +213,7 @@ export async function viewCourse() {
 
   card += getModal();
 
-  document.getElementById("resultsDiv").innerHTML = card;
+  document.getElementById("app").innerHTML = card;
 
   if (window.FB) {
     if (document.getElementById("facebookEmbed")) {
