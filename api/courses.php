@@ -22,6 +22,20 @@ $selectParams = [];
 $orderByParams = [];
 
 if (
+    isset($_GET["courseList"]) &&
+    !empty($_GET["courseList"]) &&
+    $_GET["courseList"] != "undefined"
+) {
+    $args = explode(",", $_GET["courseList"]);
+
+    foreach ($args as $course) {
+        $courseList[] = " '$course' ";
+    }
+
+    $sqlParams[] = " id IN (" . implode(",", $courseList) . ") ";
+}
+
+if (
     isset($_GET["courseId"]) &&
     !empty($_GET["courseId"]) &&
     (!isset($_GET["club"]) || empty($_GET["club"]))

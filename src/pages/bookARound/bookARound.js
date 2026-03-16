@@ -24,7 +24,7 @@ import {
   getSelectValues,
 } from "../../pages/dayAvailability";
 import { populateSelectOptionsForRegionFilter } from "../../pages/selectBoxes";
-import { formatDateToYMD } from "../../pages/dateFunctions";
+import { loadCourseData } from "../../pages/yourInfo/yourInfo";
 
 export async function bookARound() {
   const loggedIn = await getLoggedInUserInfo();
@@ -89,9 +89,11 @@ export async function bookARound() {
   </div>
   `;
 
-  document.getElementById("app").innerHTML =
-    buildCard("arbroath", "Book a Round", content) +
-    `  <div id='resultsDiv' class='max-w-4xl pt-4 grid grid-cols-1 xl:grid-cols-2 gap-6'></div>`;
+  document.getElementById("app").innerHTML = buildCard(
+    "arbroath",
+    "Book a Round",
+    content,
+  );
 
   await getCoursesForDropDown();
   const data = await getRegions();
@@ -284,6 +286,7 @@ export async function getFilteredCoursesForBookingARound(params) {
 export async function checkBookingForCourses(params) {
   const courseList = params.courses.split(",");
   document.getElementById("app").innerHTML = `
+    <div id='map'></div>
     <div id="resultsDiv" class='pt-4 grid grid-cols-1 xl:grid-cols-1 gap-6'></div>
     <input type='hidden' id='days' name='days' value='1' />
     <input type='hidden' id='start' name='start' value='${params.date}' />
@@ -298,6 +301,19 @@ export async function checkBookingForCourses(params) {
   const dateParam = urlParams.get("date");
 
   fetchAllResults2(courseList, dateParam, info, weather);
+
+  const coursesData = await getCourses(
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    params.courses,
+  );
+  loadCourseData(coursesData);
 }
 
 function viewCourseFromSearchResults(courseid) {

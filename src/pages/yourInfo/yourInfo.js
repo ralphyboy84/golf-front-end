@@ -130,14 +130,14 @@ export async function filterMap() {
   loadCourseData(coursesData);
 }
 
-function loadCourseData(coursesData) {
+export function loadCourseData(coursesData) {
   // 5. Initialize the map (Center it between your points)
   // Format: [Latitude, Longitude], Zoom Level
   map = L.map("map").setView([57.3986, -4.05871], 5);
 
   // 6. Add the OpenStreetMap "Tiles" (The actual map imagery)
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
+    maxZoom: 8,
     attribution:
       '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
