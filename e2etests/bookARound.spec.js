@@ -58,14 +58,14 @@ test("Check you can search for a specific course - user not logged in", async ({
   await expect(page.locator("#clubsSelect")).toBeVisible();
   await page.selectOption("#clubsSelect", "Aberdour");
   await page.click("#filterCoursesForBookingARound");
-  await expect(page.locator("h5")).toBeVisible();
-  await expect(page.locator("h5")).toHaveText(/Aberdour/);
-  await expect(page.locator("p")).toHaveText(
+  await expect(page.locator("h5").nth(0)).toBeVisible();
+  await expect(page.locator("h5").nth(0)).toHaveText(/Aberdour/);
+  await expect(page.locator("p").nth(0)).toHaveText(
     /Good news! There are tee times available on this day/,
   );
-  await expect(page.locator("span").nth(0)).toHaveText(/75.00/);
-  await expect(page.locator("span").nth(2)).toHaveText(/14.00/);
-  await expect(page.locator("span").nth(4)).toHaveText(/19/);
+  await expect(page.locator("span").nth(1)).toHaveText(/75.00/);
+  await expect(page.locator("span").nth(3)).toHaveText(/14.00/);
+  await expect(page.locator("span").nth(5)).toHaveText(/19/);
 });
 
 test("Check you can search for two specific courses - user not logged in", async ({
@@ -133,17 +133,17 @@ test("Check you can search for two specific courses - user not logged in", async
   await expect(page.locator("p").nth(0)).toHaveText(
     /Good news! There are tee times available on this day/,
   );
-  await expect(page.locator("span").nth(0)).toHaveText(/75.00/);
-  await expect(page.locator("span").nth(2)).toHaveText(/14.00/);
-  await expect(page.locator("span").nth(4)).toHaveText(/19/);
-  await expect(page.locator("h5").nth(1)).toBeVisible();
-  await expect(page.locator("h5").nth(1)).toHaveText(/Aberfeldy/);
-  await expect(page.locator("p").nth(1)).toHaveText(
+  await expect(page.locator("span").nth(1)).toHaveText(/75.00/);
+  await expect(page.locator("span").nth(3)).toHaveText(/14.00/);
+  await expect(page.locator("span").nth(5)).toHaveText(/19/);
+  await expect(page.locator("h5").nth(2)).toBeVisible();
+  await expect(page.locator("h5").nth(3)).toHaveText(/Aberfeldy/);
+  await expect(page.locator("p").nth(3)).toHaveText(
     /Good news! There are tee times available on this day/,
   );
-  await expect(page.locator("span").nth(6)).toHaveText(/15.00/);
-  await expect(page.locator("span").nth(8)).toHaveText(/10.00/);
-  await expect(page.locator("span").nth(10)).toHaveText(/100/);
+  await expect(page.locator("span").nth(18)).toHaveText(/15.00/);
+  await expect(page.locator("span").nth(20)).toHaveText(/10.00/);
+  await expect(page.locator("span").nth(22)).toHaveText(/100/);
 });
 
 test("Check no criteria entered and not logged in when you do not know the name of the course", async ({
@@ -254,9 +254,9 @@ test("Check for results when you do not know the name of the course", async ({
   await expect(page.locator("p").nth(0)).toHaveText(
     /Good news! There are tee times available on this day/,
   );
-  await expect(page.locator("span").nth(0)).toHaveText(/75.00/);
-  await expect(page.locator("span").nth(2)).toHaveText(/14.00/);
-  await expect(page.locator("span").nth(4)).toHaveText(/19/);
+  await expect(page.locator("span").nth(1)).toHaveText(/75.00/);
+  await expect(page.locator("span").nth(3)).toHaveText(/14.00/);
+  await expect(page.locator("span").nth(5)).toHaveText(/19/);
 });
 
 test("Check for results when you do not know the name of the course and too many returned", async ({
