@@ -6,12 +6,6 @@ import {
   getCourseAvailabilityForDate,
 } from "../pages/api";
 import { router } from "../router";
-import {
-  iconPound,
-  iconDate,
-  iconClock,
-  iconCompetition,
-} from "../pages/icons";
 
 // this function is called when actually building a trip
 export async function buildTrip() {
@@ -40,28 +34,40 @@ export function buildTripBuilderOutput(
   additionalClass,
   maxDays,
 ) {
-  let content = buildCardRow(iconDate, courseInfo.date, "Date");
+  let content = buildCardRow(
+    `<img src="/images/icons/calendar-1.png" />`,
+    courseInfo.date,
+    "Date",
+  );
 
   if (courseInfo.openCompetition) {
     content += buildCardRow(
-      iconCompetition,
+      `<img src='/images/icons/trophy.png' />`,
       courseInfo.openCompetition,
       "Competition Name",
     );
   }
 
   if (courseInfo.price) {
-    content += buildCardRow(iconPound, courseInfo.price, "Price");
+    content += buildCardRow(
+      `<img src='/images/icons/pound-sterling.png' />`,
+      courseInfo.price,
+      "Price",
+    );
   } else if (courseInfo.openGreenFee) {
     content += buildCardRow(
-      iconPound,
+      `<img src='/images/icons/pound-sterling.png' />`,
       courseInfo.openGreenFee,
       "Open Entry Fee",
     );
   }
 
   if (courseInfo.firstTime) {
-    content += buildCardRow(iconClock, courseInfo.firstTime, "First Tee Time");
+    content += buildCardRow(
+      `<img src='/images/icons/clock.png' />`,
+      courseInfo.firstTime,
+      "First Tee Time",
+    );
   }
 
   content += `<div class="card-actions justify-center">`;

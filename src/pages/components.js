@@ -30,7 +30,7 @@ export function buildSideCardRow(icon, titleText, subText) {
   return `
   <div class="flex flex-1 items-center justify-between space-x-3">
     <!-- Left side: icon + text -->
-    <div class="flex items-center space-x-3 p-3">
+    <div class="flex items-center space-x-3 p-1">
       <!-- Icon -->
       <div class="flex-shrink-0">${icon}</div>
       <!-- Text Column -->
@@ -44,18 +44,25 @@ export function buildSideCardRow(icon, titleText, subText) {
 }
 
 export function buildSideCard(img, header, content) {
-  let imgString = `<figure class="w-1/3"><img src="/images/test1.jpg" alt="stock" class="h-full object-cover" /></figure>`;
+  let imgString = `<img src="/images/test1.jpg" alt="stock" class="h-full object-cover w-full block" />`;
 
   if (img) {
-    imgString = `<figure class="w-1/3"><img src="/images/${img}.jpg" alt="${img}" class="h-full object-cover" /></figure>`;
+    imgString = `<img src="/images/${img}.jpg" alt="${img}" class="h-full object-cover w-full block" />`;
   }
 
   return `
   <div class="card card-side bg-base-100 shadow-sm mb-4 w-full h-full">
-    ${imgString}
+    <figure class="w-1/3 relative h-full block">
+      ${imgString}
+      <div class="absolute bottom-2 left-2 z-10 w-max h-fit inset-auto">
+       <span class="badge badge-success border-none whitespace-nowrap">
+         <i class="fa-solid fa-star"></i>Ralph Recommends
+       </span>
+      </div>
+    </figure>
     <div class="card-body w-2/3">
       <h2 class="card-title">${header}</h2>
-      <p>${content}</p>
+      ${content}
     </div>
   </div>
   `;

@@ -70,6 +70,7 @@ if (
             "visitorsAvailable" => "Yes",
             "date" => $df[2] . "/" . $df[1] . "/" . $df[0],
             "bookingUrl" => $golfCourses[$_GET["club"]]["bookingLink"],
+            "image" => $golfCourses[$_GET["club"]]["image"],
         ];
     } else {
         $additionalArray = [
@@ -78,6 +79,7 @@ if (
             "visitorsAvailable" => "No",
             "date" => $df[2] . "/" . $df[1] . "/" . $df[0],
             "bookingUrl" => $golfCourses[$_GET["club"]]["bookingLink"],
+            "image" => $golfCourses[$_GET["club"]]["image"],
         ];
     }
 }

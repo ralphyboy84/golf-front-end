@@ -114,6 +114,18 @@ document.addEventListener("DOMContentLoaded", () => {
       viewCourseFromSearchResults(courseid);
     }
 
+    if (
+      event.target &&
+      event.target.classList.contains("viewCourseFromSearch")
+    ) {
+      event.preventDefault();
+
+      const target = event.target.closest(".viewCourseFromSearch");
+
+      const courseid = target.getAttribute("data-courseid");
+      viewCourseFromSearchResults(courseid);
+    }
+
     if (event.target && event.target.id === "reBook") {
       event.preventDefault();
       reBookCourses();
@@ -271,7 +283,7 @@ export async function getFilteredCoursesForBookingARound(params) {
 export async function checkBookingForCourses(params) {
   const courseList = params.courses.split(",");
   document.getElementById("app").innerHTML = `
-    <div id="resultsDiv" class='pt-4 grid grid-cols-1 xl:grid-cols-2 gap-6'></div>
+    <div id="resultsDiv" class='pt-4 grid grid-cols-1 xl:grid-cols-1 gap-6'></div>
     <input type='hidden' id='days' name='days' value='1' />
     <input type='hidden' id='start' name='start' value='${params.date}' />
     `;

@@ -13,12 +13,6 @@ import {
   buildSideCard,
   buildSideCardRow,
 } from "../pages/components";
-import {
-  iconPound,
-  iconSlots,
-  iconClock,
-  iconCompetition,
-} from "../pages/icons";
 
 export async function dayAvailability() {
   const app = document.getElementById("app");
@@ -216,10 +210,9 @@ function displayContent(msg, travelInfo, courseId, weather) {
   let timesAvailable = "";
   let openText = "";
   let openTimesAvailable = "";
-  let weatherInfo = "";
   let moreInfoButton = getClickHereForMoreInfoButton(msg, courseId);
 
-  if (msg.onlineBooking == "No") {
+  if (msg.onlineBooking == "No" && msg.visitorsAvailable == "Yes") {
     temp = `Unfortunately, Online Booking is not available but they do allow visitors on this day`;
   }
 
@@ -227,66 +220,69 @@ function displayContent(msg, travelInfo, courseId, weather) {
     temp = "Good news! There are tee times available on this day";
 
     timesAvailable +=
-      '<div class="flex flex-row w-full items-center justify-between">';
+      '<div class="grid grid-cols-1 md:grid-cols-4 gap-2 w-full">';
     timesAvailable += buildSideCardRow(
-      iconPound,
+      `<img src='/images/icons/pound-sterling.png' />`,
       msg.cheapestPrice,
       "Prices From",
     );
     timesAvailable += buildSideCardRow(
-      iconClock,
+      `<img src='/images/icons/clock.png' />`,
       msg.firstTime,
       "First Tee Time",
     );
     timesAvailable += buildSideCardRow(
-      iconSlots,
+      `<img src='/images/icons/golf-ball.png' />`,
       msg.timesAvailable,
       "Available Slots",
     );
-    timesAvailable += `</div>`;
 
     let driveTime = "Currently Unavailable";
-
-    if (weather[courseId]) {
-      weatherInfo = buildCardRow(
-        `<i class='${weather[courseId].generalForecastIcon}'></i>`,
-        weather[courseId].generalForecast,
-        "General Forecast",
-      );
-
-      weatherInfo += buildCardRow(
-        "<i class='bi-cloud-rain'></i>",
-        weather[courseId].chanceOfRain,
-        "Chance of Rain",
-      );
-
-      weatherInfo += buildCardRow(
-        "<i class='bi-thermometer'></i>",
-        weather[courseId].tmeperature,
-        "Daily High",
-      );
-
-      weatherInfo += buildCardRow(
-        "<i class='bi-wind'></i>",
-        weather[courseId].wind,
-        "Wind",
-      );
-    }
 
     if (travelInfo[courseId]) {
       driveTime = travelInfo[courseId];
     }
 
     if (driveTime != "Currently Unavailable") {
-      timesAvailable += buildCardRow(
-        driveTime,
-        "Drive to Course",
-        "bi-car-front",
+      timesAvailable += buildSideCardRow(driveTime, "Drive to Course");
+    }
+
+    timesAvailable += buildSideCardRow(
+      `<img src='/images/icons/car.png' />`,
+      "1 hr 15 mins",
+      "Journey",
+    );
+
+    if (weather[courseId]) {
+      timesAvailable += buildSideCardRow(
+        `<img src='/images/icons/${weather[courseId].generalForecastIcon}.png' />`,
+        weather[courseId].generalForecast,
+        "General Forecast",
+      );
+
+      timesAvailable += buildSideCardRow(
+        `<img src='/images/icons/umbrella.png' />`,
+        weather[courseId].chanceOfRain,
+        "Chance of Rain",
+      );
+
+      timesAvailable += buildSideCardRow(
+        `<img src='/images/icons/temperature.png' />`,
+        weather[courseId].tmeperature,
+        "Daily High",
+      );
+
+      timesAvailable += buildSideCardRow(
+        `<img src='/images/icons/wind.png' />`,
+        weather[courseId].wind,
+        "Wind",
       );
     }
 
+    timesAvailable += `</div>`;
+
     if (msg.competitionId || msg.name) {
-      openText = "<br /><br />" + getOpenText(msg);
+      timesAvailable += getOpenText(msg);
     }
   } else if (!temp) {
     if (msg.competitionId && isFutureDate(msg.bookingsOpenDate)) {
@@ -305,10 +301,15 @@ function displayContent(msg, travelInfo, courseId, weather) {
     }
   }
 
+  let tempStr = "";
+
+  if (temp) {
+    tempStr = `<p class="card-text">${temp}</p>`;
+  }
+
   const content = `
-  <p class="card-text">${temp}</p>
+  ${tempStr}
   ${timesAvailable}
-  ${weatherInfo}
   ${moreInfoButton}
   ${openText}
   `;
@@ -341,26 +342,50 @@ function addDays(date, days) {
 }
 
 function getClickHereForMoreInfoButton(msg, courseId) {
+  let onlineBooking = `<a href="${msg.bookingUrl}" class="btn btn-primary flex-1" target="_blank">Book Tee Time</a>`;
+
+  if (msg.onlineBooking == "No" && msg.visitorsAvailable == "Yes") {
+    onlineBooking = `<a href="${msg.bookingUrl}" class="btn btn-primary flex-1" target="_blank">Website</a>`;
+  }
+
+  let openBooking = "";
+
+  if (msg.competitionId || msg.name) {
+    openBooking = `<a href="${msg.openBookingUrl}" class="btn btn-primary flex-1" target="_blank">Book Open</a>`;
+  }
+
   return `
   <div class="flex flex-row items-center justify-between gap-4 w-full">
-    <a id="viewCourseFromSearch" class="btn btn-primary flex-1" data-courseid='${courseId}'>View Course</a> 
-    <a href="${msg.bookingUrl}" class="btn btn-primary flex-1" target="_blank">Book Now</a>
+    <a class="btn btn-primary flex-1 viewCourseFromSearch" data-courseid='${courseId}'>View Course</a> 
+    ${onlineBooking}
+    ${openBooking}
   </div>
   `;
 }
 
 function getOpenText(msg) {
   let openText = `
-      <p class="card-text">There is an Open Competition on on this day</p>
-      `;
+  <p class="card-text">There is an Open Competition on on this day</p>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-2 w-full">
+  `;
 
-  openText += buildCardRow(iconPound, msg.openGreenFee, "Open Entry Fee");
-  openText += buildCardRow(iconSlots, msg.slotsAvailable, "Available Slots");
-  openText += buildCardRow(iconCompetition, msg.name, "Competition");
+  openText += buildSideCardRow(
+    `<img src='/images/icons/pound-sterling.png' />`,
+    msg.openGreenFee,
+    "Open Entry Fee",
+  );
+  openText += buildSideCardRow(
+    `<img src='/images/icons/golf-ball.png' />`,
+    msg.slotsAvailable,
+    "Available Slots",
+  );
+  openText += buildSideCardRow(
+    `<img src='/images/icons/trophy.png' />`,
+    msg.name,
+    "Competition",
+  );
 
-  openText += `<a href="${msg.openBookingUrl}" class="btn btn-primary" target="_blank">Click here to book your tee time</a>`;
-
-  return openText;
+  return openText + `</div>`;
 }
 
 function isFutureDate(dateStr) {

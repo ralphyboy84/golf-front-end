@@ -6,37 +6,37 @@ header("Content-Type: application/json; charset=utf-8");
 require_once "../courses.php";
 
 $dateToCheck = strtotime($_GET["date"]);
-$dateOk = false;
+$dateOk = true;
 
 if (
-    ($dateToCheck >= time() && $dateToCheck <= strtotime("+1 days")) ||
+    ($dateToCheck >= time() && $dateToCheck <= strtotime("+3 days")) ||
     $_GET["date"] == date("Y-m-d")
 ) {
     $dateOk = true;
 }
 
 $weatherTypes = [
-    1 => ["label" => "Sunny day", "icon" => "bi-brightness-high"],
-    3 => ["label" => "Partly cloudy", "icon" => "bi-cloud-sun"],
-    5 => ["label" => "Mist", "icon" => "bi-cloud-fog"],
-    6 => ["label" => "Fog", "icon" => "bi-cloud-fog"],
-    7 => ["label" => "Cloudy", "icon" => "bi-cloud"],
-    8 => ["label" => "Overcast", "icon" => "bi-cloud"],
-    10 => ["label" => "Light rain shower", "icon" => "bi-cloud-drizzle"],
-    11 => ["label" => "Drizzle", "icon" => "bi-cloud-drizzle"],
-    12 => ["label" => "Light rain", "icon" => "bi-cloud-drizzle"],
-    14 => ["label" => "Heavy rain shower", "icon" => "bi-cloud-rain"],
-    15 => ["label" => "Heavy rain", "icon" => "bi-cloud-rain"],
-    17 => ["label" => "Sleet shower", "icon" => "bi-cloud-sleet"],
-    18 => ["label" => "Sleet", "icon" => "bi-cloud-sleet"],
-    20 => ["label" => "Hail shower", "icon" => "bi-cloud-hail"],
-    21 => ["label" => "Hail", "icon" => "bi-cloud-hail"],
-    23 => ["label" => "Light snow shower", "icon" => "bi-cloud-snow"],
-    24 => ["label" => "Light snow", "icon" => "bi-cloud-snow"],
-    26 => ["label" => "Heavy snow shower", "icon" => "bi-cloud-snow"],
-    27 => ["label" => "Heavy snow", "icon" => "bi-cloud-snow"],
-    29 => ["label" => "Thunder shower", "icon" => "bi-lightning"],
-    30 => ["label" => "Thunder", "icon" => "bi-lightning"],
+    1 => ["label" => "Sunny day", "icon" => "sun"],
+    3 => ["label" => "Partly cloudy", "icon" => "sun-cloud"],
+    5 => ["label" => "Mist", "icon" => "cloud"],
+    6 => ["label" => "Fog", "icon" => "cloud"],
+    7 => ["label" => "Cloudy", "icon" => "cloud"],
+    8 => ["label" => "Overcast", "icon" => "cloud"],
+    10 => ["label" => "Light rain shower", "icon" => "rain"],
+    11 => ["label" => "Drizzle", "icon" => "rain"],
+    12 => ["label" => "Light rain", "icon" => "rain"],
+    14 => ["label" => "Heavy rain shower", "icon" => "rain"],
+    15 => ["label" => "Heavy rain", "icon" => "rain"],
+    17 => ["label" => "Sleet shower", "icon" => "snow"],
+    18 => ["label" => "Sleet", "icon" => "snow"],
+    20 => ["label" => "Hail shower", "icon" => "snow"],
+    21 => ["label" => "Hail", "icon" => "snow"],
+    23 => ["label" => "Light snow shower", "icon" => "snow"],
+    24 => ["label" => "Light snow", "icon" => "snow"],
+    26 => ["label" => "Heavy snow shower", "icon" => "snow"],
+    27 => ["label" => "Heavy snow", "icon" => "snow"],
+    29 => ["label" => "Thunder shower", "icon" => "lightning"],
+    30 => ["label" => "Thunder", "icon" => "lightning"],
 ];
 
 $jsonReturn = [];
@@ -51,6 +51,11 @@ foreach ($courses as $course) {
     if (isset($golfCourses[$course]["location"]) && $dateOk) {
         if ($_SERVER["HTTP_HOST"] == "localhost") {
             $response = file_get_contents("../../mockCalls/weather.json");
+            $response = str_replace(
+                "2026-02-18T00:00Z",
+                $_GET["date"] . "T00:00Z",
+                $response,
+            );
         } else {
             $lat = $golfCourses[$course]["location"]["lat"];
             $long = $golfCourses[$course]["location"]["lon"];
