@@ -247,16 +247,17 @@ async function handleSearchForCourseButton() {
     return;
   }
 
+  const params = new URLSearchParams({
+    date,
+    courses: keys.toString(),
+  });
+
   if (length < 10) {
-    router.navigate(
-      `/checkBookingForCourses?courses=${keys.toString()}&date=${date}`,
-    );
+    router.navigate(`/checkBookingForCourses?${params.toString()}`);
     return;
   }
 
-  router.navigate(
-    `/filterCoursesForBookingARound?date=${date}&courses=${keys.toString()}`,
-  );
+  router.navigate(`/filterCoursesForBookingARound?${params.toString()}`);
 }
 
 export async function getFilteredCoursesForBookingARound(params) {
