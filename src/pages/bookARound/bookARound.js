@@ -283,11 +283,32 @@ export async function getFilteredCoursesForBookingARound(params) {
   document.getElementById("app").innerHTML = content;
 }
 
+export var coursesData;
+
 export async function checkBookingForCourses(params) {
   const courseList = params.courses.split(",");
   document.getElementById("app").innerHTML = `
     <details id="openFilters" class="collapse bg-base-100 border-base-300 border mb-4">
-      <summary class="collapse-title font-semibold">Show Map</summary>
+      <summary class="collapse-title font-semibold"><!-- Burger Icon -->
+        <div class="flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h7"
+          />
+          </svg>
+          <span>Show Map</span>
+        </div>
+      </summary>
+            
       <div class="collapse-content text-md">
         <div id='map'></div>
       </div>
@@ -305,9 +326,7 @@ export async function checkBookingForCourses(params) {
   const urlParams = new URLSearchParams(window.location.search);
   const dateParam = urlParams.get("date");
 
-  fetchAllResults2(courseList, dateParam, info, weather);
-
-  const coursesData = await getCourses(
+  coursesData = await getCourses(
     "",
     "",
     "",
@@ -319,6 +338,8 @@ export async function checkBookingForCourses(params) {
     params.courses,
   );
   loadCourseData(coursesData);
+
+  fetchAllResults2(courseList, dateParam, info, weather);
 }
 
 function viewCourseFromSearchResults(courseid) {

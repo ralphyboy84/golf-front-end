@@ -77,31 +77,7 @@ export function buildSideCard(img, header, content, headerIcon) {
   `;
 }
 
-export function buildCardMobile(
-  img,
-  header,
-  content,
-  id,
-  additionalClass,
-  badges,
-  headerIcon,
-) {
-  let idToUse = "";
-  let additionalClassToUse = "";
-  let badgeString = "";
-
-  if (badges) {
-    badgeString = `<p class="card-text flex flex-wrap gap-2 mb-2.5">${badges}</p>`;
-  }
-
-  if (id && id != "undefined") {
-    idToUse = ` id='${id}'`;
-  }
-
-  if (additionalClass && additionalClass != "undefined") {
-    additionalClassToUse = ` ${additionalClass}`;
-  }
-
+export function buildCardMobile(img, header, content, headerIcon) {
   let imgString = "";
 
   if (img) {
@@ -116,14 +92,13 @@ export function buildCardMobile(
 
   return `
   <div class="flex justify-center mb-6 block md:hidden">
-    <div${idToUse} class="card w-full xl:max-w-7xl bg-base-100 border border-base-300 rounded-xl text-gray-900${additionalClassToUse}">
+    <div class="card w-full xl:max-w-7xl bg-base-100 border border-base-300 rounded-xl text-gray-900">
       ${imgString}
       <div class="card-body">
         <div class="flex justify-between items-center">
           <h5 class="card-title mb-2.5 text-gray-900">${header}</h5>
           ${headerIconString}
         </div>
-        ${badgeString}
         ${content}
       </div>
     </div>

@@ -13,6 +13,7 @@ import {
   buildSideCard,
   buildSideCardRow,
 } from "../pages/components";
+import { coursesData } from "../pages/bookARound/bookARound";
 
 export async function dayAvailability() {
   const app = document.getElementById("app");
@@ -70,7 +71,6 @@ export async function updateCourseList() {
 
 export async function getCoursesForDropDown(region) {
   const courses = await getCourses(region);
-  console.log(region);
 
   document.getElementById("clubsSelect").innerHTML = "";
   const select = document.getElementById("clubsSelect");
@@ -182,7 +182,6 @@ export async function fetchAllResults2(
   const results = {};
 
   for (let x in selectBoxValues) {
-    console.log(selectBoxValues[x]);
     let count = 0;
 
     for (let y = 0; y < document.getElementById("days").value; y++) {
@@ -321,25 +320,27 @@ function displayContent(msg, travelInfo, courseId, weather) {
 
   let played = "";
 
-  // if (msg.loggedIn == 1) {
-  //   let coursePlayedClass = "hidden";
-  //   let courseNotPlayedClass = "hidden";
+  console.log(coursesData[courseId]);
 
-  //   if (msg.played == 1) {
-  //     coursePlayedClass = "";
-  //   } else {
-  //     courseNotPlayedClass = "";
-  //   }
+  if (coursesData[courseId].loggedIn == 1) {
+    let coursePlayedClass = "hidden";
+    let courseNotPlayedClass = "hidden";
 
-  //   played = `
-  //   <img src='/images/golf-field-bw.png' style='height:24px;width:24px' title='You have not played this course' class='cursor-pointer playedCourse ${courseNotPlayedClass}' />
-  //   <img src='/images/golf-field-color.png' style='height:24px;width:24px' title='You have played this course!' class='cursor-pointer notPlayedCourse ${coursePlayedClass}' />
-  //   `;
-  // }
+    if (coursesData[courseId].played == 1) {
+      coursePlayedClass = "";
+    } else {
+      courseNotPlayedClass = "";
+    }
+
+    played = `
+    <img src='/images/golf-field-bw.png' style='height:24px;width:24px' title='You have not played this course' class='cursor-pointer playedCourse ${courseNotPlayedClass}' />
+    <img src='/images/golf-field-color.png' style='height:24px;width:24px' title='You have played this course!' class='cursor-pointer notPlayedCourse ${coursePlayedClass}' />
+    `;
+  }
 
   return (
     buildSideCard(imageToUse, msg.courseName, content, played) +
-    buildCardMobile(imageToUse, msg.courseName, content)
+    buildCardMobile(imageToUse, msg.courseName, content, played)
   );
 }
 
