@@ -286,7 +286,12 @@ export async function getFilteredCoursesForBookingARound(params) {
 export async function checkBookingForCourses(params) {
   const courseList = params.courses.split(",");
   document.getElementById("app").innerHTML = `
-    <div id='map'></div>
+    <details id="openFilters" class="collapse bg-base-100 border-base-300 border mb-4">
+      <summary class="collapse-title font-semibold">Show Map</summary>
+      <div class="collapse-content text-md">
+        <div id='map'></div>
+      </div>
+    </details>
     <div id="resultsDiv" class='pt-4 grid grid-cols-1 xl:grid-cols-1 gap-6'></div>
     <input type='hidden' id='days' name='days' value='1' />
     <input type='hidden' id='start' name='start' value='${params.date}' />
