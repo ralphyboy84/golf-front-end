@@ -22,3 +22,6 @@ services:
       - 8080:80
     environment:
       - PMA_HOST=database
+    volumes:
+      # This line maps your local config file to the container's custom config path
+      - ./phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
