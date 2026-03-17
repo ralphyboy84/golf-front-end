@@ -14,6 +14,8 @@ import {
   getLinksCourseSelect,
   getYouHavePlayedSelect,
   getCourseCategorySelect,
+  getUseYourLocation,
+  getMilesSlider,
 } from "../../pages/components";
 import { router } from "../../router";
 import {
@@ -82,11 +84,14 @@ export async function bookARound() {
     ${getLinksCourseSelect()}
     ${getCourseCategorySelect()}
     ${youHavePlayed}
+    ${getUseYourLocation("bookARoundUseLocation")}
+    ${getMilesSlider("milesSlider", "hidden")}
   </div>
   ${noCriteriaAlertMsg}
   <div id="bookingButtonDiv" class="card-actions justify-center hidden">
     <a id="filterCoursesForBookingARound" href="filterCoursesForBookingARound" data-navigo class="btn btn-primary">Search for Courses</a>
   </div>
+  <input id="userLocationInfo" class="hidden" value="" />
   `;
 
   document.getElementById("app").innerHTML = buildCard(
@@ -131,6 +136,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target && event.target.id === "reBook") {
       event.preventDefault();
       reBookCourses();
+    }
+
+    if (event.target.closest("#bookARoundUseLocation")) {
+      bookATripUseYourLocationSwitch();
     }
   });
 
@@ -187,6 +196,7 @@ async function handleSearchForCourseButton() {
       !document.getElementById("ralphRecommends").value &&
       !document.getElementById("linksCourses").value &&
       !document.getElementById("mapCourseCategory").value &&
+      document.getElementById("bookARoundUseLocation").checked == false &&
       document.getElementById("courseLookingForSelect").value == "No"
     ) {
       document.getElementById("noCriteriaAlertMsg").classList.remove("hidden");
@@ -199,6 +209,7 @@ async function handleSearchForCourseButton() {
       !document.getElementById("ralphRecommends").value &&
       !document.getElementById("linksCourses").value &&
       !document.getElementById("mapCourseCategory").value &&
+      document.getElementById("bookARoundUseLocation").checked == false &&
       !document.getElementById("played").value &&
       document.getElementById("courseLookingForSelect").value == "No"
     ) {
@@ -217,25 +228,39 @@ async function handleSearchForCourseButton() {
 
   const nineHoles = document.getElementById("nineHoleFilter").value;
   const ralphRecommends = document.getElementById("ralphRecommends").value;
-  const linksCourses = document.getElementById("linksCourses").value;
+  const links = document.getElementById("linksCourses").value;
   const category = document.getElementById("mapCourseCategory").value;
   const top100 = document.getElementById("top100Filter").value;
   const date = document.getElementById("start").value;
+
+  let travelDistanceOption = "";
+  let lat = "";
+  let lon = "";
+
+  if (document.getElementById("bookARoundUseLocation").checked) {
+    travelDistanceOption = document.getElementById("openRange").value;
+    const temp = document.getElementById("userLocationInfo").value.split(",");
+
+    lat = temp[0];
+    lon = temp[1];
+  }
 
   let keys;
   let length;
 
   if (document.getElementById("courseLookingForSelect").value == "No") {
-    const courses = await getCourses(
-      "",
+    const courseParams = {
       top100,
       nineHoles,
       category,
-      linksCourses,
+      links,
       ralphRecommends,
       played,
-      "Yes",
-    );
+      travelDistanceOption,
+      lat,
+      lon,
+    };
+    const courses = await getCourses(courseParams);
 
     length = Object.keys(courses).length;
     keys = Object.keys(courses);
@@ -359,5 +384,22 @@ function reBookCourses() {
     router.navigate(
       `/checkBookingForCourses?courses=${checkedValues.toString()}&date=${date}`,
     );
+  }
+}
+
+function bookATripUseYourLocationSwitch() {
+  if (document.getElementById("bookARoundUseLocation").checked) {
+    document.getElementById("milesSlider_1").classList.remove("hidden");
+    document.getElementById("milesSlider_2").classList.remove("hidden");
+
+    navigator.geolocation.getCurrentPosition(function (location) {
+      if (document.getElementById("userLocationInfo")) {
+        document.getElementById("userLocationInfo").value =
+          location.coords.latitude + "," + location.coords.longitude;
+      }
+    });
+  } else {
+    document.getElementById("milesSlider_1").classList.add("hidden");
+    document.getElementById("milesSlider_2").classList.add("hidden");
   }
 }

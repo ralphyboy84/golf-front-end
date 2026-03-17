@@ -148,7 +148,10 @@ if (
     isset($_GET["lat"]) &&
     !empty($_GET["lat"]) &&
     isset($_GET["travelDistanceOption"]) &&
-    !empty($_GET["travelDistanceOption"])
+    !empty($_GET["travelDistanceOption"]) &&
+    $_GET["lat"] != "undefined" &&
+    $_GET["lon"] != "undefined" &&
+    $_GET["travelDistanceOption"] != "undefined"
 ) {
     $lat = $_GET["lat"];
     $lon = $_GET["lon"];

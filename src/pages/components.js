@@ -204,7 +204,7 @@ export function getTop100CourseSelect() {
   return `
   <div class="w-full">Top 100 Course:</div>
   <div class="w-full">
-    <select id='top100Filter' class="select">
+    <select id='top100Filter' class="select w-full appearance-none bg-gray-50 text-gray-900">
       <option value='' selected>Select...</option>
       <option value='Yes'>Yes</option>
       <option value='No'>No</option>
@@ -217,7 +217,7 @@ export function get9HoleCourseSelect() {
   return `
   <div class="w-full">9 Hole Course:</div>
   <div class="w-full">
-    <select id='nineHoleFilter' class="select">
+    <select id='nineHoleFilter' class="select w-full appearance-none bg-gray-50 text-gray-900">
       <option value='' selected>Select...</option>
       <option value='Yes'>Yes</option>
       <option value='No'>No</option>
@@ -230,7 +230,7 @@ export function getRalphRecommendsSelect() {
   return `
   <div class="w-full">Ralph Recommends:</div>
   <div class="w-full">
-    <select id='ralphRecommends' class="select">
+    <select id='ralphRecommends' class="select w-full appearance-none bg-gray-50 text-gray-900">
       <option value='' selected>Select...</option>
       <option value='Yes'>Yes</option>
       <option value='No'>No</option>
@@ -243,7 +243,7 @@ export function getLinksCourseSelect() {
   return `
   <div class="w-full">Links Courses:</div>
   <div class="w-full">
-    <select id='linksCourses' class="select">
+    <select id='linksCourses' class="select w-full appearance-none bg-gray-50 text-gray-900">
       <option value='' selected>Select...</option>
       <option value='Yes'>Yes</option>
       <option value='No'>No</option>
@@ -256,7 +256,7 @@ export function getYouHavePlayedSelect() {
   return `
   <div class="w-full">You've Played:</div>
   <div class="w-full">
-    <select id='played' class="select">
+    <select id='played' class="select w-full appearance-none bg-gray-50 text-gray-900">
       <option value='' selected>Select...</option>
       <option value='Yes'>Yes</option>
       <option value='No'>No</option>
@@ -269,7 +269,7 @@ export function getCourseCategorySelect() {
   return `
   <div class="w-full">Category:</div>
   <div class="w-full">
-    <select id='mapCourseCategory' class="select">
+    <select id='mapCourseCategory' class="select w-full appearance-none bg-gray-50 text-gray-900">
       <option value='' selected>Select...</option>
       <option value="a">A</option>
       <option value="b">B</option>
@@ -284,9 +284,39 @@ export function getRegionSelect() {
   return `
   <div class="w-full">Region:</div>
   <div class="w-full">
-    <select id='mapRegionFilter' class="select">
+    <select id='mapRegionFilter' class="select w-full appearance-none bg-gray-50 text-gray-900">
       <option value='' selected>Select...</option>
     </select>
+  </div>
+  `;
+}
+
+export function getUseYourLocation(id) {
+  return `
+  <div class="w-full">Use Your Location:</div>
+  <div class="w-full"><input id="${id}" type="checkbox" class="toggle toggle-primary" /></div>
+  `;
+}
+
+export function getMilesSlider(id, classToUse) {
+  return `
+  <div id='${id}_1' class="w-full ${classToUse}">How Many Miles From You:</div>
+  <div id='${id}_2' class="w-full ${classToUse}">
+    <input id="openRange" type="range" min="20000" max="100000" value="0" class="range range-primary w-full" step="20000" />
+    <div class="flex justify-between px-2.5 mt-2 text-sm">
+      <span>|</span>
+      <span>|</span>
+      <span>|</span>
+      <span>|</span>
+      <span>|</span>
+    </div>
+    <div class="flex justify-between px-2.5 mt-2 text-sm">
+      <span>20</span>
+      <span>40</span>
+      <span>60</span>
+      <span>80</span>
+      <span>100</span>
+    </div>
   </div>
   `;
 }

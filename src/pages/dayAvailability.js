@@ -70,7 +70,10 @@ export async function updateCourseList() {
 }
 
 export async function getCoursesForDropDown(region) {
-  const courses = await getCourses(region);
+  const courseParams = {
+    region,
+  };
+  const courses = await getCourses(courseParams);
 
   document.getElementById("clubsSelect").innerHTML = "";
   const select = document.getElementById("clubsSelect");

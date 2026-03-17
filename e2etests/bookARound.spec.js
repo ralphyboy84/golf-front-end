@@ -198,7 +198,7 @@ test("Check for results when you do not know the name of the course", async ({
   page,
 }) => {
   await page.route(
-    "**/api/getCourses.php?region=&top100=Yes&nineHoles=&category=&links=&ralphRecommends=Yes&played=&onlineBooking=Yes&courseList=undefined",
+    "**/api/getCourses.php?top100=Yes&ralphRecommends=Yes",
     async (route) => {
       const body = {
         aberdour: {
@@ -382,7 +382,7 @@ test("Check for results when you do not know the name of the course and top 100 
 }) => {
   sharedInterceptFunctionForValidationFormElements(
     page,
-    "**/api/getCourses.php?region=&top100=Yes&nineHoles=&category=&links=&ralphRecommends=&played=&onlineBooking=Yes&courseList=undefined",
+    "**/api/getCourses.php?top100=Yes",
   );
   validatingFormElementsCommonSteps(page);
   await expect(page.locator("#top100Filter")).toBeVisible();
@@ -397,7 +397,7 @@ test("Check for results when you do not know the name of the course and 9 hole c
 }) => {
   sharedInterceptFunctionForValidationFormElements(
     page,
-    "**/api/getCourses.php?region=&top100=&nineHoles=Yes&category=&links=&ralphRecommends=&played=&onlineBooking=Yes&courseList=undefined",
+    "**/api/getCourses.php?nineHoles=Yes",
   );
   validatingFormElementsCommonSteps(page);
   await expect(page.locator("#nineHoleFilter")).toBeVisible();
@@ -412,7 +412,7 @@ test("Check for results when you do not know the name of the course and ralph re
 }) => {
   sharedInterceptFunctionForValidationFormElements(
     page,
-    "**/api/getCourses.php?region=&top100=&nineHoles=&category=&links=&ralphRecommends=Yes&played=&onlineBooking=Yes&courseList=undefined",
+    "**/api/getCourses.php?ralphRecommends=Yes",
   );
   validatingFormElementsCommonSteps(page);
   await expect(page.locator("#ralphRecommends")).toBeVisible();
@@ -427,7 +427,7 @@ test("Check for results when you do not know the name of the course and links co
 }) => {
   sharedInterceptFunctionForValidationFormElements(
     page,
-    "**/api/getCourses.php?region=&top100=&nineHoles=&category=&links=Yes&ralphRecommends=&played=&onlineBooking=Yes&courseList=undefined",
+    "**/api/getCourses.php?links=Yes",
   );
   validatingFormElementsCommonSteps(page);
   await expect(page.locator("#linksCourses")).toBeVisible();
@@ -442,7 +442,7 @@ test("Check for results when you do not know the name of the course and category
 }) => {
   sharedInterceptFunctionForValidationFormElements(
     page,
-    "**/api/getCourses.php?region=&top100=&nineHoles=&category=a&links=&ralphRecommends=&played=&onlineBooking=Yes&courseList=undefined",
+    "**/api/getCourses.php?category=a",
   );
   validatingFormElementsCommonSteps(page);
   await expect(page.locator("#mapCourseCategory")).toBeVisible();
@@ -467,11 +467,34 @@ test("Check for results when you do not know the name of the course and played s
 
   sharedInterceptFunctionForValidationFormElements(
     page,
-    "**/api/getCourses.php?region=&top100=&nineHoles=&category=&links=&ralphRecommends=&played=Yes&onlineBooking=Yes&courseList=undefined",
+    "**/api/getCourses.php?played=Yes",
   );
   validatingFormElementsCommonSteps(page);
   await expect(page.locator("#played")).toBeVisible();
   await page.selectOption("#played", "Yes");
+  await page.click("#filterCoursesForBookingARound");
+  await expect(page.locator("h5").nth(0)).toBeVisible();
+  await expect(page.locator("h5").nth(0)).toHaveText(/Aberdour/);
+});
+
+test("Check for results when you are using your location", async ({ page }) => {
+  await page.route("**/api/getLoggedInUser.php*", async (route) => {
+    let body = { username: "1" };
+
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(body),
+    });
+  });
+
+  sharedInterceptFunctionForValidationFormElements(
+    page,
+    "**/api/getCourses.php?travelDistanceOption=20000&lat=56.4949&lon=-2.7135",
+  );
+  validatingFormElementsCommonSteps(page);
+  await expect(page.locator("#bookARoundUseLocation")).toBeVisible();
+  await page.check("#bookARoundUseLocation");
   await page.click("#filterCoursesForBookingARound");
   await expect(page.locator("h5").nth(0)).toBeVisible();
   await expect(page.locator("h5").nth(0)).toHaveText(/Aberdour/);

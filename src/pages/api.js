@@ -33,7 +33,7 @@ export async function getRegions() {
   );
 }
 
-export async function getCourses(
+export async function getCourses({
   region,
   top100,
   nineHoles,
@@ -43,9 +43,36 @@ export async function getCourses(
   played,
   onlineBooking,
   courseList,
-) {
+  travelDistanceOption,
+  lat,
+  lon,
+} = {}) {
+  // Create an object of just the defined values
+  const allParams = {
+    region,
+    top100,
+    nineHoles,
+    category,
+    links,
+    ralphRecommends,
+    played,
+    onlineBooking,
+    courseList,
+    travelDistanceOption,
+    lat,
+    lon,
+  };
+
+  const searchParams = new URLSearchParams();
+
+  Object.entries(allParams).forEach(([key, value]) => {
+    if (value !== undefined && value !== null && value !== "") {
+      searchParams.append(key, value);
+    }
+  });
+
   return await fetch(
-    `${import.meta.env.VITE_API_URL}api/getCourses.php?region=${region}&top100=${top100}&nineHoles=${nineHoles}&category=${category}&links=${links}&ralphRecommends=${ralphRecommends}&played=${played}&onlineBooking=${onlineBooking}&courseList=${courseList}`,
+    `${import.meta.env.VITE_API_URL}api/getCourses.php?${searchParams.toString()}`,
     {
       credentials: "include",
     },
