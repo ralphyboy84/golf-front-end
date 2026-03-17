@@ -346,7 +346,7 @@ export async function checkBookingForCourses(params) {
     }
 
     changeDateDiv += `
-    <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl font-medium btn-secondary join-item ${border} refreshDate" data-date=${formatted}>${formatDateToDMY(formatted)}</button>
+    <button class="btn btn-md xl:btn-xl font-medium btn-secondary join-item ${border} refreshDate" data-date=${formatted}>${formatDateToDMY(formatted)}</button>
     `;
     border = "";
   }
@@ -354,7 +354,7 @@ export async function checkBookingForCourses(params) {
   const courseList = params.courses.split(",");
   document.getElementById("app").innerHTML = `
   <h2 class="text-2xl font-bold mb-4">Tee time availability for ${formatDateToDMY(params.date)}</h2>
-  <div class="join join-vertical lg:join-horizontal mb-4 justify-center margin-auto flex w-full justify-center">
+  <div class="join mb-4 justify-center margin-auto flex w-full justify-center">
     ${changeDateDiv}
   </div>
   <details id="openFilters" class="collapse bg-base-100 border-base-300 border mb-4">
