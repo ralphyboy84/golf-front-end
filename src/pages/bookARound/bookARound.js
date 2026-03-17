@@ -29,6 +29,8 @@ import {
 import { populateSelectOptionsForRegionFilter } from "../../pages/selectBoxes";
 import { loadCourseData } from "../../pages/yourInfo/yourInfo";
 
+var maxCourses = 20;
+
 export async function bookARound() {
   const loggedIn = await getLoggedInUserInfo();
 
@@ -280,7 +282,7 @@ async function handleSearchForCourseButton() {
     courses: keys.toString(),
   });
 
-  if (length < 20) {
+  if (length < maxCourses) {
     router.navigate(`/checkBookingForCourses?${params.toString()}`);
     return;
   }
@@ -292,19 +294,22 @@ export async function getFilteredCoursesForBookingARound(params) {
   const coursesFromApi = await getCourses();
   const courses = params.courses.split(",");
   const length = courses.length;
-  let content = `The following courses meet your criteria:`;
+  let content = `
+  <div class="max-w-xl mx-auto mb-4 text-center bg-base-100 border border-base-300 rounded-xl text-gray-900 p-4">
+  Apologies, at this point in time you can only search for ${maxCourses} courses. The following courses meet your criteria. Check the checkboxes of the courses you want to check booking information for.
+  `;
 
   for (let x in courses) {
     content += `
-    <div id="courseSelectDiv" class="grid grid-cols-3 gap-4 items-center mb-4">
-      <div class="w-full"><input type="checkbox" class="checkbox" value="${courses[x]}" id="${courses[x]}_checkbox" /></div>
-      <div class="w-full">${coursesFromApi[courses[x]].name}</div>
-      <div class="w-full"><a id="viewCourseFromSearch" class="btn btn-primary" data-courseid='${courses[x]}'>View Course</a></div>
+    <div class="grid grid-cols-[auto_1fr_auto] gap-x-4 items-center mt-4">
+      <div class=""><input type="checkbox" class="checkbox" value="${courses[x]}" id="${courses[x]}_checkbox" /></div>
+      <div class="font-medium text-left">${coursesFromApi[courses[x]].name}</div>
+      <div class=""><a id="viewCourseFromSearch" class="btn btn-primary" data-courseid='${courses[x]}'>View Course</a></div>
     </div>
     `;
   }
 
-  content += `<a id="reBook" class="btn btn-primary">Book</a>`;
+  content += `<a id="reBook" class="btn btn-primary mt-4">Search Again</a></div>`;
 
   document.getElementById("app").innerHTML = content;
 }
@@ -381,7 +386,7 @@ function reBookCourses() {
     document.querySelectorAll('input[type="checkbox"]:checked'),
   ).map((cb) => cb.value);
 
-  if (checkedValues.length < 20) {
+  if (checkedValues.length < maxCourses) {
     router.navigate(
       `/checkBookingForCourses?courses=${checkedValues.toString()}&date=${date}`,
     );
