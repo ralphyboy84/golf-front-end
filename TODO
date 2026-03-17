@@ -84,3 +84,6 @@ have a look at the phpunit gitlhub actions job to include phpunit
         with:
           php-version: 8.3
           tools: phpunit  # This puts phpunit in your PATH automatically
+
+          Greenburn not in Pauls list
+          killin not in pauls list

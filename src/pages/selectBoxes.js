@@ -15,6 +15,8 @@ export function capitalizeFirstChar(str) {
 
   if (str == "eastlothian") {
     str = "East Lothian";
+  } else if (str == "argyllbute") {
+    str = "Argyll and Bute";
   }
 
   return str.charAt(0).toUpperCase() + str.slice(1);
