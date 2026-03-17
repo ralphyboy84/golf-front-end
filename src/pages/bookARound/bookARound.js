@@ -27,6 +27,7 @@ import {
   reorderResultsByTeeTimesAvailable,
 } from "../../pages/dayAvailability";
 import { populateSelectOptionsForRegionFilter } from "../../pages/selectBoxes";
+import { formatDateToDMY } from "../../pages/dateFunctions";
 import { loadCourseData } from "../../pages/yourInfo/yourInfo";
 
 var maxCourses = 20;
@@ -143,6 +144,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (event.target.closest("#bookARoundUseLocation")) {
       bookATripUseYourLocationSwitch();
+    }
+
+    if (event.target.closest(".refreshDate")) {
+      event.preventDefault();
+
+      const target = event.target.closest(".refreshDate");
+
+      const date = target.getAttribute("data-date");
+      refreshDate(date);
     }
   });
 
@@ -317,37 +327,65 @@ export async function getFilteredCoursesForBookingARound(params) {
 export var coursesData;
 
 export async function checkBookingForCourses(params) {
+  const tripStart = new Date(params.date);
+
+  let changeDateDiv = "";
+  let border = "";
+
+  for (let i = 1; i <= 3; i++) {
+    const nextDate = new Date(tripStart); // Create a copy so we don't change the original
+    nextDate.setDate(tripStart.getDate() + i);
+
+    // Format it back to a string (YYYY-MM-DD)
+    const formatted = nextDate.toISOString().split("T")[0];
+
+    if (i == 1) {
+      border = "rounded-l-full";
+    } else if (i == 3) {
+      border = "rounded-r-full";
+    }
+
+    changeDateDiv += `
+    <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl font-medium btn-secondary join-item ${border} refreshDate" data-date=${formatted}>${formatDateToDMY(formatted)}</button>
+    `;
+    border = "";
+  }
+
   const courseList = params.courses.split(",");
   document.getElementById("app").innerHTML = `
-    <details id="openFilters" class="collapse bg-base-100 border-base-300 border mb-4">
-      <summary class="collapse-title font-semibold"><!-- Burger Icon -->
-        <div class="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h7"
-          />
-          </svg>
-          <span>Show Map</span>
-        </div>
-      </summary>
-            
-      <div class="collapse-content text-md">
-        <div id='map'></div>
+  <h2 class="text-2xl font-bold mb-4">Tee time availability for ${formatDateToDMY(params.date)}</h2>
+  <div class="join join-vertical lg:join-horizontal mb-4 justify-center margin-auto flex w-full justify-center">
+    ${changeDateDiv}
+  </div>
+  <details id="openFilters" class="collapse bg-base-100 border-base-300 border mb-4">
+    <summary class="collapse-title font-semibold"><!-- Burger Icon -->
+      <div class="flex items-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h7"
+        />
+        </svg>
+        <span>Show Map</span>
       </div>
-    </details>
-    <div id="resultsDiv" class='pt-4 grid grid-cols-1 xl:grid-cols-1 gap-6'></div>
-    <input type='hidden' id='days' name='days' value='1' />
-    <input type='hidden' id='start' name='start' value='${params.date}' />
-    `;
+    </summary>
+          
+    <div class="collapse-content text-md">
+      <div id='map'></div>
+    </div>
+  </details>
+  <div id="resultsDiv" class='pt-4 grid grid-cols-1 xl:grid-cols-1 gap-6'></div>
+  <input type='hidden' id='days' name='days' value='1' />
+  <input type='hidden' id='start' name='start' value='${params.date}' />
+  `;
 
   createLoadingDivsForDayAvailabilitySearches(courseList);
   const whereStaying = await getWhereStayingLatLong();
@@ -408,4 +446,12 @@ function bookATripUseYourLocationSwitch() {
     document.getElementById("milesSlider_1").classList.add("hidden");
     document.getElementById("milesSlider_2").classList.add("hidden");
   }
+}
+
+function refreshDate(date) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const courses = urlParams.get("courses");
+
+  router.navigate(`/checkBookingForCourses?courses=${courses}&date=${date}`);
 }

@@ -223,10 +223,9 @@ export function reorderResultsByTeeTimesAvailable() {
 
   // 1. Get all child divs as an Array (so we can use .sort())
   const children = Array.from(resultsDiv.children);
-  console.log(children);
+
   // 2. Sort the array
   children.sort((a, b) => {
-    console.log(a);
     // Get the data attributes (default to 0 if not set)
     const aAvailable = a.dataset.teetimesavailable === "1" ? 1 : 0;
     const bAvailable = b.dataset.teetimesavailable === "1" ? 1 : 0;
