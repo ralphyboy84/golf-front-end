@@ -42,7 +42,7 @@ if ($golfCourses[$_GET["club"]]["openBooking"]) {
             $database->getDatabaseConnection(),
             $_GET["club"],
             $openOnDay["competitionId"],
-            $_GET["courseId"],
+            $golfCourses[$_GET["club"]]["courseId"],
             $_GET["date"],
             $openOnDay["name"],
             $slotsAvailable,
