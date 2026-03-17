@@ -63,9 +63,9 @@ test("Check you can search for a specific course - user not logged in", async ({
   await expect(page.locator("p").nth(0)).toHaveText(
     /Good news! There are tee times available on this day/,
   );
-  await expect(page.locator("#aberdour span").nth(1)).toHaveText(/75.00/);
-  await expect(page.locator("#aberdour span").nth(3)).toHaveText(/14.00/);
-  await expect(page.locator("#aberdour span").nth(5)).toHaveText(/19/);
+  await expect(page.locator("#aberdour span").nth(0)).toHaveText(/75.00/);
+  await expect(page.locator("#aberdour span").nth(2)).toHaveText(/14.00/);
+  await expect(page.locator("#aberdour span").nth(4)).toHaveText(/19/);
 });
 
 test("Check you can search for two specific courses - user not logged in", async ({
@@ -133,17 +133,17 @@ test("Check you can search for two specific courses - user not logged in", async
   await expect(page.locator("p").nth(0)).toHaveText(
     /Good news! There are tee times available on this day/,
   );
-  await expect(page.locator("#aberdour span").nth(1)).toHaveText(/75.00/);
-  await expect(page.locator("#aberdour span").nth(3)).toHaveText(/14.00/);
-  await expect(page.locator("#aberdour span").nth(5)).toHaveText(/19/);
+  await expect(page.locator("#aberdour span").nth(0)).toHaveText(/75.00/);
+  await expect(page.locator("#aberdour span").nth(2)).toHaveText(/14.00/);
+  await expect(page.locator("#aberdour span").nth(4)).toHaveText(/19/);
   await expect(page.locator("h5").nth(2)).toBeVisible();
   await expect(page.locator("h5").nth(3)).toHaveText(/Aberfeldy/);
   await expect(page.locator("p").nth(3)).toHaveText(
     /Good news! There are tee times available on this day/,
   );
-  await expect(page.locator("#Aberfeldy span").nth(1)).toHaveText(/15.00/);
-  await expect(page.locator("#Aberfeldy span").nth(3)).toHaveText(/10.00/);
-  await expect(page.locator("#Aberfeldy span").nth(5)).toHaveText(/100/);
+  await expect(page.locator("#Aberfeldy span").nth(0)).toHaveText(/15.00/);
+  await expect(page.locator("#Aberfeldy span").nth(2)).toHaveText(/10.00/);
+  await expect(page.locator("#Aberfeldy span").nth(4)).toHaveText(/100/);
 });
 
 test("Check no criteria entered and not logged in when you do not know the name of the course", async ({
@@ -254,9 +254,9 @@ test("Check for results when you do not know the name of the course", async ({
   await expect(page.locator("p").nth(0)).toHaveText(
     /Good news! There are tee times available on this day/,
   );
-  await expect(page.locator("#aberdour span").nth(1)).toHaveText(/75.00/);
-  await expect(page.locator("#aberdour span").nth(3)).toHaveText(/14.00/);
-  await expect(page.locator("#aberdour span").nth(5)).toHaveText(/19/);
+  await expect(page.locator("#aberdour span").nth(0)).toHaveText(/75.00/);
+  await expect(page.locator("#aberdour span").nth(2)).toHaveText(/14.00/);
+  await expect(page.locator("#aberdour span").nth(4)).toHaveText(/19/);
 });
 
 test("Check for results when you do not know the name of the course and too many returned", async ({
@@ -297,6 +297,42 @@ test("Check for results when you do not know the name of the course and too many
       aberdour0: {
         name: "aberdour",
       },
+      aberdour: {
+        name: "aberdour",
+      },
+      aberdour11: {
+        name: "aberdour",
+      },
+      aberdour12: {
+        name: "aberdour",
+      },
+      aberdour13: {
+        name: "aberdour",
+      },
+      aberdour14: {
+        name: "aberdour",
+      },
+      aberdour15: {
+        name: "aberdour",
+      },
+      aberdour16: {
+        name: "aberdour",
+      },
+      aberdour17: {
+        name: "aberdour",
+      },
+      aberdour18: {
+        name: "aberdour",
+      },
+      aberdour19: {
+        name: "aberdour",
+      },
+      aberdour20: {
+        name: "aberdour",
+      },
+      aberdour21: {
+        name: "aberdour",
+      },
     };
 
     await route.fulfill({
@@ -319,7 +355,7 @@ test("Check for results when you do not know the name of the course and too many
   await page.selectOption("#ralphRecommends", "Yes");
   await page.click("#filterCoursesForBookingARound");
   await expect(page.locator("#app")).toHaveText(
-    /The following courses meet your criteria:/,
+    /Apologies, at this point in time you can only search for 20 courses. The following courses meet your criteria. Check the checkboxes of the courses you want to check booking information for./,
   );
 });
 
