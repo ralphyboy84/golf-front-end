@@ -24,6 +24,7 @@ import {
   createLoadingDivsForDayAvailabilitySearches,
   getCoursesForDropDown,
   getSelectValues,
+  reorderResultsByTeeTimesAvailable,
 } from "../../pages/dayAvailability";
 import { populateSelectOptionsForRegionFilter } from "../../pages/selectBoxes";
 import { loadCourseData } from "../../pages/yourInfo/yourInfo";
@@ -279,7 +280,7 @@ async function handleSearchForCourseButton() {
     courses: keys.toString(),
   });
 
-  if (length < 10) {
+  if (length < 20) {
     router.navigate(`/checkBookingForCourses?${params.toString()}`);
     return;
   }
@@ -351,20 +352,20 @@ export async function checkBookingForCourses(params) {
   const urlParams = new URLSearchParams(window.location.search);
   const dateParam = urlParams.get("date");
 
-  coursesData = await getCourses(
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    params.courses,
-  );
+  coursesData = await getCourses({
+    courseList: params.courses,
+  });
   loadCourseData(coursesData);
 
-  fetchAllResults2(courseList, dateParam, info, weather);
+  const resultsContainer = document.getElementById("resultsDiv");
+
+  // 1. Show the overlay
+  resultsContainer.classList.add("is-loading");
+
+  await fetchAllResults2(courseList, dateParam, info, weather);
+  reorderResultsByTeeTimesAvailable();
+
+  resultsContainer.classList.remove("is-loading");
 }
 
 function viewCourseFromSearchResults(courseid) {
@@ -380,7 +381,7 @@ function reBookCourses() {
     document.querySelectorAll('input[type="checkbox"]:checked'),
   ).map((cb) => cb.value);
 
-  if (checkedValues.length < 10) {
+  if (checkedValues.length < 20) {
     router.navigate(
       `/checkBookingForCourses?courses=${checkedValues.toString()}&date=${date}`,
     );

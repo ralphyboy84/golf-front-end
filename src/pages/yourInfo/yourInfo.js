@@ -118,15 +118,17 @@ export async function filterMap() {
   const mapDiv = document.getElementById("map");
   mapDiv.innerHTML = "";
 
-  const coursesData = await getCourses(
+  const courseParams = {
     region,
     top100,
     nineHoles,
-    courseCategory,
-    linksCourses,
+    category: courseCategory,
+    links: linksCourses,
     ralphRecommends,
     played,
-  );
+  };
+
+  const coursesData = await getCourses(courseParams);
   loadCourseData(coursesData);
 }
 

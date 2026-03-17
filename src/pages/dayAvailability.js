@@ -155,9 +155,10 @@ export function createLoadingDivsForDayAvailabilitySearches(selectBoxValues) {
     // 2. Create a new child div
     const child = document.createElement("div");
     child.id = selectBoxValues[x];
+    child.classList.add("text-center");
 
     // 3. Set some content for the child
-    child.textContent = "Please wait.... loading.....";
+    child.innerHTML = `Please wait.... loading.....<span class="loading loading-ring loading-xl"></span>`;
 
     // 5. Append the child div to the parent div
     parent.appendChild(child);
@@ -182,29 +183,61 @@ export async function fetchAllResults2(
   travelInfo,
   weather,
 ) {
-  const results = {};
+  const allRequests = [];
 
   for (let x in selectBoxValues) {
-    let count = 0;
-
     for (let y = 0; y < document.getElementById("days").value; y++) {
-      const date = addDays(tripStart, count);
-      count++;
+      const date = addDays(tripStart, y);
 
-      getCourseAvailabilityForDate(selectBoxValues[x], date).then(
-        (fetchPromise) =>
-          (document.getElementById(selectBoxValues[x]).innerHTML =
-            displayContent(
-              fetchPromise,
-              travelInfo,
-              selectBoxValues[x],
-              weather,
-            )) + "<br />",
-      );
+      // Push the entire async process into an array
+      const request = getCourseAvailabilityForDate(
+        selectBoxValues[x],
+        date,
+      ).then((fetchPromise) => {
+        const htmlObject = displayContent(
+          fetchPromise,
+          travelInfo,
+          selectBoxValues[x],
+          weather,
+        );
+        const el = document.getElementById(selectBoxValues[x]);
+        el.innerHTML = htmlObject.html;
+
+        if (htmlObject.okFlag == 1) {
+          el.setAttribute("data-teetimesavailable", "1");
+        }
+
+        el.classList.remove("text-center");
+      });
+
+      allRequests.push(request);
     }
   }
 
-  return results;
+  // Wait for every single request in the array to complete
+  await Promise.all(allRequests);
+}
+
+export function reorderResultsByTeeTimesAvailable() {
+  const resultsDiv = document.getElementById("resultsDiv");
+
+  // 1. Get all child divs as an Array (so we can use .sort())
+  const children = Array.from(resultsDiv.children);
+  console.log(children);
+  // 2. Sort the array
+  children.sort((a, b) => {
+    console.log(a);
+    // Get the data attributes (default to 0 if not set)
+    const aAvailable = a.dataset.teetimesavailable === "1" ? 1 : 0;
+    const bAvailable = b.dataset.teetimesavailable === "1" ? 1 : 0;
+
+    // Sort descending: 1s come before 0s
+    return bAvailable - aAvailable;
+  });
+
+  // 3. Re-append them back to the parent
+  // This moves the existing DOM nodes into the new order
+  children.forEach((child) => resultsDiv.appendChild(child));
 }
 
 function displayContent(msg, travelInfo, courseId, weather) {
@@ -212,12 +245,14 @@ function displayContent(msg, travelInfo, courseId, weather) {
   let timesAvailable = "";
   let openText = "";
   let moreInfoButton = getClickHereForMoreInfoButton(msg, courseId);
+  let okFlag = "";
 
   if (msg.onlineBooking == "No" && msg.visitorsAvailable == "Yes") {
     temp = `Unfortunately, Online Booking is not available but they do allow visitors on this day`;
   }
 
   if (msg.teeTimesAvailable == "Yes") {
+    okFlag = 1;
     temp = "Good news! There are tee times available on this day";
 
     timesAvailable +=
@@ -323,8 +358,6 @@ function displayContent(msg, travelInfo, courseId, weather) {
 
   let played = "";
 
-  console.log(coursesData[courseId]);
-
   if (coursesData[courseId].loggedIn == 1) {
     let coursePlayedClass = "hidden";
     let courseNotPlayedClass = "hidden";
@@ -341,10 +374,26 @@ function displayContent(msg, travelInfo, courseId, weather) {
     `;
   }
 
-  return (
-    buildSideCard(imageToUse, msg.courseName, content, played) +
-    buildCardMobile(imageToUse, msg.courseName, content, played)
-  );
+  const html =
+    buildSideCard(
+      imageToUse,
+      msg.courseName,
+      content,
+      played,
+      coursesData[courseId].ralph_recommends,
+    ) +
+    buildCardMobile(
+      imageToUse,
+      msg.courseName,
+      content,
+      played,
+      coursesData[courseId].ralph_recommends,
+    );
+
+  return {
+    html,
+    okFlag,
+  };
 }
 
 function addDays(date, days) {

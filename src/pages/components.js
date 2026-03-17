@@ -43,7 +43,13 @@ export function buildSideCardRow(icon, titleText, subText) {
   `;
 }
 
-export function buildSideCard(img, header, content, headerIcon) {
+export function buildSideCard(
+  img,
+  header,
+  content,
+  headerIcon,
+  ralphRecommends,
+) {
   let imgString = `<img src="/images/test1.jpg" alt="stock" class="h-full object-cover w-full block" />`;
 
   if (img) {
@@ -56,15 +62,23 @@ export function buildSideCard(img, header, content, headerIcon) {
     headerIconString = headerIcon;
   }
 
+  let ralphRecommendsString = "";
+
+  if (ralphRecommends == 1) {
+    ralphRecommendsString = `
+    <div class="absolute bottom-2 left-2 z-10 w-max h-fit inset-auto">
+      <span class="badge badge-success border-none whitespace-nowrap">
+        <i class="fa-solid fa-star"></i>Ralph Recommends
+      </span>
+    </div>
+    `;
+  }
+
   return `
   <div class="card card-side bg-base-100 shadow-sm mb-4 w-full h-full hidden md:flex">
     <figure class="w-1/3 relative h-full block">
       ${imgString}
-      <div class="absolute bottom-2 left-2 z-10 w-max h-fit inset-auto">
-       <span class="badge badge-success border-none whitespace-nowrap">
-         <i class="fa-solid fa-star"></i>Ralph Recommends
-       </span>
-      </div>
+      ${ralphRecommendsString}
     </figure>
     <div class="card-body w-2/3">
       <div class="flex justify-between items-center">
@@ -77,11 +91,29 @@ export function buildSideCard(img, header, content, headerIcon) {
   `;
 }
 
-export function buildCardMobile(img, header, content, headerIcon) {
+export function buildCardMobile(
+  img,
+  header,
+  content,
+  headerIcon,
+  ralphRecommends,
+) {
+  let ralphRecommendsString = "";
+
+  if (ralphRecommends == 1) {
+    ralphRecommendsString = `
+    <div class="absolute bottom-2 left-2 z-10 w-max h-fit inset-auto">
+      <span class="badge badge-success border-none whitespace-nowrap">
+        <i class="fa-solid fa-star"></i>Ralph Recommends
+      </span>
+    </div>
+    `;
+  }
+
   let imgString = "";
 
   if (img) {
-    imgString = `<figure><img src="/images/${img}.jpg" alt="${img}" /></figure>`;
+    imgString = `<figure class="relative"><img src="/images/${img}.jpg" alt="${img}" />${ralphRecommendsString}</figure>`;
   }
 
   let headerIconString = "";

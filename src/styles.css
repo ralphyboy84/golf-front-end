@@ -19,3 +19,9 @@ body {
   font-family: sans-serif;
   padding: 20px;
 }
+
+.is-loading {
+  opacity: 0.5;
+  pointer-events: none; /* This is the "magic" line that stops clicking */
+  cursor: wait;
+}
