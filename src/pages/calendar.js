@@ -5,6 +5,7 @@ import listPlugin from "@fullcalendar/list";
 import { getAllOpensEndPoint, getRegions } from "../pages/api";
 import { populateSelectOptionsForRegionFilter } from "../pages/selectBoxes";
 import { getFullCourseList } from "../pages/api";
+import { getBrowserLocation } from "../pages/mapping";
 
 let eventsFetched = false;
 let endpoint = getAllOpensEndPoint;
@@ -161,16 +162,16 @@ export function clearFilters() {
   document.getElementById("showHowManyMilesDiv").classList.add("hidden");
 }
 
-export function useYourLocationSwitch() {
+export async function useYourLocationSwitch() {
   if (document.getElementById("useYourLocationForOpenFiltering").checked) {
     document.getElementById("showHowManyMilesDiv").classList.remove("hidden");
 
-    navigator.geolocation.getCurrentPosition(function (location) {
-      if (document.getElementById("userLocationInfo")) {
-        document.getElementById("userLocationInfo").value =
-          location.coords.latitude + "," + location.coords.longitude;
-      }
-    });
+    const browserLocation = await getBrowserLocation();
+
+    if (document.getElementById("userLocationInfo") && browserLocation.lat) {
+      document.getElementById("userLocationInfo").value =
+        browserLocation.lat + "," + browserLocation.lon;
+    }
   } else {
     document.getElementById("showHowManyMilesDiv").classList.add("hidden");
   }

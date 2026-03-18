@@ -29,6 +29,7 @@ import {
 import { populateSelectOptionsForRegionFilter } from "../../pages/selectBoxes";
 import { formatDateToDMY } from "../../pages/dateFunctions";
 import { loadCourseData } from "../../pages/yourInfo/yourInfo";
+import { getBrowserLocation } from "../../pages/mapping";
 
 var maxCourses = 20;
 
@@ -172,6 +173,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("courseFilterDiv").classList.remove("hidden");
         document.getElementById("bookingButtonDiv").classList.remove("hidden");
       }
+    }
+
+    if (event.target.closest("#bookingSorting")) {
+      event.preventDefault();
+
+      const sorting = document.getElementById("bookingSorting").value;
+      sortResultsPage(sorting);
     }
   });
 });
@@ -327,7 +335,7 @@ export async function getFilteredCoursesForBookingARound(params) {
 export var coursesData;
 
 export async function checkBookingForCourses(params) {
-  const tripStart = new Date(params.date);
+  const tripStart = new Date(params.date + "T12:00:00");
 
   let changeDateDiv = "";
   let border = "";
@@ -357,7 +365,7 @@ export async function checkBookingForCourses(params) {
   <div class="join mb-4 justify-center margin-auto flex w-full justify-center">
     ${changeDateDiv}
   </div>
-  <details id="openFilters" class="collapse bg-base-100 border-base-300 border mb-4">
+  <details class="collapse bg-base-100 border-base-300 border mb-4">
     <summary class="collapse-title font-semibold"><!-- Burger Icon -->
       <div class="flex items-center gap-2">
         <svg
@@ -382,14 +390,54 @@ export async function checkBookingForCourses(params) {
       <div id='map'></div>
     </div>
   </details>
+  <details class="collapse bg-base-100 border-base-300 border mb-4">
+    <summary class="collapse-title font-semibold">
+      <!-- Burger Icon -->
+      <div class="flex items-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h7"
+        />
+        </svg>
+        <span>Sorting</span>
+      </div>
+    </summary>
+    <div class="collapse-content text-md">
+      <div class="flex gap-3 flex-wrap items-center p-2 grid grid-cols-2">
+        Sort By: 
+        <select id='bookingSorting' class="select">
+          <option value='' selected>Select...</option>
+          <option value='cheapestprice'>Cheapest Price</option>
+          <option value='traveltime'>Shortest Distance</option>
+        </select>
+      </div>
+    </div>
+  </details>
   <div id="resultsDiv" class='pt-4 grid grid-cols-1 xl:grid-cols-1 gap-6'></div>
   <input type='hidden' id='days' name='days' value='1' />
   <input type='hidden' id='start' name='start' value='${params.date}' />
   `;
 
   createLoadingDivsForDayAvailabilitySearches(courseList);
-  const whereStaying = await getWhereStayingLatLong();
-  const info = await getMapDistance(whereStaying, courseList);
+  const browserLocation = await getBrowserLocation();
+  let info = "";
+
+  if (browserLocation.lat) {
+    info = await getMapDistance(
+      browserLocation.lat + "," + browserLocation.lon,
+      courseList,
+    );
+  }
+
   const weather = await getWeather(courseList);
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -431,17 +479,17 @@ function reBookCourses() {
   }
 }
 
-function bookATripUseYourLocationSwitch() {
+async function bookATripUseYourLocationSwitch() {
   if (document.getElementById("bookARoundUseLocation").checked) {
     document.getElementById("milesSlider_1").classList.remove("hidden");
     document.getElementById("milesSlider_2").classList.remove("hidden");
 
-    navigator.geolocation.getCurrentPosition(function (location) {
-      if (document.getElementById("userLocationInfo")) {
-        document.getElementById("userLocationInfo").value =
-          location.coords.latitude + "," + location.coords.longitude;
-      }
-    });
+    const browserLocation = await getBrowserLocation();
+
+    if (document.getElementById("userLocationInfo") && browserLocation.lat) {
+      document.getElementById("userLocationInfo").value =
+        browserLocation.lat + "," + browserLocation.lon;
+    }
   } else {
     document.getElementById("milesSlider_1").classList.add("hidden");
     document.getElementById("milesSlider_2").classList.add("hidden");
@@ -454,4 +502,28 @@ function refreshDate(date) {
   const courses = urlParams.get("courses");
 
   router.navigate(`/checkBookingForCourses?courses=${courses}&date=${date}`);
+}
+
+function sortResultsPage(sortBy) {
+  const container = document.getElementById("resultsDiv");
+  const items = Array.from(container.children);
+
+  items.sort((a, b) => {
+    // 1. Get the price from data attributes
+    // Use parseFloat to handle decimals like 35.00
+    let priceA = parseFloat(a.getAttribute("data-" + sortBy));
+    let priceB = parseFloat(b.getAttribute("data-" + sortBy));
+
+    // 2. Handle "Unknown" or missing prices
+    // If it's not a number (NaN), set it to Infinity so it goes to the bottom
+    if (isNaN(priceA)) priceA = Infinity;
+    if (isNaN(priceB)) priceB = Infinity;
+
+    // 3. Sort ascending (Low to High)
+    return priceA - priceB;
+  });
+
+  // 4. Clear and Re-append
+  container.innerHTML = "";
+  items.forEach((item) => container.appendChild(item));
 }

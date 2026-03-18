@@ -205,6 +205,17 @@ export async function fetchAllResults2(
 
         if (htmlObject.okFlag == 1) {
           el.setAttribute("data-teetimesavailable", "1");
+
+          if (
+            htmlObject.cheapestPrice &&
+            htmlObject.cheapestPrice != undefined
+          ) {
+            el.setAttribute("data-cheapestprice", htmlObject.cheapestPrice);
+          }
+
+          if (htmlObject.travelTime && htmlObject.travelTime != undefined) {
+            el.setAttribute("data-traveltime", htmlObject.travelTime);
+          }
         }
 
         el.classList.remove("text-center");
@@ -245,6 +256,7 @@ function displayContent(msg, travelInfo, courseId, weather) {
   let openText = "";
   let moreInfoButton = getClickHereForMoreInfoButton(msg, courseId);
   let okFlag = "";
+  let travelTime = "";
 
   if (msg.onlineBooking == "No" && msg.visitorsAvailable == "Yes") {
     temp = `Unfortunately, Online Booking is not available but they do allow visitors on this day`;
@@ -279,14 +291,14 @@ function displayContent(msg, travelInfo, courseId, weather) {
     }
 
     if (driveTime != "Currently Unavailable") {
-      timesAvailable += buildSideCardRow(driveTime, "Drive to Course");
-    }
+      timesAvailable += buildSideCardRow(
+        `<img src='/images/icons/car.png' />`,
+        driveTime,
+        "Drive to Course",
+      );
 
-    timesAvailable += buildSideCardRow(
-      `<img src='/images/icons/car.png' />`,
-      "1 hr 15 mins",
-      "Journey",
-    );
+      travelTime = formatTravelTime(driveTime);
+    }
 
     if (weather[courseId]) {
       timesAvailable += buildSideCardRow(
@@ -373,6 +385,8 @@ function displayContent(msg, travelInfo, courseId, weather) {
     `;
   }
 
+  const cheapestPrice = formatCheapestPrice(msg.cheapestPrice);
+
   const html =
     buildSideCard(
       imageToUse,
@@ -392,7 +406,22 @@ function displayContent(msg, travelInfo, courseId, weather) {
   return {
     html,
     okFlag,
+    cheapestPrice,
+    travelTime,
   };
+}
+
+function formatCheapestPrice(cheapestPrice) {
+  if (cheapestPrice && cheapestPrice != "Unknown") {
+    return cheapestPrice.replace(".00", "");
+  }
+}
+
+function formatTravelTime(driveTime) {
+  const [hours, minutes, seconds] = driveTime.split(":").map(Number);
+
+  // Calculate total seconds
+  return hours * 3600 + minutes * 60 + seconds;
 }
 
 function addDays(date, days) {
