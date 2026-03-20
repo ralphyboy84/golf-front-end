@@ -14,70 +14,67 @@
   </head>
   <body class="min-h-screen bg-blue-100 p-4">
     <!-- NAVBAR (Top) -->
-    <div class="navbar bg-base-100 shadow-sm w-full rounded-xl">
-      <div
-        class="max-w-8xl mx-auto w-full flex justify-between items-center px-4"
-      >
-        <!-- Left -->
-        <div class="navbar-start">
-          <div id="dropDownButton" class="dropdown">
-            <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-              <!-- Burger Icon -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h7"
-                />
-              </svg>
-            </div>
-
-            <!-- Dropdown Menu -->
-            <ul
-              tabindex="-1"
-              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-60 p-2 shadow border border-base-300"
+    <div
+      class="navbar bg-white shadow-sm mx-auto max-w-8xl rounded-xl border border-base-300"
+    >
+      <!-- Left -->
+      <div class="navbar-start">
+        <div id="dropDownButton" class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <!-- Burger Icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <li>
-                <a id="home" href="/" data-navigo class="text-base"
-                  ><img src="/images/icons/home.png" class="h-4 w-4" />Home</a
-                >
-              </li>
-              <li>
-                <a id="buildATrip" href="/trip" data-navigo class="text-base"
-                  ><img src="/images/icons/golf.png" class="h-4 w-4" />Build a
-                  Trip</a
-                >
-              </li>
-              <li>
-                <a
-                  id="previousTrips"
-                  href="/previousTrips"
-                  data-navigo
-                  class="text-base"
-                  ><img src="/images/icons/time.png" class="h-4 w-4" />Previous
-                  Trip Searches</a
-                >
-              </li>
-              <li>
-                <a
-                  id="openSearcher"
-                  href="/openSearcher"
-                  data-navigo
-                  class="text-base"
-                  ><img
-                    src="/images/icons/calendar-1.png"
-                    class="h-4 w-4"
-                  />Open Finder</a
-                >
-              </li>
-              <!-- <li>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </div>
+
+          <!-- Dropdown Menu -->
+          <ul
+            tabindex="-1"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-60 p-2 shadow border border-base-300"
+          >
+            <li>
+              <a id="home" href="/" data-navigo class="text-base"
+                ><img src="/images/icons/home.png" class="h-4 w-4" />Home</a
+              >
+            </li>
+            <li>
+              <a id="buildATrip" href="/trip" data-navigo class="text-base"
+                ><img src="/images/icons/golf.png" class="h-4 w-4" />Build a
+                Trip</a
+              >
+            </li>
+            <li>
+              <a
+                id="previousTrips"
+                href="/previousTrips"
+                data-navigo
+                class="text-base"
+                ><img src="/images/icons/time.png" class="h-4 w-4" />Previous
+                Trip Searches</a
+              >
+            </li>
+            <li>
+              <a
+                id="openSearcher"
+                href="/openSearcher"
+                data-navigo
+                class="text-base"
+                ><img src="/images/icons/calendar-1.png" class="h-4 w-4" />Open
+                Finder</a
+              >
+            </li>
+            <!-- <li>
               <a
                 id="dayAvailability"
                 href="/dayAvailability"
@@ -86,110 +83,109 @@
                 ><i class="bi bi-graph-up"></i>Day Availability</a
               >
             </li> -->
-              <li>
-                <a
-                  id="bookARound"
-                  href="/bookARound"
-                  data-navigo
-                  class="text-base"
-                  ><img src="/images/icons/golf-1.png" class="h-4 w-4" />Book a
-                  Round</a
-                >
-              </li>
-              <li>
-                <a
-                  id="courseDirectory"
-                  href="/courseDirectory"
-                  data-navigo
-                  class="text-base"
-                  ><img src="/images/icons/flag.png" class="h-4 w-4" />Course
-                  Directory</a
-                >
-              </li>
-              <li>
-                <a
-                  id="leaderBoard"
-                  href="/leaderBoard"
-                  data-navigo
-                  class="text-base"
-                  ><img
-                    src="/images/icons/podium.png"
-                    class="h-4 w-4"
-                  />Leaderboard</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Center -->
-        <div class="navbar-center">
-          <a
-            href="/"
-            data-navigo
-            class="btn btn-ghost text-2xl text-blue-900 font-medium flex items-center gap-2 hover:bg-transparent"
-            ><img
-              src="/images/IMG_4435-4.jpg"
-              alt="logo"
-              class="h-[1em] w-auto hidden sm:block" /><img
-              src="/images/IMG_4435-5.jpg"
-              alt="logo"
-              class="h-[1em] w-auto"
-          /></a>
-        </div>
-
-        <!-- Right -->
-        <div class="navbar-end">
-          <div id="userDropDown" class="dropdown dropdown-end">
-            <div
-              id="userDropDownSubDiv"
-              tabindex="1"
-              role="button"
-              class="btn btn-ghost btn-circle"
-            >
-              <svg
-                id="userDropDownSvg"
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            <li>
+              <a
+                id="bookARound"
+                href="/bookARound"
+                data-navigo
+                class="text-base"
+                ><img src="/images/icons/golf-1.png" class="h-4 w-4" />Book a
+                Round</a
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                />
-              </svg>
-            </div>
+            </li>
+            <li>
+              <a
+                id="courseDirectory"
+                href="/courseDirectory"
+                data-navigo
+                class="text-base"
+                ><img src="/images/icons/flag.png" class="h-4 w-4" />Course
+                Directory</a
+              >
+            </li>
+            <li>
+              <a
+                id="leaderBoard"
+                href="/leaderBoard"
+                data-navigo
+                class="text-base"
+                ><img
+                  src="/images/icons/podium.png"
+                  class="h-4 w-4"
+                />Leaderboard</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
 
-            <ul
-              tabindex="-1"
-              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-40 p-2 shadow border border-base-300"
+      <!-- Center -->
+      <div class="navbar-center">
+        <a
+          href="/"
+          data-navigo
+          class="btn btn-ghost text-base sm:text-2xl text-blue-900 font-medium flex items-center gap-2 hover:bg-transparent"
+          ><img
+            src="/images/IMG_4435-4.jpg"
+            alt="logo"
+            class="h-[1em] w-auto hidden sm:block" /><img
+            src="/images/IMG_4435-5.jpg"
+            alt="logo"
+            class="h-[1em] w-auto"
+        /></a>
+      </div>
+
+      <!-- Right -->
+      <div class="navbar-end">
+        <div id="userDropDown" class="dropdown dropdown-end">
+          <div
+            id="userDropDownSubDiv"
+            tabindex="1"
+            role="button"
+            class="btn btn-ghost btn-circle"
+          >
+            <svg
+              id="userDropDownSvg"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <li id="logInLi">
-                <a id="logIn" href="/logIn" data-navigo class="text-base"
-                  ><i class="bi bi-box-arrow-in-right"></i>Log In</a
-                >
-              </li>
-              <li id="signUpLi">
-                <a id="signUp" href="/signUp" data-navigo class="text-base"
-                  ><i class="bi bi-person-plus"></i>Sign Up</a
-                >
-              </li>
-              <li id="yourInfoLi" class="hidden">
-                <a id="yourInfo" href="/yourInfo" data-navigo class="text-base"
-                  ><i class="bi bi-person"></i>Your Info</a
-                >
-              </li>
-              <li id="logOutLi" class="hidden">
-                <a id="logOut" href="/logOut" data-navigo class="text-base"
-                  ><i class="bi bi-reply"></i>Log Out</a
-                >
-              </li>
-            </ul>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
           </div>
+
+          <ul
+            tabindex="-1"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-40 p-2 shadow border border-base-300"
+          >
+            <li id="logInLi">
+              <a id="logIn" href="/logIn" data-navigo class="text-base"
+                ><i class="bi bi-box-arrow-in-right"></i>Log In</a
+              >
+            </li>
+            <li id="signUpLi">
+              <a id="signUp" href="/signUp" data-navigo class="text-base"
+                ><i class="bi bi-person-plus"></i>Sign Up</a
+              >
+            </li>
+            <li id="yourInfoLi" class="hidden">
+              <a id="yourInfo" href="/yourInfo" data-navigo class="text-base"
+                ><i class="bi bi-person"></i>Your Info</a
+              >
+            </li>
+            <li id="logOutLi" class="hidden">
+              <a id="logOut" href="/logOut" data-navigo class="text-base"
+                ><i class="bi bi-reply"></i>Log Out</a
+              >
+            </li>
+          </ul>
         </div>
       </div>
     </div>
