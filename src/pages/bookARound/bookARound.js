@@ -27,7 +27,7 @@ import {
   reorderResultsByTeeTimesAvailable,
 } from "../../pages/dayAvailability";
 import { populateSelectOptionsForRegionFilter } from "../../pages/selectBoxes";
-import { formatDateToDMY } from "../../pages/dateFunctions";
+import { formatDateToDMY, checkForPastDate } from "../../pages/dateFunctions";
 import { loadCourseData } from "../../pages/yourInfo/yourInfo";
 import { getBrowserLocation } from "../../pages/mapping";
 
@@ -104,6 +104,10 @@ export async function bookARound() {
     "Book a Round",
     content,
   );
+
+  const today = new Date().toISOString().split("T")[0];
+  const datePicker = document.getElementById("start");
+  datePicker.setAttribute("min", today);
 
   await getCoursesForDropDown();
   const data = await getRegions();
@@ -340,21 +344,25 @@ export async function checkBookingForCourses(params) {
   let changeDateDiv = "";
   let border = "";
 
-  for (let i = 1; i <= 3; i++) {
+  for (let i = -2; i <= 2; i++) {
     const nextDate = new Date(tripStart); // Create a copy so we don't change the original
     nextDate.setDate(tripStart.getDate() + i);
 
     // Format it back to a string (YYYY-MM-DD)
     const formatted = nextDate.toISOString().split("T")[0];
 
-    if (i == 1) {
+    let btnClass = "btn-secondary";
+
+    if (i == -2) {
       border = "rounded-l-full";
-    } else if (i == 3) {
+    } else if (i == 2) {
       border = "rounded-r-full";
+    } else if (i == 0) {
+      btnClass = "bg-white";
     }
 
     changeDateDiv += `
-    <button class="btn btn-md xl:btn-xl font-medium btn-secondary join-item ${border} refreshDate" data-date=${formatted}>${formatDateToDMY(formatted)}</button>
+    <button class="btn btn-md xl:btn-xl font-medium ${btnClass} join-item ${border} refreshDate border border-base-300" data-date=${formatted}>${formatDateToDMY(formatted)}</button>
     `;
     border = "";
   }
@@ -497,6 +505,13 @@ async function bookATripUseYourLocationSwitch() {
 }
 
 function refreshDate(date) {
+  const pastDate = checkForPastDate(date);
+
+  if (pastDate) {
+    alert("Oops! This is a date in the past");
+    return;
+  }
+
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const courses = urlParams.get("courses");

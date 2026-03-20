@@ -5,8 +5,8 @@ export function loadHome() {
   const app = document.getElementById("app");
 
   const content = `
-  <p class="mb-4 text-base">Welcome to the Scottish Golf Database - the most comprehensive resource for Scottish Golf on the internet</p>
-  <p class="mb-4 text-base">Whether it is checking course availability, searching for open competitions, or just merely wanting to look at pictures of beautiful Scottish golf courses, we have everything you could ever need.</p>
+  <p class="mb-4 text-base">The most comprehensive resource for Scottish Golf on the internet</p>
+  <p class="mb-4 text-base">Whether it is help planning that dream golf trip to Scotland you've always wanted to do, checking course availability, searching for open competitions, or just merely wanting to look at pictures of beautiful Scottish golf courses, we have everything you could ever need.</p>
   <div class="flex gap-2 justify-center">
     <a href="/courseDirectory" class="badge badge-primary h-auto text-center">557 Courses Loaded in the app</a>
     <a href="/dayAvailability" class="badge badge-accent h-auto text-center">372 Courses With Online Booking</a>
@@ -14,10 +14,11 @@ export function loadHome() {
   </div>
   `;
   app.innerHTML = buildCard(
-    "standrewsold",
-    "Welcome to Scottish Golf Database",
+    "IMG_4435-3",
+    "Welcome to TeeTime Scotland",
     content,
     "homePage",
+    "pt-4",
   );
 
   // app.innerHTML += `

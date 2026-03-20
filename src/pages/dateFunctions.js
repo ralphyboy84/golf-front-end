@@ -13,3 +13,15 @@ export function formatDateToYMD(dateStr) {
   // Return in dd/mm/yyyy format
   return `${year}-${month}-${day}`;
 }
+
+export function checkForPastDate(dateStr) {
+  const targetDate = new Date(dateStr);
+  targetDate.setHours(0, 0, 0, 0);
+
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+
+  if (targetDate < now) {
+    return true;
+  }
+}
