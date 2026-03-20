@@ -18,7 +18,7 @@ export function loadHome() {
     "Welcome to TeeTime Scotland",
     content,
     "homePage",
-    "pt-4",
+    "pt-4 pl-4 pr-4",
   );
 
   // app.innerHTML += `
