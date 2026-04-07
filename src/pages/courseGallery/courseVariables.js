@@ -695,7 +695,19 @@ const downfield = [
   "-18",
   "-19",
 ];
-
+const kinsgslinks = [
+  "-1",
+  "-2",
+  "-3",
+  "-4",
+  "-5",
+  "-6",
+  "-7",
+  "-8",
+  "-9",
+  "-10",
+  "-11",
+];
 export const images = {
   boatofgarten,
   corrie,
@@ -752,4 +764,5 @@ export const images = {
   kirriemuir,
   forbesofkingennie,
   downfield,
+  kinsgslinks,
 };
