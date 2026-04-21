@@ -726,6 +726,10 @@ const cupar = [
   "-15",
   "-16",
 ];
+const powfoot = ["-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9"];
+const lockerbie = ["-1", "-2", "-3", "-4", "-5", "-6", "-7"];
+const HoddomCastle = ["-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9"];
+const ladybank = ["-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9"];
 
 export const images = {
   boatofgarten,
@@ -785,4 +789,8 @@ export const images = {
   downfield,
   kinsgslinks,
   cupar,
+  powfoot,
+  lockerbie,
+  HoddomCastle,
+  ladybank,
 };
